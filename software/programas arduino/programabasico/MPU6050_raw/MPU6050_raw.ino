@@ -52,15 +52,23 @@ int16_t gx, gy, gz;
 double accXangle, accYangle; // Angle calculate using the accelerometer
 double temp; // Temperature
 double gyroXangle, gyroYangle; // Angle calculate using the gyro
+double gyroXangle_aux, gyroYangle_aux; // Angle calculate using the gyro
 double compAngleX, compAngleY; // Calculate the angle using a complementary filter
 double kalAngleX, kalAngleY; // Calculate the angle using a Kalman filter
+double calibra_ax ,calibra_ay,calibra_az,calibra_gx,calibra_gy,calibra_gz;
+double millis_propios;
 #define LED_PIN 13
 bool blinkState = false;
 
 void setup() {
   // join I2C bus (I2Cdev library doesn't do this automatically)
   Wire.begin();
-
+calibra_ax=0;
+calibra_ay=0;
+calibra_az=0;
+calibra_gx=0;
+calibra_gy=0;
+calibra_gz=0;
   // initialize serial communication
   // (38400 chosen because it works as well at 8MHz as it does at 16MHz, but
   // it's really up to you depending on your project)
@@ -73,7 +81,24 @@ void setup() {
   // verify connection
   Serial.println("Testing device connections...");
   Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
-
+  
+  //for de calibracion
+  for (int i = 0; i > 100; i++){
+    accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+    ax=ax+calibra_ax;
+    ay=ax+calibra_ay;
+    az=ax+calibra_az;
+    gx=ax+calibra_gx;
+    gy=ax+calibra_gy;
+    gz=ax+calibra_gz;
+   } 
+  calibra_ax=calibra_ax/100;
+  calibra_ay=calibra_ay/100;
+  calibra_az=calibra_az/100;
+  calibra_gx=calibra_gx/100;
+  calibra_gy=calibra_gy/100;
+  calibra_gz=calibra_gz/100;
+  millis_propios= millis();
   // configure Arduino LED for
   pinMode(LED_PIN, OUTPUT);
 }
@@ -81,17 +106,17 @@ void setup() {
 void loop() {
   // read raw accel/gyro measurements from device
   accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+  //rectificacion 
 
+  accXangle = (atan2(ay-calibra_ay,az-calibra_az)+PI)*RAD_TO_DEG;
+  accYangle = (atan2(ax-calibra_ax,az-calibra_az)+PI)*RAD_TO_DEG;
 
-  accXangle = (atan2(ay,az)+PI)*RAD_TO_DEG;
-  accYangle = (atan2(ax,az)+PI)*RAD_TO_DEG;
-
-  double gyroXrate = (double)gx/131.0;
-  double gyroYrate = -((double)gy/131.0);
+  double gyroXrate = ((double)gx-calibra_gx)/131.0;
+  double gyroYrate = -(((double)gy-calibra_gy)/131.0);
   gyroXangle += gyroXrate*((double)(micros()-timer)/1000000); // Calculate gyro angle without any filter
   gyroYangle += gyroYrate*((double)(micros()-timer)/1000000);
-  //gyroXangle += kalmanX.getRate()*((double)(micros()-timer)/1000000); // Calculate gyro angle using the unbiased rate
-  //gyroYangle += kalmanY.getRate()*((double)(micros()-timer)/1000000);
+//  gyroXangle += kalmanX.getRate()*((double)(micros()-timer)/1000000); // Calculate gyro angle using the unbiased rate
+//  gyroYangle += kalmanY.getRate()*((double)(micros()-timer)/1000000);
 
   compAngleX = (0.93*(compAngleX+(gyroXrate*(double)(micros()-timer)/1000000)))+(0.07*accXangle); // Calculate the angle using a Complimentary filter
   compAngleY = (0.93*(compAngleY+(gyroYrate*(double)(micros()-timer)/1000000)))+(0.07*accYangle);
@@ -105,22 +130,28 @@ void loop() {
 
 
   // these methods (and a few others) are also available
-  //accelgyro.getAcceleration(&ax, &ay, &az);
-  //accelgyro.getRotation(&gx, &gy, &gz);
-
+  accelgyro.getAcceleration(&ax, &ay, &az);
+  accelgyro.getRotation(&gx, &gy, &gz);
   // display tab-separated accel/gyro x/y/z values
-  //    Serial.print("a/g:\t");
-  //Serial.println(ax);
-  // Serial.print("\t");
-  //    Serial.print(ay); Serial.print("\t");
-  //    Serial.print(az); Serial.print("\t");
-  //    Serial.print(gx); Serial.print("\t");
-  //    Serial.print(gy); Serial.print("\t");
-  //    Serial.println(gz);
-  Serial.print(accYangle);Serial.print("\t");
-  Serial.print(gyroYangle);Serial.print("\t");
-  Serial.print(compAngleY); Serial.print("\t");
-  Serial.print(kalAngleY);Serial.println("\t");
+//      Serial.print("a/g:\t");
+//  Serial.println(ax);
+//   Serial.print("\t");
+//     Serial.print(ay); Serial.print("\t");
+//      Serial.print(az); Serial.print("\t");
+//      Serial.print(gx); Serial.print("\t");
+//      Serial.print(gy); Serial.print("\t");
+//      Serial.println(gz);
+//Serial.println(compAngleX);
+//++++++++++++++++++++ NO TOCAR++++++++++++++++++++++++++++++++++++++++++++++++++++
+ gyroYangle_aux=(double((millis()-millis_propios)*(0.001234720336)-gyroYangle));
+  gyroXangle_aux=(double((millis()-millis_propios)*(0.000931966)+gyroXangle));
+ Serial.print( gyroYangle_aux);Serial.print("\t");
+ Serial.println(gyroXangle_aux);Serial.print("\t");
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ // Serial.print(compAngleY); Serial.print("\t");
+ // Serial.print(kalAngleY);Serial.println("\t");
   
   // blink LED to indicate activity
   blinkState = !blinkState;
