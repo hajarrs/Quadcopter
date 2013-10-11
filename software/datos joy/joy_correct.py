@@ -38,7 +38,7 @@ while 1:
 				and num != 0:
 					print 'You moved the left joystick downward to %' + percent128
 				else:
-					print 'You stopped moving the rleft joystick' 
+					print 'You stopped moving the rleft joystick'
 			
 
 			elif action[7] == '04': # Left Joystick left/right
@@ -74,5 +74,5 @@ while 1:
 				and num != 0:
 					print 'You moved the right joystick downward to %' + percent128
 				else:
-					print 'You stopped moving the right joystick' 
+					print 'You stopped moving the right joystick'
 			action = []
