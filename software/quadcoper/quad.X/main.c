@@ -61,7 +61,9 @@ int main(void)
     }
     EnviarCR();
 
-
+// while(1)
+//    {Prueba_Bluetooth();
+// }
 
     while(1)
     {
