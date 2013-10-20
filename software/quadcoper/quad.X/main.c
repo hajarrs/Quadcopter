@@ -1,3 +1,5 @@
+#include <p30F4013.h>
+
 /*
  * File:   main.c
  * Author: rbpkirow
@@ -11,21 +13,8 @@ void ByteWrite(unsigned char address, unsigned char data);
 unsigned char ByteRead(unsigned char Address);
 
 #include <p30F4013.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <i2c.h>
-#include <math.h>
-#include "Defines.h"
-#include "Var_Globales.h"
-#include "CB_Timer1.h"
-#include "CB_Timer2.h"
-#include "CB_Timer3.h"
-#include "CB_Inicializaciones.h"
-#include "CB_I2C.h"
-#include "CB_Bluetooth.h"
-#include "Pruebas.h"
-#include "CA_kalman.h"
+#include "main.h"
+
 
 // FUSES
 // -----------------------------------------------------------

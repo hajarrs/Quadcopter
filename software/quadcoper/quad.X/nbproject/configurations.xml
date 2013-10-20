@@ -12,8 +12,8 @@
       <itemPath>CB_Timer3.h</itemPath>
       <itemPath>Defines.h</itemPath>
       <itemPath>Pruebas.h</itemPath>
-      <itemPath>Var_Globales.h</itemPath>
       <itemPath>CA_kalman.h</itemPath>
+      <itemPath>main.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -23,6 +23,14 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
+      <itemPath>CA_kalman.c</itemPath>
+      <itemPath>CB_Bluetooth.c</itemPath>
+      <itemPath>CB_I2C.c</itemPath>
+      <itemPath>CB_Inicializaciones.c</itemPath>
+      <itemPath>CB_Timer1.c</itemPath>
+      <itemPath>CB_Timer2.c</itemPath>
+      <itemPath>CB_Timer3.c</itemPath>
+      <itemPath>Pruebas.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -41,7 +49,7 @@
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.10</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <compileType>
         <linkerTool>
