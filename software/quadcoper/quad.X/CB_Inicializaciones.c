@@ -43,11 +43,11 @@ void Init_I2C(void)
     Delay_Nop(50000);
 
     /* Baud rate is set for 400 kHz */
-    unsigned int config2 = 50;      // 50
+    unsigned int config2 = 269;      // 50
     /* Configure I2C for 7 bit address mode */
     unsigned int config1 = (I2C_ON & I2C_IDLE_CON & I2C_CLK_HLD &
              I2C_IPMI_DIS & I2C_7BIT_ADD &
-             I2C_SLW_EN & I2C_SM_DIS &
+             I2C_SLW_DIS & I2C_SM_DIS &
              I2C_GCALL_DIS & I2C_STR_DIS &
              I2C_NACK & I2C_ACK_DIS & I2C_RCV_DIS &
              I2C_STOP_DIS & I2C_RESTART_DIS &

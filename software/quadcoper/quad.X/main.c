@@ -7,11 +7,6 @@
  * Created on 29 de junio de 2013, 19:05
  */
 
-void enviar_datos(char cadena[50], int longitud);
-void enviar_datos_NOCR(char cadena[50], int longitud);
-void ByteWrite(unsigned char address, unsigned char data);
-unsigned char ByteRead(unsigned char Address);
-
 #include <p30F4013.h>
 #include "main.h"
 
@@ -36,7 +31,7 @@ int main(void)
 //    Init_PWM();
     
 
-    for(i=0;i<5000;i++)
+    for(i=0;i<3000;i++)
             Delay1msT1(0);
     EnviarCR();
     strcpy(mycadena,"Iniciando");
@@ -50,18 +45,19 @@ int main(void)
     }
     EnviarCR();
 
-// while(1)
-//    {Prueba_Bluetooth();
-// }
+
+          Prueba_Bluetooth();
+    
 
     while(1)
     {
-        Prueba_I2C();
+        prueba2_I2C();
         Delay_Nop(5000);
-        EnviarDatos_Acc_Gyro(COM_ACC_X | COM_ACC_Y | COM_ACC_Z);
-        Delay_Nop(5000);
-        Delay_Nop(5000);
-        LED1 = !LED1;
+//        Prueba_Bluetooth();
+//        EnviarDatos_Acc_Gyro(COM_ACC_X | COM_ACC_Y | COM_ACC_Z);
+//        Delay_Nop(5000);
+//        Delay_Nop(5000);
+//        LED1 = !LED1;
     }
 
     return 0;

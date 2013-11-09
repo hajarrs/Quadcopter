@@ -1,4 +1,7 @@
 import sys
+import sys
+import getopt
+import serial
 pipe = open('/dev/input/js0','r')
 action = []
 spacing = 0
@@ -42,22 +45,24 @@ while 1:
 			
 
 			elif action[7] == '04': # Left Joystick left/right
-				if action[4] == 'FF':
-					print 'You pressed right on the left joystick'
-				elif action[4] == '01':
-					print 'You pressed left on the left joystick'
-				else:
-					print 'You released the left joystick'
-
+                                    num = int(action[5], 16) # Translate back into integer form
+                                    if num >= 128:
+					print 'You moved the right joystick left to %' + percent254
+                                    elif num <= 127 \
+                                    and num != 0:
+					print 'You moved the right joystick right to %' + percent128
+                                    else:
+					print 'You stopped moving the right joystick'
 			elif action[7] == '05': # Left Joystick up/down
-				if action[4] == 'FF':
-					print 'You pressed down on the left joystick'
-				elif action[4] == '01':
-					print 'You pressed up on the left joystick'
-				else:
-					print 'You released the left joystick'
+                                    if num >= 128:
+					print 'You moved the right joystick left to %' + percent254
+                                    elif num <= 127 \
+                                    and num != 0:
+					print 'You moved the right joystick right to %' + percent128
+                                    else:
+					print 'You stopped moving the right joystick'
 
-			elif action[7] == '02': # Right Joystick left/right
+			elif action[7] == '03': # Right Joystick left/right
 				num = int(action[5], 16) # Translate back into integer form
 				if num >= 128:
 					print 'You moved the right joystick left to %' + percent254
@@ -67,7 +72,7 @@ while 1:
 				else:
 					print 'You stopped moving the right joystick'
 
-			elif action[7] == '03': # Right Joystick up/ down
+			elif action[7] == '02': # Right Joystick up/ down
 				if num >= 128:
 					print 'You moved the right joystick upward to %' + percent254
 				elif num <= 127 \

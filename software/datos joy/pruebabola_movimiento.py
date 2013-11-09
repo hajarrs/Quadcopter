@@ -19,7 +19,7 @@ HEIGHT = 1000
 class Palanca(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = load_image("palanca.png", True)
+        self.image = load_image("ball.png", True)
         self.rect = self.image.get_rect()
         self.rect.centerx = WIDTH / 2
         self.rect.centery = HEIGHT / 2
@@ -100,8 +100,8 @@ def main():
         bola.actualizar(time)
         palanca.actualizar(time)
         screen.blit(background_image, (0, 0))
-        screen.blit(bola.image, (400+joy.get_axis(2)*100,200+joy.get_axis(3)*100))
-        screen.blit(palanca.image, (150,200+joy.get_axis(1)*100))
+        screen.blit(palanca.image, (400,200+joy.get_axis(1)*100))
+        screen.blit(bola.image, (200+joy.get_axis(2)*100,200+joy.get_axis(2)*100))
         pygame.display.flip()
     return 0
 

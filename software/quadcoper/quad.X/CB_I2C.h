@@ -10,10 +10,19 @@
 
 #include "CB_Timer2.h"
 
-void Write_I2C(unsigned char byte);
+unsigned int my_IdleI2C(void);
+unsigned int my_AckI2C(void);
+unsigned int my_getI2C(void);
+unsigned int my_getsI2C(unsigned char *rdptr, unsigned char Length);
+unsigned int my_StartI2C(void);
+unsigned int my_RestartI2C(void);
+unsigned int my_StopI2C(void);
+unsigned int my_WriteI2C(unsigned char byte);
+unsigned int my_ACKStatus(void);
+void my_Write_I2C(unsigned char byte);
+unsigned int LDByteWriteI2C(unsigned char LowAdd, unsigned char data);
+unsigned int my_NotAckI2C(void);
 void ByteWrite(unsigned char address, unsigned char data);
-unsigned char ByteRead(unsigned char Address);
-
 
 #endif	/* CB_I2C_H */
 
