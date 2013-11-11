@@ -7,6 +7,7 @@
 #include "CB_Timer2.h"
 #include "CB_Bluetooth.h"
 #include "CA_kalman.h"
+#include "CB_Inicializaciones.h"
 
 
 void Prueba2_PWM(void)
@@ -31,7 +32,7 @@ void Prueba_PWM(void)
        {
            PWM4 = 0x0FFF;
            PWM3 = 0x0FFF;
-           LED3 = 1;
+      //     LEDROJO = 1;
            Stop = 1;
        }
     }
@@ -46,7 +47,7 @@ void Prueba_PWM(void)
        {
            PWM4 = 0;
            PWM3 = 0;
-           LED3 = 0;
+//           LEDROJO = 0;
            Stop = 0;
        }
     }
@@ -89,7 +90,6 @@ void Prueba_Bluetooth(void)
     Delay_Nop(5000);
     enviar_datos(str_blue, strlen(str_blue));
     Delay_Nop(5000);
-    LED3 = !LED3;
 }
 
 
@@ -202,16 +202,47 @@ void Prueba_I2C(void)
 }
 
 
-void Prueba_LED()
+void Prueba_LED_BOTON()
 {
-/*    LED1 = 1;
-    DelayXms_T3(500);
-    LED2 = 1;
-    DelayXms_T3(500);
-    LED3 = 1;
-    DelayXms_T3(500);
-    DelayXms_T3(500);*/
-    LED3 = BOTON_A;
+                int i,j;
+                if (BOTONEXTERNO==1)
+                {
+                     LED_ALL_OFF();
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDNARANJA=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDAZUL=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDAMARILLO=1;
+                    for(i=0;i<300;i++) Delay1msT1(0);
+                    LEDVERDE=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDROJO=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                }
+                else if (BOTONINTERNO==1)
+                {
+                    LED_ALL_OFF();
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDROJO=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDVERDE=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDAMARILLO=1;
+                    for(i=0;i<300;i++) Delay1msT1(0);
+                    LEDAZUL=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LEDNARANJA=1;
+                    for(i=0;i<300;i++)Delay1msT1(0);
+
+                }
+                else
+                {
+                    LED_ALL_OFF();
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                    LED_ALL_ON();
+                    for(i=0;i<300;i++)Delay1msT1(0);
+                }
 
 }
 
@@ -289,21 +320,21 @@ void EjecutarPID(void)
     enviarDatosFiltro();
 }
 
-
-    int alejandro;
+        int z=0;
+        int ini=60;
 void prueba2_I2C()
 {
 
-    for(alejandro=0;alejandro<0xFF; alejandro++)
-    {
-        alejandro=0xD2;
+
+    
+
         char mycadena[50];
         my_IdleI2C();					//wait for bus Idle
 //        Prueba_Bluetooth_2("1");
 	my_StartI2C();					//Generate Start Condition
 //	Prueba_Bluetooth_2("2");
 
-        my_WriteI2C(alejandro);		//Write Control Byte
+        my_WriteI2C(0xD2);		//Write Control Byte
 //	Prueba_Bluetooth_2("3");
         my_IdleI2C();					//wait for bus Idle
 //	Prueba_Bluetooth_2("4");
@@ -315,7 +346,7 @@ void prueba2_I2C()
 	my_RestartI2C();				//Generate restart condition
 //	Prueba_Bluetooth_2("7");
         
-        my_WriteI2C(alejandro+1);	//Write control byte for read
+        my_WriteI2C(0xD2+1);	//Write control byte for read
 
 //	Prueba_Bluetooth_2("8");
         my_IdleI2C();
@@ -349,13 +380,49 @@ void prueba2_I2C()
 //        strcpy(str_blue," -->  0x");
 //        enviar_datos_NOCR(str_blue,strlen(str_blue));
 //
-        itoa(str_blue,alejandro, 16);
+
+
+              z++;
+
+        strcpy(mycadena,"Respuesta-->");
+    enviar_datos_NOCR(mycadena,strlen(mycadena));
+                itoa(str_blue,I2CRCV, 16);
         enviar_datos_NOCR(str_blue,strlen(str_blue));
-        itoa(str_blue,I2CRCV, 16);
+        if (I2CRCV==0xff)
+        {                   strcpy(mycadena,"  mal");
+    enviar_datos_NOCR(mycadena,strlen(mycadena));
+                strcpy(mycadena,"  Numero-->");
+    enviar_datos_NOCR(mycadena,strlen(mycadena));
+                itoa(str_blue,z, 10);
         enviar_datos(str_blue,strlen(str_blue));
-     //   Delay_Nop(5000);
+
+                        strcpy(mycadena,"  Valor-->");
+    enviar_datos_NOCR(mycadena,strlen(mycadena));
+        itoa(str_blue,ini, 10);
+        enviar_datos(str_blue,strlen(str_blue));
+         ini++;
+         Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
+
+
+    /* Baud rate is set for 400 kHz */
+    unsigned int config2 =ini;      // 74//269
+    /* Configure I2C for 7 bit address mode */
+    unsigned int config1 = (I2C_ON & I2C_IDLE_CON & I2C_CLK_HLD &
+             I2C_IPMI_DIS & I2C_7BIT_ADD &
+             I2C_SLW_DIS & I2C_SM_DIS &
+             I2C_GCALL_DIS & I2C_STR_DIS &
+             I2C_NACK & I2C_ACK_DIS & I2C_RCV_DIS &
+             I2C_STOP_DIS & I2C_RESTART_DIS &
+             I2C_START_DIS);
+  OpenI2C(config1,config2);
+   Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
+
+        }
+      
+          
+                
 
         I2CRCV = 0;
     }
 
-}
+

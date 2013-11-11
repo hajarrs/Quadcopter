@@ -11,19 +11,19 @@
 
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
-#define LED1 _LATB0      // Verde
-#define LED2 _LATB1      // 
-#define LED3 _LATB2      // Naranja
-#define LED5 _LATB9      // 
-#define LED6 _LATB10     // 
+#define LEDAMARILLO _LATB0      // Verde
+#define LEDVERDE _LATB1      //
+#define LEDROJO _LATB2      // Naranja
+#define LEDAZUL _LATB9      //
+#define LEDNARANJA _LATB10     //
 
 #define PWM1 OC1RS
 #define PWM2 OC2RS
 #define PWM3 OC3RS
 #define PWM4 OC4RS
 
-#define BOTON_A _RC13   // Boton interno
-#define BOTON_B _RC15   // Boton externo
+#define BOTONEXTERNO _RC13   // Boton interno
+#define BOTONINTERNO _RC15   // Boton externo
 
 #define ENCODER_A _RA11
 #define ENCODER_B _RD9

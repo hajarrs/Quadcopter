@@ -47,6 +47,9 @@ int main(void)
 
 
           Prueba_Bluetooth();
+          while(1){
+              Prueba_LED_BOTON();
+          }
     
 
     while(1)
