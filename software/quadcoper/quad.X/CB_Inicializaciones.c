@@ -154,20 +154,20 @@ void Init_Bluetooh(void)
 
 void LED_ALL_ON()
 {
-    LED1 = ON;
-    LED2 = ON;
-    LED3 = ON;
-    LED5 = ON;
-    LED6 = ON;
+    LEDROJO = ON;
+    LEDVERDE= ON;
+    LEDAZUL= ON;
+    LEDAMARILLO = ON;
+    LEDNARANJA = ON;
 }
 
 void LED_ALL_OFF()
 {
-    LED1 = OFF;
-    LED2 = OFF;
-    LED3 = OFF;
-    LED5 = OFF;
-    LED6 = OFF;
+    LEDROJO = OFF;
+    LEDVERDE= OFF;
+    LEDAZUL= OFF;
+    LEDAMARILLO = OFF;
+    LEDNARANJA = OFF;
 }
 
 
