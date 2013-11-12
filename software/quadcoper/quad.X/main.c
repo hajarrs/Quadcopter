@@ -11,29 +11,63 @@
 #include "main.h"
 
 
+
+#define MY_FRC                  0xF9E3
+
 // FUSES
 // -----------------------------------------------------------
-    _FOSC( FRC_PLL16 & CSW_FSCM_OFF & CSW_FSCM_OFF)
+    _FOSC( MY_FRC & CSW_FSCM_ON ) //   0xF9E3 & 0x3FFF --> Arranca sin PLL (8MHz) y se habilita el clockSwitch
     _FGS( GWRP_OFF & CODE_PROT_OFF )
     _FICD( ICS_PGD1)
     _FWDT(WDT_OFF)
     _FBORPOR( PWRT_OFF & BORV27 & PBOR_OFF & MCLR_DIS )
 // FIN FUSES
-
 int main(void)
 {
-    int i,j;
+    int i;
     char mycadena[50];
 
+    while(1)
+    {
+        i++;
+        LEDAMARILLO = !LEDAMARILLO;
+
+
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+
+        if(i == 30)
+        {
+            clockSwitch(NOSC_PLLOSC);
+        }
+
+        if(i > 30)
+        {
+            LEDAZUL = !LEDAZUL;
+        }
+
+    }
+
+
+
     Init_Hw();
+        for(i=0;i<3000;i++)Delay1msT1(0);
     Init_I2C();
+        for(i=0;i<3000;i++)Delay1msT1(0);
     Init_Bluetooh();
 //    Init_PWM();
     
     LEDAMARILLO=1;
 
-//    for(i=0;i<3000;i++)
-//            Delay1msT1(0);
+    for(i=0;i<3000;i++)Delay1msT1(0);
 //    EnviarCR();
 //    strcpy(mycadena,"Iniciando");
 //    enviar_datos_NOCR(mycadena,strlen(mycadena));

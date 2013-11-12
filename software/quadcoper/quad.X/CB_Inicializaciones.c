@@ -169,6 +169,56 @@ void LED_ALL_OFF()
     LEDAMARILLO = OFF;
     LEDNARANJA = OFF;
 }
+void clockSwitch (unsigned int newNOSCCode)
+{
+        int current_cpu_ipl;                            /* Declare temp variable for storing CPU IPL */
+        int newOSCCONHCode;
+        char a, b, c, *p;
 
+        newOSCCONHCode = OSCCON;
+        newOSCCONHCode = newOSCCONHCode & ZERO_MASK_FOR_NOSC_IN_OSCCON;
+        newOSCCONHCode = newOSCCONHCode >> 8;
+
+        switch (newNOSCCode)
+        {
+                case NOSC_LP: newOSCCONHCode = newOSCCONHCode | newNOSCCode ;
+                        	  break;
+                case NOSC_FRC: newOSCCONHCode = newOSCCONHCode | newNOSCCode ;
+                          	   break;
+                case NOSC_LPRC: newOSCCONHCode = newOSCCONHCode | newNOSCCode ;
+                        	    break;
+                case NOSC_EXTOSC: newOSCCONHCode = newOSCCONHCode | newNOSCCode ;
+                        	      break;
+                case NOSC_PLLOSC: newOSCCONHCode = newOSCCONHCode | newNOSCCode ;
+                        	  	  break;
+                default: return;
+        }
+
+        b = OSCCONH_UNLOCK_CODE1;                       /* Load OSCCONH unlock sequence parameters */
+        c = OSCCONH_UNLOCK_CODE2;
+        p = (char *)&OSCCON + 1;
+
+        SET_AND_SAVE_CPU_IPL(current_cpu_ipl, 7);       /* Disable interrupts for unlock sequence below */
+
+        /* Perform OSCCONH unlock sequence and write the new oscillator value to the NOSC bits */
+        asm volatile ("mov.b %1,[%0] \n"
+                  "mov.b %2,[%0] \n"
+                  "mov.b %3,[%0] \n" : /* no outputs */ : "r"(p), "r"(b), "r"(c),
+                                                          "r"(newOSCCONHCode));
+
+        b = OSCCONL_UNLOCK_CODE1;                       /* Load OSCCONL unlock sequence parameters */
+        c = OSCCONL_UNLOCK_CODE2;
+        p = (char *)&OSCCON;
+        a = OSCCON | 0x01;
+
+        /* Perform OSCCONL unlock sequence and request an Oscillator switch by setting OSWEN bit */
+        asm volatile ("mov.b %1,[%0] \n"
+                  "mov.b %2,[%0] \n"
+                  "mov.b %3,[%0] \n" : /* no outputs */ : "r"(p), "r"(b), "r"(c),
+                                                          "r"(a));
+        while (OSCCONbits.OSWEN);                       /* Wait until OSWEN has been cleared by hardware */
+
+        RESTORE_CPU_IPL(current_cpu_ipl);               /* Restore CPU IPL value after executing unlock sequence */
+}
 
 

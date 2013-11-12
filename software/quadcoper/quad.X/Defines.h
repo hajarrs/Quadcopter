@@ -417,6 +417,19 @@
 #define MPU6050_DMP_MEMORY_BANK_SIZE    256
 #define MPU6050_DMP_MEMORY_CHUNK_SIZE   16
 
+#define OSCCONH_UNLOCK_CODE1    0x78    //First byte in OSCCONH unlock sequence
+#define OSCCONH_UNLOCK_CODE2    0x9A    //Second byte in OSCCONH unlock sequence
+#define OSCCONL_UNLOCK_CODE1    0x46    //First byte in OSCCONL unlock sequence
+#define OSCCONL_UNLOCK_CODE2    0x57    //Second byte in OSCCONL unlock sequence
+
+#define NOSC_PLLOSC     0x07            //PLL source selected by FOSC fuse - FPR bits
+#define NOSC_EXTOSC     0x03            //External Oscillator source selected by FOSC fuse - FPR bits
+#define NOSC_LPRC       0x02            //Intenal LPRC oscillator
+#define NOSC_FRC        0x01            //Internal Fast RC oscillator
+#define NOSC_LP         0x00            //Secondary Low-Power 32KHz oscillator on SOSC pins
+
+//AND-ing OSCCON with the values below will zero out the OSCCON bit field specified in the comments:
+#define ZERO_MASK_FOR_NOSC_IN_OSCCON 0xF8FF     //NOSC2:NOSC0 mask
 
 //defines macro//
 #define intermitencia                  {  int i; LED_ALL_OFF(); for (i = 0; i < 300; i++)Delay1msT1(0); LED_ALL_ON();for (i = 0; i < 300; i++)Delay1msT1(0);}
