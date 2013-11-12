@@ -30,32 +30,32 @@ int main(void)
     Init_Bluetooh();
 //    Init_PWM();
     
+    LEDAMARILLO=1;
 
-    for(i=0;i<3000;i++)
-            Delay1msT1(0);
-    EnviarCR();
-    strcpy(mycadena,"Iniciando");
-    enviar_datos_NOCR(mycadena,strlen(mycadena));
-    for(j=0;j<5;j++)
-    {
-        strcpy(mycadena,".");
-        enviar_datos_NOCR(mycadena,strlen(mycadena));
-        for(i=0;i<200;i++)
-                Delay1msT1(0);
-    }
-    EnviarCR();
+//    for(i=0;i<3000;i++)
+//            Delay1msT1(0);
+//    EnviarCR();
+//    strcpy(mycadena,"Iniciando");
+//    enviar_datos_NOCR(mycadena,strlen(mycadena));
+//    for(j=0;j<5;j++)
+//    {
+//        strcpy(mycadena,".");
+//        enviar_datos_NOCR(mycadena,strlen(mycadena));
+//        for(i=0;i<200;i++)
+//                Delay1msT1(0);
+//    }
+//    EnviarCR();
 
 
           Prueba_Bluetooth();
-          while(1){
-              Prueba_LED_BOTON();
-          }
+
     
 
     while(1)
     {
         prueba2_I2C();
         Delay_Nop(5000);
+
 //        Prueba_Bluetooth();
 //        EnviarDatos_Acc_Gyro(COM_ACC_X | COM_ACC_Y | COM_ACC_Z);
 //        Delay_Nop(5000);

@@ -329,48 +329,26 @@ void prueba2_I2C()
     
 
         char mycadena[50];
+      
         my_IdleI2C();					//wait for bus Idle
-//        Prueba_Bluetooth_2("1");
 	my_StartI2C();					//Generate Start Condition
-//	Prueba_Bluetooth_2("2");
-
         my_WriteI2C(0xD2);		//Write Control Byte
-//	Prueba_Bluetooth_2("3");
         my_IdleI2C();					//wait for bus Idle
-//	Prueba_Bluetooth_2("4");
         my_WriteI2C(0x75);			//Write start address
-//	Prueba_Bluetooth_2("5");
         my_IdleI2C();					//wait for bus Idle
-//        Prueba_Bluetooth_2("6");
-
 	my_RestartI2C();				//Generate restart condition
-//	Prueba_Bluetooth_2("7");
-        
         my_WriteI2C(0xD2+1);	//Write control byte for read
-
-//	Prueba_Bluetooth_2("8");
         my_IdleI2C();
-//        Prueba_Bluetooth_2("9");
-
-
         I2CCONbits.RCEN=1;Delay_Nop(1);
-
-        
-//        Prueba_Bluetooth_2("10");
-
-
-//         while(I2CSTATbits.RBF);
         while(I2CCONbits.RCEN);
-        
-//	Prueba_Bluetooth_2("11");
-       // my_AckI2C();//my_getsI2C(&Data, Length);		//read Length number of bytes
-//        Prueba_Bluetooth_2("12");
-
 	my_NotAckI2C();				//Send Not Ack
 	my_StopI2C();					//Generate Stop
-
-
-
+         if (I2CRCV==0x68)
+          LEDVERDE=1;
+         else
+         {LED_ALL_OFF();
+           LEDROJO=1;  }
+        I2CRCV = 0;
 //        strcpy(mycadena,"WHO_AM_I:  ");
 //        enviar_datos_NOCR(mycadena,strlen(mycadena));
 //
@@ -382,47 +360,46 @@ void prueba2_I2C()
 //
 
 
-              z++;
-
-        strcpy(mycadena,"Respuesta-->");
-    enviar_datos_NOCR(mycadena,strlen(mycadena));
-                itoa(str_blue,I2CRCV, 16);
-        enviar_datos_NOCR(str_blue,strlen(str_blue));
-        if (I2CRCV==0xff)
-        {                   strcpy(mycadena,"  mal");
-    enviar_datos_NOCR(mycadena,strlen(mycadena));
-                strcpy(mycadena,"  Numero-->");
-    enviar_datos_NOCR(mycadena,strlen(mycadena));
-                itoa(str_blue,z, 10);
-        enviar_datos(str_blue,strlen(str_blue));
-
-                        strcpy(mycadena,"  Valor-->");
-    enviar_datos_NOCR(mycadena,strlen(mycadena));
-        itoa(str_blue,ini, 10);
-        enviar_datos(str_blue,strlen(str_blue));
-         ini++;
-         Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
-
-
-    /* Baud rate is set for 400 kHz */
-    unsigned int config2 =ini;      // 74//269
-    /* Configure I2C for 7 bit address mode */
-    unsigned int config1 = (I2C_ON & I2C_IDLE_CON & I2C_CLK_HLD &
-             I2C_IPMI_DIS & I2C_7BIT_ADD &
-             I2C_SLW_DIS & I2C_SM_DIS &
-             I2C_GCALL_DIS & I2C_STR_DIS &
-             I2C_NACK & I2C_ACK_DIS & I2C_RCV_DIS &
-             I2C_STOP_DIS & I2C_RESTART_DIS &
-             I2C_START_DIS);
-  OpenI2C(config1,config2);
-   Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
-
-        }
-      
+//              z++;
+//
+//        strcpy(mycadena,"Respuesta-->");
+//    enviar_datos_NOCR(mycadena,strlen(mycadena));
+//                itoa(str_blue,I2CRCV, 16);
+//        enviar_datos_NOCR(str_blue,strlen(str_blue));
+//                  strcpy(mycadena,"  mal");
+//    enviar_datos_NOCR(mycadena,strlen(mycadena));
+//                strcpy(mycadena,"  Numero-->");
+//    enviar_datos_NOCR(mycadena,strlen(mycadena));
+//                itoa(str_blue,z, 10);
+//        enviar_datos(str_blue,strlen(str_blue));
+//
+//                        strcpy(mycadena,"  Valor-->");
+//    enviar_datos_NOCR(mycadena,strlen(mycadena));
+//        itoa(str_blue,ini, 10);
+//        enviar_datos(str_blue,strlen(str_blue));
+//         ini++;
+//         Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
+//
+//
+//    /* Baud rate is set for 400 kHz */
+//    unsigned int config2 =ini;      // 74//269
+//    /* Configure I2C for 7 bit address mode */
+//    unsigned int config1 = (I2C_ON & I2C_IDLE_CON & I2C_CLK_HLD &
+//             I2C_IPMI_DIS & I2C_7BIT_ADD &
+//             I2C_SLW_DIS & I2C_SM_DIS &
+//             I2C_GCALL_DIS & I2C_STR_DIS &
+//             I2C_NACK & I2C_ACK_DIS & I2C_RCV_DIS &
+//             I2C_STOP_DIS & I2C_RESTART_DIS &
+//             I2C_START_DIS);
+//  OpenI2C(config1,config2);
+//   Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
+//
+//        }
+//
           
                 
 
-        I2CRCV = 0;
+
     }
 
 

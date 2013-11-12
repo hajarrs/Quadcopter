@@ -418,5 +418,8 @@
 #define MPU6050_DMP_MEMORY_CHUNK_SIZE   16
 
 
+//defines macro//
+#define intermitencia                  {  int i; LED_ALL_OFF(); for (i = 0; i < 300; i++)Delay1msT1(0); LED_ALL_ON();for (i = 0; i < 300; i++)Delay1msT1(0);}
+
 #endif	/* DEF_ACEL_H */
 
