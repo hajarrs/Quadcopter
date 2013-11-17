@@ -24,13 +24,17 @@
 // FIN FUSES
 int main(void)
 {
+     Init_Hw();
+    Init_I2C();
+    Init_Bluetooh();
+    Init_PWM();
+
     int i;
     char mycadena[50];
 
-    while(1)
+    for(i=0;i<40;i++)
     {
-        i++;
-        LEDAMARILLO = !LEDAMARILLO;
+        LEDAMARILLO =1;
 
 
         Delay1msT1(0);
@@ -51,23 +55,15 @@ int main(void)
 
         if(i > 30)
         {
-            LEDAZUL = !LEDAZUL;
+            LEDAZUL =1;
         }
 
     }
 
-
-
-    Init_Hw();
-        for(i=0;i<3000;i++)Delay1msT1(0);
-    Init_I2C();
-        for(i=0;i<3000;i++)Delay1msT1(0);
-    Init_Bluetooh();
-//    Init_PWM();
     
-    LEDAMARILLO=1;
+    LEDAMARILLO=0;
 
-    for(i=0;i<3000;i++)Delay1msT1(0);
+//  for(i=0;i<3000;i++)Delay1msT1(0);
 //    EnviarCR();
 //    strcpy(mycadena,"Iniciando");
 //    enviar_datos_NOCR(mycadena,strlen(mycadena));
@@ -81,15 +77,15 @@ int main(void)
 //    EnviarCR();
 
 
-          Prueba_Bluetooth();
+//          Prueba_Bluetooth();
 
     
 
     while(1)
     {
-        prueba2_I2C();
-        Delay_Nop(5000);
-
+     //   prueba2_I2C();
+        Delay_Nop(500);
+        LEDROJO=!LEDROJO;
 //        Prueba_Bluetooth();
 //        EnviarDatos_Acc_Gyro(COM_ACC_X | COM_ACC_Y | COM_ACC_Z);
 //        Delay_Nop(5000);
