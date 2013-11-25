@@ -14,6 +14,7 @@ void Init_PWM();
 void Init_Bluetooh(void);
 void LED_ALL_ON();
 void LED_ALL_OFF();
+void clockSwitch (unsigned int newNOSCCode);
 
 
 #endif	/* CB_INICIALIZACIONES_H */

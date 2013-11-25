@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://www.netbeans.org/ns/project/1">
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://www.netbeans.org/ns/project/1">
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>quad</name>
-            <creation-uuid>82f54d55-15d6-4c9e-9de3-6b16d9201aab</creation-uuid>
+            <creation-uuid>86963379-da49-44ef-97e9-7f49ea2468fd</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>

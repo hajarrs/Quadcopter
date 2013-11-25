@@ -24,62 +24,69 @@
 // FIN FUSES
 int main(void)
 {
-     Init_Hw();
+    Init_Hw();
+    LEDAZUL =1;
+
     Init_I2C();
     Init_Bluetooh();
     Init_PWM();
 
     int i;
-    char mycadena[50];
+//    char mycadena[50];
 
-    for(i=0;i<40;i++)
+    for(i=0;i<50;i++);
+        Delay1msT1(0);
+
+    clockSwitch(NOSC_PLLOSC);
+    Delay_Nop(1500);
+    
+    
+    PWM1 = 0;
+    PWM2 = 0;
+    PWM3 = 0;
+    PWM4 = 0;
+
+
+    LEDAZUL = 0;
+    LEDROJO=1;
+    while(1)
     {
-        LEDAMARILLO =1;
-
-
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-
-        if(i == 30)
+        for(i=0;i<36000;i++);
         {
-            clockSwitch(NOSC_PLLOSC);
+
+        LEDAMARILLO = !LEDAMARILLO;
+        PWM1++;
+        PWM2++;
+        PWM3++;
+        PWM4++;
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        }
+                for(i=0;i<36000;i++);
+        {
+
+        LEDAMARILLO = !LEDAMARILLO;
+        PWM1--;
+        PWM2--;
+        PWM3--;
+        PWM4--;
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
+        Delay1msT1(0);
         }
 
-        if(i > 30)
-        {
-            LEDAZUL =1;
-        }
+    PWM1 = 0;
+    PWM2 = 0;
+    PWM3 = 0;
+    PWM4 = 0;
 
     }
 
-    
+
     LEDAMARILLO=0;
-
-//  for(i=0;i<3000;i++)Delay1msT1(0);
-//    EnviarCR();
-//    strcpy(mycadena,"Iniciando");
-//    enviar_datos_NOCR(mycadena,strlen(mycadena));
-//    for(j=0;j<5;j++)
-//    {
-//        strcpy(mycadena,".");
-//        enviar_datos_NOCR(mycadena,strlen(mycadena));
-//        for(i=0;i<200;i++)
-//                Delay1msT1(0);
-//    }
-//    EnviarCR();
-
-
-//          Prueba_Bluetooth();
-
-    
 
     while(1)
     {

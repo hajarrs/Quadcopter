@@ -23,6 +23,7 @@ void my_Write_I2C(unsigned char byte);
 unsigned int LDByteWriteI2C(unsigned char LowAdd, unsigned char data);
 unsigned int my_NotAckI2C(void);
 void ByteWrite(unsigned char address, unsigned char data);
+void Write_I2C(unsigned char byte);
 
 #endif	/* CB_I2C_H */
 

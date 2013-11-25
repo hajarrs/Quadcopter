@@ -100,16 +100,16 @@ void Init_PWM()
     IFS0bits.T2IF = 0;      Nop();
 
     PR1 = 0x0FFF;
-    OC1RS = 0x0500;	// DUCTY CICLE
+    OC1RS = 0x0000;	// DUCTY CICLE
 
     PR2 = 0x0FFF;
-    OC2RS = 0x0500;	// DUCTY CICLE
+    OC2RS = 0x0000;	// DUCTY CICLE
 
     PR3 = 0x0FFF;
-    OC3RS = 0x0500;	// DUCTY CICLE
+    OC3RS = 0x0000;	// DUCTY CICLE
 
     PR4 = 0x0FFF;
-    OC4RS = 0x0500;	// DUCTY CICLE
+    OC4RS = 0x0000;	// DUCTY CICLE
 
     OC1CONbits.OCM0 = 0;    Nop();
     OC1CONbits.OCM1 = 1;    Nop();

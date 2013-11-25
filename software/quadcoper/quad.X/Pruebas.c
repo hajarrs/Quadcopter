@@ -204,7 +204,7 @@ void Prueba_I2C(void)
 
 void Prueba_LED_BOTON()
 {
-                int i,j;
+                int i;
                 if (BOTONEXTERNO==1)
                 {
                      LED_ALL_OFF();
@@ -324,11 +324,7 @@ void EjecutarPID(void)
         int ini=60;
 void prueba2_I2C()
 {
-
-
-    
-
-        char mycadena[50];
+//        char mycadena[50];
       
         my_IdleI2C();					//wait for bus Idle
 	my_StartI2C();					//Generate Start Condition
