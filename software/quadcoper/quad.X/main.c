@@ -51,37 +51,7 @@ int main(void)
     LEDROJO=1;
     while(1)
     {
-        for(i=0;i<36000;i++);
-        {
-
-        LEDAMARILLO = !LEDAMARILLO;
-        PWM1++;
-        PWM2++;
-        PWM3++;
-        PWM4++;
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        }
-                for(i=0;i<36000;i++);
-        {
-
-        LEDAMARILLO = !LEDAMARILLO;
-        PWM1--;
-        PWM2--;
-        PWM3--;
-        PWM4--;
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        Delay1msT1(0);
-        }
-
-    PWM1 = 0;
-    PWM2 = 0;
-    PWM3 = 0;
-    PWM4 = 0;
+        Prueba_PWM();
 
     }
 

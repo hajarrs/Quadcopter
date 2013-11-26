@@ -24,14 +24,19 @@ void Prueba_PWM(void)
     int Stop = 0;
     while(Stop == 0)
     {
-       PWM4+=100;
-       PWM3+=100;
+       PWM4+=1;
+       PWM3+=1;
+       PWM2+=1;
+       PWM1+=1;
        Delay_Nop(5000);
+
 
        if(PWM4 >= 0x0FFC)
        {
            PWM4 = 0x0FFF;
            PWM3 = 0x0FFF;
+           PWM2 = 0x0FFF;
+           PWM1 = 0x0FFF;
       //     LEDROJO = 1;
            Stop = 1;
        }
@@ -39,14 +44,20 @@ void Prueba_PWM(void)
     while(Stop == 1)
     {
 
-       PWM4-=100;
-       PWM3-=100;
+       PWM4-=1;
+       PWM3-=1;
+      PWM2-=1;
+       PWM1-=1;
        Delay_Nop(5000);
+
+
 
        if(PWM4 <= 0x0070)
        {
            PWM4 = 0;
            PWM3 = 0;
+           PWM2 = 0;
+           PWM1 = 0;
 //           LEDROJO = 0;
            Stop = 0;
        }
