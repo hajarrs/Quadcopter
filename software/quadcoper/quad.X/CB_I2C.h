@@ -19,6 +19,7 @@ unsigned int my_RestartI2C(void);
 unsigned int my_StopI2C(void);
 unsigned int my_WriteI2C(unsigned char byte);
 unsigned int my_ACKStatus(void);
+unsigned int my_masterreceiveI2C(void);
 void my_Write_I2C(unsigned char byte);
 unsigned int LDByteWriteI2C(unsigned char LowAdd, unsigned char data);
 unsigned int my_NotAckI2C(void);

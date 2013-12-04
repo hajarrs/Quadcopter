@@ -25,43 +25,26 @@
 int main(void)
 {
     Init_Hw();
-    LEDAZUL =1;
-
     Init_I2C();
     Init_Bluetooh();
     Init_PWM();
-
-    int i;
-//    char mycadena[50];
-
-    for(i=0;i<50;i++);
-        Delay1msT1(0);
-
-    clockSwitch(NOSC_PLLOSC);
-    Delay_Nop(1500);
-    
-    
-    PWM1 = 0;
-    PWM2 = 0;
-    PWM3 = 0;
-    PWM4 = 0;
-
-
-    LEDAZUL = 0;
-    LEDROJO=1;
-    while(1)
-    {
-        Prueba_PWM();
-
-    }
-
-
-    LEDAMARILLO=0;
+    Init_Pll();
 
     while(1)
     {
-     //   prueba2_I2C();
-        Delay_Nop(500);
+    //   PWM_prueba();
+ //  prueba2_I2C();
+    unsigned int aux;
+//   aux= Peticion_Acelerometro(0x75);
+//    itoa(str_blue,aux, 10);
+//    enviar_datos(str_blue, strlen(str_blue));
+
+    aux= Peticion_Acelerometro(MPU6050_RA_WHO_AM_I);
+    itoa(str_blue,aux, 16);
+    enviar_datos(str_blue, strlen(str_blue));
+        aux= Peticion_Acelerometro(MPU6050_RA_TEMP_OUT_L);
+    itoa(str_blue,aux, 10);
+    enviar_datos(str_blue, strlen(str_blue));
         LEDROJO=!LEDROJO;
 //        Prueba_Bluetooth();
 //        EnviarDatos_Acc_Gyro(COM_ACC_X | COM_ACC_Y | COM_ACC_Z);

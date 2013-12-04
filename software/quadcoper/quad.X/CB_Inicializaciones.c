@@ -99,7 +99,7 @@ void Init_PWM()
     T2CONbits.T32 = 0;      Nop();      // TIMER2 --> 16 Bits
     IFS0bits.T2IF = 0;      Nop();
 
-    PR1 = 0x0FFF;
+    PR1 =0x0FFF;
     OC1RS = 0x0000;	// DUCTY CICLE
 
     PR2 = 0x0FFF;
@@ -130,6 +130,12 @@ void Init_PWM()
 
     T2CONbits.TCKPS = 0b00; Nop();
     T2CONbits.TON = 1;
+
+    
+    PWM1 = 0;
+    PWM2 = 0;
+    PWM3 = 0;
+    PWM4 = 0;
 }
 
 void Init_Bluetooh(void)
@@ -220,5 +226,15 @@ void clockSwitch (unsigned int newNOSCCode)
 
         RESTORE_CPU_IPL(current_cpu_ipl);               /* Restore CPU IPL value after executing unlock sequence */
 }
+void Init_Pll(void)
+{
+    int i;
+    //    char mycadena[50];
 
+    for (i = 0; i < 50; i++);
+    Delay1msT1(0);
+
+    clockSwitch(NOSC_PLLOSC);
+    Delay_Nop(1500);
+}
 

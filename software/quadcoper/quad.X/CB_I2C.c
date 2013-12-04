@@ -121,6 +121,12 @@ unsigned int my_getI2C(void)
 	while(!I2CSTATbits.RBF);		//Wait for receive buffer to be full
 	return(I2CRCV);				//Return data in buffer
 }
+unsigned int my_masterreceiveI2C(void)
+{
+        I2CCONbits.RCEN=1;Delay_Nop(1);
+        while(I2CCONbits.RCEN);
+	return(1);				//Return data in buffer
+}
 
 unsigned int my_getsI2C(unsigned char *rdptr, unsigned char Length)
 {

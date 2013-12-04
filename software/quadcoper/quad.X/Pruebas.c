@@ -12,16 +12,15 @@
 
 void Prueba2_PWM(void)
 {
-       PWM1 = 65000;
-       PWM2 = 65000;
-       PWM3 = 65000;
-       PWM4 = 65000;
+       PWM1 = 32500;
+       PWM2 = 32500;
+       PWM3 = 32500;
+       PWM4 = 32500;
 }
 
-
-void Prueba_PWM(void)
+void PWM_prueba(void)
 {
-    int Stop = 0;
+ int Stop = 0;
     while(Stop == 0)
     {
        PWM4+=1;
@@ -37,7 +36,7 @@ void Prueba_PWM(void)
            PWM3 = 0x0FFF;
            PWM2 = 0x0FFF;
            PWM1 = 0x0FFF;
-      //     LEDROJO = 1;
+      // LEDROJO = 1;
            Stop = 1;
        }
     }
@@ -58,12 +57,36 @@ void Prueba_PWM(void)
            PWM3 = 0;
            PWM2 = 0;
            PWM1 = 0;
-//           LEDROJO = 0;
+// LEDROJO = 0;
            Stop = 0;
        }
     }
 }
 
+void Prueba_PWM(void)
+{
+    int i;
+
+    for (i=0;i>0xffff;i++)
+    {
+       PWM4=i;
+       PWM3=i;
+       PWM2=i;
+       PWM1=i;
+       Delay_Nop(5000);
+          LEDVERDE=0;
+
+    }
+          for (i=0xffff;i<0x0001;i--)
+    {
+              LEDVERDE=1;
+       PWM4=i;
+       PWM3=i;
+       PWM2=i;
+       PWM1=i;
+       Delay_Nop(5000);
+}
+}
 void Prueba_Bluetooth_2(char *cadena)
 {
     strcpy(str_blue,cadena);
@@ -150,66 +173,6 @@ void Prueba_I2C(void)
 
    return;
 
-
-
-
-
-
-//
-//
-//    data = ByteRead(MPU6050_RA_WHO_AM_I);
-//
-//    strcpy(mycadena,"WHO_AM_I: ");
-//    enviar_datos_NOCR(mycadena,strlen(mycadena));
-//    itoa(str_blue,data, 10);
-//    enviar_datos_NOCR(str_blue,strlen(str_blue));
-//    Delay_Nop(delay);
-//
-//
-//    strcpy(mycadena,"      ");
-//    enviar_datos_NOCR(mycadena,strlen(mycadena));
-//
-//    data = ByteRead(MPU6050_RA_ACCEL_XOUT_H);
-//    AccX = data;
-//    data = ByteRead(MPU6050_RA_ACCEL_XOUT_L);
-//    AccX = AccX << 8;
-//    AccX = AccX + data;
-//
-//    data = ByteRead(MPU6050_RA_ACCEL_YOUT_H);
-//    AccY = data;
-//    data = ByteRead(MPU6050_RA_ACCEL_YOUT_L);
-//    AccY = AccY << 8;
-//    AccY = AccY + data;
-//
-//    data = ByteRead(MPU6050_RA_ACCEL_ZOUT_H);
-//    AccZ = data;
-//    data = ByteRead(MPU6050_RA_ACCEL_ZOUT_L);
-//    AccZ = AccZ << 8;
-//    AccZ = AccZ + data;
-//
-//    data = ByteRead(MPU6050_RA_GYRO_XOUT_H);
-//    GyroX = data;
-//    data = ByteRead(MPU6050_RA_GYRO_XOUT_L);
-//    GyroX = GyroX << 8;
-//    GyroX = GyroX + data;
-//
-//    data = ByteRead(MPU6050_RA_GYRO_YOUT_H);
-//    GyroY = data;
-//    data = ByteRead(MPU6050_RA_GYRO_YOUT_L);
-//    GyroY = GyroY << 8;
-//    GyroY = GyroY + data;
-//
-//    data = ByteRead(MPU6050_RA_GYRO_ZOUT_H);
-//    GyroZ = data;
-//    data = ByteRead(MPU6050_RA_GYRO_ZOUT_L);
-//    GyroZ = GyroZ << 8;
-//    GyroZ = GyroZ + data;
-//
-//    data = ByteRead(MPU6050_RA_TEMP_OUT_H);
-//    Temp = data;
-//    data = ByteRead(MPU6050_RA_TEMP_OUT_L);
-//    Temp = Temp << 8;
-//    Temp = Temp + data;
 }
 
 
@@ -333,80 +296,107 @@ void EjecutarPID(void)
 
         int z=0;
         int ini=60;
-void prueba2_I2C()
+unsigned int Peticion_Acelerometro(unsigned char  datos)
 {
-//        char mycadena[50];
-      
         my_IdleI2C();					//wait for bus Idle
 	my_StartI2C();					//Generate Start Condition
         my_WriteI2C(0xD2);		//Write Control Byte
         my_IdleI2C();					//wait for bus Idle
-        my_WriteI2C(0x75);			//Write start address
+        my_WriteI2C(datos);			//Write start address
         my_IdleI2C();					//wait for bus Idle
 	my_RestartI2C();				//Generate restart condition
         my_WriteI2C(0xD2+1);	//Write control byte for read
         my_IdleI2C();
-        I2CCONbits.RCEN=1;Delay_Nop(1);
-        while(I2CCONbits.RCEN);
+        my_masterreceiveI2C();
 	my_NotAckI2C();				//Send Not Ack
-	my_StopI2C();					//Generate Stop
-         if (I2CRCV==0x68)
-          LEDVERDE=1;
-         else
-         {LED_ALL_OFF();
-           LEDROJO=1;  }
-        I2CRCV = 0;
-//        strcpy(mycadena,"WHO_AM_I:  ");
-//        enviar_datos_NOCR(mycadena,strlen(mycadena));
-//
-//        itoa(str_blue,i, 16);
-//        enviar_datos_NOCR(str_blue,strlen(str_blue));
-//
-//        strcpy(str_blue," -->  0x");
-//        enviar_datos_NOCR(str_blue,strlen(str_blue));
-//
+	my_StopI2C();
+        return (I2CRCV);
+    }
+void prueba2_I2C()
+{
+    int data;
+    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_XOUT_H);
+    AccX = data;
+    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_XOUT_L);
+    AccX = AccX << 8;
+    AccX = AccX + data;
+
+    itoa(str_blue,data, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    strcpy(str_blue,";");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
+    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_YOUT_H);
+    AccY = data;
+    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_YOUT_L);
+    AccY = AccY << 8;
+    AccY = AccY + data;
+
+    itoa(str_blue,data, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    strcpy(str_blue,";");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
+    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_ZOUT_H);
+    AccZ = data;
+    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_ZOUT_L);
+    AccZ = AccZ << 8;
+    AccZ = AccZ + data;
+
+    itoa(str_blue,data, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    strcpy(str_blue,";");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
+    data = Peticion_Acelerometro(MPU6050_RA_GYRO_XOUT_H);
+    GyroX = data;
+    data = Peticion_Acelerometro(MPU6050_RA_GYRO_XOUT_L);
+    GyroX = GyroX << 8;
+    GyroX = GyroX + data;
 
 
-//              z++;
-//
-//        strcpy(mycadena,"Respuesta-->");
-//    enviar_datos_NOCR(mycadena,strlen(mycadena));
-//                itoa(str_blue,I2CRCV, 16);
-//        enviar_datos_NOCR(str_blue,strlen(str_blue));
-//                  strcpy(mycadena,"  mal");
-//    enviar_datos_NOCR(mycadena,strlen(mycadena));
-//                strcpy(mycadena,"  Numero-->");
-//    enviar_datos_NOCR(mycadena,strlen(mycadena));
-//                itoa(str_blue,z, 10);
-//        enviar_datos(str_blue,strlen(str_blue));
-//
-//                        strcpy(mycadena,"  Valor-->");
-//    enviar_datos_NOCR(mycadena,strlen(mycadena));
-//        itoa(str_blue,ini, 10);
-//        enviar_datos(str_blue,strlen(str_blue));
-//         ini++;
-//         Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
-//
-//
-//    /* Baud rate is set for 400 kHz */
-//    unsigned int config2 =ini;      // 74//269
-//    /* Configure I2C for 7 bit address mode */
-//    unsigned int config1 = (I2C_ON & I2C_IDLE_CON & I2C_CLK_HLD &
-//             I2C_IPMI_DIS & I2C_7BIT_ADD &
-//             I2C_SLW_DIS & I2C_SM_DIS &
-//             I2C_GCALL_DIS & I2C_STR_DIS &
-//             I2C_NACK & I2C_ACK_DIS & I2C_RCV_DIS &
-//             I2C_STOP_DIS & I2C_RESTART_DIS &
-//             I2C_START_DIS);
-//  OpenI2C(config1,config2);
-//   Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);Delay_Nop(50000);
-//
-//        }
-//
-          
-                
+    itoa(str_blue,data, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    strcpy(str_blue,";");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
+    data = Peticion_Acelerometro(MPU6050_RA_GYRO_YOUT_H);
+    GyroY = data;
+    data = Peticion_Acelerometro(MPU6050_RA_GYRO_YOUT_L);
+    GyroY = GyroY << 8;
+    GyroY = GyroY + data;
+
+    itoa(str_blue,data, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    strcpy(str_blue,";");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
+    data = Peticion_Acelerometro(MPU6050_RA_GYRO_ZOUT_H);
+    GyroZ = data;
+    data = Peticion_Acelerometro(MPU6050_RA_GYRO_ZOUT_L);
+
+    GyroZ = GyroZ << 8;
+    GyroZ = GyroZ + data;
+
+    itoa(str_blue,data, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    strcpy(str_blue,";");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
+    data = Peticion_Acelerometro(MPU6050_RA_TEMP_OUT_H);
+    Temp = data;
+    data = Peticion_Acelerometro(MPU6050_RA_TEMP_OUT_L);
+    Temp = Temp << 8;
+    Temp = Temp + data;
+
+    itoa(str_blue,data, 10);
+    enviar_datos(str_blue, strlen(str_blue));
+
+
 
 
     }
+
+
 
 

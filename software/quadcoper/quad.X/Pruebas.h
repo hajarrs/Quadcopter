@@ -15,8 +15,7 @@ extern double compAngleX, compAngleY; // Calculate the angle using a complementa
 extern double kalAngleX, kalAngleY; // Calculate the angle using a Kalman filter
 
 extern char str_blue[40];
-
-
+unsigned int Peticion_Acelerometro(unsigned char  datos);
 
 void Prueba2_PWM(void);
 void Prueba_PWM(void);
