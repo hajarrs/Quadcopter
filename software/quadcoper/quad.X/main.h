@@ -17,6 +17,7 @@
 #include "CB_Timer2.h"
 #include "CB_Bluetooth.h"
 #include "Pruebas.h"
+#include "CA_calibrado_filtro.h"
 
 int LSD[12];
 int AccX, AccY, AccZ, GyroX, GyroY, GyroZ, Temp;

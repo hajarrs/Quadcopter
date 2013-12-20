@@ -4,4 +4,5 @@ CB_Inicializaciones.c  \
 Defines.h  \
 CB_Timer1.h  \
 CB_Timer2.h  \
-CB_I2C.h 
+CB_I2C.h  \
+ CA_SetGetMPU6050.h 

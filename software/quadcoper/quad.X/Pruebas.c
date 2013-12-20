@@ -137,12 +137,12 @@ void Prueba_I2C(void)
     StartI2C();					//Generate Start Condition
     while(I2CCONbits.SEN );
 
-    Write_I2C(0xD0);		//Write Control Byte
+    my_Write_I2C(0xD0);		//Write Control Byte
     while(I2CSTATbits.ACKSTAT);
 
     IdleI2C();			//wait for bus Idle
 
-    Write_I2C(0x75);		//Write start address
+    my_Write_I2C(0x75);		//Write start address
     while(I2CSTATbits.ACKSTAT);
     IdleI2C();			//wait for bus Idle
 
@@ -296,28 +296,16 @@ void EjecutarPID(void)
 
         int z=0;
         int ini=60;
-unsigned int Peticion_Acelerometro(unsigned char  datos)
-{
-        my_IdleI2C();					//wait for bus Idle
-	my_StartI2C();					//Generate Start Condition
-        my_WriteI2C(0xD2);		//Write Control Byte
-        my_IdleI2C();					//wait for bus Idle
-        my_WriteI2C(datos);			//Write start address
-        my_IdleI2C();					//wait for bus Idle
-	my_RestartI2C();				//Generate restart condition
-        my_WriteI2C(0xD2+1);	//Write control byte for read
-        my_IdleI2C();
-        my_masterreceiveI2C();
-	my_NotAckI2C();				//Send Not Ack
-	my_StopI2C();
-        return (I2CRCV);
-    }
+
+
+
+
 void prueba2_I2C()
 {
     int data;
-    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_XOUT_H);
+    data = ReadAddress(MPU6050_RA_ACCEL_XOUT_H);
     AccX = data;
-    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_XOUT_L);
+    data = ReadAddress(MPU6050_RA_ACCEL_XOUT_L);
     AccX = AccX << 8;
     AccX = AccX + data;
 
@@ -326,9 +314,9 @@ void prueba2_I2C()
     strcpy(str_blue,";");
     enviar_datos_NOCR(str_blue, strlen(str_blue));
 
-    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_YOUT_H);
+    data = ReadAddress(MPU6050_RA_ACCEL_YOUT_H);
     AccY = data;
-    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_YOUT_L);
+    data = ReadAddress(MPU6050_RA_ACCEL_YOUT_L);
     AccY = AccY << 8;
     AccY = AccY + data;
 
@@ -337,9 +325,9 @@ void prueba2_I2C()
     strcpy(str_blue,";");
     enviar_datos_NOCR(str_blue, strlen(str_blue));
 
-    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_ZOUT_H);
+    data = ReadAddress(MPU6050_RA_ACCEL_ZOUT_H);
     AccZ = data;
-    data = Peticion_Acelerometro(MPU6050_RA_ACCEL_ZOUT_L);
+    data = ReadAddress(MPU6050_RA_ACCEL_ZOUT_L);
     AccZ = AccZ << 8;
     AccZ = AccZ + data;
 
@@ -348,9 +336,9 @@ void prueba2_I2C()
     strcpy(str_blue,";");
     enviar_datos_NOCR(str_blue, strlen(str_blue));
 
-    data = Peticion_Acelerometro(MPU6050_RA_GYRO_XOUT_H);
+    data = ReadAddress(MPU6050_RA_GYRO_XOUT_H);
     GyroX = data;
-    data = Peticion_Acelerometro(MPU6050_RA_GYRO_XOUT_L);
+    data = ReadAddress(MPU6050_RA_GYRO_XOUT_L);
     GyroX = GyroX << 8;
     GyroX = GyroX + data;
 
@@ -360,9 +348,9 @@ void prueba2_I2C()
     strcpy(str_blue,";");
     enviar_datos_NOCR(str_blue, strlen(str_blue));
 
-    data = Peticion_Acelerometro(MPU6050_RA_GYRO_YOUT_H);
+    data = ReadAddress(MPU6050_RA_GYRO_YOUT_H);
     GyroY = data;
-    data = Peticion_Acelerometro(MPU6050_RA_GYRO_YOUT_L);
+    data = ReadAddress(MPU6050_RA_GYRO_YOUT_L);
     GyroY = GyroY << 8;
     GyroY = GyroY + data;
 
@@ -371,9 +359,9 @@ void prueba2_I2C()
     strcpy(str_blue,";");
     enviar_datos_NOCR(str_blue, strlen(str_blue));
 
-    data = Peticion_Acelerometro(MPU6050_RA_GYRO_ZOUT_H);
+    data = ReadAddress(MPU6050_RA_GYRO_ZOUT_H);
     GyroZ = data;
-    data = Peticion_Acelerometro(MPU6050_RA_GYRO_ZOUT_L);
+    data = ReadAddress(MPU6050_RA_GYRO_ZOUT_L);
 
     GyroZ = GyroZ << 8;
     GyroZ = GyroZ + data;
@@ -383,9 +371,9 @@ void prueba2_I2C()
     strcpy(str_blue,";");
     enviar_datos_NOCR(str_blue, strlen(str_blue));
 
-    data = Peticion_Acelerometro(MPU6050_RA_TEMP_OUT_H);
+    data = ReadAddress(MPU6050_RA_TEMP_OUT_H);
     Temp = data;
-    data = Peticion_Acelerometro(MPU6050_RA_TEMP_OUT_L);
+    data = ReadAddress(MPU6050_RA_TEMP_OUT_L);
     Temp = Temp << 8;
     Temp = Temp + data;
 

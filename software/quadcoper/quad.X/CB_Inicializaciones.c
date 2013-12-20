@@ -5,6 +5,7 @@
 #include "CB_Timer1.h"
 #include "CB_Timer2.h"
 #include "CB_I2C.h"
+#include "CA_SetGetMPU6050.h"
 
 
 /** Funcion Init_Hw
@@ -43,28 +44,44 @@ void Init_I2C(void)
     Delay_Nop(50000);
 
     /* Baud rate is set for 400 kHz */
-    unsigned int config2 =186;      // 74//269
+//    unsigned int config2 =74;      // 74//269      // 186 son 400 khz
     /* Configure I2C for 7 bit address mode */
-    unsigned int config1 = (I2C_ON & I2C_IDLE_CON & I2C_CLK_HLD &
-             I2C_IPMI_DIS & I2C_7BIT_ADD &
-             I2C_SLW_DIS & I2C_SM_DIS &
-             I2C_GCALL_DIS & I2C_STR_DIS &
-             I2C_NACK & I2C_ACK_DIS & I2C_RCV_DIS &
-             I2C_STOP_DIS & I2C_RESTART_DIS &
-             I2C_START_DIS);
-    OpenI2C(config1,config2);
+//    unsigned int config1 = (I2C_ON & I2C_IDLE_CON & I2C_CLK_HLD &
+//             I2C_IPMI_DIS & I2C_7BIT_ADD &
+//             I2C_SLW_DIS & I2C_SM_DIS &
+//             I2C_GCALL_DIS & I2C_STR_DIS &
+//             I2C_NACK & I2C_ACK_DIS & I2C_RCV_DIS &
+//             I2C_STOP_DIS & I2C_RESTART_DIS &
+//             I2C_START_DIS);
+//    OpenI2C(config1,config2);
     Delay1msT1(0);
 
-    ByteWrite( MPU6050_I2C_MST_CLK_BIT ,13);
+    I2CBRG = 283;
+
+    I2CCONbits.I2CSIDL = 0; Nop();
+    I2CCONbits.SCLREL = 1; Nop();
+    I2CCONbits.IPMIEN = 0; Nop();
+    I2CCONbits.A10M = 0; Nop();
+    I2CCONbits.DISSLW = 0; Nop();
+    I2CCONbits.SMEN = 0; Nop();
+    I2CCONbits.GCEN = 0; Nop();
+    I2CCONbits.STREN = 0; Nop();
+    I2CCONbits.ACKDT = 0; Nop();
+    I2CCONbits.ACKEN = 0; Nop();
+    I2CCONbits.RCEN = 0; Nop();
+    I2CCONbits.PEN = 0; Nop();
+    I2CCONbits.RSEN = 0; Nop();
+    I2CCONbits.SEN = 0; Nop();
+
+
     Delay1msT1(0);
-    ByteWrite( MPU6050_RA_PWR_MGMT_1,0x01);	// setFullScaleGyroRange(MPU6050_GYRO_FS_250);
-    Delay1msT1(0);
-    ByteWrite( MPU6050_RA_GYRO_CONFIG, 0x18);	// setFullScaleGyroRange(MPU6050_GYRO_FS_250);
-    Delay1msT1(0);
-    ByteWrite( MPU6050_RA_ACCEL_CONFIG,0x18); //   setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
-    Delay1msT1(0);
-    ByteWrite( MPU6050_RA_FIFO_EN,0xFF);
-    Delay1msT1(0);
+
+    I2CCONbits.I2CEN = 1;
+
+
+    
+    set_inicial();
+
 }
 
 

@@ -14,6 +14,8 @@
       <itemPath>Defines.h</itemPath>
       <itemPath>main.h</itemPath>
       <itemPath>Pruebas.h</itemPath>
+      <itemPath>CA_calibrado_filtro.h</itemPath>
+      <itemPath>CA_SetGetMPU6050.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -31,6 +33,8 @@
       <itemPath>CB_Timer2.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>Pruebas.c</itemPath>
+      <itemPath>CA_calibrado_filtro.c</itemPath>
+      <itemPath>CA_SetGetMPU6050.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -48,8 +52,8 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.10</languageToolchainVersion>
-        <platform>2</platform>
+        <languageToolchainVersion>1.11</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <compileType>
         <linkerTool>
@@ -123,7 +127,7 @@
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="voltagevalue" value="3.75"/>
+        <property key="voltagevalue" value="3.875"/>
       </PICkit3PlatformTool>
     </conf>
   </confs>
