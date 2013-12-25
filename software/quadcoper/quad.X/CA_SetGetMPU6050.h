@@ -11,13 +11,18 @@
 #include "CB_I2C.h"
 
 void set_inicial(void);
-unsigned int get_ax(void);
-unsigned int get_ay(void);
-unsigned int get_az(void);
-unsigned int get_gx(void);
-unsigned int get_gy(void);
-unsigned int get_gz(void);
-unsigned int get_who_I_AM(void);
+int get_ax(void);
+int get_ay(void);
+int get_az(void);
+int get_gx(void);
+int get_gy(void);
+int get_gz(void);
+int get_who_I_AM(void);
+void plot1(int valor1);
+void plot2(int valor1, int valor2);
+void plot3(int valor1, int valor2,int valor3);
+void plot4(int valor1, int valor2,int valor3,int valor4);
+
 
 
 

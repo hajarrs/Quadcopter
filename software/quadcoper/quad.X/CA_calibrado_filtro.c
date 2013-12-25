@@ -5,30 +5,41 @@
  * Created on 20 de diciembre de 2013, 0:25
  */
 #include "CA_calibrado_filtro.h"
+#include "CB_Bluetooth.h"
 
 
-void calibrado_inicial()
+void calibrado_inicial(int *calibra_ax,int *calibra_ay,int *calibra_az,int *calibra_gx,int *calibra_gy,int *calibra_gz)
 //int &calibra_ax,int &calibra_ay,int &calibra_az,int &calibra_gx,int &calibra_gy,int &calibra_ax
 {
-int calibra_ax,calibra_ay,calibra_az,calibra_gx,calibra_gy,calibra_gz,ax,ay,az,gx,gy,gz;
-calibra_ax=calibra_ay=calibra_az=calibra_gx=calibra_gy=calibra_gz=ax=ay=az=gx=gy=gz=0;
+    enviar_datos("inicializado...calibrado",20);
+int ax,ay,az,gx,gy,gz,a;
+char str_blue[40];
+float temp_calibra_ax=0;
+ax=ay=az=gx=gy=gz=a=0;
 int i = 0;
-
+    strcpy(str_blue,"empezando calibracion");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
   //for de calibracion
-  for (i = 0; i > 100; i++){
-//    accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
-    ax=get_ax()+calibra_ax;
-    ay=get_ay()+calibra_ay;
-    az=get_az()+calibra_az;
-    gx=get_gx()+calibra_gx;
-    gy=get_gy()+calibra_gy;
-    gz=get_gz()+calibra_gz;
-   }
-  calibra_ax=calibra_ax/100;
-  calibra_ay=calibra_ay/100;
-  calibra_az=calibra_az/100;
-  calibra_gx=calibra_gx/100;
-  calibra_gy=calibra_gy/100;
-  calibra_gz=calibra_gz/100;
+  for (i = 0; i < 20; i++){
+    itoa(str_blue,temp_calibra_ax, 10);
+    enviar_datos(str_blue, strlen(str_blue));
+    temp_calibra_ax=get_ax()+temp_calibra_ax;
 
+   }
+    strcpy(str_blue,"valor salida = ");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    itoa(str_blue,temp_calibra_ax, 10);
+    enviar_datos(str_blue, strlen(str_blue));
+
+   a =0;
+   a=temp_calibra_ax/20;
+
+      strcpy(str_blue,"terminado calibracion");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+        itoa(str_blue,temp_calibra_ax, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+          strcpy(str_blue," entre 20 = ");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+       itoa(str_blue,a, 10);
+    enviar_datos(str_blue, strlen(str_blue));
 }
