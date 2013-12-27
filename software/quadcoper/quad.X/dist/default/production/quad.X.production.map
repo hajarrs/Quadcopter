@@ -1,4 +1,4 @@
-Microchip Technology Inc, vv1_11 (A) \
+Microchip Technology Inc, vv1_11 (A) R
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
@@ -648,19 +648,19 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x4c54
+.debug_info       0x000000       0x4d30
  *(.debug_info)
- .debug_info      0x000000        0x583 build/default/production/CB_Timer3.o
- .debug_info      0x000583        0x5b5 build/default/production/CB_Timer1.o
- .debug_info      0x000b38        0x52c build/default/production/CA_kalman.o
- .debug_info      0x001064        0xb27 build/default/production/CB_I2C.o
- .debug_info      0x001b8b        0x597 build/default/production/CB_Bluetooth.o
- .debug_info      0x002122       0x16ce build/default/production/CB_Inicializaciones.o
- .debug_info      0x0037f0         0xdd build/default/production/CB_Timer2.o
- .debug_info      0x0038cd        0x4f5 build/default/production/main.o
- .debug_info      0x003dc2        0x7df build/default/production/Pruebas.o
- .debug_info      0x0045a1        0x248 build/default/production/CA_calibrado_filtro.o
- .debug_info      0x0047e9        0x46b build/default/production/CA_SetGetMPU6050.o
+ .debug_info      0x000000        0x597 build/default/production/CB_Timer3.o
+ .debug_info      0x000597        0x5c9 build/default/production/CB_Timer1.o
+ .debug_info      0x000b60        0x540 build/default/production/CA_kalman.o
+ .debug_info      0x0010a0        0xb3b build/default/production/CB_I2C.o
+ .debug_info      0x001bdb        0x5ab build/default/production/CB_Bluetooth.o
+ .debug_info      0x002186       0x16e2 build/default/production/CB_Inicializaciones.o
+ .debug_info      0x003868         0xf1 build/default/production/CB_Timer2.o
+ .debug_info      0x003959        0x509 build/default/production/main.o
+ .debug_info      0x003e62        0x7f3 build/default/production/Pruebas.o
+ .debug_info      0x004655        0x25c build/default/production/CA_calibrado_filtro.o
+ .debug_info      0x0048b1        0x47f build/default/production/CA_SetGetMPU6050.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0xb23
