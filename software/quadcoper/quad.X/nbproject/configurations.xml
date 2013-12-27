@@ -4,7 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>CA_kalman.h</itemPath>
       <itemPath>CB_Bluetooth.h</itemPath>
       <itemPath>CB_I2C.h</itemPath>
       <itemPath>CB_Inicializaciones.h</itemPath>
@@ -14,8 +13,8 @@
       <itemPath>Defines.h</itemPath>
       <itemPath>main.h</itemPath>
       <itemPath>Pruebas.h</itemPath>
-      <itemPath>CA_calibrado_filtro.h</itemPath>
       <itemPath>CA_SetGetMPU6050.h</itemPath>
+      <itemPath>CA_calibrado_y_filtros.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,15 +25,14 @@
                    projectFiles="true">
       <itemPath>CB_Timer3.c</itemPath>
       <itemPath>CB_Timer1.c</itemPath>
-      <itemPath>CA_kalman.c</itemPath>
       <itemPath>CB_I2C.c</itemPath>
       <itemPath>CB_Bluetooth.c</itemPath>
       <itemPath>CB_Inicializaciones.c</itemPath>
       <itemPath>CB_Timer2.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>Pruebas.c</itemPath>
-      <itemPath>CA_calibrado_filtro.c</itemPath>
       <itemPath>CA_SetGetMPU6050.c</itemPath>
+      <itemPath>CA_calibrado_y_filtros.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -128,7 +126,7 @@
         <property key="programoptions.testmodeentrymethod" value="VPPFirst"/>
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="voltagevalue" value="4.25"/>
+        <property key="voltagevalue" value="5.0"/>
       </PICkit3PlatformTool>
     </conf>
   </confs>

@@ -9,8 +9,9 @@ extern char str_blue[40];
 extern char str_aux[40];
 
 
-
+#define MAX_BLUE    50
 #define DEF_BLUE    1
+
 
 void EnviarCR()
 {
@@ -157,3 +158,63 @@ void EnviarDatos_Acc_Gyro(unsigned int _mascara)
     EnviarCR();
 }
 
+
+// Variables globales
+char DatoRecibido[50];
+int IndiceBluetooth;
+
+// Funcion de interrupcion de recepcion de datos
+void interrupcion _U1RXInterrupt(void)
+{
+    int i;
+
+    DatoRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
+
+    if(IndiceBluetooth < (MAX_BLUE-1))
+        IndiceBluetooth++;
+
+    if(DatoRecibido[IndiceBluetooth-1] == 0x0D) // Si recibimos intro, procesamos la cadena
+    {
+        IndiceBluetooth --;
+        ProcesarCadena(DatoRecibido);
+
+        // Se borra la cadena completa
+        for(i=0 ; i<MAX_BLUE; i++)
+            DatoRecibido[i] = ' ';
+        IndiceBluetooth = 0;
+    }
+
+    IFS0bits.U1RXIF = 0; // clear TX interrupt flag
+    U1STAbits.OERR = 0;
+}
+
+
+// Funcion para procear los datos recibidos
+void ProcesarCadena(char *cadena)
+{
+#ifdef DEF_BLUE
+
+    if(strncmp(cadena,"@GO",3) == 0)
+    {
+ //       StartPID(); // Arrancamos el PID
+        return;
+    }
+    if(strncmp(cadena,"@STOP",3) == 0)
+    {
+//        StopPID();  // Paramos el PID
+        // PARAR_MOTORES
+        return;
+    }
+    if(strncmp(cadena,"@CR",3) == 0)   // Peticion de envio de Retorno de carro
+    {
+        EnviarCR();
+        return;
+    }
+
+    strcpy(str_blue,"Recibido: ");
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+    strcpy(str_blue,cadena);
+    enviar_datos(str_blue, strlen(str_blue));
+
+#endif
+}
