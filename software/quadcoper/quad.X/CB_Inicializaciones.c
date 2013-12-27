@@ -160,7 +160,7 @@ void Init_Bluetooh(void)
     // Init_Bluetooh();
         U2MODEbits.UARTEN = 1;  Nop();  Nop();  Nop();
         U2STAbits.UTXISEL = 0;  Nop();
-        U2MODEbits.PDSEL = 0;   Nop(); // Genera interrupcion (si habilitada) cada dato recibido
+        U2MODEbits.PDSEL = 0;   Nop();
         U2MODEbits.STSEL = 0;   Nop();
         U2MODEbits.ABAUD = 0;   Nop();
 
@@ -169,7 +169,7 @@ void Init_Bluetooh(void)
         U2STAbits.UTXEN = 1;    Nop();
         IFS1bits.U2RXIF = 0;    Nop();
         IFS1bits.U2TXIF = 0;    Nop();
-        IEC1bits.U2RXIE = 0;    Nop(); //para leer interrupcion
+        IEC1bits.U2RXIE = 0;    Nop();
         IEC1bits.U2TXIE = 0;    Nop();
     // FIN - Init_Bluetooh();
 }
