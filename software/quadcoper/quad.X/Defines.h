@@ -433,6 +433,7 @@
 
 //defines macro//
 #define intermitencia                  {  int i; LED_ALL_OFF(); for (i = 0; i < 300; i++)Delay1msT1(0); LED_ALL_ON();for (i = 0; i < 300; i++)Delay1msT1(0);}
+#define reset() {__asm__ volatile ("reset");}
 
 #endif	/* DEF_ACEL_H */
 

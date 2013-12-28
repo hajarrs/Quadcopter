@@ -5,6 +5,7 @@
  * Created on 20 de diciembre de 2013, 0:32
  */
 #include "CA_SetGetMPU6050.h"
+#include "CB_Bluetooth.h"
 
 void set_inicial()
 {
@@ -129,4 +130,14 @@ void plot4(int valor1, int valor2,int valor3,int valor4)
         int pktSize = 2 + 2 + (4*sizeof(int));
         enviar_datos_NOCR((int * )encabezado, pktSize);
 
+}
+
+void get_acelerometro(int *_ax,int *_ay,int *_az, int *_gx,int *_gy,int *_gz)
+{
+    (*_ax) = get_ax();
+    (*_ay) = get_ay();
+    (*_az) = get_az();
+    (*_gx) = get_gx();
+    (*_gy) = get_gy();
+    (*_gz) = get_gz();
 }

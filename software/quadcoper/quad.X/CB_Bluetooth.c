@@ -156,4 +156,11 @@ void EnviarDatos_Acc_Gyro(unsigned int _mascara)
 
     EnviarCR();
 }
+void enviar_valor(char nombre[],int valor)
+{
 
+enviar_datos_NOCR(nombre, strlen(nombre));
+itoa(str_blue, valor, 10);
+enviar_datos(str_blue, strlen(str_blue));
+
+}

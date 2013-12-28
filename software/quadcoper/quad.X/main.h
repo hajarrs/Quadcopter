@@ -8,11 +8,14 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
+#include <xc.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 #include "Defines.h"
 #include "CB_Inicializaciones.h"
+#include "CA_SetGetMPU6050.h"
 #include "CB_Timer1.h"
 #include "CB_Timer2.h"
 #include "CB_Bluetooth.h"
@@ -29,6 +32,7 @@ double kalAngleX, kalAngleY; // Calculate the angle using a Kalman filter
 
 char str_blue[40];
 char str_aux[40];
+
 
 #endif	/* MAIN_H */
 

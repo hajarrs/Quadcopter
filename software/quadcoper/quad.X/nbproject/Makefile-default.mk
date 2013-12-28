@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=CB_Timer3.c CB_Timer1.c CA_kalman.c CB_I2C.c CB_Bluetooth.c CB_Inicializaciones.c CB_Timer2.c main.c Pruebas.c CA_calibrado_filtro.c CA_SetGetMPU6050.c
+SOURCEFILES_QUOTED_IF_SPACED=CB_Timer3.c CB_Timer1.c CB_I2C.c CB_Bluetooth.c CB_Inicializaciones.c CB_Timer2.c main.c Pruebas.c CA_SetGetMPU6050.c CA_calibrado_y_filtros.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CA_kalman.o ${OBJECTDIR}/CB_I2C.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/CA_calibrado_filtro.o ${OBJECTDIR}/CA_SetGetMPU6050.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/CB_Timer3.o.d ${OBJECTDIR}/CB_Timer1.o.d ${OBJECTDIR}/CA_kalman.o.d ${OBJECTDIR}/CB_I2C.o.d ${OBJECTDIR}/CB_Bluetooth.o.d ${OBJECTDIR}/CB_Inicializaciones.o.d ${OBJECTDIR}/CB_Timer2.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/CA_calibrado_filtro.o.d ${OBJECTDIR}/CA_SetGetMPU6050.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_I2C.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CA_calibrado_y_filtros.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/CB_Timer3.o.d ${OBJECTDIR}/CB_Timer1.o.d ${OBJECTDIR}/CB_I2C.o.d ${OBJECTDIR}/CB_Bluetooth.o.d ${OBJECTDIR}/CB_Inicializaciones.o.d ${OBJECTDIR}/CB_Timer2.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/CA_SetGetMPU6050.o.d ${OBJECTDIR}/CA_calibrado_y_filtros.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CA_kalman.o ${OBJECTDIR}/CB_I2C.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/CA_calibrado_filtro.o ${OBJECTDIR}/CA_SetGetMPU6050.o
+OBJECTFILES=${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_I2C.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CA_calibrado_y_filtros.o
 
 # Source Files
-SOURCEFILES=CB_Timer3.c CB_Timer1.c CA_kalman.c CB_I2C.c CB_Bluetooth.c CB_Inicializaciones.c CB_Timer2.c main.c Pruebas.c CA_calibrado_filtro.c CA_SetGetMPU6050.c
+SOURCEFILES=CB_Timer3.c CB_Timer1.c CB_I2C.c CB_Bluetooth.c CB_Inicializaciones.c CB_Timer2.c main.c Pruebas.c CA_SetGetMPU6050.c CA_calibrado_y_filtros.c
 
 
 CFLAGS=
@@ -90,12 +90,6 @@ ${OBJECTDIR}/CB_Timer1.o: CB_Timer1.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/CB_Timer1.o.d 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer1.c  -o ${OBJECTDIR}/CB_Timer1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer1.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/CB_Timer1.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CA_kalman.o: CA_kalman.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_kalman.o.d 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_kalman.c  -o ${OBJECTDIR}/CA_kalman.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_kalman.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_kalman.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/CB_I2C.o: CB_I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -133,17 +127,17 @@ ${OBJECTDIR}/Pruebas.o: Pruebas.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Pruebas.c  -o ${OBJECTDIR}/Pruebas.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Pruebas.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/Pruebas.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CA_calibrado_filtro.o: CA_calibrado_filtro.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_calibrado_filtro.o.d 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_calibrado_filtro.c  -o ${OBJECTDIR}/CA_calibrado_filtro.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_calibrado_filtro.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_calibrado_filtro.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/CA_SetGetMPU6050.o: CA_SetGetMPU6050.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/CA_SetGetMPU6050.o.d 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_SetGetMPU6050.c  -o ${OBJECTDIR}/CA_SetGetMPU6050.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_SetGetMPU6050.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/CA_SetGetMPU6050.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CA_calibrado_y_filtros.o: CA_calibrado_y_filtros.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/CA_calibrado_y_filtros.o.d 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_calibrado_y_filtros.c  -o ${OBJECTDIR}/CA_calibrado_y_filtros.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_calibrado_y_filtros.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/CA_calibrado_y_filtros.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/CB_Timer3.o: CB_Timer3.c  nbproject/Makefile-${CND_CONF}.mk
@@ -157,12 +151,6 @@ ${OBJECTDIR}/CB_Timer1.o: CB_Timer1.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/CB_Timer1.o.d 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer1.c  -o ${OBJECTDIR}/CB_Timer1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer1.o.d"      -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/CB_Timer1.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CA_kalman.o: CA_kalman.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_kalman.o.d 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_kalman.c  -o ${OBJECTDIR}/CA_kalman.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_kalman.o.d"      -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_kalman.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/CB_I2C.o: CB_I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -200,17 +188,17 @@ ${OBJECTDIR}/Pruebas.o: Pruebas.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Pruebas.c  -o ${OBJECTDIR}/Pruebas.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Pruebas.o.d"      -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/Pruebas.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CA_calibrado_filtro.o: CA_calibrado_filtro.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_calibrado_filtro.o.d 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_calibrado_filtro.c  -o ${OBJECTDIR}/CA_calibrado_filtro.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_calibrado_filtro.o.d"      -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_calibrado_filtro.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/CA_SetGetMPU6050.o: CA_SetGetMPU6050.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/CA_SetGetMPU6050.o.d 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_SetGetMPU6050.c  -o ${OBJECTDIR}/CA_SetGetMPU6050.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_SetGetMPU6050.o.d"      -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/CA_SetGetMPU6050.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/CA_calibrado_y_filtros.o: CA_calibrado_y_filtros.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/CA_calibrado_y_filtros.o.d 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_calibrado_y_filtros.c  -o ${OBJECTDIR}/CA_calibrado_y_filtros.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_calibrado_y_filtros.o.d"      -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/CA_calibrado_y_filtros.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

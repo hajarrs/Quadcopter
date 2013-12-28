@@ -10,6 +10,7 @@
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
 void Delay1msT1(unsigned char _Interrupcion);
+void DelayXmsT1(int _msg);
 void interrupcion _T1Interrupt(void);
 
 #endif	/* CB_TIMER1_H */

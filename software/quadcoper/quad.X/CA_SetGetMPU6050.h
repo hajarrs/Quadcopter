@@ -22,6 +22,7 @@ void plot1(int valor1);
 void plot2(int valor1, int valor2);
 void plot3(int valor1, int valor2,int valor3);
 void plot4(int valor1, int valor2,int valor3,int valor4);
+void get_acelerometro(int *_ax,int *_ay,int *_az, int *_gx,int *_gy,int *_gz);
 
 
 

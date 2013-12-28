@@ -7,7 +7,12 @@
 
 #ifndef CB_INICIALIZACIONES_H
 #define	CB_INICIALIZACIONES_H
-
+#include <i2c.h>
+#include "Defines.h"
+#include "CB_Timer1.h"
+#include "CB_Timer2.h"
+#include "CB_I2C.h"
+#include "CA_SetGetMPU6050.h"
 void Init_Hw(void);
 void Init_I2C(void);
 void Init_PWM();

@@ -1,12 +1,8 @@
 #include <p30F4013.h>
 
-#include <i2c.h>
-#include "CB_I2C.h"
+
 #include "Pruebas.h"
-#include "Defines.h"
-#include "CB_Timer2.h"
-#include "CB_Bluetooth.h"
-#include "CB_Inicializaciones.h"
+
 
 
 void Prueba2_PWM(void)

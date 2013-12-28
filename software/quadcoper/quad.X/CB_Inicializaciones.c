@@ -1,11 +1,7 @@
-#include <p30F4013.h>
-#include <i2c.h>
+
+
 #include "CB_Inicializaciones.h"
-#include "Defines.h"
-#include "CB_Timer1.h"
-#include "CB_Timer2.h"
-#include "CB_I2C.h"
-#include "CA_SetGetMPU6050.h"
+
 
 
 /** Funcion Init_Hw
@@ -56,7 +52,7 @@ void Init_I2C(void)
 //    OpenI2C(config1,config2);
     Delay1msT1(0);
 
-    I2CBRG = 283;
+    I2CBRG = 60;//correcto 283
 
     I2CCONbits.I2CSIDL = 0; Nop();
     I2CCONbits.SCLREL = 1; Nop();

@@ -26,3 +26,13 @@ void interrupcion _T1Interrupt(void)
 {
     Delay1msT1(1);
 }
+
+
+void DelayXmsT1(int _msg)
+{
+    do
+    {
+        Delay1msT1(0);
+        _msg--;
+    }while(_msg >=0);
+}
