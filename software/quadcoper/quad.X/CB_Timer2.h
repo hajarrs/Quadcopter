@@ -7,7 +7,7 @@
 
 #ifndef CB_TIMER2_H
 #define	CB_TIMER2_H
-
+#include<xc.h>
 void Delay_Nop(unsigned int _contador);
 
 #endif	/* CB_TIMER2_H */

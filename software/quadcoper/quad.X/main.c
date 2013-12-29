@@ -4,7 +4,7 @@
  *
  * Created on 29 de junio de 2013, 19:05
  */
-    
+
 #include "main.h"
 
 
@@ -26,12 +26,21 @@ _FBORPOR(PWRT_OFF & BORV27 & PBOR_OFF & MCLR_DIS)
 
 
 
-int main(void) {
+int main(void)
+{
     //#define DATO_KALMAN
     //#define ARRANQUE
-    //#define CALIBRADO
-     int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
-            calibra_ax = calibra_ay = calibra_az = calibra_gx = calibra_gy = calibra_gz = ax = ay = az = gx = gy = gz = 0;
+    #define CALIBRADO
+    int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
+    calibra_ax = calibra_ay = calibra_az = calibra_gx = calibra_gy = calibra_gz = ax = ay = az = gx = gy = gz = 0;
+    int dtC;
+    int k = 10;
+    float dtc2;
+    float x_angle2C;
+    float x1 = 0;
+    float y1 = 0;
+    float x2 = 0;
+    float y2 = 0;
 #define DEBUG
     Init_Hw();
     Init_Pll();
@@ -61,155 +70,59 @@ int main(void) {
 #ifdef ARRANQUE
     enviar_datos("PWM inicializado...", 20);
 #endif
-    Delay1msT1(0);
-
-
-    LED_ALL_ON();
-
     DelayXmsT1(10);
-
-    
-
     while (1)
     {
-        if (get_who_I_AM() == 104) {
+        if (get_who_I_AM() == 104)
+        {
 #ifdef DEBUG
             strcpy(str_blue, "empezando a calibrar");
             enviar_datos_NOCR(str_blue, strlen(str_blue));
 #endif
 
-           
-
-            int compAngleX_ini, compAngleY_ini, a;
-            int i = 0;
-
-            a = 0;
-
-            for (i = 0; i < 50; i++)
-            {
-
-                calibra_ax = get_ax() + calibra_ax;
-                calibra_ay = get_ay() + calibra_ay;
-                calibra_az = get_az() + calibra_az;
-                calibra_gx = get_gx() + calibra_gx;
-                calibra_gy = get_gy() + calibra_gy;
-                calibra_gz = get_gz() + calibra_gz;
-            }
-
-            calibra_ax = calibra_ax / 50;
-            calibra_ay = calibra_ay / 50;
-            calibra_az = calibra_az / 50;
-            calibra_gx = calibra_gx / 50;
-            calibra_gy = calibra_gy / 50;
-            calibra_gz = calibra_gz / 50;
-
 #ifdef CALIBRADO
 
-            strcpy(str_blue, "ax=");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            itoa(str_blue, calibra_ax, 10);
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            strcpy(str_blue, "-");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-
-
-            strcpy(str_blue, "ay=");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            itoa(str_blue, calibra_ay, 10);
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            strcpy(str_blue, "-");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-
-            strcpy(str_blue, "az=");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            itoa(str_blue, calibra_az, 10);
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            strcpy(str_blue, "-");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-
-            strcpy(str_blue, "gx=");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            itoa(str_blue, calibra_gx, 10);
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            strcpy(str_blue, "-");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-
-            strcpy(str_blue, "gy=");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            itoa(str_blue, calibra_gy, 10);
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            strcpy(str_blue, "-");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-
-            strcpy(str_blue, "gz=");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            itoa(str_blue, calibra_gx, 10);
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            strcpy(str_blue, "-");
-            enviar_datos(str_blue, strlen(str_blue));
-
-
-
-
-
+    get_calibrado_acelerometro(50,50,&calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);//get_calibrado_acelerometro((espera en milis),(numero de lecturas),&calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);
 
 #endif
 
+            while (1)
+            {
+                get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
 
 
-            //   while(1){
-            //    calibrado_inicial(&calibra_ax,&calibra_ay,&calibra_az,&calibra_gx,&calibra_gy,&calibra_ax);
-            //
-            //
-            //    itoa(str_blue,calibra_ax, 10);
-            //    enviar_datos_NOCR(str_blue, strlen(str_blue));
-            //    strcpy(str_blue,"-");
-            //    enviar_datos_NOCR(str_blue, strlen(str_blue));
-            //    itoa(str_blue,calibra_ay, 10);
-            //    enviar_datos(str_blue, strlen(str_blue));
-            //        }
-            while (1) {
-                get_acelerometro(&ax,&ay,&az,&gx,&gy,&gz);
-
-                
                 accXangle = (atan2(ay - calibra_ay, az - calibra_az) + PI) * RAD_TO_DEG;
                 accYangle = (atan2(ax - calibra_ax, az - calibra_az) + PI) * RAD_TO_DEG;
 
                 double gyroXrate = ((double) gx - calibra_gx) / 131.0;
                 double gyroYrate = -(((double) gy - calibra_gy) / 131.0);
                 int a = 1000;
-                enviar_valor("looptime= ",a);
-               // plot4(gy,Complementary2(gyroYrate,accYangle,1000),Complementary2(gyroYrate,accYangle,1000),kalmanCalculate(gyroYrate,accYangle,1000));
+
+
+
+                dtc2 = 1000 / 1000;
+                enviar_valor("dtc2= ", dtc2);
+                x1 = ( gyroYrate - x_angle2C) * k*k;
+                enviar_valor("x1= ", x1);
+                y1 = dtc2 * x1 + y1;
+                enviar_valor("y1= ", y1);
+                x2 = y1 + (gyroYrate - x_angle2C)*2 * k + accYangle;
+                enviar_valor("x2= ", x2);
+                x_angle2C = dtc2 * x2 + x_angle2C;
+                enviar_valor("x_angle2C= ", x_angle2C);
+
+                // plot4(gy,Complementary2(gyroYrate,accYangle,1000),Complementary2(gyroYrate,accYangle,1000),kalmanCalculate(gyroYrate,accYangle,1000));
                 //plot4(ax, ay, gx, gy);
-                Complementary2(gyroYrate,accYangle,a);
-               // enviar_valor("hola",Complementary2(gyroYrate,accYangle,1000));
-               //  plot2(gy,Complementary2));
+                //Complementary2(gyroYrate,accYangle,a);
+                // enviar_valor("hola",Complementary2(gyroYrate,accYangle,1000));
+                //   plot2(gy,x_angle2C);
 
-#ifdef DATO_KALMAN
-
-                itoa(str_blue, kalAngleX, 10);
-                enviar_datos_NOCR(str_blue, strlen(str_blue));
-                strcpy(str_blue, "-");
-                enviar_datos_NOCR(str_blue, strlen(str_blue));
-                itoa(str_blue, kalAngleY, 10);
-                enviar_datos_NOCR(str_blue, strlen(str_blue));
-                strcpy(str_blue, "-");
-                enviar_datos_NOCR(str_blue, strlen(str_blue));
-                itoa(str_blue, (compAngleX - compAngleX_ini), 10);
-                enviar_datos_NOCR(str_blue, strlen(str_blue));
-                strcpy(str_blue, "-");
-                enviar_datos_NOCR(str_blue, strlen(str_blue));
-                itoa(str_blue, compAngleY - compAngleY_ini, 10);
-                enviar_datos(str_blue, strlen(str_blue));
-#endif
             }
-        } else {
+        } else
+        {
 #ifdef DEBUG
-            strcpy(str_blue, "esperando who i am correcto actualente = ");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
-            itoa(str_blue, get_who_I_AM(), 10);
-            enviar_datos(str_blue, strlen(str_blue));
-
+            enviar_valor("esperando who i am correcto actualente = ", get_who_I_AM());
+            reset();
 #endif
 
         }

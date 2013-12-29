@@ -9,6 +9,7 @@
 #define	CA_SetGetMPU6050_H
 #include "Defines.h"
 #include "CB_I2C.h"
+#include "CB_Bluetooth.h"
 
 void set_inicial(void);
 int get_ax(void);

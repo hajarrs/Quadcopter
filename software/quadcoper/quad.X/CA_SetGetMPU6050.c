@@ -5,7 +5,7 @@
  * Created on 20 de diciembre de 2013, 0:32
  */
 #include "CA_SetGetMPU6050.h"
-#include "CB_Bluetooth.h"
+
 
 void set_inicial()
 {
@@ -92,7 +92,7 @@ void plot1(int valor1)
         encabezado[1]= 2*sizeof(int);
         encabezado[2]=valor1;
         int pktSize = 2 + 2 + (1*sizeof(int));
-        enviar_datos_NOCR((int * )encabezado, pktSize);
+        enviar_datos_NOCR_to_plot((int * )encabezado, pktSize);
 
 }
 void plot2(int valor1, int valor2)
@@ -103,7 +103,7 @@ void plot2(int valor1, int valor2)
         encabezado[2]=valor1;
         encabezado[3]=valor2;
         int pktSize = 2 + 2 + (2*sizeof(int));
-        enviar_datos_NOCR((int * )encabezado, pktSize);
+        enviar_datos_NOCR_to_plot((int * )encabezado, pktSize);
 
 }
 void plot3(int valor1, int valor2,int valor3)
@@ -115,7 +115,7 @@ void plot3(int valor1, int valor2,int valor3)
         encabezado[3]=valor2;
         encabezado[4]=valor3;
         int pktSize = 2 + 2 + (3*sizeof(int));
-        enviar_datos_NOCR((int * )encabezado, pktSize);
+        enviar_datos_NOCR_to_plot((int * )encabezado, pktSize);
 
 }
 void plot4(int valor1, int valor2,int valor3,int valor4)
@@ -128,7 +128,7 @@ void plot4(int valor1, int valor2,int valor3,int valor4)
         encabezado[4]=valor3;
         encabezado[5]=valor4;
         int pktSize = 2 + 2 + (4*sizeof(int));
-        enviar_datos_NOCR((int * )encabezado, pktSize);
+        enviar_datos_NOCR_to_plot((int * )encabezado, pktSize);
 
 }
 

@@ -7,6 +7,8 @@
 
 #ifndef CB_I2C_H
 #define	CB_I2C_H
+#include <i2c.h>
+#include "CB_Bluetooth.h"
 #include "Defines.h"
 #include "CB_Timer2.h"
 

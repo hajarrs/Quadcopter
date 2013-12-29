@@ -11,7 +11,6 @@
 #include "CB_I2C.h"
 #include "Defines.h"
 #include "CB_Timer2.h"
-#include "CB_Bluetooth.h"
 #include "CB_Inicializaciones.h"
 
 extern char str_blue[40];

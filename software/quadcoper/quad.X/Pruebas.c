@@ -3,8 +3,6 @@
 
 #include "Pruebas.h"
 
-
-
 void Prueba2_PWM(void)
 {
        PWM1 = 32500;

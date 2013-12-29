@@ -1,6 +1,6 @@
-#include <p30F4013.h>
+
 #include "CB_I2C.h"
-#include <i2c.h>
+
 
 
 #define PRINTI2C 1

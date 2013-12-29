@@ -10,7 +10,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-
 #include "Defines.h"
 #include "CB_Timer1.h"
 #include "CB_Timer2.h"
@@ -24,8 +23,8 @@ void enviar_Udatos_NOCR(unsigned char cadena[50], int longitud);
 void enviar_Udatos(unsigned char cadena[50], int longitud);
 void EnviarSensores(int numero);
 void EnviarDatos_Acc_Gyro(unsigned int _mascara);
-
-
+void enviar_valor(char nombre[],int valor);
+void enviar_datos_NOCR_to_plot(int cadena[50], int longitud);
 
 #endif	/* CB_BLUETOOTH_H */
 

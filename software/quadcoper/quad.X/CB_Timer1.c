@@ -1,9 +1,7 @@
 #include <p30F4013.h>
 
 #include "CB_Timer1.h"
-#include "Defines.h"
-#include "Pruebas.h"
-#include "CB_Bluetooth.h"
+
 
 
 void Delay1msT1(unsigned char _Interrupcion)

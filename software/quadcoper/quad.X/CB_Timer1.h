@@ -7,6 +7,9 @@
 
 #ifndef CB_TIMER1_H
 #define	CB_TIMER1_H
+#include "Defines.h"
+#include "Pruebas.h"
+#include "CB_Bluetooth.h"
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
 void Delay1msT1(unsigned char _Interrupcion);
