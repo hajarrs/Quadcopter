@@ -41,9 +41,13 @@ void enviar_datos_NOCR_to_plot(int cadena[50], int longitud)
     }
 #endif
 }
-
-
-
+void enviar_datos(char cadena[50], int longitud)
+{
+#ifdef DEF_BLUE
+    enviar_datos_NOCR(cadena, longitud);
+    EnviarCR();
+#endif
+}
 
 
 void enviar_Udatos_NOCR(unsigned char cadena[50], int longitud)
