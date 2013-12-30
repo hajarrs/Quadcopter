@@ -25,6 +25,6 @@ void EnviarSensores(int numero);
 void EnviarDatos_Acc_Gyro(unsigned int _mascara);
 void enviar_valor(char nombre[],int valor);
 void enviar_datos_NOCR_to_plot(int cadena[50], int longitud);
-
+void enviar_mensaje(char nombre[]);
 #endif	/* CB_BLUETOOTH_H */
 

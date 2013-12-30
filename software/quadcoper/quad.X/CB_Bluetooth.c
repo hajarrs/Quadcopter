@@ -94,3 +94,7 @@ itoa(str_blue, valor, 10);
 enviar_datos(str_blue, strlen(str_blue));
 
 }
+void enviar_mensaje(char nombre[])
+{
+enviar_datos_NOCR(nombre, strlen(nombre));
+}

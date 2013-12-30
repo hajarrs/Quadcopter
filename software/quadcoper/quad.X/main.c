@@ -30,7 +30,7 @@ int main(void)
 {
     //#define DATO_KALMAN
     //#define ARRANQUE
-    #define CALIBRADO
+#define CALIBRADO
     int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
     calibra_ax = calibra_ay = calibra_az = calibra_gx = calibra_gy = calibra_gz = ax = ay = az = gx = gy = gz = 0;
     int dtC;
@@ -48,61 +48,61 @@ int main(void)
 
     Init_Bluetooh();
 #ifdef ARRANQUE
-    enviar_datos("Bluetooth inicializado...", 26);
+    enviar_mensaje("Bluetooth inicializado...");
 #endif
     Delay1msT1(0);
 #ifdef ARRANQUE
-    enviar_datos("Iniciando el I2C...", 20);
+    enviar_mensaje("Iniciando el I2C...");
 #endif
     Delay1msT1(0);
 
     Init_I2C();
 #ifdef ARRANQUE
-    enviar_datos("I2C inicializado...", 20);
+    enviar_mensaje("I2C inicializado...");
 #endif
     Delay1msT1(0);
 #ifdef ARRANQUE
-    enviar_datos("Iniciando el PWM...", 20);
+    enviar_mensaje("Iniciando el PWM...");
 #endif
     Delay1msT1(0);
 
     Init_PWM();
 #ifdef ARRANQUE
-    enviar_datos("PWM inicializado...", 20);
+    enviar_mensaje("PWM inicializado...");
 #endif
     DelayXmsT1(10);
     while (1)
     {
-        if (get_who_I_AM() == 104)
+        if (get_who_I_AM() != 104)
         {
 #ifdef DEBUG
-            strcpy(str_blue, "empezando a calibrar");
-            enviar_datos_NOCR(str_blue, strlen(str_blue));
+            enviar_valor("esperando who i am correcto actualente = ", get_who_I_AM());
+            reset();
+#endif
+
+        }
+        else
+        {
+#ifdef DEBUG
+            enviar_mensaje("empezando a calibrar");
 #endif
 
 #ifdef CALIBRADO
 
-    get_calibrado_acelerometro(50,50,&calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);//get_calibrado_acelerometro((espera en milis),(numero de lecturas),&calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);
+            get_calibrado_acelerometro(50, 50, &calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz); //get_calibrado_acelerometro((espera en milis),(numero de lecturas),&calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);
 
 #endif
 
             while (1)
             {
                 get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
-
-
                 accXangle = (atan2(ay - calibra_ay, az - calibra_az) + PI) * RAD_TO_DEG;
                 accYangle = (atan2(ax - calibra_ax, az - calibra_az) + PI) * RAD_TO_DEG;
-
                 double gyroXrate = ((double) gx - calibra_gx) / 131.0;
                 double gyroYrate = -(((double) gy - calibra_gy) / 131.0);
-                int a = 1000;
-
-
-
                 dtc2 = 1000 / 1000;
                 enviar_valor("dtc2= ", dtc2);
-                x1 = ( gyroYrate - x_angle2C) * k*k;
+                x1 = (gyroYrate - x_angle2C) * k*k;
                 enviar_valor("x1= ", x1);
                 y1 = dtc2 * x1 + y1;
                 enviar_valor("y1= ", y1);
@@ -118,13 +118,6 @@ int main(void)
                 //   plot2(gy,x_angle2C);
 
             }
-        } else
-        {
-#ifdef DEBUG
-            enviar_valor("esperando who i am correcto actualente = ", get_who_I_AM());
-            reset();
-#endif
-
         }
     }
 

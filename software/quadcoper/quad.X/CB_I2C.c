@@ -36,7 +36,7 @@ unsigned int my_StartI2C(void)
     T3CONbits.TON = 0;
 #ifdef PRINTI2C
     if(_T3IF)
-        enviar_datos("Salgo de MyStart por Timer",27);
+         enviar_mensaje("Salgo de MyStart por Timer");
         
 #endif
     return 0;
@@ -55,7 +55,7 @@ unsigned int my_RestartI2C(void)
 #ifdef PRINTI2C
     T3CONbits.TON = 0;
     if(_T3IF)
-       enviar_datos("Salgo de MyRestart por Timer",27);
+        enviar_mensaje("Salgo de MyRestart por Timer");
     
 #endif
     return 0;
@@ -75,7 +75,7 @@ unsigned int my_StopI2C(void)
 #ifdef PRINTI2C
     T3CONbits.TON = 0;
     if(_T3IF)
-        enviar_datos("Salgo de my_Stop por Timer",27);
+        enviar_mensaje("Salgo de my_Stop por Timer");
         
 #endif
     return 0;
@@ -94,7 +94,7 @@ unsigned int my_WriteI2C(unsigned char byte)
 #ifdef PRINTI2C
     T3CONbits.TON = 0;
     if(_T3IF)
-       enviar_datos("Salgo de my_Write por Timer",27);
+       enviar_mensaje("Salgo de my_Write por Timer");
         
 #endif
     return 0;
@@ -110,7 +110,7 @@ unsigned int my_IdleI2C(void)
 #ifdef PRINTI2C
     T3CONbits.TON = 0;
     if(_T3IF)
-        enviar_datos("Salgo de my_Idle por Timer",27);
+         enviar_mensaje("Salgo de my_Idle por Timer");
         
 #endif
     return 0;
