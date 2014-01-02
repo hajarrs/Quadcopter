@@ -30,17 +30,7 @@ void enviar_datos_NOCR(char cadena[50], int longitud)
     }
 #endif
 }
-void enviar_datos_NOCR_to_plot(int cadena[50], int longitud)
-{
-#ifdef DEF_BLUE
-    unsigned char index;
-    for(index=0; index<longitud; index++)
-    {
-        U2TXREG = cadena[index];
-        while(!U2STAbits.TRMT);
-    }
-#endif
-}
+
 void enviar_datos(char cadena[50], int longitud)
 {
 #ifdef DEF_BLUE
@@ -96,5 +86,6 @@ enviar_datos(str_blue, strlen(str_blue));
 }
 void enviar_mensaje(char nombre[])
 {
-enviar_datos_NOCR(nombre, strlen(nombre));
+enviar_datos(nombre, strlen(nombre));
 }
+

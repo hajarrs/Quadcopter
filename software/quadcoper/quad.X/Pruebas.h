@@ -22,6 +22,8 @@ void Prueba_I2C(void);
 void Prueba_LED();
 void EjecutarPID(void);
 
-
+void my_itoa(long n, char s[]);
+void reverse(char s[]);
+void my_ftoa(float Value, char* Buffer);
 #endif	/* PRUEBAS_H */
 

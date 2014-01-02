@@ -34,5 +34,8 @@ char str_blue[40];
 char str_aux[40];
 
 
+
+
+
 #endif	/* MAIN_H */
 
