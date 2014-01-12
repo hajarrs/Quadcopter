@@ -27,7 +27,10 @@ void StartPID()
 {
     T3CONbits.TON = 1;
 }
-
+void StopPID()
+{
+    T3CONbits.TON = 0;
+}
 void interrupcion _T3Interrupt(void)
 {
     IFS0bits.T3IF = 0;

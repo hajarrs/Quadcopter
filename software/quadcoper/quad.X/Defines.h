@@ -11,6 +11,8 @@
 
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
+#define LEDROJO_1 _LATB9      //
+#define LEDVERDE_1 _LATB10      //
 #define LEDAMARILLO _LATB0      // Verde
 #define LEDVERDE _LATB1      //
 #define LEDROJO _LATB2      // Naranja

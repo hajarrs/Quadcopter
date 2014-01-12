@@ -112,16 +112,16 @@ void Init_PWM()
     T2CONbits.T32 = 0;      Nop();      // TIMER2 --> 16 Bits
     IFS0bits.T2IF = 0;      Nop();
 
-    PR1 =0x0FFF;
+    PR1 =0x5000;
     OC1RS = 0x0000;	// DUCTY CICLE
 
-    PR2 = 0x0FFF;
+    PR2 = 0x5000;
     OC2RS = 0x0000;	// DUCTY CICLE
 
-    PR3 = 0x0FFF;
+    PR3 = 0x5000;
     OC3RS = 0x0000;	// DUCTY CICLE
 
-    PR4 = 0x0FFF;
+    PR4 = 0x5000;
     OC4RS = 0x0000;	// DUCTY CICLE
 
     OC1CONbits.OCM0 = 0;    Nop();
@@ -144,7 +144,7 @@ void Init_PWM()
     T2CONbits.TCKPS = 0b00; Nop();
     T2CONbits.TON = 1;
 
-    
+
     PWM1 = 0;
     PWM2 = 0;
     PWM3 = 0;
@@ -153,9 +153,10 @@ void Init_PWM()
 
 void Init_Bluetooh(void)
 {
-    // Init_Bluetooh();
+
         U2MODEbits.UARTEN = 1;  Nop();  Nop();  Nop();
         U2STAbits.UTXISEL = 0;  Nop();
+        U2STAbits.URXISEL = 0;  Nop();
         U2MODEbits.PDSEL = 0;   Nop();
         U2MODEbits.STSEL = 0;   Nop();
         U2MODEbits.ABAUD = 0;   Nop();
@@ -165,7 +166,7 @@ void Init_Bluetooh(void)
         U2STAbits.UTXEN = 1;    Nop();
         IFS1bits.U2RXIF = 0;    Nop();
         IFS1bits.U2TXIF = 0;    Nop();
-        IEC1bits.U2RXIE = 0;    Nop();
+        IEC1bits.U2RXIE = 1;    Nop();
         IEC1bits.U2TXIE = 0;    Nop();
     // FIN - Init_Bluetooh();
 }
