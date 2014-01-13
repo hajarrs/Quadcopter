@@ -15,6 +15,7 @@
       <itemPath>Pruebas.h</itemPath>
       <itemPath>CA_SetGetMPU6050.h</itemPath>
       <itemPath>CA_calibrado_y_filtros.h</itemPath>
+      <itemPath>CB_Timer5.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -33,6 +34,7 @@
       <itemPath>Pruebas.c</itemPath>
       <itemPath>CA_SetGetMPU6050.c</itemPath>
       <itemPath>CA_calibrado_y_filtros.c</itemPath>
+      <itemPath>CB_Timer5.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

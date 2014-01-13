@@ -30,7 +30,7 @@ int main(void)
 {
     int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
     //#define DATO_KALMAN
-    //#define ARRANQUE
+    #define ARRANQUE
 //#define CALIBRADO
 #define DEBUG
     Init_Hw();

@@ -12,15 +12,15 @@ void my_Write_I2C(unsigned char byte)
 }
 
 #ifdef PRINTI2C
-void InitTimer3(void)
+void InitTimer5(void)
 {
-    T3CON = 0b0000000000100000; // Preescala 1:x
-    PR3 = 0x0570;         // PR3 = 0x0570;       // 3 msg
-    TMR3 = 0;
-    IFS0bits.T3IF = 0;
-    T3CONbits.TON = 0;
-    _T3IE = 0;
-    T3CONbits.TON = 1;
+    T5CON = 0b0000000000100000; // Preescala 1:x
+    PR5 = 0x0570;         // PR5= 0x0570;       // 3 msg
+    TMR5 = 0;
+    IFS1bits.T5IF = 0;
+    T5CONbits.TON = 0;
+    _T5IE = 0;
+    T5CONbits.TON = 1;
 }
 #endif
 
@@ -29,14 +29,14 @@ unsigned int my_StartI2C(void)
     I2CCONbits.SEN = 1;
     
 #ifdef PRINTI2C
-    InitTimer3();
+    InitTimer5();
 #endif
-    _T3IF = 0;
-    while (I2CCONbits.SEN && !_T3IF);
+    _T5IF = 0;
+    while (I2CCONbits.SEN && !_T5IF);
 
-    T3CONbits.TON = 0;
+    T5CONbits.TON = 0;
 #ifdef PRINTI2C
-    if(_T3IF)
+    if(_T5IF)
          enviar_mensaje("Salgo de MyStart por Timer");
         
 #endif
@@ -48,14 +48,14 @@ unsigned int my_RestartI2C(void)
     I2CCONbits.RSEN = 1;
 
 #ifdef PRINTI2C
-    InitTimer3();
+    InitTimer5();
 #endif
-    _T3IF = 0;
-    while (I2CCONbits.RSEN && !_T3IF);
+    _T5IF = 0;
+    while (I2CCONbits.RSEN && !_T5IF);
 
 #ifdef PRINTI2C
-    T3CONbits.TON = 0;
-    if(_T3IF)
+    T5CONbits.TON = 0;
+    if(_T5IF)
         enviar_mensaje("Salgo de MyRestart por Timer");
     
 #endif
@@ -67,15 +67,15 @@ unsigned int my_StopI2C(void)
     I2CCONbits.PEN = 1;		//Generate Stop Condition
 
 #ifdef PRINTI2C
-    InitTimer3();
+    InitTimer5();
 #endif
     
-    _T3IF = 0;
-    while (I2CCONbits.PEN && !_T3IF);	//Wait for Stop
+    _T5IF = 0;
+    while (I2CCONbits.PEN && !_T5IF);	//Wait for Stop
 
 #ifdef PRINTI2C
-    T3CONbits.TON = 0;
-    if(_T3IF)
+    T5CONbits.TON = 0;
+    if(_T5IF)
         enviar_mensaje("Salgo de my_Stop por Timer");
         
 #endif
@@ -87,14 +87,14 @@ unsigned int my_WriteI2C(unsigned char byte)
     I2CTRN = byte;					//Load byte to I2C1 Transmit buffer
 
 #ifdef PRINTI2C
-    InitTimer3();
+    InitTimer5();
 #endif
 
-    _T3IF = 0;
-    while (I2CSTATbits.TBF && !_T3IF);		//wait for data transmission
+    _T5IF = 0;
+    while (I2CSTATbits.TBF && !_T5IF);		//wait for data transmission
 #ifdef PRINTI2C
-    T3CONbits.TON = 0;
-    if(_T3IF)
+    T5CONbits.TON = 0;
+    if(_T5IF)
        enviar_mensaje("Salgo de my_Write por Timer");
         
 #endif
@@ -104,13 +104,13 @@ unsigned int my_WriteI2C(unsigned char byte)
 unsigned int my_IdleI2C(void)
 {
 #ifdef PRINTI2C
-    InitTimer3();
+    InitTimer5();
 #endif
-    _T3IF = 0;
-    while (I2CSTATbits.TRSTAT && !_T3IF);		//Wait for bus Idle
+    _T5IF = 0;
+    while (I2CSTATbits.TRSTAT && !_T5IF);		//Wait for bus Idle
 #ifdef PRINTI2C
-    T3CONbits.TON = 0;
-    if(_T3IF)
+    T5CONbits.TON = 0;
+    if(_T5IF)
          enviar_mensaje("Salgo de my_Idle por Timer");
         
 #endif

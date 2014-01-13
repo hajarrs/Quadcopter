@@ -94,28 +94,30 @@ char DatoRecibido[50];
 int IndiceBluetooth;
 
 // Funcion de interrupcion de recepcion de datos
-void interrupcion _U2RXInterrupt(void)
-{
+
+void interrupcion _U2RXInterrupt(void) {
     int i;
-    LEDROJO_1=1;
-    enviar_mensaje("entre");
+    unsigned char index;
     DatoRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
 
-    if(IndiceBluetooth < (MAX_BLUE-1))
-        IndiceBluetooth++;
+    if (IndiceBluetooth < (MAX_BLUE - 1))IndiceBluetooth++;
+    if (IndiceBluetooth==MAX_BLUE-1)IndiceBluetooth=0;
+    if ((DatoRecibido[IndiceBluetooth ] == 0x00) && (DatoRecibido[IndiceBluetooth - 1] == 0x00))// && (DatoRecibido[IndiceBluetooth - 1] == 0xFF  )) // Si recibimos intro, procesamos la cadena
+        {
 
-    if(DatoRecibido[IndiceBluetooth-1] == 0x0D) // Si recibimos intro, procesamos la cadena
-    {
-        IndiceBluetooth --;
-        ProcesarCadena(DatoRecibido);
-
-
-        // Se borra la cadena completa
-        for(i=0 ; i<MAX_BLUE; i++)
-            DatoRecibido[i] = ' ';
-        IndiceBluetooth = 0;
-    }
-
+            for(index=0; index<IndiceBluetooth; index++)
+            {
+                U2TXREG = DatoRecibido[index];
+                while(!U2STAbits.TRMT);
+            }
+            IndiceBluetooth=0;
+            for (i = 0; i < MAX_BLUE; i++)
+                DatoRecibido[i] = ' ';
+            IndiceBluetooth = 0;
+        } 
+ 
+ 
+  
     IFS1bits.U2RXIF = 0; // clear TX interrupt flag
     U2STAbits.OERR = 0;
 }
@@ -125,7 +127,6 @@ void interrupcion _U2RXInterrupt(void)
 void ProcesarCadena(char *cadena)
 {
 #ifdef DEF_BLUE
-    enviar_mensaje("procesado");
     if(strncmp(cadena,"@GO",3) == 0)
     {
         StartPID(); // Arrancamos el PID
@@ -144,7 +145,7 @@ void ProcesarCadena(char *cadena)
     }
 
     strcpy(str_blue,"Recibido: ");
-    enviar_datos_NOCR(str_blue, strlen(str_blue));
+   // enviar_datos_NOCR(str_blue, strlen(str_blue));
     strcpy(str_blue,cadena);
     enviar_datos(str_blue, strlen(str_blue));
 
