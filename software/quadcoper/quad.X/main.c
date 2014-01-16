@@ -28,10 +28,20 @@ _FBORPOR(PWRT_OFF & BORV27 & PBOR_OFF & MCLR_DIS)
 
 int main(void)
 {
-    int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
     //#define DATO_KALMAN
-    #define ARRANQUE
-//#define CALIBRADO
+    //#define ARRANQUE
+#define CALIBRADO
+    int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
+    calibra_ax = calibra_ay = calibra_az = calibra_gx = calibra_gy = calibra_gz = ax = ay = az = gx = gy = gz = 0;
+    int dtC;
+    int k = 10;
+    float dtc2;
+    float x_angle2C;
+    float x1 = 0;
+    float y1 = 0;
+
+    float x2 = 0;
+    float y2 = 0;
 #define DEBUG
     Init_Hw();
     Init_Pll();
@@ -59,9 +69,45 @@ int main(void)
 #ifdef ARRANQUE
     enviar_mensaje("PWM inicializado...");
 #endif
+    //  SetupT3FormsPID(4);
+    // StartPID();
+    while (1);
+    while (1)
+    {
+          if (get_who_I_AM() != 104)
+        {
+        LEDROJO_1=0;
+        LEDVERDE_1=1;
 
-  
-    while(1);
+        //enviar_mensaje("hola que tal estas");
+        //  EjecutarPID();
+        get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
+        enviar_valor("ax=", ax);
+        plot4(ax,ay,az,gz);
+//        signed int errorLeido = 0;
+//        signed int resultado = 0;
+//        errorLeido = az - 17300;
+//        resultado = errorLeido * 10; //Parte proporcional
+//        resultado = resultado + (errorLeido - errorAnt)*10; //Anadido parte derivativa
+//        errorAnt = errorLeido;
+//        // if (resultado>32000)resultado=32000;
+//
+//        PWM1_ = 1000 + resultado;
+//        PWM3_ = 1000 - resultado;
+        //plot4(PWM1_, PWM3_, az, resultado);
+        DelayXmsT1(2);
+//        enviar_valor("pwm1_=", PWM1_);
+//        enviar_valor("pwm1_=", PWM1_);
+//        enviar_valor("az=", az);
+//        enviar_valor("resultado=", resultado);
+
+          }
+    else{
+        LEDROJO_1=1;
+        LEDVERDE_1=0;
+
+    }
+    }
 
     DelayXmsT1(200);
     while (1)
@@ -73,8 +119,7 @@ int main(void)
             reset();
 #endif
 
-        }
-        else
+        } else
         {
 #ifdef DEBUG
             enviar_mensaje("empezando a calibrar");
@@ -88,35 +133,11 @@ int main(void)
 
             while (1)
             {
+
                 get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
-//                accXangle = (atan2(ay - calibra_ay, az - calibra_az) + PI) * RAD_TO_DEG;
-//                accYangle = (atan2(ax - calibra_ax, az - calibra_az) + PI) * RAD_TO_DEG;
-//                double gyroXrate = ((double) gx - calibra_gx) / 131.0;
-//                double gyroYrate = -(((double) gy - calibra_gy) / 131.0);
-//                dtc2 = 1000 / 1000;
-//               // enviar_mensaje("------------------------------------------------------");
-//               //  enviar_valor("gx= ", gx);
-//               // enviar_valor("dtc2= ", dtc2);
-//               // enviar_valor("gyroYrate= ", gyroYrate);
-//              //  enviar_valor("x_angle2C= ", x_angle2C);
-//                x1 = ((int)gyroXrate -(int) x_angle2C) * k*k;
-//              //  enviar_valor("x1= ", x1);
-//                y1 = dtc2 * x1 * + y1;
-//              //  enviar_valor("y1= ", y1);
-//                x2 = (int)y1 + ((int)gyroXrate - (int)x_angle2C)*2 * k + (int)accXangle;
-//             //   enviar_valor("x2= ", x2);
-//                x_angle2C = dtc2 * x2 + (int)x_angle2C;
-//                enviar_valor("x_angle2C= ", x_angle2C);
 
-                // plot4(gy,Complementary2(gyroYrate,accYangle,1000),Complementary2(gyroYrate,accYangle,1000),kalmanCalculate(gyroYrate,accYangle,1000));
-                plot3(ax, ay, az);
-                //Complementary2(gyroYrate,accYangle,a);
-                // enviar_valor("hola",Complementary2(gyroYrate,accYangle,1000));
-                  // plot2(gy,x_angle2C);
-                   DelayXmsT1(10);
-
-                
             }
+            while(1);
         }
     }
 

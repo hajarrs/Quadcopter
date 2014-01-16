@@ -2,7 +2,7 @@
 #include "CB_I2C.h"
 
 
-
+#define DISP 0xD2
 
 #define PRINTI2C 1
 void my_Write_I2C(unsigned char byte)
@@ -10,6 +10,7 @@ void my_Write_I2C(unsigned char byte)
     I2CTRN = byte;					//Load byte to I2C Transmit buffer
     while (I2CSTATbits.TBF);		//wait for data transmission
 }
+
 
 #ifdef PRINTI2C
 void InitTimer5(void)
@@ -177,12 +178,12 @@ unsigned int ReadAddress(unsigned char Address)
 {
         my_IdleI2C();					//wait for bus Idle
 	my_StartI2C();					//Generate Start Condition
-        my_WriteI2C(0xD2);		//Write Control Byte
+        my_WriteI2C(DISP);		//Write Control Byte
         my_IdleI2C();					//wait for bus Idle
         my_WriteI2C(Address);			//Write start address
         my_IdleI2C();					//wait for bus Idle
 	my_RestartI2C();				//Generate restart condition
-        my_WriteI2C(0xD2+1);	//Write control byte for read
+        my_WriteI2C(DISP+1);	//Write control byte for read
         my_IdleI2C();
         my_masterreceiveI2C();
 	my_NotAckI2C();				//Send Not Ack
@@ -198,7 +199,7 @@ void WriteAddress(unsigned char address, unsigned char data)
 
 
 
-    my_WriteI2C(0xD2);
+    my_WriteI2C(DISP);
     my_IdleI2C();
 
     my_WriteI2C(address);
@@ -213,7 +214,7 @@ void WriteAddress(unsigned char address, unsigned char data)
     IdleI2C();					//wait for bus Idle
     my_StartI2C();					//Generate Start Condition
     
-    my_Write_I2C(0xD0);		//Write Control Byte
+    my_Write_I2C(DISP);		//Write Control Byte
     while(I2CSTATbits.ACKSTAT);
     IdleI2C();			//wait for bus Idle
 

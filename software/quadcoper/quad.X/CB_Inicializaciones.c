@@ -1,7 +1,7 @@
 
 
 #include "CB_Inicializaciones.h"
-
+#define RECEP
 
 
 /** Funcion Init_Hw
@@ -52,7 +52,7 @@ void Init_I2C(void)
 //    OpenI2C(config1,config2);
     Delay1msT1(0);
 
-    I2CBRG = 60;//correcto 283
+    I2CBRG = 60;//correcto 283//otra 60
 
     I2CCONbits.I2CSIDL = 0; Nop();
     I2CCONbits.SCLREL = 1; Nop();
@@ -166,7 +166,11 @@ void Init_Bluetooh(void)
         U2STAbits.UTXEN = 1;    Nop();
         IFS1bits.U2RXIF = 0;    Nop();
         IFS1bits.U2TXIF = 0;    Nop();
-        IEC1bits.U2RXIE = 1;    Nop();
+#ifdef  RECEP
+    IEC1bits.U2RXIE = 1;    Nop();
+#else
+        IEC1bits.U2RXIE = 0;    Nop();
+#endif
         IEC1bits.U2TXIE = 0;    Nop();
     // FIN - Init_Bluetooh();
 }

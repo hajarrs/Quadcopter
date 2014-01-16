@@ -97,22 +97,34 @@ int IndiceBluetooth;
 
 void interrupcion _U2RXInterrupt(void) {
     int i;
+    unsigned int  IntRecibido[50];
     unsigned char index;
-    DatoRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
+    IntRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
 
     if (IndiceBluetooth < (MAX_BLUE - 1))IndiceBluetooth++;
     if (IndiceBluetooth==MAX_BLUE-1)IndiceBluetooth=0;
-    if ((DatoRecibido[IndiceBluetooth ] == 0x00) && (DatoRecibido[IndiceBluetooth - 1] == 0x00))// && (DatoRecibido[IndiceBluetooth - 1] == 0xFF  )) // Si recibimos intro, procesamos la cadena
+    if ((IntRecibido[IndiceBluetooth ] == 0x15))// && (IntRecibido[IndiceBluetooth - 1] == 0xff))// && (IntRecibido[IndiceBluetooth - 1] == 0xFF  )) // Si recibimos intro, procesamos la cadena
         {
+         unsigned int LowPart = 0;
+    unsigned int HighPart = 0;
 
-            for(index=0; index<IndiceBluetooth; index++)
-            {
-                U2TXREG = DatoRecibido[index];
-                while(!U2STAbits.TRMT);
-            }
+    int chanel1=((((IntRecibido[4] << 8) + IntRecibido[5])-153)*1.43);
+    int chanel2=((((IntRecibido[6] << 8) + IntRecibido[7])-1177)*1.428);
+    int chanel3=((((IntRecibido[8] << 8) + IntRecibido[9])-2200)*1.428);
+    int chanel4=((((IntRecibido[10] << 8) + IntRecibido[11])-3225)*1.428);
+    int chanel6=((((IntRecibido[12] << 8) + IntRecibido[12])-4112)*0.0025);
+
+     enviar_valor ("valor1=",(unsigned int) (chanel1));
+     enviar_valor ("valor2=",(unsigned int) (chanel2));
+     enviar_valor ("valor3=",(unsigned int) (chanel3));
+     enviar_valor ("valor4=",(unsigned int) (chanel4));
+     enviar_valor ("valor6=",(unsigned int) (chanel6));
+     //PWM1=((10000+chanel1-147)*100);
+     //PWM3=((10000-chanel1-147)*100);
+           
             IndiceBluetooth=0;
             for (i = 0; i < MAX_BLUE; i++)
-                DatoRecibido[i] = ' ';
+                IntRecibido[i] = ' ';
             IndiceBluetooth = 0;
         } 
  
