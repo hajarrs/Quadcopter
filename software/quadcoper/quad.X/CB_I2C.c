@@ -2,7 +2,7 @@
 #include "CB_I2C.h"
 
 
-#define DISP 0xD2
+#define DISP 0xD0
 
 #define PRINTI2C 1
 void my_Write_I2C(unsigned char byte)

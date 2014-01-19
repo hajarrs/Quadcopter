@@ -25,5 +25,6 @@ void EnviarSensores(int numero);
 void EnviarDatos_Acc_Gyro(unsigned int _mascara);
 void enviar_valor(char nombre[],int valor);
 void enviar_mensaje(char nombre[]);
+void interrupcion _U2RXInterrupt(void) ;
 #endif	/* CB_BLUETOOTH_H */
 

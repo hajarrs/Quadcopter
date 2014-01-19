@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <math.h>
+#include "define_comet_code.h"
 #include "Defines.h"
 #include "CB_Inicializaciones.h"
 #include "CA_SetGetMPU6050.h"

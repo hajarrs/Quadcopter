@@ -16,6 +16,7 @@
       <itemPath>CA_SetGetMPU6050.h</itemPath>
       <itemPath>CA_calibrado_y_filtros.h</itemPath>
       <itemPath>CB_Timer5.h</itemPath>
+      <itemPath>define_comet_code.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

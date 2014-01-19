@@ -67,12 +67,10 @@ void Prueba_PWM(void)
        PWM2=i;
        PWM1=i;
        Delay_Nop(5000);
-          LEDVERDE=0;
 
     }
           for (i=0xffff;i<0x0001;i--)
     {
-              LEDVERDE=1;
        PWM4=i;
        PWM3=i;
        PWM2=i;
@@ -168,50 +166,6 @@ void Prueba_I2C(void)
 
 }
 
-
-void Prueba_LED_BOTON()
-{
-                int i;
-                if (BOTONEXTERNO==1)
-                {
-                     LED_ALL_OFF();
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDNARANJA=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDAZUL=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDAMARILLO=1;
-                    for(i=0;i<300;i++) Delay1msT1(0);
-                    LEDVERDE=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDROJO=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                }
-                else if (BOTONINTERNO==1)
-                {
-                    LED_ALL_OFF();
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDROJO=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDVERDE=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDAMARILLO=1;
-                    for(i=0;i<300;i++) Delay1msT1(0);
-                    LEDAZUL=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LEDNARANJA=1;
-                    for(i=0;i<300;i++)Delay1msT1(0);
-
-                }
-                else
-                {
-                    LED_ALL_OFF();
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                    LED_ALL_ON();
-                    for(i=0;i<300;i++)Delay1msT1(0);
-                }
-
-}
 void my_ftoa(float Value, char* Buffer)
  {
      union
@@ -382,6 +336,36 @@ void EjecutarPID(void)
 
 }
 
+void prueba_who_i_am(void)
+{
+    ACT_ACE=1;
+    int i=0;
+    DelayXmsT1(50);
+        int WhoIAm=get_who_I_AM();
+        if (WhoIAm == 104)
+        {
+            LEDAZUL=1;
+            LEDROJO=0;
+            enviar_valor("correcto", i);
+
+        }
+        else
+        {
+            enviar_valor("who i am =", WhoIAm);
+            i++;
+            enviar_valor("error", i);
+            if (i==5)
+            {
+                i =0;
+            ACT_ACE=0;
+            LEDROJO=1;
+            LEDAZUL=0;
+            DelayXmsT1(1000);
+            ACT_ACE=1;
+            }
+
+        }
+    }
 
 
 
