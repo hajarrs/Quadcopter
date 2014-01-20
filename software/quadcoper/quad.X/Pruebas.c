@@ -346,7 +346,7 @@ void prueba_who_i_am(void)
         {
             LEDAZUL=1;
             LEDROJO=0;
-            enviar_valor("correcto", i);
+            enviar_valor("correcto(who i am=104) numero de fallos =", i);
 
         }
         else

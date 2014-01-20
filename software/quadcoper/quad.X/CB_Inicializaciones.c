@@ -1,7 +1,7 @@
 
 
 #include "CB_Inicializaciones.h"
-#define RECEP
+//#define RECEP
 
 
 /** Funcion Init_Hw
@@ -52,7 +52,7 @@ void Init_I2C(void)
 //    OpenI2C(config1,config2);
     Delay1msT1(0);
 
-    I2CBRG = 60;//correcto 283//otra 60
+    I2CBRG = 283;//correcto 283//otra 60
 
     I2CCONbits.I2CSIDL = 0; Nop();
     I2CCONbits.SCLREL = 1; Nop();

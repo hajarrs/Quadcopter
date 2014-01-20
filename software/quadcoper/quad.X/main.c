@@ -69,10 +69,31 @@ volatile int chanel5 = 0;
     //  SetupT3FormsPID(4);
     // StartPID();
 ACT_ACE=1;
+set_inicial();
+
 
     while(1)
     {
+        if (get_who_I_AM() == 104)
+        {
+        get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
+        plot4(ax,ay,az,gx);
+        DelayXmsT1(10);
+
+        }
+        else
+        {
+            enviar_valor("error -->valor who i am", get_who_I_AM());
+           
+            ACT_ACE=0;
+            LEDROJO=1;
+            LEDAZUL=0;
+            DelayXmsT1(1000);
+            ACT_ACE=1;
+            }
+
         
+       
     }
     return 0;
 }
