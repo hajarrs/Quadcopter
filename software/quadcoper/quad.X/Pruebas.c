@@ -354,7 +354,7 @@ void prueba_who_i_am(void)
             enviar_valor("who i am =", WhoIAm);
             i++;
             enviar_valor("error", i);
-            if (i==5)
+            //if (i==5)
             {
                 i =0;
             ACT_ACE=0;
@@ -369,6 +369,33 @@ void prueba_who_i_am(void)
 
 
 
+void prueba_filtro(void)
+{
+int  ax, ay, az, gx, gy, gz;
+        if (get_who_I_AM() == 104)
+        {
+        get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
+      //  ComplementaryFilter(ax,ay,az,gx,gy,gz);
+        plot4(ax,ay,gx,gy);
+        
+//        plot4(ax,ay,pitch*100,roll*100);
+//        enviar_valor("pitch", pitch);
+//        enviar_valor("roll", roll);
+                    LEDROJO=0;
+            LEDAZUL=1;
 
+
+        }
+        else
+        {
+            enviar_valor("error -->valor who i am=", get_who_I_AM());
+
+            ACT_ACE=0;
+            LEDAZUL=0;
+            DelayXmsT1(1000);
+            ACT_ACE=1;
+            }
+
+}
 
 

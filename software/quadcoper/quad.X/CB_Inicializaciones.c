@@ -52,7 +52,7 @@ void Init_I2C(void)
 //    OpenI2C(config1,config2);
     Delay1msT1(0);
 
-    I2CBRG = 283;//correcto 283//otra 60
+    I2CBRG = 60;//correcto 283//otra 60
 
     I2CCONbits.I2CSIDL = 0; Nop();
     I2CCONbits.SCLREL = 1; Nop();
@@ -112,17 +112,19 @@ void Init_PWM()
     T2CONbits.T32 = 0;      Nop();      // TIMER2 --> 16 Bits
     IFS0bits.T2IF = 0;      Nop();
 
-    PR1 =0xf000;
-    OC1RS = 0x0000;	// DUCTY CICLE
+    int  PR =0x5000;//maximo 21000
+    int  DT =0x0000;
+    PR1 = PR;
+    OC1RS = DT;	// DUCTY CICLE
 
-    PR2 = 0xf000;
-    OC2RS = 0x0000;	// DUCTY CICLE
+    PR2 = PR;
+    OC2RS = DT;	// DUCTY CICLE
 
-    PR3 = 0xf000;
-    OC3RS = 0x0000;	// DUCTY CICLE
+    PR3 = PR;
+    OC3RS = DT;	// DUCTY CICLE
 
-    PR4 = 0xf000;
-    OC4RS = 0x0000;	// DUCTY CICLE
+    PR4 = PR;
+    OC4RS = DT;	// DUCTY CICLE
 
     OC1CONbits.OCM0 = 0;    Nop();
     OC1CONbits.OCM1 = 1;    Nop();
@@ -140,20 +142,20 @@ void Init_PWM()
     OC4CONbits.OCM1 = 1;    Nop();
     OC4CONbits.OCM2 = 1;    Nop();
 
+    T2CONbits.TCKPS = 0b00; Nop();//preeccala
 
-    T2CONbits.TCKPS = 0b00; Nop();
-    T2CONbits.TON = 1;
 
 
     PWM1 = 0;
     PWM2 = 0;
     PWM3 = 0;
     PWM4 = 0;
+    T2CONbits.TON = 1;
 }
 
 void Init_Bluetooh(void)
 {
-
+#define RECEP
         U2MODEbits.UARTEN = 1;  Nop();  Nop();  Nop();
         U2STAbits.UTXISEL = 0;  Nop();
         U2STAbits.URXISEL = 0;  Nop();

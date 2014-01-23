@@ -94,12 +94,12 @@ void interrupcion _U2RXInterrupt(void) {
     {
         //podemos multiplicar  y dividir  no multiolicar por float
 
-
         int chanel1 = 0;
         int chanel2 = 0;
         int chanel3 = 0;
         int chanel4 = 0;
         int chanel5 = 0;
+
         chanel1 = ((((IntRecibido[4] << 8) + IntRecibido[5]) - 153)*1.43);
         chanel2 = ((((IntRecibido[6] << 8) + IntRecibido[7]) - 1177)*1.428);
         chanel3 = ((((IntRecibido[8] << 8) + IntRecibido[9]) - 2200)*1.428);
@@ -116,6 +116,7 @@ void interrupcion _U2RXInterrupt(void) {
         for (i = 0; i < MAX_BLUE; i++)
             IntRecibido[i] = ' ';
         IndiceBluetooth = 0;
+        plot4(chanel1,chanel2,chanel3,chanel4);
     }
 
 

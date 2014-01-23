@@ -12,8 +12,8 @@
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
 
-#define LEDROJO _LATC14      //
-#define LEDAZUL _LATA11      //
+#define LEDAZUL _LATC14      //
+#define LEDROJO _LATA11      //
 #define ACT_ACE _LATF6
 #define PWM1 OC1RS
 #define PWM2 OC2RS
@@ -408,7 +408,7 @@
 #define ZERO_MASK_FOR_NOSC_IN_OSCCON 0xF8FF     //NOSC2:NOSC0 mask
 
 //defines macro//
-#define intermitencia                  {  int i; LED_ALL_OFF(); for (i = 0; i < 300; i++)Delay1msT1(0); LED_ALL_ON();for (i = 0; i < 300; i++)Delay1msT1(0);}
+#define intermitencia   {  int i; LED_ALL_OFF(); for (i = 0; i < 300; i++)Delay1msT1(0); LED_ALL_ON();for (i = 0; i < 300; i++)Delay1msT1(0);}
 #define reset() {__asm__ volatile ("reset");}
 
 #endif	/* DEF_ACEL_H */
@@ -420,6 +420,9 @@
 //*************************************************************
 //*********************VARIABLES GLOBALES**********************
 //*************************************************************
+
+
+        
 //-------------------------------------------------------------
 //necesarias por que las inperrupciones no permiten parametros
 //-------------------------------------------------------------
