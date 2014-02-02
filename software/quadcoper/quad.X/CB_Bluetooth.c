@@ -69,7 +69,13 @@ void enviar_valor(char nombre[], int valor) {
     enviar_datos(str_blue, strlen(str_blue));
 
 }
+void enviar_valor_NOCR(char nombre[], int valor) {
 
+    enviar_datos_NOCR(nombre, strlen(nombre));
+    itoa(str_blue, valor, 10);
+    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
+}
 void enviar_mensaje(char nombre[]) {
     enviar_datos(nombre, strlen(nombre));
 }
@@ -84,7 +90,6 @@ int IndiceBluetooth;
 void interrupcion _U2RXInterrupt(void) {
     int i;
     unsigned int IntRecibido[50];
-    unsigned char index;
     IntRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
 
     if (IndiceBluetooth < (MAX_BLUE - 1))IndiceBluetooth++;
@@ -94,29 +99,26 @@ void interrupcion _U2RXInterrupt(void) {
     {
         //podemos multiplicar  y dividir  no multiolicar por float
 
-        int chanel1 = 0;
-        int chanel2 = 0;
-        int chanel3 = 0;
-        int chanel4 = 0;
-        int chanel5 = 0;
+
 
         chanel1 = ((((IntRecibido[4] << 8) + IntRecibido[5]) - 153)*1.43);
-        chanel2 = ((((IntRecibido[6] << 8) + IntRecibido[7]) - 1177)*1.428);
+        chanel2 = ((((IntRecibido[6] << 8) + IntRecibido[7]) - 1176)*1.428);
         chanel3 = ((((IntRecibido[8] << 8) + IntRecibido[9]) - 2200)*1.428);
-        chanel4 = ((((IntRecibido[10] << 8) + IntRecibido[11]) - 3225)*1.428);
+        chanel4 = ((((IntRecibido[10] << 8) + IntRecibido[11]) - 3224)*1.428);
         chanel5 = ((((IntRecibido[12] << 8) + IntRecibido[12]) - 4112)*0.0025);
+
+        //*****************limitar rango ************************//
 
         enviar_valor("valor1=", (unsigned int) (chanel1));
         enviar_valor("valor2=", (unsigned int) (chanel2));
         enviar_valor("valor3=", (unsigned int) (chanel3));
         enviar_valor("valor4=", (unsigned int) (chanel4));
         enviar_valor("valor6=", (unsigned int) (chanel5));
-
+        enviar_valor("ax",get_ax());
         IndiceBluetooth = 0;
         for (i = 0; i < MAX_BLUE; i++)
             IntRecibido[i] = ' ';
         IndiceBluetooth = 0;
-        plot4(chanel1,chanel2,chanel3,chanel4);
     }
 
 

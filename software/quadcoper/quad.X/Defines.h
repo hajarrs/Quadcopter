@@ -12,8 +12,8 @@
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
 
-#define LEDAZUL _LATC14      //
-#define LEDROJO _LATA11      //
+#define LEDROJO _LATC14      //
+#define LEDVERDE _LATA11      //
 #define ACT_ACE _LATF6
 #define PWM1 OC1RS
 #define PWM2 OC2RS
@@ -413,19 +413,3 @@
 
 #endif	/* DEF_ACEL_H */
 
-
-#ifndef VARIABLE_GLOBALES_H
-#define	VARIABLE_GLOBALES_H
-
-//*************************************************************
-//*********************VARIABLES GLOBALES**********************
-//*************************************************************
-
-
-        
-//-------------------------------------------------------------
-//necesarias por que las inperrupciones no permiten parametros
-//-------------------------------------------------------------
-
-
-#endif	/* VARIABLE_GLOBALES_H */

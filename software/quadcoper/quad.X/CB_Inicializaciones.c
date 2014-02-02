@@ -18,8 +18,8 @@ void Init_Hw(void)
     ADPCFG = 0xFFFF;    Delay_Nop(10);  // Digital
 
     // TRISx
-    TRISA = 0x1111011111111111;     Delay_Nop(10);
-    TRISB = 0xF9F8;                 Delay_Nop(10);
+    TRISA = 0b1111011111111111;     Delay_Nop(10);
+    TRISB = 0b1111100111111000;                 Delay_Nop(10);
     TRISC = 0b1011111111111111;     Delay_Nop(10);
     TRISD = 0b1011111011110000;     Delay_Nop(10);
     TRISF = 0b1111111110011100;     Delay_Nop(10);
@@ -112,8 +112,10 @@ void Init_PWM()
     T2CONbits.T32 = 0;      Nop();      // TIMER2 --> 16 Bits
     IFS0bits.T2IF = 0;      Nop();
 
-    int  PR =0x5000;//maximo 21000
+    int  PR =0xbfff;
     int  DT =0x0000;
+//    int  PR =0x5000;//maximo 21000
+//    int  DT =0x0000;
     PR1 = PR;
     OC1RS = DT;	// DUCTY CICLE
 
@@ -183,7 +185,7 @@ void LED_ALL_ON()
     LEDROJO = ON;
 
     
-    LEDAZUL= ON;
+    LEDVERDE= ON;
 
 }
 
@@ -191,7 +193,7 @@ void LED_ALL_OFF()
 {
     LEDROJO = OFF;
 
-    LEDAZUL= OFF;
+    LEDVERDE= OFF;
 
 
 }

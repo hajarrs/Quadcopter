@@ -28,7 +28,10 @@ void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra
     double calibra_gy_double = (*_calibra_gy);
     double calibra_gz_double = (*_calibra_gz);
     
-    
+
+
+
+
             
     for (i = 0; i < n; i++)
     {

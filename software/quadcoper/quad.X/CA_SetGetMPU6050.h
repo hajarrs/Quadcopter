@@ -7,7 +7,6 @@
 
 #ifndef CA_SetGetMPU6050_H
 #define	CA_SetGetMPU6050_H
-#include "Defines.h"
 #include "CB_I2C.h"
 #include "CB_Bluetooth.h"
 

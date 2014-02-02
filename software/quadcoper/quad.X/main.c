@@ -58,6 +58,8 @@ int main(void)
 #endif
     Delay1msT1(0);
     Init_I2C();
+    DelayXmsT1(10);
+     ACT_ACE = 1;
 #ifdef ARRANQUE
     enviar_mensaje("I2C inicializado...");
 #endif
@@ -73,40 +75,57 @@ int main(void)
 
     //    LEDROJO=0;
     //   DelayXmsT1(1000);
-    //    LEDROJO=1;
-    LEDAZUL = 1;
-    ACT_ACE = 1;
-    DelayXmsT1(1000);
-    LEDAZUL = 0;
-    //    DelayXmsT1(2000);
-    //
-    //    TRISF = 0b1111111110011100;
-    //    Delay_Nop(10);
-    LEDROJO = 0;
-    {
-        //for
-        DelayXmsT1(10);
-  //           while(1)  PWM2=PWM3=PWM1=PWM4=0x22000;
-  //      int ax, ay, az, gx, gy, gz;
+        LEDROJO=1;
+            set_inicial();
+        int valorAux = 0;
+        int valorAuxAnterior = 0;
+        
+      while(1)  
+      {
+          valorAux = get_ax();
 
-   //     set_inicial();
-        while (1)
-        {
-//            if (get_who_I_AM() == 104)
-//            {
-//                get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
-//                // ComplementaryFilter(ax,ay,az,gx,gy,gz);
-//                plot4(ax,ay,gx,gy);
-//                enviar_valor("ay=",ay);
-//            }
-        }
+          int devuelto = PID(0, valorAux, 10, 1, 50, 1,&valorAuxAnterior, 31000, -31000);
+          plot2(valorAux,devuelto);
+          PWM1 = +devuelto;
+          PWM4 = -devuelto;
+          DelayXmsT1(10);
+      }
+ 
+//    DelayXmsT1(1000);
+//
+//       ACT_ACE = 1;
+   // while(1);//enviar_mensaje("llegando mensaje");
+       DelayXmsT1(10);
+           LEDVERDE = 1;
+    int pid;
+
+    while (1)
+    {
+        //enviar_mensaje("hola");
+       // enviar_mensaje("hola que tal");
+       // prueba_envio();
+       // prueba_pwm();
+       // prueba recep cometarlineas
+      //  acelerometro();
+
+      unsigned  int i;
+      DelayXmsT1(6000);
+      LEDVERDE=1;
+
+   for (i=0;i<30000;i=i+100)
+   {
+    PWM1=PWM2=PWM3=PWM4=i;
+//   prueba_who_i_am();
+//   enviar_valor("i", i);
+   }
+    while (1)PWM1=PWM2=PWM3=PWM4=30000;
     }
 
-    // prueba_filtro();
 
+        
 
-
-    // enviar_valor("ax=",get_ax());
+        
+    
     return 0;
 }
 

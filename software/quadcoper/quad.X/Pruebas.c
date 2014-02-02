@@ -56,7 +56,7 @@ void PWM_prueba(void)
     }
 }
 
-void Prueba_PWM(void)
+void Prueba_PWM_(void)
 {
     int i;
 
@@ -331,35 +331,36 @@ void reverse(char s[])
      }
 }
 
-void EjecutarPID(void)
-{
 
-}
 
 void prueba_who_i_am(void)
 {
     ACT_ACE=1;
     int i=0;
     DelayXmsT1(50);
-        int WhoIAm=get_who_I_AM();
+       int WhoIAm=0;
+    WhoIAm=get_who_I_AM();
+
         if (WhoIAm == 104)
         {
-            LEDAZUL=1;
+            LEDVERDE=1;
             LEDROJO=0;
             enviar_valor("correcto(who i am=104) numero de fallos =", i);
-
+            enviar_valor("ay=",get_ay());
         }
         else
         {
+            set_inicial();
             enviar_valor("who i am =", WhoIAm);
+            enviar_valor("ay=",get_ay());
             i++;
             enviar_valor("error", i);
-            //if (i==5)
+            if (i==5)
             {
                 i =0;
             ACT_ACE=0;
             LEDROJO=1;
-            LEDAZUL=0;
+            LEDVERDE=0;
             DelayXmsT1(1000);
             ACT_ACE=1;
             }
@@ -369,20 +370,24 @@ void prueba_who_i_am(void)
 
 
 
-void prueba_filtro(void)
+void acelerometro(void)
 {
-int  ax, ay, az, gx, gy, gz;
-        if (get_who_I_AM() == 104)
-        {
+    int ax, ay, az, gx, gy, gz;
+    if (get_who_I_AM() == 104)
+    {
         get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
-      //  ComplementaryFilter(ax,ay,az,gx,gy,gz);
-        plot4(ax,ay,gx,gy);
-        
-//        plot4(ax,ay,pitch*100,roll*100);
-//        enviar_valor("pitch", pitch);
-//        enviar_valor("roll", roll);
-                    LEDROJO=0;
-            LEDAZUL=1;
+
+        enviar_valor("Ax=", ax);
+        enviar_valor("Ay=", ay);
+        enviar_valor("Az=", az);
+        enviar_valor("Gx=", gx);
+        enviar_valor("Gy=", gy);
+        enviar_valor("Gz=", gz);
+        //        plot4(ax,ay,pitch*100,roll*100);
+        //        enviar_valor("pitch", pitch);
+        //        enviar_valor("roll", roll);
+        LEDROJO = 0;
+            LEDVERDE=1;
 
 
         }
@@ -391,11 +396,48 @@ int  ax, ay, az, gx, gy, gz;
             enviar_valor("error -->valor who i am=", get_who_I_AM());
 
             ACT_ACE=0;
-            LEDAZUL=0;
+            LEDVERDE=0;
             DelayXmsT1(1000);
             ACT_ACE=1;
             }
 
 }
 
+void acelerometro_plot(void)
+{
+int  ax, ay, az, gx, gy, gz;
+        if (get_who_I_AM() == 104)
+        {
+        get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
+        plot4(ax,ay,gx,gy);
+        LEDROJO=0;
+        LEDVERDE=1;
 
+
+        }
+        else
+        {
+            enviar_valor("error -->valor who i am=", get_who_I_AM());
+
+            ACT_ACE=0;
+            LEDVERDE=0;
+            DelayXmsT1(1000);
+            ACT_ACE=1;
+            set_inicial();
+            }
+
+}
+
+void prueba_envio()
+{
+    int i;
+   for (i=0;i<10000;i++)
+    enviar_valor("Esto es una prueba = ",i);
+
+}
+
+void prueba_pwm()
+{int i;
+   for (i=0;i<20000;i++)
+    PWM1=PWM2=PWM3=PWM4=i;
+}
