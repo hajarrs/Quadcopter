@@ -1,7 +1,7 @@
 
 
 #include "CB_Inicializaciones.h"
-#define RECEP
+//#define RECEP
 
 
 /** Funcion Init_Hw
@@ -18,10 +18,10 @@ void Init_Hw(void)
     ADPCFG = 0xFFFF;    Delay_Nop(10);  // Digital
 
     // TRISx
-    TRISA = 0xFFFF;                 Delay_Nop(10);
+    TRISA = 0x1111011111111111;     Delay_Nop(10);
     TRISB = 0xF9F8;                 Delay_Nop(10);
     TRISC = 0b1011111111111111;     Delay_Nop(10);
-    TRISD = 0b1111111011110000;     Delay_Nop(10);
+    TRISD = 0b1011111011110000;     Delay_Nop(10);
     TRISF = 0b1111111110011100;     Delay_Nop(10);
 
 
@@ -112,17 +112,21 @@ void Init_PWM()
     T2CONbits.T32 = 0;      Nop();      // TIMER2 --> 16 Bits
     IFS0bits.T2IF = 0;      Nop();
 
-    PR1 =0x5000;
-    OC1RS = 0x0000;	// DUCTY CICLE
+    int  PR =0xbfff;
+    int  DT =0x0000;
+//    int  PR =0x5000;//maximo 21000
+//    int  DT =0x0000;
+    PR1 = PR;
+    OC1RS = DT;	// DUCTY CICLE
 
-    PR2 = 0x5000;
-    OC2RS = 0x0000;	// DUCTY CICLE
+    PR2 = PR;
+    OC2RS = DT;	// DUCTY CICLE
 
-    PR3 = 0x5000;
-    OC3RS = 0x0000;	// DUCTY CICLE
+    PR3 = PR;
+    OC3RS = DT;	// DUCTY CICLE
 
-    PR4 = 0x5000;
-    OC4RS = 0x0000;	// DUCTY CICLE
+    PR4 = PR;
+    OC4RS = DT;	// DUCTY CICLE
 
     OC1CONbits.OCM0 = 0;    Nop();
     OC1CONbits.OCM1 = 1;    Nop();
@@ -140,20 +144,20 @@ void Init_PWM()
     OC4CONbits.OCM1 = 1;    Nop();
     OC4CONbits.OCM2 = 1;    Nop();
 
+    T2CONbits.TCKPS = 0b00; Nop();//preeccala
 
-    T2CONbits.TCKPS = 0b00; Nop();
-    T2CONbits.TON = 1;
 
 
     PWM1 = 0;
     PWM2 = 0;
     PWM3 = 0;
     PWM4 = 0;
+    T2CONbits.TON = 1;
 }
 
 void Init_Bluetooh(void)
 {
-
+//#define RECEP
         U2MODEbits.UARTEN = 1;  Nop();  Nop();  Nop();
         U2STAbits.UTXISEL = 0;  Nop();
         U2STAbits.URXISEL = 0;  Nop();
@@ -179,19 +183,19 @@ void Init_Bluetooh(void)
 void LED_ALL_ON()
 {
     LEDROJO = ON;
-    LEDVERDE= ON;
+
+    
     LEDAZUL= ON;
-    LEDAMARILLO = ON;
-    LEDNARANJA = ON;
+
 }
 
 void LED_ALL_OFF()
 {
     LEDROJO = OFF;
-    LEDVERDE= OFF;
+
     LEDAZUL= OFF;
-    LEDAMARILLO = OFF;
-    LEDNARANJA = OFF;
+
+
 }
 void clockSwitch (unsigned int newNOSCCode)
 {

@@ -11,5 +11,6 @@
 #include "CA_SetGetMPU6050.h"
 #include "CB_Bluetooth.h"
 void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra_ay, int *_calibra_az, int *_calibra_gx, int *_calibra_gy, int *_calibra_gz);
+float atan2f(float, float);
 #endif	/* CALIBRADO_FILTRO_H */
 

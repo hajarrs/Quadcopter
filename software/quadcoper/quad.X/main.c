@@ -5,13 +5,13 @@
  * Created on 29 de junio de 2013, 19:05
  */
 
+
 #include "main.h"
 
 
 #define MY_FRC                  0xF9E3
 
 //DEFINES DE DEBUG
-
 
 
 // FUSES
@@ -30,21 +30,22 @@ int main(void)
 {
     //#define DATO_KALMAN
     //#define ARRANQUE
-#define CALIBRADO
+
+
+
+    //#define CALIBRADO
     int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
     calibra_ax = calibra_ay = calibra_az = calibra_gx = calibra_gy = calibra_gz = ax = ay = az = gx = gy = gz = 0;
-    int dtC;
-    int k = 10;
-    float dtc2;
-    float x_angle2C;
-    float x1 = 0;
-    float y1 = 0;
 
-    float x2 = 0;
-    float y2 = 0;
-#define DEBUG
+    //#define DEBUG
     Init_Hw();
     Init_Pll();
+#ifdef ARRANQUE
+    enviar_mensaje("Iniciando el PWM...");
+#endif
+    Delay1msT1(0);
+    Init_PWM();
+
     LED_ALL_OFF();
 
     Init_Bluetooh();
@@ -57,89 +58,62 @@ int main(void)
 #endif
     Delay1msT1(0);
     Init_I2C();
+    DelayXmsT1(10);
+     ACT_ACE = 1;
 #ifdef ARRANQUE
     enviar_mensaje("I2C inicializado...");
 #endif
     Delay1msT1(0);
-#ifdef ARRANQUE
-    enviar_mensaje("Iniciando el PWM...");
-#endif
-    Delay1msT1(0);
-    Init_PWM();
+
 #ifdef ARRANQUE
     enviar_mensaje("PWM inicializado...");
 #endif
     //  SetupT3FormsPID(4);
     // StartPID();
-    while (1);
-    while (1)
-    {
-          if (get_who_I_AM() != 104)
-        {
-        LEDROJO_1=0;
-        LEDVERDE_1=1;
 
-        //enviar_mensaje("hola que tal estas");
-        //  EjecutarPID();
-        get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
-        enviar_valor("ax=", ax);
-        plot4(ax,ay,az,gz);
-//        signed int errorLeido = 0;
-//        signed int resultado = 0;
-//        errorLeido = az - 17300;
-//        resultado = errorLeido * 10; //Parte proporcional
-//        resultado = resultado + (errorLeido - errorAnt)*10; //Anadido parte derivativa
-//        errorAnt = errorLeido;
-//        // if (resultado>32000)resultado=32000;
+    //    ACT_ACE=0;
+
+    //    LEDROJO=0;
+    //   DelayXmsT1(1000);
+    //    LEDROJO=1;
+
+ 
+//    DelayXmsT1(1000);
 //
-//        PWM1_ = 1000 + resultado;
-//        PWM3_ = 1000 - resultado;
-        //plot4(PWM1_, PWM3_, az, resultado);
-        DelayXmsT1(2);
-//        enviar_valor("pwm1_=", PWM1_);
-//        enviar_valor("pwm1_=", PWM1_);
-//        enviar_valor("az=", az);
-//        enviar_valor("resultado=", resultado);
-
-          }
-    else{
-        LEDROJO_1=1;
-        LEDVERDE_1=0;
-
-    }
-    }
-
-    DelayXmsT1(200);
+//       ACT_ACE = 1;
+       DelayXmsT1(10);
+           LEDAZUL = 1;
+    int pid;
+    set_inicial();
     while (1)
     {
-        if (get_who_I_AM() != 104)
-        {
-#ifdef DEBUG
-            enviar_valor("esperando who i am correcto actualente = ", get_who_I_AM());
-            reset();
-#endif
+        //enviar_mensaje("hola");
+       // enviar_mensaje("hola que tal");
+       // prueba_envio();
+       // prueba_pwm();
+       // prueba recep cometarlineas
+      //  acelerometro();
 
-        } else
-        {
-#ifdef DEBUG
-            enviar_mensaje("empezando a calibrar");
-#endif
-
-#ifdef CALIBRADO
-
-            get_calibrado_acelerometro(50, 50, &calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz); //get_calibrado_acelerometro((espera en milis),(numero de lecturas),&calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);
-
-#endif
-
-            while (1)
-            {
-
-                get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
-
-            }
-            while(1);
-        }
+        int i;
+   for (i=0;i<20000;i=i+10)
+   {
+    PWM1=PWM2=PWM3=PWM4=i;
+   prueba_who_i_am();
+   enviar_valor("i", i);
+   }
+    for (i=2000;i>1;i=i-10)
+    {
+    PWM1=PWM2=PWM3=PWM4=i;
+    prueba_who_i_am();
+    enviar_valor("i", i);
     }
 
+
+        }
+
+        
+    
     return 0;
 }
+
+

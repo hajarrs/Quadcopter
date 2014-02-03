@@ -11,30 +11,14 @@
 
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
-#define LEDROJO_1 _LATB9      //
-#define LEDVERDE_1 _LATB10      //
-#define LEDAMARILLO _LATB0      // Verde
-#define LEDVERDE _LATB1      //
-#define LEDROJO _LATB2      // Naranja
-#define LEDAZUL _LATB9      //
-#define LEDNARANJA _LATB10     //
 
+#define LEDROJO _LATC14      //
+#define LEDVERDE _LATA11      //
+#define ACT_ACE _LATF6
 #define PWM1 OC1RS
 #define PWM2 OC2RS
 #define PWM3 OC3RS
 #define PWM4 OC4RS
-
-#define BOTONEXTERNO _RC13   // Boton interno
-#define BOTONINTERNO _RC15   // Boton externo
-
-#define ENCODER_A _RA11
-#define ENCODER_B _RD9
-
-#define DIRECCION2_A _LATA11
-#define DIRECCION2_B _LATC14
-
-#define DIRECCION3_A _LATF6
-#define DIRECCION3_B _LATD8
 
 #define Rx _RF4
 #define Tx _RF5
@@ -44,16 +28,6 @@
 
 #define ON   1
 #define OFF  0
-
-
-#define COM_ACC_X  0b00000001
-#define COM_ACC_Y  0b00000010
-#define COM_ACC_Z  0b00000100
-#define COM_GYRO_X 0b00001000
-#define COM_GYRO_Y 0b00010000
-#define COM_GYRO_Z 0b00100000
-#define COM_TEMP_G 0b01000000
-
 
 
 #endif	/* DEFINES_H */
@@ -434,7 +408,7 @@
 #define ZERO_MASK_FOR_NOSC_IN_OSCCON 0xF8FF     //NOSC2:NOSC0 mask
 
 //defines macro//
-#define intermitencia                  {  int i; LED_ALL_OFF(); for (i = 0; i < 300; i++)Delay1msT1(0); LED_ALL_ON();for (i = 0; i < 300; i++)Delay1msT1(0);}
+#define intermitencia   {  int i; LED_ALL_OFF(); for (i = 0; i < 300; i++)Delay1msT1(0); LED_ALL_ON();for (i = 0; i < 300; i++)Delay1msT1(0);}
 #define reset() {__asm__ volatile ("reset");}
 
 #endif	/* DEF_ACEL_H */

@@ -34,5 +34,5 @@ void StopPID()
 void interrupcion _T3Interrupt(void)
 {
     IFS0bits.T3IF = 0;
-    EjecutarPID();
+    //EjecutarPID();
 }

@@ -9,7 +9,6 @@
 #define	PRUEBAS_H
 #include <i2c.h>
 #include "CB_I2C.h"
-#include "Defines.h"
 #include "CB_Timer2.h"
 #include "CB_Inicializaciones.h"
 
