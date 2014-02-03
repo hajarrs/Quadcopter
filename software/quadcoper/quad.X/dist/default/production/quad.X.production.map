@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 Microchip Technology Inc, vè€n
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
+=======
+Microchip Technology Inc, vv1_11 (A) j
+
+Tool Name:
+  c:\program files (x86)\microchip\xc16\v1.11\bin\bin\..\bin/elf-ld.exe
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 Command:
   -p30F4013 \
   -o \
   dist/default/production/quad.X.production.elf \
+<<<<<<< HEAD
   -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/PIC24E \
@@ -21,6 +29,22 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC33F \
   -Lc:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../support/dsPIC33F/gld \
+=======
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/.. \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/PIC24E \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../support/PIC24E/gld \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/PIC24F \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../support/PIC24F/gld \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/PIC24H \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../support/PIC24H/gld \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../support/dsPIC30F/gld \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC33E \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../support/dsPIC33E/gld \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC33F \
+  -Lc:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../support/dsPIC33F/gld \
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
   build/default/production/CB_Timer3.o \
   build/default/production/CB_Timer1.o \
   build/default/production/CB_I2C.o \
@@ -57,6 +81,7 @@ Command:
 
 Archive member included because of file (symbol)
 
+<<<<<<< HEAD
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(IdleI2C.o)
                               build/default/production/Pruebas.o (_IdleI2C)
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(NotAckI2C.o)
@@ -120,6 +145,73 @@ c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a(strcpy.
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a(strlen.eo)
                               build/default/production/CB_Bluetooth.o (_strlen)
 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a(strncmp.eo)
+=======
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(IdleI2C.o)
+                              build/default/production/Pruebas.o (_IdleI2C)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(NotAckI2C.o)
+                              build/default/production/Pruebas.o (_NotAckI2C)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(StartI2C.o)
+                              build/default/production/Pruebas.o (_StartI2C)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(StopI2C.o)
+                              build/default/production/Pruebas.o (_StopI2C)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                              (__resetPRI)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o) (__data_init_standard)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(addsf3.eo)
+                              build/default/production/CA_calibrado_y_filtros.o (___subsf3)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atan2f.eo)
+                              build/default/production/CA_calibrado_y_filtros.o (_atan2f)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atanf.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atan2f.eo) (_atanf)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsf3.eo)
+                              build/default/production/CA_calibrado_y_filtros.o (___divsf3)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsi3.eo)
+                              build/default/production/Pruebas.o (___divsi3)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(errno.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atan2f.eo) (_errno)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(feqltle.eo)
+                              build/default/production/CA_funciones_control.o (___ltsf2)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fgtge.eo)
+                              build/default/production/CA_funciones_control.o (___gtsf2)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
+                              build/default/production/CB_Bluetooth.o (_(float, int, long long, short, float, short, int))
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+                              build/default/production/CA_calibrado_y_filtros.o (___floatsisf)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                              build/default/production/CB_Bluetooth.o (___floatunsisf)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(addsf3.eo) (__fpack)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atanf.eo) (__funpack)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(addsf3.eo) (__funpack2)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(futil.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(addsf3.eo) (__fPropagateNaN)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(modsi3.eo)
+                              build/default/production/Pruebas.o (___modsi3)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                              build/default/production/CB_Bluetooth.o (___mulsf3)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(udivsi3.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsi3.eo) (___udivsi3)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(umodsi3.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(modsi3.eo) (___umodsi3)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fcompare.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(feqltle.eo) (__fcompare)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatsisf.eo) (___floatdisf)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                              c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatunsisf.eo) (___floatundisf)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(itoa.eo)
+                              build/default/production/CB_Bluetooth.o (_itoa)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(memcpy.eo)
+                              build/default/production/CB_Bluetooth.o (_memcpy)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strcpy.eo)
+                              build/default/production/CB_Bluetooth.o (_strcpy)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strlen.eo)
+                              build/default/production/CB_Bluetooth.o (_strlen)
+c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strncmp.eo)
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
                               build/default/production/CB_Bluetooth.o (_strncmp)
 
 
@@ -146,6 +238,7 @@ Program Memory  [Origin = 0x100, Length = 0x7efe]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
+<<<<<<< HEAD
 .text                        0x100               0x61c           0x92a  (2346)
 .const                       0x71c               0x19a           0x267  (615)
 .text                        0x8b6              0x158a          0x204f  (8271)
@@ -153,17 +246,34 @@ section                    address   length (PC units)   length (bytes) (dec)
 .text                       0x1e5e                0x14            0x1e  (30)
 
                      Total program memory used (bytes):         0x2c2b  (11307) 23%
+=======
+.text                        0x100               0x622           0x933  (2355)
+.const                       0x722               0x1d8           0x2c4  (708)
+.text                        0x8fa              0x152a          0x1fbf  (8127)
+.dinit                      0x1e24                0x32            0x4b  (75)
+.text                       0x1e56                0x14            0x1e  (30)
+
+                     Total program memory used (bytes):         0x2c1f  (11295) 23%
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 
 Data Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
+<<<<<<< HEAD
 .nbss                        0x800                   0            0xce  (206)
 .ndata                       0x8ce                   0             0x6  (6)
 .nbss                        0x8d4                   0             0x2  (2)
 
                         Total data memory used (bytes):           0xd6  (214) 10%
+=======
+.nbss                        0x800                   0            0xe6  (230)
+.ndata                       0x8e6                   0            0x10  (16)
+.nbss                        0x8f6                   0             0x2  (2)
+
+                        Total data memory used (bytes):           0xf8  (248) 12%
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 
 Dynamic Memory Usage
@@ -171,9 +281,15 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
+<<<<<<< HEAD
 stack                        0x8d6                               0x72a  (1834)
 
                         Maximum dynamic memory (bytes):          0x72a  (1834)
+=======
+stack                        0x8f8                               0x708  (1800)
+
+                        Maximum dynamic memory (bytes):          0x708  (1800)
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 
 External Symbols in Data Memory (by address):
@@ -199,9 +315,26 @@ External Symbols in Data Memory (by address):
                     0x0872                  _str_aux
                     0x089a                  _DatoRecibido
                     0x08cc                  _IndiceBluetooth
+<<<<<<< HEAD
                     0x08ce                  _KP
                     0x08d0                  _KD
                     0x08d2                  _errorAnt
+=======
+                    0x08ce                  _lastTime
+                    0x08d2                  _Input
+                    0x08d6                  _Output
+                    0x08da                  _Setpoint
+                    0x08de                  _ITerm
+                    0x08e2                  _lastInput
+                    0x08e6                  _chanel1
+                    0x08e8                  _chanel2
+                    0x08ea                  _chanel3
+                    0x08ec                  _chanel4
+                    0x08ee                  _chanel5
+                    0x08f0                  _KP
+                    0x08f2                  _KD
+                    0x08f4                  _errorAnt
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 External Symbols in Data Memory (by name):
 
@@ -212,20 +345,41 @@ External Symbols in Data Memory (by name):
                     0x081e                  _GyroX
                     0x0820                  _GyroY
                     0x0822                  _GyroZ
+                    0x08de                  _ITerm
                     0x08cc                  _IndiceBluetooth
+<<<<<<< HEAD
                     0x08d0                  _KD
                     0x08ce                  _KP
                     0x0800                  _LSD
+=======
+                    0x08d2                  _Input
+                    0x08f2                  _KD
+                    0x08f0                  _KP
+                    0x0800                  _LSD
+                    0x08d6                  _Output
+                    0x08da                  _Setpoint
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
                     0x0824                  _Temp
                     0x0826                  _accXangle
                     0x082a                  _accYangle
+                    0x08e6                  _chanel1
+                    0x08e8                  _chanel2
+                    0x08ea                  _chanel3
+                    0x08ec                  _chanel4
+                    0x08ee                  _chanel5
                     0x083a                  _compAngleX
                     0x083e                  _compAngleY
+<<<<<<< HEAD
                     0x08d2                  _errorAnt
+=======
+                    0x08f4                  _errorAnt
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
                     0x0832                  _gyroXangle
                     0x0836                  _gyroYangle
                     0x0842                  _kalAngleX
                     0x0846                  _kalAngleY
+                    0x08e2                  _lastInput
+                    0x08ce                  _lastTime
                     0x0872                  _str_aux
                     0x084a                  _str_blue
                     0x082e                  _temp
@@ -233,6 +387,7 @@ External Symbols in Data Memory (by name):
 External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
+<<<<<<< HEAD
                   0x000126                  __psv_init
                   0x000136                  __data_init_standard
                   0x000136                  __data_init
@@ -346,10 +501,130 @@ External Symbols in Program Memory (by address):
                   0x001e0a                  __T3Interrupt
                   0x001e12                  _Pid_Posicion
                   0x001e5e                  _Delay_Nop
+=======
+                  0x000122                  __psv_init
+                  0x000132                  __data_init
+                  0x000132                  __data_init_standard
+                  0x000190                  __T5Interrupt
+                  0x000198                  __DefaultInterrupt
+                  0x00019c                  _IdleI2C
+                  0x0001b6                  _NotAckI2C
+                  0x0001bc                  _StartI2C
+                  0x0001c0                  _StopI2C
+                  0x0001c4                  ___subsf3
+                  0x0001c6                  ___addsf3
+                  0x000280                  _atan2f
+                  0x0002ba                  _atanf
+                  0x000384                  ___divsf3
+                  0x000408                  ___divsi3
+                  0x000426                  ___ltsf2
+                  0x000426                  ___lesf2
+                  0x000426                  ___eqsf2
+                  0x00042a                  ___gesf2
+                  0x00042a                  ___gtsf2
+                  0x00042e                  ___fixsfsi
+                  0x000470                  ___floatsisf
+                  0x000476                  ___floatunsisf
+                  0x00047a                  __fpack
+                  0x0004c6                  __funpack
+                  0x0004f0                  __funpack2
+                  0x000500                  __fPropagateNaN
+                  0x000512                  __fbopExit
+                  0x00051a                  __fbopReturnNaN
+                  0x000520                  ___modsi3
+                  0x00053e                  ___mulsf3
+                  0x0005a6                  ___udivsi3
+                  0x0005c6                  ___umodsi3
+                  0x0005cc                  __fcompare
+                  0x000602                  ___floatdisf
+                  0x000622                  ___floatundisf
+                  0x000680                  _utoa
+                  0x0006b4                  _itoa
+                  0x0006d2                  _memcpy
+                  0x0006e2                  _strcpy
+                  0x0006ee                  _strlen
+                  0x0006fc                  _strncmp
+                  0x0008fa                  _Prueba2_PWM
+                  0x000910                  _PWM_prueba
+                  0x00099a                  _Prueba_PWM_
+                  0x0009c6                  _Prueba_Bluetooth_2
+                  0x0009e2                  _Prueba_Bluetooth
+                  0x000ab0                  _Prueba_I2C
+                  0x000b22                  _my_ftoa
+                  0x000d22                  _my_itoa
+                  0x000da8                  _reverse
+                  0x000df2                  _prueba_who_i_am
+                  0x000e54                  _acelerometro
+                  0x000ec2                  _acelerometro_plot
+                  0x000f0c                  _prueba_envio
+                  0x000f28                  _prueba_pwm
+                  0x000f4e                  _Init_Hw
+                  0x000fb4                  _Init_I2C
+                  0x001006                  _Init_PWM
+                  0x0010d8                  _Init_Bluetooh
+                  0x001120                  _LED_ALL_ON
+                  0x00112a                  _LED_ALL_OFF
+                  0x001134                  _clockSwitch
+                  0x00122c                  _Init_Pll
+                  0x00124e                  _EnviarCR
+                  0x001274                  _enviar_datos_NOCR
+                  0x0012aa                  _enviar_datos
+                  0x0012bc                  _enviar_Udatos_NOCR
+                  0x0012f2                  _enviar_Udatos
+                  0x001304                  _EnviarSensores
+                  0x00134a                  _enviar_valor
+                  0x001370                  _enviar_valor_NOCR
+                  0x001396                  _enviar_mensaje
+                  0x0013a8                  __U2RXInterrupt
+                  0x0014d6                  _ProcesarCadena
+                  0x001526                  _get_calibrado_acelerometro
+                  0x00166a                  _ComplementaryFilter
+                  0x001792                  _my_Write_I2C
+                  0x0017aa                  _InitTimer5
+                  0x0017c4                  _my_StartI2C
+                  0x0017f6                  _my_RestartI2C
+                  0x001828                  _my_StopI2C
+                  0x00185a                  _my_WriteI2C
+                  0x001892                  _my_IdleI2C
+                  0x0018c4                  _my_ACKStatus
+                  0x0018d0                  _my_NotAckI2C
+                  0x0018e8                  _my_AckI2C
+                  0x0018fe                  _my_getI2C
+                  0x001912                  _my_masterreceiveI2C
+                  0x00192a                  _my_getsI2C
+                  0x00196c                  _ReadAddress
+                  0x001994                  _WriteAddress
+                  0x0019b4                  _set_inicial
+                  0x0019d2                  _get_ax
+                  0x0019f2                  _get_ay
+                  0x001a12                  _get_az
+                  0x001a32                  _get_gx
+                  0x001a52                  _get_gy
+                  0x001a72                  _get_gz
+                  0x001a92                  _get_temp
+                  0x001ab2                  _get_who_I_AM
+                  0x001abc                  _plot1
+                  0x001ada                  _plot2
+                  0x001afe                  _plot3
+                  0x001b28                  _plot4
+                  0x001b58                  _get_acelerometro
+                  0x001b8e                  _Pid_Posicion
+                  0x001bba                  _PID
+                  0x001ce0                  _main
+                  0x001d76                  _Delay1msT1
+                  0x001db4                  __T1Interrupt
+                  0x001dd2                  _DelayXmsT1
+                  0x001de6                  _SetupT3For2_3msPID
+                  0x001e0c                  _StartPID
+                  0x001e14                  _StopPID
+                  0x001e1c                  __T3Interrupt
+                  0x001e56                  _Delay_Nop
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
                   0xf8000a                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
+<<<<<<< HEAD
                   0x0010f6                  _ComplementaryFilter
                   0x001d64                  _Delay1msT1
                   0x001dc0                  _DelayXmsT1
@@ -465,6 +740,127 @@ External Symbols in Program Memory (by name):
                   0x0006ec                  _strlen
                   0x0006fa                  _strncmp
                   0x000682                  _utoa
+=======
+                  0x00166a                  _ComplementaryFilter
+                  0x001d76                  _Delay1msT1
+                  0x001dd2                  _DelayXmsT1
+                  0x001e56                  _Delay_Nop
+                  0x00124e                  _EnviarCR
+                  0x001304                  _EnviarSensores
+                  0x00019c                  _IdleI2C
+                  0x0017aa                  _InitTimer5
+                  0x0010d8                  _Init_Bluetooh
+                  0x000f4e                  _Init_Hw
+                  0x000fb4                  _Init_I2C
+                  0x001006                  _Init_PWM
+                  0x00122c                  _Init_Pll
+                  0x00112a                  _LED_ALL_OFF
+                  0x001120                  _LED_ALL_ON
+                  0x0001b6                  _NotAckI2C
+                  0x001bba                  _PID
+                  0x000910                  _PWM_prueba
+                  0x001b8e                  _Pid_Posicion
+                  0x0014d6                  _ProcesarCadena
+                  0x0008fa                  _Prueba2_PWM
+                  0x0009e2                  _Prueba_Bluetooth
+                  0x0009c6                  _Prueba_Bluetooth_2
+                  0x000ab0                  _Prueba_I2C
+                  0x00099a                  _Prueba_PWM_
+                  0x00196c                  _ReadAddress
+                  0x001de6                  _SetupT3For2_3msPID
+                  0x0001bc                  _StartI2C
+                  0x001e0c                  _StartPID
+                  0x0001c0                  _StopI2C
+                  0x001e14                  _StopPID
+                  0x001994                  _WriteAddress
+                  0x000198                  __DefaultInterrupt
+                  0xf8000a                  __FGS.sec
+                  0x001db4                  __T1Interrupt
+                  0x001e1c                  __T3Interrupt
+                  0x000190                  __T5Interrupt
+                  0x0013a8                  __U2RXInterrupt
+                  0x0001c6                  ___addsf3
+                  0x000384                  ___divsf3
+                  0x000408                  ___divsi3
+                  0x000426                  ___eqsf2
+                  0x00042e                  ___fixsfsi
+                  0x000602                  ___floatdisf
+                  0x000470                  ___floatsisf
+                  0x000622                  ___floatundisf
+                  0x000476                  ___floatunsisf
+                  0x00042a                  ___gesf2
+                  0x00042a                  ___gtsf2
+                  0x000426                  ___lesf2
+                  0x000426                  ___ltsf2
+                  0x000520                  ___modsi3
+                  0x00053e                  ___mulsf3
+                  0x0001c4                  ___subsf3
+                  0x0005a6                  ___udivsi3
+                  0x0005c6                  ___umodsi3
+                  0x000132                  __data_init
+                  0x000132                  __data_init_standard
+                  0x000500                  __fPropagateNaN
+                  0x000512                  __fbopExit
+                  0x00051a                  __fbopReturnNaN
+                  0x0005cc                  __fcompare
+                  0x00047a                  __fpack
+                  0x0004c6                  __funpack
+                  0x0004f0                  __funpack2
+                  0x000122                  __psv_init
+                  0x000100                  __resetPRI
+                  0x000e54                  _acelerometro
+                  0x000ec2                  _acelerometro_plot
+                  0x000280                  _atan2f
+                  0x0002ba                  _atanf
+                  0x001134                  _clockSwitch
+                  0x0012f2                  _enviar_Udatos
+                  0x0012bc                  _enviar_Udatos_NOCR
+                  0x0012aa                  _enviar_datos
+                  0x001274                  _enviar_datos_NOCR
+                  0x001396                  _enviar_mensaje
+                  0x00134a                  _enviar_valor
+                  0x001370                  _enviar_valor_NOCR
+                  0x001b58                  _get_acelerometro
+                  0x0019d2                  _get_ax
+                  0x0019f2                  _get_ay
+                  0x001a12                  _get_az
+                  0x001526                  _get_calibrado_acelerometro
+                  0x001a32                  _get_gx
+                  0x001a52                  _get_gy
+                  0x001a72                  _get_gz
+                  0x001a92                  _get_temp
+                  0x001ab2                  _get_who_I_AM
+                  0x0006b4                  _itoa
+                  0x001ce0                  _main
+                  0x0006d2                  _memcpy
+                  0x0018c4                  _my_ACKStatus
+                  0x0018e8                  _my_AckI2C
+                  0x001892                  _my_IdleI2C
+                  0x0018d0                  _my_NotAckI2C
+                  0x0017f6                  _my_RestartI2C
+                  0x0017c4                  _my_StartI2C
+                  0x001828                  _my_StopI2C
+                  0x00185a                  _my_WriteI2C
+                  0x001792                  _my_Write_I2C
+                  0x000b22                  _my_ftoa
+                  0x0018fe                  _my_getI2C
+                  0x00192a                  _my_getsI2C
+                  0x000d22                  _my_itoa
+                  0x001912                  _my_masterreceiveI2C
+                  0x001abc                  _plot1
+                  0x001ada                  _plot2
+                  0x001afe                  _plot3
+                  0x001b28                  _plot4
+                  0x000f0c                  _prueba_envio
+                  0x000f28                  _prueba_pwm
+                  0x000df2                  _prueba_who_i_am
+                  0x000da8                  _reverse
+                  0x0019b4                  _set_inicial
+                  0x0006e2                  _strcpy
+                  0x0006ee                  _strlen
+                  0x0006fc                  _strncmp
+                  0x000680                  _utoa
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 Memory Configuration
 
@@ -504,7 +900,11 @@ LOAD build/default/production/CA_calibrado_y_filtros.o
 LOAD build/default/production/CB_Timer5.o
 LOAD build/default/production/CA_funciones_control.o
                     0x0001                  __MPLAB_BUILD = 0x1
+<<<<<<< HEAD
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a
+=======
+LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
                     0x8005c0                  __FUID0 = 0x8005c0
                     0x8005c2                  __FUID1 = 0x8005c2
                     0x8005c4                  __FUID2 = 0x8005c4
@@ -531,6 +931,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
+<<<<<<< HEAD
 .text             0x000100        0x61c
  *(.init)
  .init            0x000100         0x36 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
@@ -540,6 +941,17 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp
  .init            0x000136         0x5e c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
                   0x000136                  __data_init_standard
                   0x000136                  __data_init
+=======
+.text             0x000100        0x622
+ *(.init)
+ .init            0x000100         0x32 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                  0x000100                  __resetPRI
+                  0x000100                  __reset
+                  0x000122                  __psv_init
+ .init            0x000132         0x5e c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                  0x000132                  __data_init_standard
+                  0x000132                  __data_init
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
  *(.user_init)
  *(.handle)
  *(.isr*)
@@ -551,6 +963,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp
  *(.libm)
  *(.libdsp)
  *(.lib*)
+<<<<<<< HEAD
  .libperi         0x0001a0         0x1c c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(IdleI2C.o)
                   0x0001a0                  _IdleI2C
  .libperi         0x0001bc          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(NotAckI2C.o)
@@ -633,6 +1046,93 @@ LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC30F\libp
  .libc.strncmp.strncmp
                   0x0006fa         0x22 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a(strncmp.eo)
                   0x0006fa                  _strncmp
+=======
+ .libperi         0x00019c         0x1a c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(IdleI2C.o)
+                  0x00019c                  _IdleI2C
+ .libperi         0x0001b6          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(NotAckI2C.o)
+                  0x0001b6                  _NotAckI2C
+ .libperi         0x0001bc          0x4 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(StartI2C.o)
+                  0x0001bc                  _StartI2C
+ .libperi         0x0001c0          0x4 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(StopI2C.o)
+                  0x0001c0                  _StopI2C
+ .libm.subsf3     0x0001c4         0xbc c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(addsf3.eo)
+                  0x0001c4                  ___subsf3
+                  0x0001c6                  ___addsf3
+ .libm.atanf      0x000280         0x3a c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atan2f.eo)
+                  0x000280                  _atan2f
+ .libm.atanf      0x0002ba         0xca c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atanf.eo)
+                  0x0002ba                  _atanf
+ .libm.divfs3     0x000384         0x84 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsf3.eo)
+                  0x000384                  ___divsf3
+ .libm.divsi3     0x000408         0x1e c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsi3.eo)
+                  0x000408                  ___divsi3
+ .libm.eqsf2      0x000426          0x4 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(feqltle.eo)
+                  0x000426                  ___eqsf2
+                  0x000426                  ___ltsf2
+                  0x000426                  ___lesf2
+ .libm.gtsf2      0x00042a          0x4 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fgtge.eo)
+                  0x00042a                  ___gesf2
+                  0x00042a                  ___gtsf2
+ .libm.fixsfsi    0x00042e         0x42 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
+                  0x00042e                  _(float, int, long long, short, float, short, int)
+ .libm.floatsisf
+                  0x000470          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+                  0x000470                  ___floatsisf
+ .libm.floatunsisf
+                  0x000476          0x4 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                  0x000476                  ___floatunsisf
+ .libm.fpack      0x00047a         0x4c c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x00047a                  __fpack
+ .libm.funpack    0x0004c6         0x2a c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x0004c6                  __funpack
+ .libm.funpack2
+                  0x0004f0         0x10 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x0004f0                  __funpack2
+ .libm.fPropagateNaN
+                  0x000500         0x12 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x000500                  __fPropagateNaN
+ .libm.fbobExit
+                  0x000512          0x8 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x000512                  __fbopExit
+ .libm.fbopReturnNaN
+                  0x00051a          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x00051a                  __fbopReturnNaN
+ .libm.modsi3     0x000520         0x1e c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(modsi3.eo)
+                  0x000520                  ___modsi3
+ .libm.mulsf3     0x00053e         0x68 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                  0x00053e                  ___mulsf3
+ .libm.udivsi3    0x0005a6         0x20 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(udivsi3.eo)
+                  0x0005a6                  ___udivsi3
+ .libm.umodsi3    0x0005c6          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(umodsi3.eo)
+                  0x0005c6                  ___umodsi3
+ .libm.fcompare
+                  0x0005cc         0x36 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fcompare.eo)
+                  0x0005cc                  __fcompare
+ .libm.floatdisf
+                  0x000602         0x20 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
+                  0x000602                  ___floatdisf
+ .libm.floatundisf
+                  0x000622         0x5e c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x000622                  ___floatundisf
+ .libc.utoa.utoa
+                  0x000680         0x34 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(itoa.eo)
+                  0x000680                  _utoa
+ .libc.itoa.itoa
+                  0x0006b4         0x1e c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(itoa.eo)
+                  0x0006b4                  _itoa
+ .libc.memcpy.memcpy
+                  0x0006d2         0x10 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(memcpy.eo)
+                  0x0006d2                  _memcpy
+ .libc.strcpy.strcpy
+                  0x0006e2          0xc c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strcpy.eo)
+                  0x0006e2                  _strcpy
+ .libc.strlen.strlen
+                  0x0006ee          0xe c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strlen.eo)
+                  0x0006ee                  _strlen
+ .libc.strncmp.strncmp
+                  0x0006fc         0x26 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strncmp.eo)
+                  0x0006fc                  _strncmp
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 usercode
  *(usercode)
@@ -685,6 +1185,7 @@ userdata
 .comment
  *(.comment)
 
+<<<<<<< HEAD
 .debug_info       0x000000       0x53aa
  *(.debug_info)
  .debug_info      0x000000        0x601 build/default/production/CB_Timer3.o
@@ -717,10 +1218,45 @@ userdata
  .debug_abbrev    0x000a7b         0x9a build/default/production/CA_funciones_control.o
 
 .debug_line       0x000000       0x2210
+=======
+.debug_info       0x000000       0x5574
+ *(.debug_info)
+ .debug_info      0x000000        0x5d0 build/default/production/CB_Timer3.o
+ .debug_info      0x0005d0        0x5e3 build/default/production/CB_Timer1.o
+ .debug_info      0x000bb3        0xa3c build/default/production/CB_I2C.o
+ .debug_info      0x0015ef        0x7f9 build/default/production/CB_Bluetooth.o
+ .debug_info      0x001de8       0x16b9 build/default/production/CB_Inicializaciones.o
+ .debug_info      0x0034a1         0xdd build/default/production/CB_Timer2.o
+ .debug_info      0x00357e        0x71a build/default/production/main.o
+ .debug_info      0x003c98        0xafe build/default/production/Pruebas.o
+ .debug_info      0x004796        0x4fa build/default/production/CA_SetGetMPU6050.o
+ .debug_info      0x004c90        0x36f build/default/production/CA_calibrado_y_filtros.o
+ .debug_info      0x004fff        0x21f build/default/production/CB_Timer5.o
+ .debug_info      0x00521e        0x356 build/default/production/CA_funciones_control.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev     0x000000        0xc53
+ *(.debug_abbrev)
+ .debug_abbrev    0x000000        0x133 build/default/production/CB_Timer3.o
+ .debug_abbrev    0x000133        0x120 build/default/production/CB_Timer1.o
+ .debug_abbrev    0x000253        0x159 build/default/production/CB_I2C.o
+ .debug_abbrev    0x0003ac        0x18a build/default/production/CB_Bluetooth.o
+ .debug_abbrev    0x000536        0x1c3 build/default/production/CB_Inicializaciones.o
+ .debug_abbrev    0x0006f9         0x43 build/default/production/CB_Timer2.o
+ .debug_abbrev    0x00073c         0xeb build/default/production/main.o
+ .debug_abbrev    0x000827        0x1c3 build/default/production/Pruebas.o
+ .debug_abbrev    0x0009ea         0xc3 build/default/production/CA_SetGetMPU6050.o
+ .debug_abbrev    0x000aad         0x5d build/default/production/CA_calibrado_y_filtros.o
+ .debug_abbrev    0x000b0a         0x7d build/default/production/CB_Timer5.o
+ .debug_abbrev    0x000b87         0xcc build/default/production/CA_funciones_control.o
+
+.debug_line       0x000000       0x22ee
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
  *(.debug_line)
  .debug_line      0x000000        0x14e build/default/production/CB_Timer3.o
  .debug_line      0x00014e        0x144 build/default/production/CB_Timer1.o
  .debug_line      0x000292        0x4fb build/default/production/CB_I2C.o
+<<<<<<< HEAD
  .debug_line      0x00078d        0x38a build/default/production/CB_Bluetooth.o
  .debug_line      0x000b17        0x575 build/default/production/CB_Inicializaciones.o
  .debug_line      0x00108c         0x6d build/default/production/CB_Timer2.o
@@ -732,10 +1268,24 @@ userdata
  .debug_line      0x002198         0x78 build/default/production/CA_funciones_control.o
 
 .debug_frame      0x000000        0x590
+=======
+ .debug_line      0x00078d        0x3ce build/default/production/CB_Bluetooth.o
+ .debug_line      0x000b5b        0x575 build/default/production/CB_Inicializaciones.o
+ .debug_line      0x0010d0         0x6d build/default/production/CB_Timer2.o
+ .debug_line      0x00113d        0x17d build/default/production/main.o
+ .debug_line      0x0012ba        0x918 build/default/production/Pruebas.o
+ .debug_line      0x001bd2        0x3e6 build/default/production/CA_SetGetMPU6050.o
+ .debug_line      0x001fb8        0x174 build/default/production/CA_calibrado_y_filtros.o
+ .debug_line      0x00212c         0xb0 build/default/production/CB_Timer5.o
+ .debug_line      0x0021dc        0x112 build/default/production/CA_funciones_control.o
+
+.debug_frame      0x000000        0x5cc
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
  *(.debug_frame)
  .debug_frame     0x000000         0x54 build/default/production/CB_Timer3.o
  .debug_frame     0x000054         0x44 build/default/production/CB_Timer1.o
  .debug_frame     0x000098        0x104 build/default/production/CB_I2C.o
+<<<<<<< HEAD
  .debug_frame     0x00019c         0xb4 build/default/production/CB_Bluetooth.o
  .debug_frame     0x000250         0x94 build/default/production/CB_Inicializaciones.o
  .debug_frame     0x0002e4         0x24 build/default/production/CB_Timer2.o
@@ -747,10 +1297,24 @@ userdata
  .debug_frame     0x00056c         0x24 build/default/production/CA_funciones_control.o
 
 .debug_str        0x000000        0x1ed
+=======
+ .debug_frame     0x00019c         0xc4 build/default/production/CB_Bluetooth.o
+ .debug_frame     0x000260         0x94 build/default/production/CB_Inicializaciones.o
+ .debug_frame     0x0002f4         0x24 build/default/production/CB_Timer2.o
+ .debug_frame     0x000318         0x40 build/default/production/main.o
+ .debug_frame     0x000358         0xf4 build/default/production/Pruebas.o
+ .debug_frame     0x00044c         0xf4 build/default/production/CA_SetGetMPU6050.o
+ .debug_frame     0x000540         0x34 build/default/production/CA_calibrado_y_filtros.o
+ .debug_frame     0x000574         0x24 build/default/production/CB_Timer5.o
+ .debug_frame     0x000598         0x34 build/default/production/CA_funciones_control.o
+
+.debug_str        0x000000        0x1fd
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
  *(.debug_str)
  .debug_str       0x000000         0x1c build/default/production/CB_Timer3.o
  .debug_str       0x00001c         0x1c build/default/production/CB_Timer1.o
  .debug_str       0x000038         0x33 build/default/production/CB_I2C.o
+<<<<<<< HEAD
  .debug_str       0x00006b         0x3c build/default/production/CB_Bluetooth.o
  .debug_str       0x0000a7         0xac build/default/production/CB_Inicializaciones.o
  .debug_str       0x000153         0x12 build/default/production/main.o
@@ -758,6 +1322,15 @@ userdata
  .debug_str       0x0001a9         0x32 build/default/production/CA_SetGetMPU6050.o
  .debug_str       0x0001db          0x9 build/default/production/CB_Timer5.o
  .debug_str       0x0001e4          0x9 build/default/production/CA_funciones_control.o
+=======
+ .debug_str       0x00006b         0x43 build/default/production/CB_Bluetooth.o
+ .debug_str       0x0000ae         0xac build/default/production/CB_Inicializaciones.o
+ .debug_str       0x00015a         0x1b build/default/production/main.o
+ .debug_str       0x000175         0x44 build/default/production/Pruebas.o
+ .debug_str       0x0001b9         0x32 build/default/production/CA_SetGetMPU6050.o
+ .debug_str       0x0001eb          0x9 build/default/production/CB_Timer5.o
+ .debug_str       0x0001f4          0x9 build/default/production/CA_funciones_control.o
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 .debug_loc
  *(.debug_loc)
@@ -766,7 +1339,11 @@ userdata
  *(.debug_macinfo)
 
 .debug_pubnames
+<<<<<<< HEAD
                   0x000000        0x6c6
+=======
+                  0x000000        0x767
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x53 build/default/production/CB_Timer3.o
@@ -775,14 +1352,17 @@ userdata
  .debug_pubnames
                   0x000094        0x108 build/default/production/CB_I2C.o
  .debug_pubnames
-                  0x00019c         0xf1 build/default/production/CB_Bluetooth.o
+                  0x00019c        0x107 build/default/production/CB_Bluetooth.o
  .debug_pubnames
-                  0x00028d         0x86 build/default/production/CB_Inicializaciones.o
+                  0x0002a3         0x86 build/default/production/CB_Inicializaciones.o
  .debug_pubnames
-                  0x000313         0x20 build/default/production/CB_Timer2.o
+                  0x000329         0x20 build/default/production/CB_Timer2.o
  .debug_pubnames
-                  0x000333        0x12f build/default/production/main.o
+                  0x000349        0x16b build/default/production/main.o
  .debug_pubnames
+                  0x0004b4         0xfb build/default/production/Pruebas.o
+ .debug_pubnames
+<<<<<<< HEAD
                   0x000462         0xfb build/default/production/Pruebas.o
  .debug_pubnames
                   0x00055d         0xbf build/default/production/CA_SetGetMPU6050.o
@@ -792,6 +1372,15 @@ userdata
                   0x000665         0x23 build/default/production/CB_Timer5.o
  .debug_pubnames
                   0x000688         0x3e build/default/production/CA_funciones_control.o
+=======
+                  0x0005af         0xbf build/default/production/CA_SetGetMPU6050.o
+ .debug_pubnames
+                  0x00066e         0x49 build/default/production/CA_calibrado_y_filtros.o
+ .debug_pubnames
+                  0x0006b7         0x23 build/default/production/CB_Timer5.o
+ .debug_pubnames
+                  0x0006da         0x8d build/default/production/CA_funciones_control.o
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 
 .debug_ranges
  *(.debug_ranges)
@@ -824,6 +1413,7 @@ userdata
                   0x000108         0x18 build/default/production/CA_funciones_control.o
 
 .ivt              0x000004         0x7c
+<<<<<<< HEAD
                   0x000004          0x4 LONG 0x19c DEFINED (__ReservedTrap0)?ABSOLUTE (__ReservedTrap0):ABSOLUTE (__DefaultInterrupt)
                   0x000006          0x4 LONG 0x19c DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
                   0x000008          0x4 LONG 0x19c DEFINED (__AddressError)?ABSOLUTE (__AddressError):ABSOLUTE (__DefaultInterrupt)
@@ -950,6 +1540,134 @@ userdata
                   0x0000fa          0x4 LONG 0x19c DEFINED (__AltInterrupt51)?ABSOLUTE (__AltInterrupt51):DEFINED (__Interrupt51)?ABSOLUTE (__Interrupt51):ABSOLUTE (__DefaultInterrupt)
                   0x0000fc          0x4 LONG 0x19c DEFINED (__AltInterrupt52)?ABSOLUTE (__AltInterrupt52):DEFINED (__Interrupt52)?ABSOLUTE (__Interrupt52):ABSOLUTE (__DefaultInterrupt)
                   0x0000fe          0x4 LONG 0x19c DEFINED (__AltInterrupt53)?ABSOLUTE (__AltInterrupt53):DEFINED (__Interrupt53)?ABSOLUTE (__Interrupt53):ABSOLUTE (__DefaultInterrupt)
+=======
+                  0x000004          0x4 LONG 0x198 DEFINED (__ReservedTrap0)?ABSOLUTE (__ReservedTrap0):ABSOLUTE (__DefaultInterrupt)
+                  0x000006          0x4 LONG 0x198 DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
+                  0x000008          0x4 LONG 0x198 DEFINED (__AddressError)?ABSOLUTE (__AddressError):ABSOLUTE (__DefaultInterrupt)
+                  0x00000a          0x4 LONG 0x198 DEFINED (__StackError)?ABSOLUTE (__StackError):ABSOLUTE (__DefaultInterrupt)
+                  0x00000c          0x4 LONG 0x198 DEFINED (__MathError)?ABSOLUTE (__MathError):ABSOLUTE (__DefaultInterrupt)
+                  0x00000e          0x4 LONG 0x198 DEFINED (__ReservedTrap5)?ABSOLUTE (__ReservedTrap5):ABSOLUTE (__DefaultInterrupt)
+                  0x000010          0x4 LONG 0x198 DEFINED (__ReservedTrap6)?ABSOLUTE (__ReservedTrap6):ABSOLUTE (__DefaultInterrupt)
+                  0x000012          0x4 LONG 0x198 DEFINED (__ReservedTrap7)?ABSOLUTE (__ReservedTrap7):ABSOLUTE (__DefaultInterrupt)
+                  0x000014          0x4 LONG 0x198 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000016          0x4 LONG 0x198 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000018          0x4 LONG 0x198 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x1db4 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001c          0x4 LONG 0x198 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001e          0x4 LONG 0x198 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000020          0x4 LONG 0x198 DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000022          0x4 LONG 0x1e1c DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000024          0x4 LONG 0x198 DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000026          0x4 LONG 0x198 DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000028          0x4 LONG 0x198 DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00002a          0x4 LONG 0x198 DEFINED (__ADCInterrupt)?ABSOLUTE (__ADCInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00002c          0x4 LONG 0x198 DEFINED (__NVMInterrupt)?ABSOLUTE (__NVMInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00002e          0x4 LONG 0x198 DEFINED (__SI2CInterrupt)?ABSOLUTE (__SI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000030          0x4 LONG 0x198 DEFINED (__MI2CInterrupt)?ABSOLUTE (__MI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000032          0x4 LONG 0x198 DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000034          0x4 LONG 0x198 DEFINED (__INT1Interrupt)?ABSOLUTE (__INT1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000036          0x4 LONG 0x198 DEFINED (__IC7Interrupt)?ABSOLUTE (__IC7Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000038          0x4 LONG 0x198 DEFINED (__IC8Interrupt)?ABSOLUTE (__IC8Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00003a          0x4 LONG 0x198 DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00003c          0x4 LONG 0x198 DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00003e          0x4 LONG 0x198 DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000040          0x4 LONG 0x190 DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000042          0x4 LONG 0x198 DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000044          0x4 LONG 0x13a8 DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000046          0x4 LONG 0x198 DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000048          0x4 LONG 0x198 DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00004a          0x4 LONG 0x198 DEFINED (__C1Interrupt)?ABSOLUTE (__C1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00004c          0x4 LONG 0x198 DEFINED (__IC3Interrupt)?ABSOLUTE (__IC3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00004e          0x4 LONG 0x198 DEFINED (__IC4Interrupt)?ABSOLUTE (__IC4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000050          0x4 LONG 0x198 DEFINED (__IC5Interrupt)?ABSOLUTE (__IC5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000052          0x4 LONG 0x198 DEFINED (__IC6Interrupt)?ABSOLUTE (__IC6Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000054          0x4 LONG 0x198 DEFINED (__OC5Interrupt)?ABSOLUTE (__OC5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000056          0x4 LONG 0x198 DEFINED (__OC6Interrupt)?ABSOLUTE (__OC6Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000058          0x4 LONG 0x198 DEFINED (__OC7Interrupt)?ABSOLUTE (__OC7Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00005a          0x4 LONG 0x198 DEFINED (__OC8Interrupt)?ABSOLUTE (__OC8Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00005c          0x4 LONG 0x198 DEFINED (__INT3Interrupt)?ABSOLUTE (__INT3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00005e          0x4 LONG 0x198 DEFINED (__INT4Interrupt)?ABSOLUTE (__INT4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000060          0x4 LONG 0x198 DEFINED (__C2Interrupt)?ABSOLUTE (__C2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000062          0x4 LONG 0x198 DEFINED (__PWMInterrupt)?ABSOLUTE (__PWMInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000064          0x4 LONG 0x198 DEFINED (__QEIInterrupt)?ABSOLUTE (__QEIInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000066          0x4 LONG 0x198 DEFINED (__DCIInterrupt)?ABSOLUTE (__DCIInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000068          0x4 LONG 0x198 DEFINED (__LVDInterrupt)?ABSOLUTE (__LVDInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00006a          0x4 LONG 0x198 DEFINED (__FLTAInterrupt)?ABSOLUTE (__FLTAInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00006c          0x4 LONG 0x198 DEFINED (__FLTBInterrupt)?ABSOLUTE (__FLTBInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00006e          0x4 LONG 0x198 DEFINED (__Interrupt45)?ABSOLUTE (__Interrupt45):ABSOLUTE (__DefaultInterrupt)
+                  0x000070          0x4 LONG 0x198 DEFINED (__Interrupt46)?ABSOLUTE (__Interrupt46):ABSOLUTE (__DefaultInterrupt)
+                  0x000072          0x4 LONG 0x198 DEFINED (__Interrupt47)?ABSOLUTE (__Interrupt47):ABSOLUTE (__DefaultInterrupt)
+                  0x000074          0x4 LONG 0x198 DEFINED (__Interrupt48)?ABSOLUTE (__Interrupt48):ABSOLUTE (__DefaultInterrupt)
+                  0x000076          0x4 LONG 0x198 DEFINED (__Interrupt49)?ABSOLUTE (__Interrupt49):ABSOLUTE (__DefaultInterrupt)
+                  0x000078          0x4 LONG 0x198 DEFINED (__Interrupt50)?ABSOLUTE (__Interrupt50):ABSOLUTE (__DefaultInterrupt)
+                  0x00007a          0x4 LONG 0x198 DEFINED (__Interrupt51)?ABSOLUTE (__Interrupt51):ABSOLUTE (__DefaultInterrupt)
+                  0x00007c          0x4 LONG 0x198 DEFINED (__Interrupt52)?ABSOLUTE (__Interrupt52):ABSOLUTE (__DefaultInterrupt)
+                  0x00007e          0x4 LONG 0x198 DEFINED (__Interrupt53)?ABSOLUTE (__Interrupt53):ABSOLUTE (__DefaultInterrupt)
+
+.aivt             0x000084         0x7c
+                  0x000084          0x4 LONG 0x198 DEFINED (__AltReservedTrap0)?ABSOLUTE (__AltReservedTrap0):DEFINED (__ReservedTrap0)?ABSOLUTE (__ReservedTrap0):ABSOLUTE (__DefaultInterrupt)
+                  0x000086          0x4 LONG 0x198 DEFINED (__AltOscillatorFail)?ABSOLUTE (__AltOscillatorFail):DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
+                  0x000088          0x4 LONG 0x198 DEFINED (__AltAddressError)?ABSOLUTE (__AltAddressError):DEFINED (__AddressError)?ABSOLUTE (__AddressError):ABSOLUTE (__DefaultInterrupt)
+                  0x00008a          0x4 LONG 0x198 DEFINED (__AltStackError)?ABSOLUTE (__AltStackError):DEFINED (__StackError)?ABSOLUTE (__StackError):ABSOLUTE (__DefaultInterrupt)
+                  0x00008c          0x4 LONG 0x198 DEFINED (__AltMathError)?ABSOLUTE (__AltMathError):DEFINED (__MathError)?ABSOLUTE (__MathError):ABSOLUTE (__DefaultInterrupt)
+                  0x00008e          0x4 LONG 0x198 DEFINED (__AltReservedTrap5)?ABSOLUTE (__AltReservedTrap5):DEFINED (__ReservedTrap5)?ABSOLUTE (__ReservedTrap5):ABSOLUTE (__DefaultInterrupt)
+                  0x000090          0x4 LONG 0x198 DEFINED (__AltReservedTrap6)?ABSOLUTE (__AltReservedTrap6):DEFINED (__ReservedTrap6)?ABSOLUTE (__ReservedTrap6):ABSOLUTE (__DefaultInterrupt)
+                  0x000092          0x4 LONG 0x198 DEFINED (__AltReservedTrap7)?ABSOLUTE (__AltReservedTrap7):DEFINED (__ReservedTrap7)?ABSOLUTE (__ReservedTrap7):ABSOLUTE (__DefaultInterrupt)
+                  0x000094          0x4 LONG 0x198 DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000096          0x4 LONG 0x198 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000098          0x4 LONG 0x198 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00009a          0x4 LONG 0x1db4 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00009c          0x4 LONG 0x198 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00009e          0x4 LONG 0x198 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000a0          0x4 LONG 0x198 DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000a2          0x4 LONG 0x1e1c DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000a4          0x4 LONG 0x198 DEFINED (__AltSPI1Interrupt)?ABSOLUTE (__AltSPI1Interrupt):DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000a6          0x4 LONG 0x198 DEFINED (__AltU1RXInterrupt)?ABSOLUTE (__AltU1RXInterrupt):DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000a8          0x4 LONG 0x198 DEFINED (__AltU1TXInterrupt)?ABSOLUTE (__AltU1TXInterrupt):DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000aa          0x4 LONG 0x198 DEFINED (__AltADCInterrupt)?ABSOLUTE (__AltADCInterrupt):DEFINED (__ADCInterrupt)?ABSOLUTE (__ADCInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ac          0x4 LONG 0x198 DEFINED (__AltNVMInterrupt)?ABSOLUTE (__AltNVMInterrupt):DEFINED (__NVMInterrupt)?ABSOLUTE (__NVMInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ae          0x4 LONG 0x198 DEFINED (__AltSI2CInterrupt)?ABSOLUTE (__AltSI2CInterrupt):DEFINED (__SI2CInterrupt)?ABSOLUTE (__SI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000b0          0x4 LONG 0x198 DEFINED (__AltMI2CInterrupt)?ABSOLUTE (__AltMI2CInterrupt):DEFINED (__MI2CInterrupt)?ABSOLUTE (__MI2CInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000b2          0x4 LONG 0x198 DEFINED (__AltCNInterrupt)?ABSOLUTE (__AltCNInterrupt):DEFINED (__CNInterrupt)?ABSOLUTE (__CNInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000b4          0x4 LONG 0x198 DEFINED (__AltINT1Interrupt)?ABSOLUTE (__AltINT1Interrupt):DEFINED (__INT1Interrupt)?ABSOLUTE (__INT1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000b6          0x4 LONG 0x198 DEFINED (__AltIC7Interrupt)?ABSOLUTE (__AltIC7Interrupt):DEFINED (__IC7Interrupt)?ABSOLUTE (__IC7Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000b8          0x4 LONG 0x198 DEFINED (__AltIC8Interrupt)?ABSOLUTE (__AltIC8Interrupt):DEFINED (__IC8Interrupt)?ABSOLUTE (__IC8Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ba          0x4 LONG 0x198 DEFINED (__AltOC3Interrupt)?ABSOLUTE (__AltOC3Interrupt):DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000bc          0x4 LONG 0x198 DEFINED (__AltOC4Interrupt)?ABSOLUTE (__AltOC4Interrupt):DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000be          0x4 LONG 0x198 DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000c0          0x4 LONG 0x190 DEFINED (__AltT5Interrupt)?ABSOLUTE (__AltT5Interrupt):DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000c2          0x4 LONG 0x198 DEFINED (__AltINT2Interrupt)?ABSOLUTE (__AltINT2Interrupt):DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000c4          0x4 LONG 0x13a8 DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000c6          0x4 LONG 0x198 DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000c8          0x4 LONG 0x198 DEFINED (__AltSPI2Interrupt)?ABSOLUTE (__AltSPI2Interrupt):DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ca          0x4 LONG 0x198 DEFINED (__AltC1Interrupt)?ABSOLUTE (__AltC1Interrupt):DEFINED (__C1Interrupt)?ABSOLUTE (__C1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000cc          0x4 LONG 0x198 DEFINED (__AltIC3Interrupt)?ABSOLUTE (__AltIC3Interrupt):DEFINED (__IC3Interrupt)?ABSOLUTE (__IC3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ce          0x4 LONG 0x198 DEFINED (__AltIC4Interrupt)?ABSOLUTE (__AltIC4Interrupt):DEFINED (__IC4Interrupt)?ABSOLUTE (__IC4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000d0          0x4 LONG 0x198 DEFINED (__AltIC5Interrupt)?ABSOLUTE (__AltIC5Interrupt):DEFINED (__IC5Interrupt)?ABSOLUTE (__IC5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000d2          0x4 LONG 0x198 DEFINED (__AltIC6Interrupt)?ABSOLUTE (__AltIC6Interrupt):DEFINED (__IC6Interrupt)?ABSOLUTE (__IC6Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000d4          0x4 LONG 0x198 DEFINED (__AltOC5Interrupt)?ABSOLUTE (__AltOC5Interrupt):DEFINED (__OC5Interrupt)?ABSOLUTE (__OC5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000d6          0x4 LONG 0x198 DEFINED (__AltOC6Interrupt)?ABSOLUTE (__AltOC6Interrupt):DEFINED (__OC6Interrupt)?ABSOLUTE (__OC6Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000d8          0x4 LONG 0x198 DEFINED (__AltOC7Interrupt)?ABSOLUTE (__AltOC7Interrupt):DEFINED (__OC7Interrupt)?ABSOLUTE (__OC7Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000da          0x4 LONG 0x198 DEFINED (__AltOC8Interrupt)?ABSOLUTE (__AltOC8Interrupt):DEFINED (__OC8Interrupt)?ABSOLUTE (__OC8Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000dc          0x4 LONG 0x198 DEFINED (__AltINT3Interrupt)?ABSOLUTE (__AltINT3Interrupt):DEFINED (__INT3Interrupt)?ABSOLUTE (__INT3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000de          0x4 LONG 0x198 DEFINED (__AltINT4Interrupt)?ABSOLUTE (__AltINT4Interrupt):DEFINED (__INT4Interrupt)?ABSOLUTE (__INT4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000e0          0x4 LONG 0x198 DEFINED (__AltC2Interrupt)?ABSOLUTE (__AltC2Interrupt):DEFINED (__C2Interrupt)?ABSOLUTE (__C2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000e2          0x4 LONG 0x198 DEFINED (__AltPWMInterrupt)?ABSOLUTE (__AltPWMInterrupt):DEFINED (__PWMInterrupt)?ABSOLUTE (__PWMInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000e4          0x4 LONG 0x198 DEFINED (__AltQEIInterrupt)?ABSOLUTE (__AltQEIInterrupt):DEFINED (__QEIInterrupt)?ABSOLUTE (__QEIInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000e6          0x4 LONG 0x198 DEFINED (__AltDCIInterrupt)?ABSOLUTE (__AltDCIInterrupt):DEFINED (__DCIInterrupt)?ABSOLUTE (__DCIInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000e8          0x4 LONG 0x198 DEFINED (__AltLVDInterrupt)?ABSOLUTE (__AltLVDInterrupt):DEFINED (__LVDInterrupt)?ABSOLUTE (__LVDInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ea          0x4 LONG 0x198 DEFINED (__AltFLTAInterrupt)?ABSOLUTE (__AltFLTAInterrupt):DEFINED (__FLTAInterrupt)?ABSOLUTE (__FLTAInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ec          0x4 LONG 0x198 DEFINED (__AltFLTBInterrupt)?ABSOLUTE (__AltFLTBInterrupt):DEFINED (__FLTBInterrupt)?ABSOLUTE (__FLTBInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000ee          0x4 LONG 0x198 DEFINED (__AltInterrupt45)?ABSOLUTE (__AltInterrupt45):DEFINED (__Interrupt45)?ABSOLUTE (__Interrupt45):ABSOLUTE (__DefaultInterrupt)
+                  0x0000f0          0x4 LONG 0x198 DEFINED (__AltInterrupt46)?ABSOLUTE (__AltInterrupt46):DEFINED (__Interrupt46)?ABSOLUTE (__Interrupt46):ABSOLUTE (__DefaultInterrupt)
+                  0x0000f2          0x4 LONG 0x198 DEFINED (__AltInterrupt47)?ABSOLUTE (__AltInterrupt47):DEFINED (__Interrupt47)?ABSOLUTE (__Interrupt47):ABSOLUTE (__DefaultInterrupt)
+                  0x0000f4          0x4 LONG 0x198 DEFINED (__AltInterrupt48)?ABSOLUTE (__AltInterrupt48):DEFINED (__Interrupt48)?ABSOLUTE (__Interrupt48):ABSOLUTE (__DefaultInterrupt)
+                  0x0000f6          0x4 LONG 0x198 DEFINED (__AltInterrupt49)?ABSOLUTE (__AltInterrupt49):DEFINED (__Interrupt49)?ABSOLUTE (__Interrupt49):ABSOLUTE (__DefaultInterrupt)
+                  0x0000f8          0x4 LONG 0x198 DEFINED (__AltInterrupt50)?ABSOLUTE (__AltInterrupt50):DEFINED (__Interrupt50)?ABSOLUTE (__Interrupt50):ABSOLUTE (__DefaultInterrupt)
+                  0x0000fa          0x4 LONG 0x198 DEFINED (__AltInterrupt51)?ABSOLUTE (__AltInterrupt51):DEFINED (__Interrupt51)?ABSOLUTE (__Interrupt51):ABSOLUTE (__DefaultInterrupt)
+                  0x0000fc          0x4 LONG 0x198 DEFINED (__AltInterrupt52)?ABSOLUTE (__AltInterrupt52):DEFINED (__Interrupt52)?ABSOLUTE (__Interrupt52):ABSOLUTE (__DefaultInterrupt)
+                  0x0000fe          0x4 LONG 0x198 DEFINED (__AltInterrupt53)?ABSOLUTE (__AltInterrupt53):DEFINED (__Interrupt53)?ABSOLUTE (__Interrupt53):ABSOLUTE (__DefaultInterrupt)
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1644,10 +2362,16 @@ userdata
                     0x0216                  UART2 = 0x216
                     0x0216                  _UART2 = 0x216
 START GROUP
+<<<<<<< HEAD
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfx-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a
+=======
+LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a
+LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a
+LOAD c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 END GROUP
 OUTPUT(dist/default/production/quad.X.production.elf elf32-pic30)
 LOAD FGS
@@ -1655,7 +2379,11 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
+<<<<<<< HEAD
                   0x000120        0x512
+=======
+                  0x000120        0x52f
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
  .debug_pubtypes
                   0x000120         0x6b build/default/production/CB_Timer3.o
  .debug_pubtypes
@@ -1669,6 +2397,7 @@ LOAD data_init
  .debug_pubtypes
                   0x0004d4         0x12 build/default/production/CB_Timer2.o
  .debug_pubtypes
+<<<<<<< HEAD
                   0x0004e6         0x4c build/default/production/main.o
  .debug_pubtypes
                   0x000532         0xad build/default/production/Pruebas.o
@@ -1769,8 +2498,112 @@ __c30_signature
                   0x00072e          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a(strlen.eo)
  __c30_signature
                   0x000734          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libc-elf.a(strncmp.eo)
+=======
+                  0x0004e6         0x69 build/default/production/main.o
+ .debug_pubtypes
+                  0x00054f         0xad build/default/production/Pruebas.o
+ .debug_pubtypes
+                  0x0005fc         0x12 build/default/production/CA_SetGetMPU6050.o
+ .debug_pubtypes
+                  0x00060e         0x12 build/default/production/CA_calibrado_y_filtros.o
+ .debug_pubtypes
+                  0x000620         0x2f build/default/production/CB_Timer5.o
 
-.nbss               0x0800         0xce
+__c30_signature
+                  0x000650        0x10e
+ __c30_signature
+                  0x000650          0x6 build/default/production/CB_Timer3.o
+ __c30_signature
+                  0x000656          0x6 build/default/production/CB_Timer1.o
+ __c30_signature
+                  0x00065c          0x6 build/default/production/CB_I2C.o
+ __c30_signature
+                  0x000662          0x6 build/default/production/CB_Bluetooth.o
+ __c30_signature
+                  0x000668          0x6 build/default/production/CB_Inicializaciones.o
+ __c30_signature
+                  0x00066e          0x6 build/default/production/CB_Timer2.o
+ __c30_signature
+                  0x000674          0x6 build/default/production/main.o
+ __c30_signature
+                  0x00067a          0x6 build/default/production/Pruebas.o
+ __c30_signature
+                  0x000680          0x6 build/default/production/CA_SetGetMPU6050.o
+ __c30_signature
+                  0x000686          0x6 build/default/production/CA_calibrado_y_filtros.o
+ __c30_signature
+                  0x00068c          0x6 build/default/production/CB_Timer5.o
+ __c30_signature
+                  0x000692          0x6 build/default/production/CA_funciones_control.o
+ __c30_signature
+                  0x000698          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(IdleI2C.o)
+ __c30_signature
+                  0x00069e          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(NotAckI2C.o)
+ __c30_signature
+                  0x0006a4          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(StartI2C.o)
+ __c30_signature
+                  0x0006aa          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib/dsPIC30F\libp30F4013-elf.a(StopI2C.o)
+ __c30_signature
+                  0x0006b0          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+ __c30_signature
+                  0x0006b6          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+ __c30_signature
+                  0x0006bc          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(addsf3.eo)
+ __c30_signature
+                  0x0006c2          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atan2f.eo)
+ __c30_signature
+                  0x0006c8          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(atanf.eo)
+ __c30_signature
+                  0x0006ce          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsf3.eo)
+ __c30_signature
+                  0x0006d4          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(divsi3.eo)
+ __c30_signature
+                  0x0006da          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(errno.eo)
+ __c30_signature
+                  0x0006e0          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(feqltle.eo)
+ __c30_signature
+                  0x0006e6          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fgtge.eo)
+ __c30_signature
+                  0x0006ec          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
+ __c30_signature
+                  0x0006f2          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+ __c30_signature
+                  0x0006f8          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+ __c30_signature
+                  0x0006fe          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fpack.eo)
+ __c30_signature
+                  0x000704          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(funpack.eo)
+ __c30_signature
+                  0x00070a          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+ __c30_signature
+                  0x000710          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(futil.eo)
+ __c30_signature
+                  0x000716          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(modsi3.eo)
+ __c30_signature
+                  0x00071c          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+ __c30_signature
+                  0x000722          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(udivsi3.eo)
+ __c30_signature
+                  0x000728          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(umodsi3.eo)
+ __c30_signature
+                  0x00072e          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(fcompare.eo)
+ __c30_signature
+                  0x000734          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
+ __c30_signature
+                  0x00073a          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+ __c30_signature
+                  0x000740          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(itoa.eo)
+ __c30_signature
+                  0x000746          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(memcpy.eo)
+ __c30_signature
+                  0x00074c          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strcpy.eo)
+ __c30_signature
+                  0x000752          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strlen.eo)
+ __c30_signature
+                  0x000758          0x6 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libc-elf.a(strncmp.eo)
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
+
+.nbss               0x0800         0xe6
  .nbss              0x0800         0x9a build/default/production/main.o
                     0x0800                  _LSD
                     0x0818                  _AccX
@@ -1794,6 +2627,7 @@ __c30_signature
  .nbss              0x089a         0x34 build/default/production/CB_Bluetooth.o
                     0x089a                  _DatoRecibido
                     0x08cc                  _IndiceBluetooth
+<<<<<<< HEAD
 
 .ndata              0x08ce          0x6
  .ndata             0x08ce          0x6 build/default/production/CA_funciones_control.o
@@ -1902,3 +2736,128 @@ __c30_signature
 .text             0x001e5e         0x14
  .text            0x001e5e         0x14 build/default/production/CB_Timer2.o
                   0x001e5e                  _Delay_Nop
+=======
+ .nbss              0x08ce         0x18 build/default/production/CA_funciones_control.o
+                    0x08ce                  _lastTime
+                    0x08d2                  _Input
+                    0x08d6                  _Output
+                    0x08da                  _Setpoint
+                    0x08de                  _ITerm
+                    0x08e2                  _lastInput
+
+.ndata              0x08e6         0x10
+ .ndata             0x08e6          0xa build/default/production/main.o
+                    0x08e6                  _chanel1
+                    0x08e8                  _chanel2
+                    0x08ea                  _chanel3
+                    0x08ec                  _chanel4
+                    0x08ee                  _chanel5
+ .ndata             0x08f0          0x6 build/default/production/CA_funciones_control.o
+                    0x08f0                  _KP
+                    0x08f2                  _KD
+                    0x08f4                  _errorAnt
+
+.nbss               0x08f6          0x2
+ .nbss              0x08f6          0x2 c:/program files (x86)/microchip/xc16/v1.11/bin/bin/../../lib\libm-elf.a(errno.eo)
+                    0x08f6                  _errno
+
+.const              0x8722        0x1d8 load address 0x000722  
+ .const             0x8722         0xb8 build/default/production/Pruebas.o
+ .const             0x87da         0x8a build/default/production/CB_I2C.o
+ .const             0x8864         0x46 build/default/production/CB_Bluetooth.o
+ .const             0x88aa         0x3e build/default/production/CA_funciones_control.o
+ .const             0x88e8         0x12 build/default/production/CA_calibrado_y_filtros.o
+
+.text             0x0008fa       0x152a
+ .text            0x0008fa        0x654 build/default/production/Pruebas.o
+                  0x0008fa                  _Prueba2_PWM
+                  0x000910                  _PWM_prueba
+                  0x00099a                  _Prueba_PWM_
+                  0x0009c6                  _Prueba_Bluetooth_2
+                  0x0009e2                  _Prueba_Bluetooth
+                  0x000ab0                  _Prueba_I2C
+                  0x000b22                  _my_ftoa
+                  0x000d22                  _my_itoa
+                  0x000da8                  _reverse
+                  0x000df2                  _prueba_who_i_am
+                  0x000e54                  _acelerometro
+                  0x000ec2                  _acelerometro_plot
+                  0x000f0c                  _prueba_envio
+                  0x000f28                  _prueba_pwm
+ .text            0x000f4e        0x300 build/default/production/CB_Inicializaciones.o
+                  0x000f4e                  _Init_Hw
+                  0x000fb4                  _Init_I2C
+                  0x001006                  _Init_PWM
+                  0x0010d8                  _Init_Bluetooh
+                  0x001120                  _LED_ALL_ON
+                  0x00112a                  _LED_ALL_OFF
+                  0x001134                  _clockSwitch
+                  0x00122c                  _Init_Pll
+ .text            0x00124e        0x2d8 build/default/production/CB_Bluetooth.o
+                  0x00124e                  _EnviarCR
+                  0x001274                  _enviar_datos_NOCR
+                  0x0012aa                  _enviar_datos
+                  0x0012bc                  _enviar_Udatos_NOCR
+                  0x0012f2                  _enviar_Udatos
+                  0x001304                  _EnviarSensores
+                  0x00134a                  _enviar_valor
+                  0x001370                  _enviar_valor_NOCR
+                  0x001396                  _enviar_mensaje
+                  0x0013a8                  __U2RXInterrupt
+                  0x0014d6                  _ProcesarCadena
+ .text            0x001526        0x26c build/default/production/CA_calibrado_y_filtros.o
+                  0x001526                  _get_calibrado_acelerometro
+                  0x00166a                  _ComplementaryFilter
+ .text            0x001792        0x222 build/default/production/CB_I2C.o
+                  0x001792                  _my_Write_I2C
+                  0x0017aa                  _InitTimer5
+                  0x0017c4                  _my_StartI2C
+                  0x0017f6                  _my_RestartI2C
+                  0x001828                  _my_StopI2C
+                  0x00185a                  _my_WriteI2C
+                  0x001892                  _my_IdleI2C
+                  0x0018c4                  _my_ACKStatus
+                  0x0018d0                  _my_NotAckI2C
+                  0x0018e8                  _my_AckI2C
+                  0x0018fe                  _my_getI2C
+                  0x001912                  _my_masterreceiveI2C
+                  0x00192a                  _my_getsI2C
+                  0x00196c                  _ReadAddress
+                  0x001994                  _WriteAddress
+ .text            0x0019b4        0x1da build/default/production/CA_SetGetMPU6050.o
+                  0x0019b4                  _set_inicial
+                  0x0019d2                  _get_ax
+                  0x0019f2                  _get_ay
+                  0x001a12                  _get_az
+                  0x001a32                  _get_gx
+                  0x001a52                  _get_gy
+                  0x001a72                  _get_gz
+                  0x001a92                  _get_temp
+                  0x001ab2                  _get_who_I_AM
+                  0x001abc                  _plot1
+                  0x001ada                  _plot2
+                  0x001afe                  _plot3
+                  0x001b28                  _plot4
+                  0x001b58                  _get_acelerometro
+ .text            0x001b8e        0x152 build/default/production/CA_funciones_control.o
+                  0x001b8e                  _Pid_Posicion
+                  0x001bba                  _PID
+ .text            0x001ce0         0x96 build/default/production/main.o
+                  0x001ce0                  _main
+ .text            0x001d76         0x70 build/default/production/CB_Timer1.o
+                  0x001d76                  _Delay1msT1
+                  0x001db4                  __T1Interrupt
+                  0x001dd2                  _DelayXmsT1
+ .text            0x001de6         0x3e build/default/production/CB_Timer3.o
+                  0x001de6                  _SetupT3For2_3msPID
+                  0x001e0c                  _StartPID
+                  0x001e14                  _StopPID
+                  0x001e1c                  __T3Interrupt
+
+.dinit            0x001e24         0x32
+ .dinit           0x001e24         0x32 data_init
+
+.text             0x001e56         0x14
+ .text            0x001e56         0x14 build/default/production/CB_Timer2.o
+                  0x001e56                  _Delay_Nop
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion

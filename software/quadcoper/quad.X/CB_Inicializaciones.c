@@ -19,7 +19,11 @@ void Init_Hw(void)
 
     // TRISx
     TRISA = 0b1111011111111111;     Delay_Nop(10);
+<<<<<<< HEAD
     TRISB = 0b1111100111111000;     Delay_Nop(10);
+=======
+    TRISB = 0b1111100111111000;                 Delay_Nop(10);
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
     TRISC = 0b1011111111111111;     Delay_Nop(10);
     TRISD = 0b1011111011110000;     Delay_Nop(10);
     TRISF = 0b1111111110011100;     Delay_Nop(10);
@@ -157,7 +161,11 @@ void Init_PWM()
 
 void Init_Bluetooh(void)
 {
+<<<<<<< HEAD
 //#define RECEP
+=======
+#define RECEP
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
         U2MODEbits.UARTEN = 1;  Nop();  Nop();  Nop();
         U2STAbits.UTXISEL = 0;  Nop();
         U2STAbits.URXISEL = 0;  Nop();

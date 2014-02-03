@@ -56,7 +56,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
+<<<<<<< HEAD
         <languageToolchainVersion>1.21</languageToolchainVersion>
+=======
+        <languageToolchainVersion>1.11</languageToolchainVersion>
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -183,10 +187,17 @@
         <property key="TIMER3" value="true"/>
         <property key="TIMER4" value="true"/>
         <property key="TIMER5" value="true"/>
+<<<<<<< HEAD
         <property key="ToolFirmwareFilePath" value=""/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+=======
+        <property key="ToolFirmwareFilePath"
+                  value="C:\Program Files (x86)/Microchip/MPLABX/mplab_ide/mplablibs/modules/ext/PICKIT3.jar/PK3FW_012944.jam"/>
+        <property key="ToolFirmwareOption.UseLatestFirmware" value="false"/>
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
@@ -197,7 +208,7 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.end" value="0x7fff"/>
         <property key="memories.programmemory.start" value="0x0"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmertogo.imagename" value=""/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmspeed" value="2"/>

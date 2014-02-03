@@ -75,6 +75,7 @@ int main(void)
 
     //    LEDROJO=0;
     //   DelayXmsT1(1000);
+<<<<<<< HEAD
     //    LEDROJO=1;
 
  
@@ -84,6 +85,32 @@ int main(void)
        DelayXmsT1(10);
            LEDVERDE = 1;
     set_inicial();
+=======
+        LEDROJO=1;
+            set_inicial();
+        int valorAux = 0;
+        int valorAuxAnterior = 0;
+        
+      while(1)  
+      {
+          valorAux = get_ax();
+
+          int devuelto = PID(0, valorAux, 10, 1, 50, 1,&valorAuxAnterior, 31000, -31000);
+          plot2(valorAux,devuelto);
+          PWM1 = +devuelto;
+          PWM4 = -devuelto;
+          DelayXmsT1(10);
+      }
+ 
+//    DelayXmsT1(1000);
+//
+//       ACT_ACE = 1;
+   // while(1);//enviar_mensaje("llegando mensaje");
+       DelayXmsT1(10);
+           LEDVERDE = 1;
+    int pid;
+
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
     while (1)
     {
         //enviar_mensaje("hola");
@@ -93,6 +120,7 @@ int main(void)
        // prueba recep cometarlineas
       //  acelerometro();
 
+<<<<<<< HEAD
         int i;
    for (i=0;i<20000;i=i+10)
    {
@@ -116,3 +144,27 @@ int main(void)
 }
 
 
+=======
+      unsigned  int i;
+      DelayXmsT1(6000);
+      LEDVERDE=1;
+
+   for (i=0;i<30000;i=i+100)
+   {
+    PWM1=PWM2=PWM3=PWM4=i;
+//   prueba_who_i_am();
+//   enviar_valor("i", i);
+   }
+    while (1)PWM1=PWM2=PWM3=PWM4=30000;
+    }
+
+
+        
+
+        
+    
+    return 0;
+}
+
+
+>>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
