@@ -18,8 +18,8 @@ void Init_Hw(void)
     ADPCFG = 0xFFFF;    Delay_Nop(10);  // Digital
 
     // TRISx
-    TRISA = 0x1111011111111111;     Delay_Nop(10);
-    TRISB = 0xF9F8;                 Delay_Nop(10);
+    TRISA = 0b1111011111111111;     Delay_Nop(10);
+    TRISB = 0b1111100111111000;     Delay_Nop(10);
     TRISC = 0b1011111111111111;     Delay_Nop(10);
     TRISD = 0b1011111011110000;     Delay_Nop(10);
     TRISF = 0b1111111110011100;     Delay_Nop(10);
@@ -185,7 +185,7 @@ void LED_ALL_ON()
     LEDROJO = ON;
 
     
-    LEDAZUL= ON;
+    LEDVERDE= ON;
 
 }
 
@@ -193,7 +193,7 @@ void LED_ALL_OFF()
 {
     LEDROJO = OFF;
 
-    LEDAZUL= OFF;
+    LEDVERDE= OFF;
 
 
 }

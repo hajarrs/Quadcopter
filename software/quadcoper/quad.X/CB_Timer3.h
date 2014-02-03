@@ -14,6 +14,7 @@
 
 void SetupT3For2_3msPID(int _tiempo);
 void StartPID();
+void StopPID();
 void interrupcion _T3Interrupt(void);
 
 

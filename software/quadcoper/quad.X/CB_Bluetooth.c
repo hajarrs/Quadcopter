@@ -84,7 +84,6 @@ int IndiceBluetooth;
 void interrupcion _U2RXInterrupt(void) {
     int i;
     unsigned int IntRecibido[50];
-    unsigned char index;
     IntRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
 
     if (IndiceBluetooth < (MAX_BLUE - 1))IndiceBluetooth++;
@@ -94,11 +93,11 @@ void interrupcion _U2RXInterrupt(void) {
     {
         //podemos multiplicar  y dividir  no multiolicar por float
 
-        int chanel1 = 0;
-        int chanel2 = 0;
-        int chanel3 = 0;
-        int chanel4 = 0;
-        int chanel5 = 0;
+        int chanel1 ;
+        int chanel2 ;
+        int chanel3 ;
+        int chanel4 ;
+        int chanel5 ;
 
         chanel1 = ((((IntRecibido[4] << 8) + IntRecibido[5]) - 153)*1.43);
         chanel2 = ((((IntRecibido[6] << 8) + IntRecibido[7]) - 1177)*1.428);

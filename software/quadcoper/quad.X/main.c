@@ -82,8 +82,7 @@ int main(void)
 //
 //       ACT_ACE = 1;
        DelayXmsT1(10);
-           LEDAZUL = 1;
-    int pid;
+           LEDVERDE = 1;
     set_inicial();
     while (1)
     {
