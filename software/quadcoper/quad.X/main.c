@@ -70,7 +70,8 @@ int main(void)
 #endif
     //  SetupT3FormsPID(4);
     // StartPID();
-
+     enviar_mensaje("sin entrar");
+    while(1);
     //    ACT_ACE=0;
 
     //    LEDROJO=0;
@@ -82,13 +83,15 @@ int main(void)
         
       while(1)  
       {
-          valorAux = get_ax();
 
-          int devuelto = PID(0, valorAux, 10, 1, 50, 1,&valorAuxAnterior, 31000, -31000);
+
+
+         valorAux = get_ax();
+
+          int devuelto = PID(0, valorAux,1, 10, 1, 1,&valorAuxAnterior, 31000, -31000);
           plot2(valorAux,devuelto);
-          PWM1 = +devuelto;
-          PWM4 = -devuelto;
-          DelayXmsT1(10);
+
+          //    DelayXmsT1(1);
       }
  
 //    DelayXmsT1(1000);
@@ -97,7 +100,6 @@ int main(void)
    // while(1);//enviar_mensaje("llegando mensaje");
        DelayXmsT1(10);
            LEDVERDE = 1;
-    int pid;
 
     while (1)
     {

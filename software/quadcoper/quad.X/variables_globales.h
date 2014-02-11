@@ -16,6 +16,15 @@
         int chanel3 = 0;
         int chanel4 = 0;
         int chanel5 = 0;
+
+//***********variables del pid********************//
+
+        int KP=1;
+        int KD=1;
+        int KI=1;
+        int BIAS1=1;
+        int BIAS2=1;
+        int Tmuestreo=1;
 //-------------------------------------------------------------
 //necesarias por que las inperrupciones no permiten parametros
 //-------------------------------------------------------------
