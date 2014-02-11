@@ -5,12 +5,17 @@
   <confs>
     <conf name="default" type="2">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <platformToolSN>:=MPLABCommUSB:=04D8:=900A:=0002:=Microchip Technology Inc.:=PICkit 3:=BUR110374784:=x:=en</platformToolSN>
       <languageToolchainDir>C:\Program Files (x86)\Microchip\xc16\v1.21\bin</languageToolchainDir>
 =======
       <platformToolSN>:=MPLABComm-USB-Microchip:=&lt;vid>04D8:=&lt;pid>900A:=&lt;rev>0002:=&lt;man>Microchip Technology Inc.:=&lt;prod>PICkit 3:=&lt;sn>BUR110374784:=&lt;drv>x:=&lt;xpt>h:=end</platformToolSN>
       <languageToolchainDir>C:\Program Files (x86)\Microchip\xc16\v1.11\bin</languageToolchainDir>
 >>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
+=======
+      <platformToolSN>:=MPLABComm-USB-Microchip:=&lt;vid>04D8:=&lt;pid>900A:=&lt;rev>0002:=&lt;man>Microchip Technology Inc.:=&lt;prod>PICkit 3:=&lt;sn>BUR120297186:=&lt;drv>x:=&lt;xpt>h:=end</platformToolSN>
+      <languageToolchainDir>C:\Program Files (x86)\Microchip\xc16\v1.21\bin</languageToolchainDir>
+>>>>>>> intento-reparacion-de-problemas-de-alimentacion
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>
         <placeholder2>place holder 2</placeholder2>

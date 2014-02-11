@@ -28,9 +28,15 @@ void EnviarDatos_Acc_Gyro(unsigned int _mascara);
 void enviar_valor(char nombre[],int valor);
 void enviar_mensaje(char nombre[]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+void ProcesarCadena(char *cadena);
+>>>>>>> intento-reparacion-de-problemas-de-alimentacion
 void StopPID();
 >>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 void interrupcion _U2RXInterrupt(void) ;
+void enviar_datos_int_NOCR(int cadena[50], int _longitud);
+void enviar_valor_NOCR(char nombre[], int valor);
 #endif	/* CB_BLUETOOTH_H */
 

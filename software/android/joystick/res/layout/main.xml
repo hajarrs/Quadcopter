@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+	
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+		
+        <TextView android:id="@+id/txt_status"
+				android:text="@string/status_text"
+				android:layout_width="140dp" 
+				android:layout_height="wrap_content" />
+        
+        <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+        
+            
+       		<TextView android:id="@+id/xID_Leido"
+				android:text="@string/xIDtxt"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" />
+        
+        	<TextView android:id="@+id/yID_Leido"
+				android:text="@string/yIDtxt"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" />
+        
+        	<TextView android:id="@+id/zID_Leido"
+				android:text="@string/zIDtxt"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" />
+        	
+       	</LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+        
+            
+       		<TextView android:id="@+id/xID_transf"
+				android:text="@string/xIDtxt"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" />
+        
+        	<TextView android:id="@+id/yID_transf"
+				android:text="@string/yIDtxt"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" />
+        
+        	<TextView android:id="@+id/zID_transf"
+				android:text="@string/zIDtxt"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" />
+        	
+       	</LinearLayout>
+        
+        
+        <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/ResetMatrix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:text="@string/Reset" />
+
+       	</LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center" >	
+		
+				<TextView
+				    android:id="@+id/txt_dataSent"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:gravity="center_vertical"
+				    android:text="@string/dataSent_text"
+				    android:textAppearance="?android:attr/textAppearanceSmall" />	
+   	</LinearLayout>
+   	
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center" >	
+		
+				<TextView
+				    android:id="@+id/txt_dataSentDebug"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:gravity="center_vertical"
+				    android:text="@string/dataSentDebug_text"
+				    android:textAppearance="?android:attr/textAppearanceMedium" />	
+   	</LinearLayout>
+   	
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="left" >
+		
+		<com.MobileAnarchy.Android.Widgets.Joystick.DualJoystickView
+		    android:id="@+id/dualjoystickView"
+		    android:layout_width="200dp"
+		    android:layout_height="200dp"
+		    android:layout_gravity="left"
+		    android:orientation="horizontal" />
+		
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical" 
+				android:orientation="vertical">
+
+				<TextView android:id="@+id/txt_dataCartesiana"
+					android:text="@string/dataCartesiana_text"
+					android:layout_width="120dp" android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:gravity="center_vertical" />
+				
+			</LinearLayout>
+	</LinearLayout>
+	
+</LinearLayout>

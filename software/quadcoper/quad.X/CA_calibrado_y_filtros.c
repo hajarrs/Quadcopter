@@ -13,7 +13,7 @@
 
 #define M_PI 3.14159265359
 
-#define dt 0.01
+#define dt 0.011
 
 
 
@@ -43,12 +43,12 @@ void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra
         calibra_gz_double = get_gz() + calibra_gz_double;
     }
 
-    *_calibra_ax = calibra_ax_double / 50;
-    *_calibra_ay = calibra_ax_double / 50;
-    *_calibra_az = calibra_ax_double / 50;
-    *_calibra_gx = calibra_ax_double / 50;
-    *_calibra_gy = calibra_ax_double / 50;
-    *_calibra_gz = calibra_ax_double / 50;
+    *_calibra_ax = calibra_ax_double / n;
+    *_calibra_ay = calibra_ax_double / n;
+    *_calibra_az = calibra_ax_double / n;
+    *_calibra_gx = calibra_ax_double / n;
+    *_calibra_gy = calibra_ax_double / n;
+    *_calibra_gz = calibra_ax_double / n;
 
 }
 
@@ -75,8 +75,7 @@ void ComplementaryFilter(int ax,int ay,int az,int gx,int gy,int gz)
 	// Turning around the Y axis results in a vector on the X-axis
         rollAcc = atan2f((float)ax, (float)az) * 180 / M_PI;
         roll = roll * 0.98 + rollAcc * 0.02;
-        plot4(ax,ay,roll,pitch);
+        plot2(gx,roll);
         enviar_valor("roll = ",roll);
-        enviar_valor("pitch = ",pitch);
     }
 }

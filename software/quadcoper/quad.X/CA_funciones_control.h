@@ -7,6 +7,13 @@
 #ifndef CA_FUNCIONES_CONTROL_H
 #define	CA_FUNCIONES_CONTROL_H
 #include <math.h>
+#include "CB_Bluetooth.h"
+extern int KP;
+extern int KD;
+extern int KI;
+extern int BIAS1;
+extern int BIAS2;
+extern int Tmuestreo;
 extern int abs(int);
 int Pid_Posicion(int _setpoint,int _posicion_actual);
 <<<<<<< HEAD

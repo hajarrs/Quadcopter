@@ -25,7 +25,19 @@ extern int chanel5;
         int chanel3 = 0;
         int chanel4 = 0;
         int chanel5 = 0;
+<<<<<<< HEAD
 >>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
+=======
+
+//***********variables del pid********************//
+
+        int KP=1;
+        int KD=1;
+        int KI=1;
+        int BIAS1=1;
+        int BIAS2=1;
+        int Tmuestreo=1;
+>>>>>>> intento-reparacion-de-problemas-de-alimentacion
 //-------------------------------------------------------------
 //necesarias por que las inperrupciones no permiten parametros
 //-------------------------------------------------------------

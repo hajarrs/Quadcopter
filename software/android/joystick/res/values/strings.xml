@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BTJoyStick</string>
+    
+    <!--  BluetoothJoystick -->
+    <string name="title_connected_to">connected to:</string>
+    <string name="title_connecting">connecting</string>
+    <string name="title_not_connected">not connected</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth JoyStick.</string>
+    <string name="not_connected">You are not connected to a device</string>
+    
+    <!--  DeviceListActivity -->
+    <string name="scanning">scanning for devices</string>
+    <string name="select_device">select a device to connect</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">No devices found</string>
+    <string name="title_paired_devices">Paired Devices</string>
+    <string name="title_other_devices">Other Available Devices</string>
+    <string name="button_scan">Scan for devices</string>
+    
+  
+    <!--  Text Views -->
+    <string name="dataL_text">( r0, 0 )</string>
+    <string name="dataCartesiana_text">(0, 0)</string>
+    <string name="status_text">C</string>
+    <string name="xIDtxt">0</string>
+    <string name="yIDtxt">0</string>
+    <string name="zIDtxt">0</string>
+    <string name="Reset">0</string>
+    <string name="dataSent_text"></string>
+    <string name="dataSentDebug_text"></string>
+    
+</resources>

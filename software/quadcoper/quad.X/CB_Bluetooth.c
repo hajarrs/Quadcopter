@@ -67,7 +67,6 @@ void enviar_valor(char nombre[], int valor) {
     enviar_datos_NOCR(nombre, strlen(nombre));
     itoa(str_blue, valor, 10);
     enviar_datos(str_blue, strlen(str_blue));
-<<<<<<< HEAD
 
 }
 
@@ -81,11 +80,12 @@ void enviar_valor_NOCR(char nombre[], int valor) {
     enviar_datos_NOCR(str_blue, strlen(str_blue));
 
 }
->>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
 void enviar_mensaje(char nombre[]) {
     enviar_datos(nombre, strlen(nombre));
 }
-
+void enviar_mensaje_NOCR(char nombre[]) {
+    enviar_datos_NOCR(nombre, strlen(nombre));
+}
 
 // Variables globales
 char DatoRecibido[50];
@@ -94,6 +94,31 @@ int IndiceBluetooth;
 // Funcion de interrupcion de recepcion de datos
 
 void interrupcion _U2RXInterrupt(void) {
+
+    #define AJUSTE_PID
+#ifdef  AJUSTE_PID
+   int i;
+    DatoRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
+
+    if(IndiceBluetooth < (MAX_BLUE-1))
+        IndiceBluetooth++;
+
+    if(DatoRecibido[IndiceBluetooth-1] == 0x23) //almuadilla
+    {
+        IndiceBluetooth --;
+        ProcesarCadena(DatoRecibido);
+
+
+        // Se borra la cadena completa
+        for(i=0 ; i<MAX_BLUE; i++)
+            DatoRecibido[i] = ' ';
+        IndiceBluetooth = 0;
+
+    }
+
+#else
+
+
     int i;
     unsigned int IntRecibido[50];
     IntRecibido[IndiceBluetooth] = U2RXREG; // Leemos el valor
@@ -105,7 +130,6 @@ void interrupcion _U2RXInterrupt(void) {
     {
         //podemos multiplicar  y dividir  no multiolicar por float
 
-<<<<<<< HEAD
         int chanel1 ;
         int chanel2 ;
         int chanel3 ;
@@ -118,7 +142,6 @@ void interrupcion _U2RXInterrupt(void) {
         chanel4 = ((((IntRecibido[10] << 8) + IntRecibido[11]) - 3225)*1.428);
         chanel5 = ((((IntRecibido[12] << 8) + IntRecibido[12]) - 4112)*0.0025);
 
-=======
 
 
         chanel1 = ((((IntRecibido[4] << 8) + IntRecibido[5]) - 153)*1.43);
@@ -129,29 +152,24 @@ void interrupcion _U2RXInterrupt(void) {
 
         //*****************limitar rango ************************//
 
->>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
         enviar_valor("valor1=", (unsigned int) (chanel1));
         enviar_valor("valor2=", (unsigned int) (chanel2));
         enviar_valor("valor3=", (unsigned int) (chanel3));
         enviar_valor("valor4=", (unsigned int) (chanel4));
         enviar_valor("valor6=", (unsigned int) (chanel5));
-<<<<<<< HEAD
 
-=======
         enviar_valor("ax",get_ax());
->>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
+        enviar_valor("ax", get_ax());
         IndiceBluetooth = 0;
         for (i = 0; i < MAX_BLUE; i++)
             IntRecibido[i] = ' ';
         IndiceBluetooth = 0;
-<<<<<<< HEAD
         plot4(chanel1,chanel2,chanel3,chanel4);
-=======
->>>>>>> origin/intento-reparacion-de-problemas-de-alimentacion
+
     }
 
 
-
+#endif
     IFS1bits.U2RXIF = 0; // clear TX interrupt flag
     U2STAbits.OERR = 0;
 }
@@ -161,25 +179,71 @@ void interrupcion _U2RXInterrupt(void) {
 
 void ProcesarCadena(char *cadena) {
 #ifdef DEF_BLUE
-    if (strncmp(cadena, "@GO", 3) == 0) {
-        StartPID(); // Arrancamos el PID
-        return;
-    }
-    if (strncmp(cadena, "@STOP", 3) == 0) {
-        StopPID(); // Paramos el PID
-        // PARAR_MOTORES
-        return;
-    }
-    if (strncmp(cadena, "@CR", 3) == 0) // Peticion de envio de Retorno de carro
-    {
-        EnviarCR();
-        return;
-    }
+        int i =0;
+        int indice_i= 0;
+        int x=0;
 
-    strcpy(str_blue, "Recibido: ");
-    // enviar_datos_NOCR(str_blue, strlen(str_blue));
-    strcpy(str_blue, cadena);
-    enviar_datos(str_blue, strlen(str_blue));
+        int indice = 0;
+        char aux_P[6];
+        char aux_I[6];
+        char aux_D[6];
+        char aux_BIAS1[6];
+        char aux_BIAS2[6];
 
+        do
+        {
+
+            if (i > 3)
+            {
+                if (cadena[i] != 0x26)//ampersan
+                {
+                    if (x == 0)aux_P[indice_i] = cadena[i];
+                    if (x == 1)aux_I[indice_i] = cadena[i];
+                    if (x == 2)aux_D[indice_i] = cadena[i];
+                    if (x == 3)aux_BIAS1[indice_i] = cadena[i];
+                    if (x == 4)aux_BIAS2[indice_i] = cadena[i];
+                    indice_i++;
+                } else
+                {
+                    x++;
+                    indice_i = 0;
+                }
+               
+            }
+             i++;
+        } while (cadena[i] != 0x23 );
+        enviar_mensaje_NOCR("cambiando parametros:");
+        enviar_valor_NOCR("p=",atoi(aux_P));
+        enviar_valor_NOCR(",i=",atoi(aux_I));
+        enviar_valor_NOCR(",d=",atoi(aux_D));
+        enviar_valor_NOCR(",aux_BIAS1=",atoi(aux_BIAS1));
+        enviar_valor(",aux_BIAS2=",atoi(aux_BIAS2));
+
+               
+    }
+#endif
+
+
+
+
+
+void enviar_datos_int_NOCR(int cadena[50], int _longitud)
+{
+#ifdef DEF_BLUE
+    unsigned char index;
+    char aux[1];
+//    itoa(str_blue,_longitud,10);
+//    enviar_datos(str_blue,strlen(str_blue));
+
+    for (index = 0; index < _longitud>>1; index++) {
+        aux[0] = cadena[index];
+        U2TXREG = aux[0];
+        while (!U2STAbits.TRMT);
+
+        aux[0] = cadena[index]>>8;
+
+        U2TXREG = aux[0];
+        while (!U2STAbits.TRMT);
+    }
 #endif
 }
