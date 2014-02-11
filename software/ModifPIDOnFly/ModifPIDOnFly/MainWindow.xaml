@@ -1,0 +1,25 @@
+﻿<Window x:Class="ModifPIDOnFly.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="297" Width="465">
+    <Grid Height="253" Width="441">
+        <Label Content="P" Height="28" HorizontalAlignment="Left" Margin="42,15,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="D" Height="28" HorizontalAlignment="Left" Margin="42,83,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="I" Height="28" HorizontalAlignment="Left" Margin="46,49,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="Bias M1" Height="28" HorizontalAlignment="Left" Margin="12,117,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Bias M2" Height="28" HorizontalAlignment="Left" Margin="12,151,0,0" Name="label5" VerticalAlignment="Top" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="17,208,0,0" Name="cmb_puertoSerie" VerticalAlignment="Top" Width="75" SelectionChanged="cmb_puertoSerie_SelectionChanged" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="98,208,0,0" Name="cmb_v_puertoSerie" VerticalAlignment="Top" Width="75" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="65,153,0,0" Name="TextBox_BM2" VerticalAlignment="Top" Width="45" UndoLimit="5" TextAlignment="Right" MaxLines="1" MaxHeight="28" MaxLength="5" TabIndex="5" GotFocus="TextBox_BM2_GotFocus" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="65,122,0,0" Name="TextBox_BM1" VerticalAlignment="Top" Width="45" UndoLimit="5" TextAlignment="Right" MaxLines="1" MaxHeight="28" MaxLength="5" TabIndex="4" GotFocus="TextBox_BM1_GotFocus" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="65,88,0,0" Name="TextBox_D" VerticalAlignment="Top" Width="45" UndoLimit="5" TextAlignment="Right" MaxLines="1" MaxHeight="28" MaxLength="5" TabIndex="3" GotFocus="TextBox_D_GotFocus" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="65,54,0,0" Name="TextBox_I" VerticalAlignment="Top" Width="45" UndoLimit="5" TextAlignment="Right" MaxLines="1" MaxHeight="28" MaxLength="5" TabIndex="2" GotFocus="TextBox_I_GotFocus" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="65,20,0,0" Name="TextBox_P" VerticalAlignment="Top" Width="45" UndoLimit="5" TextAlignment="Right" MaxLines="1" MaxHeight="28" MaxLength="5" Text="" TabIndex="1" GotFocus="TextBox_P_GotFocus" />
+        <Button Content="Enviar" Height="23" HorizontalAlignment="Left" Margin="288,208,0,0" Name="btn_Enviar" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btn_Enviar_Click" TabIndex="6" />
+        <Button Content="Refresh" Height="23" HorizontalAlignment="Left" Margin="207,208,0,0" Name="btn_refresh" VerticalAlignment="Top" Width="75" Click="btn_refresh_Click" Visibility="Hidden" />
+        <Button Content="Conectar" Height="23" HorizontalAlignment="Left" Margin="207,208,0,0" Name="btn_connect" VerticalAlignment="Top" Width="75" Click="btn_connect_Click" />
+        <Button Content="Desconectar" Height="23" HorizontalAlignment="Left" Margin="207,208,0,0" Name="btn_disconnect" VerticalAlignment="Top" Width="75" Click="btn_disconnect_Click" Visibility="Hidden" />
+        <TextBlock Height="13" HorizontalAlignment="Left" Margin="170,3,0,0" Name="txt_StatusComPort" Text="Desconectado" VerticalAlignment="Top" Width="226" Padding="0" FontSize="10" TextAlignment="Right" />
+        <TextBox Height="148" HorizontalAlignment="Left" Margin="170,20,0,0" Name="SerialPortDlgText" VerticalAlignment="Top" Width="226" />
+    </Grid>
+</Window>
