@@ -18,6 +18,12 @@
      extern   int chanel3;
      extern   int chanel4;
      extern   int chanel5;
+     extern int KP;
+     extern int KD;
+     extern int KI;
+     extern int BIAS1;
+     extern int BIAS2;
+     extern int Tmuestreo;
 void EnviarCR();
 void enviar_datos_NOCR(char cadena[50], int longitud);
 void enviar_datos(char cadena[50], int longitud);
@@ -28,7 +34,7 @@ void EnviarDatos_Acc_Gyro(unsigned int _mascara);
 void enviar_valor(char nombre[],int valor);
 void enviar_mensaje(char nombre[]);
 
-void ProcesarCadena(char *cadena);
+void ProcesarCadenaPid(char *cadena);
 void StopPID();
 void interrupcion _U2RXInterrupt(void) ;
 void enviar_datos_int_NOCR(int cadena[50], int _longitud);

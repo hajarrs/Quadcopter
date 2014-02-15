@@ -307,5 +307,15 @@ namespace ModifPIDOnFly
             TextBox_BM2.SelectAll();
         }
 
+        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void SerialPortDlgText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
     }
 }

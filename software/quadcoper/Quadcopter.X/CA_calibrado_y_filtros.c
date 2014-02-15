@@ -58,7 +58,7 @@ void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra
 void ComplementaryFilter(int ax,int ay,int az,int gx,int gy,int gz)
 {
     float pitchAcc, rollAcc;
-        float roll ,pitch;
+        float roll=0 ,pitch=0;
  //    Integrate the gyroscope data -> int(angularSpeed) = angle
     pitch += ((float)gx / GYROSCOPE_SENSITIVITY) * dt; // Angle around the X-axis
     roll -= ((float)gy / GYROSCOPE_SENSITIVITY) * dt;    // Angle around the Y-axis

@@ -53,5 +53,19 @@ int PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp,int _ki, in
 
     return Output;
 }
+int PID_exp(int _referencia, int _PosicionActual, int Tmuestreo, int _kp,int _ki, int _kd,int _kn, int* _PosicionAnterior, int _Maximo, int _Minimo )
+{
+    int Output;
+    error=_referencia-_PosicionActual;
+    Output=-(Output_1*(2*_kn*Tmuestreo))-Output_2*(1-_kn*Tmuestreo);
+    Output=Output+error*(_kp*_kd*_kn)+error_1*((2+_kn*Tmuestreo)*(_ki*Tmuestreo)*(-2*_kn*_kd))+error_2*((1+_kn*Tmuestreo)*(Tmuestreo*Tmuestreo*_kn*_ki)*(_kd*_kn));
+    Output_1=Output;
+    Output_2=Output_1;
+    error_1=error;
+    error_2=error_1;
 
+
+
+    return Output;
+}
 

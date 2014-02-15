@@ -21,6 +21,7 @@
       <itemPath>CA_funciones_control.h</itemPath>
       <itemPath>CB_I2C.h</itemPath>
       <itemPath>define_comet_code.h</itemPath>
+      <itemPath>variables_globales.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -49,7 +50,6 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>variables_globales.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
