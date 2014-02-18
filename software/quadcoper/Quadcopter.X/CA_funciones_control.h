@@ -8,6 +8,29 @@
 #define	CA_FUNCIONES_CONTROL_H
 #include <math.h>
 #include "CB_Bluetooth.h"
+int Pid_Posicion(int _setpoint,int _posicion_actual);
+int PID(int _Bias, int _PosicionActual, int Tmuestreo, int _kp, int _kd, int _ki, int* _PosicionAnterior, int _Maximo, int _Minimo );
+void getAngle_init();
+double getAngle(double newAngle, double newRate, double dt) ;
+//-----------kalman----------//
+
+extern double Q_angle ; // Process noise variance for the accelerometer
+extern double Q_bias ; // Process noise variance for the gyro bias
+extern double R_measure ; // Measurement noise variance - this is actually the variance of the measurement noise
+
+extern double angle ; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
+extern double bias ; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
+extern double rate; // Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate
+
+extern double P[2][2]; // Error covariance matrix - This is a 2x2 matrix
+extern double K[2]; // Kalman gain - This is a 2x1 vector
+extern double y; // Angle difference
+extern double S; // Estimate error
+
+
+
+//-------------------------Pid variables-----------------//
+
 extern int KP;
 extern int KD;
 extern int KI;
@@ -15,13 +38,6 @@ extern int BIAS1;
 extern int BIAS2;
 extern int Tmuestreo;
 extern int abs(int);
-int Pid_Posicion(int _setpoint,int _posicion_actual);
-int PID(int _Bias, int _PosicionActual, int Tmuestreo, int _kp, int _kd, int _ki, int* _PosicionAnterior, int _Maximo, int _Minimo );
-int PID_exp(int _referencia, int _PosicionActual, int Tmuestreo, int _kp,int _ki, int _kd,int _Kn, int* _PosicionAnterior, int _Maximo, int _Minimo );
-extern int Output_1;
-extern int Output_2;
-extern int error;
-extern int error_1;
-extern int error_2;
+
 #endif	/* CA_FUNCIONES_CONTROL_H */
 

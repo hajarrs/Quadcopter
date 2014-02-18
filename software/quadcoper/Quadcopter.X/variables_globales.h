@@ -36,14 +36,28 @@ int BIAS1 = 1;
 int BIAS2 = 1;
 int Tmuestreo = 1;
 
-//*************************VARIABLES DE SEGUIMEINTO DEL PID****************//
 
 
-int Output_1=0;
-int Output_2=0;
-int error=0;
-int error_1=0;
-int error_2=0;
+//************************* VARIABLES DE KALMAN ****************//
+
+double Q_angle = 0.001; // Process noise variance for the accelerometer
+double Q_bias = 0.003; // Process noise variance for the gyro bias
+double R_measure= 0.03; // Measurement noise variance - this is actually the variance of the measurement noise
+
+double angle = 0; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
+double bias = 0; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
+double rate; // Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate
+
+double P[2][2]; // Error covariance matrix - This is a 2x2 matrix
+double K[2]; // Kalman gain - This is a 2x1 vector
+double y; // Angle difference
+double S; // Estimate error
+
+
+// P[0][0] = 0; // Since we assume that the bias is 0 and we know the starting angle (use setAngle), the error covariance matrix is set like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
+// P[0][1] = 0;
+// P[1][0] = 0;
+// P[1][1] = 0;
 //-------------------------------------------------------------
 //necesarias por que las inperrupciones no permiten parametros
 //-------------------------------------------------------------

@@ -29,13 +29,6 @@
 #include "CA_funciones_control.h"
 
 int LSD[12];
-int AccX, AccY, AccZ, GyroX, GyroY, GyroZ, Temp;
-double accXangle, accYangle; // Angle calculate using the accelerometer
-double temp; // Temperature
-double gyroXangle, gyroYangle; // Angle calculate using the gyro
-double compAngleX, compAngleY; // Calculate the angle using a complementary filter
-double kalAngleX, kalAngleY; // Calculate the angle using a Kalman filter
-
 char str_blue[40];
 char str_aux[40];
 

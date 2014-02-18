@@ -59,7 +59,7 @@ int main(void)
     Delay1msT1(0);
     Init_I2C();
     DelayXmsT1(10);
-     ACT_ACE = 1;
+    ACT_ACE = 1;
 #ifdef ARRANQUE
     enviar_mensaje("I2C inicializado...");
 #endif
@@ -70,39 +70,29 @@ int main(void)
 #endif
     //  SetupT3FormsPID(4);
     // StartPID();
-     enviar_mensaje("sin entrar");
-    while(1);
-    //    ACT_ACE=0;
 
-    //    LEDROJO=0;
-    //   DelayXmsT1(1000);
-
-    //    LEDROJO=1;
-
- 
-//    DelayXmsT1(1000);
-//
-//       ACT_ACE = 1;
-       DelayXmsT1(10);
-           LEDVERDE = 1;
+    DelayXmsT1(10);
+    LEDVERDE = 1;
     set_inicial();
 
-        LEDROJO=1;
-            set_inicial();
-        int valorAux = 0;
-        int valorAuxAnterior = 0;
-        
-      while(1)  
-      {
+    LEDROJO = 1;
+    set_inicial();
+    getAngle_init();
+    int valorAux = 0;
+    int valorAuxAnterior = 0;
 
+    while (1)
+    {
+        double accXangle = (atan2(get_ay(), get_az()) + PI) * RAD_TO_DEG;
+        double gyroXrate = (double)get_gx() / 131.0;
+        valorAux = get_ax();
+        int angulo =(int)getAngle(accXangle, gyroXrate,0.02);
+        //plot3(gyroXrate,accXangle,angulo); // Calculate the angle using a Kalman filter
+        enviar_valor("",angulo);
+       // int devuelto = PID(0, valorAux, 1, 10, 1, 1, &valorAuxAnterior, 31000, -31000);
+       // plot2(valorAux, devuelto);
 
-
-         valorAux = get_ax();
-
-          int devuelto = PID(0, valorAux,1, 10, 1, 1,&valorAuxAnterior, 31000, -31000);
-          plot2(valorAux,devuelto);
-    return 0;
-}
+    }
 
 
 }

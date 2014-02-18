@@ -53,19 +53,48 @@ int PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp,int _ki, in
 
     return Output;
 }
-int PID_exp(int _referencia, int _PosicionActual, int Tmuestreo, int _kp,int _ki, int _kd,int _kn, int* _PosicionAnterior, int _Maximo, int _Minimo )
+void getAngle_init()
 {
-    int Output;
-    error=_referencia-_PosicionActual;
-    Output=-(Output_1*(2*_kn*Tmuestreo))-Output_2*(1-_kn*Tmuestreo);
-    Output=Output+error*(_kp*_kd*_kn)+error_1*((2+_kn*Tmuestreo)*(_ki*Tmuestreo)*(-2*_kn*_kd))+error_2*((1+_kn*Tmuestreo)*(Tmuestreo*Tmuestreo*_kn*_ki)*(_kd*_kn));
-    Output_1=Output;
-    Output_2=Output_1;
-    error_1=error;
-    error_2=error_1;
-
-
-
-    return Output;
+ P[0][0] = 0; // Since we assume that the bias is 0 and we know the starting angle (use setAngle), the error covariance matrix is set like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
+ P[0][1] = 0;
+ P[1][0] = 0;
+ P[1][1] = 0;
 }
+    double getAngle(double newAngle, double newRate, double dt) {
+        // KasBot V2 - Kalman filter module - http://www.x-firm.com/?page_id=145
+        // Modified by Kristian Lauszus
+        // See my blog post for more information: http://blog.tkjelectronics.dk/2012/09/a-practical-approach-to-kalman-filter-and-how-to-implement-it
+
+        // Discrete Kalman filter time update equations - Time Update ("Predict")
+        // Update xhat - Project the state ahead
+        /* Step 1 */
+        rate = newRate - bias;
+        angle += dt * rate;
+        // Update estimation error covariance - Project the error covariance ahead
+        /* Step 2 */
+        P[0][0] += dt * (dt*P[1][1] - P[0][1] - P[1][0] + Q_angle);
+        P[0][1] -= dt * P[1][1];
+        P[1][0] -= dt * P[1][1];
+        P[1][1] += Q_bias * dt;
+        // Discrete Kalman filter measurement update equations - Measurement Update ("Correct")
+        // Calculate Kalman gain - Compute the Kalman gain
+        /* Step 4 */
+        S = P[0][0] + R_measure;
+        /* Step 5 */
+        K[0] = P[0][0] / S;
+        K[1] = P[1][0] / S;
+        // Calculate angle and bias - Update estimate with measurement zk (newAngle)
+        /* Step 3 */
+        y = newAngle - angle;
+        /* Step 6 */
+        angle += K[0] * y;
+        bias += K[1] * y;
+        // Calculate estimation error covariance - Update the error covariance
+        /* Step 7 */
+        P[0][0] -= K[0] * P[0][0];
+        P[0][1] -= K[0] * P[0][1];
+        P[1][0] -= K[1] * P[0][0];
+        P[1][1] -= K[1] * P[0][1];
+        return angle;
+    };
 
