@@ -17,19 +17,12 @@ char str_blue[40];
 float temp_calibra_ax=0;
 ax=ay=az=gx=gy=gz=a=0;
 int i = 0;
-    strcpy(str_blue,"empezando calibracion");
-    enviar_datos_NOCR(str_blue, strlen(str_blue));
+
   //for de calibracion
   for (i = 0; i < 20; i++){
-    itoa(str_blue,temp_calibra_ax, 10);
-    enviar_datos(str_blue, strlen(str_blue));
-    temp_calibra_ax=get_ax()+temp_calibra_ax;
+
 
    }
-    strcpy(str_blue,"valor salida = ");
-    enviar_datos_NOCR(str_blue, strlen(str_blue));
-    itoa(str_blue,temp_calibra_ax, 10);
-    enviar_datos(str_blue, strlen(str_blue));
 
    a =0;
    a=temp_calibra_ax/20;

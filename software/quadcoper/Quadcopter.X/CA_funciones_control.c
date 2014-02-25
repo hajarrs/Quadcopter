@@ -42,12 +42,12 @@ int PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp,int _ki, in
      PWM1 = BIAS1+Output;
      PWM4 = BIAS2-Output;
 
-    enviar_valor_NOCR("valorAux = ",_referencia);
-    enviar_valor_NOCR(" valorAuxAnterior = ",_PosicionActual);
-    enviar_valor_NOCR("pid = ",(*_PosicionAnterior));
-    enviar_valor_NOCR(" Ep = ",error);
-    enviar_valor_NOCR(" Ed = ",dInput);
-    enviar_valor(" Ei = ",ITerm);
+//    enviar_valor_NOCR("valorAux = ",_referencia);
+//    enviar_valor_NOCR(" valorAuxAnterior = ",_PosicionActual);
+//    enviar_valor_NOCR("pid = ",(*_PosicionAnterior));
+//    enviar_valor_NOCR(" Ep = ",error);
+//    enviar_valor_NOCR(" Ed = ",dInput);
+//    enviar_valor(" Ei = ",ITerm);
 
 
 
@@ -60,7 +60,7 @@ void getAngle_init()
  P[1][0] = 0;
  P[1][1] = 0;
 }
-    double getAngle(double newAngle, double newRate, double dt) {
+   double getAngle(double newAngle, double newRate, double dt) {
         // KasBot V2 - Kalman filter module - http://www.x-firm.com/?page_id=145
         // Modified by Kristian Lauszus
         // See my blog post for more information: http://blog.tkjelectronics.dk/2012/09/a-practical-approach-to-kalman-filter-and-how-to-implement-it
@@ -70,31 +70,64 @@ void getAngle_init()
         /* Step 1 */
         rate = newRate - bias;
         angle += dt * rate;
+        #ifdef DEBUG
+        enviar_valor("rate",rate);
+        enviar_valor("angle",angle);
+        enviar_valor("newangle",newAngle);
+        #endif
         // Update estimation error covariance - Project the error covariance ahead
         /* Step 2 */
         P[0][0] += dt * (dt*P[1][1] - P[0][1] - P[1][0] + Q_angle);
         P[0][1] -= dt * P[1][1];
         P[1][0] -= dt * P[1][1];
         P[1][1] += Q_bias * dt;
+        #ifdef DEBUG
+        enviar_valor("P[0][0]",P[0][0]);
+        enviar_valor("P[0][1]",P[0][1]);
+        enviar_valor("P[1][0]",P[1][0]);
+        enviar_valor("P[1][1]",P[1][1]);
+        #endif
         // Discrete Kalman filter measurement update equations - Measurement Update ("Correct")
         // Calculate Kalman gain - Compute the Kalman gain
         /* Step 4 */
+        #ifdef DEBUG
+        enviar_valor("s",S);
+        #endif
         S = P[0][0] + R_measure;
+        #ifdef DEBUG
+        enviar_valor("s",S);
+        #endif
+
         /* Step 5 */
         K[0] = P[0][0] / S;
         K[1] = P[1][0] / S;
+        #ifdef DEBUG
+        enviar_valor("k[0]",K[0]);
+        enviar_valor("k[1]",K[1]);
+        #endif
         // Calculate angle and bias - Update estimate with measurement zk (newAngle)
         /* Step 3 */
         y = newAngle - angle;
         /* Step 6 */
         angle += K[0] * y;
         bias += K[1] * y;
+        #ifdef DEBUG
+        enviar_valor("Y",y);
+        enviar_valor("angle",angle);
+        enviar_valor("bias",bias);
+        #endif
         // Calculate estimation error covariance - Update the error covariance
         /* Step 7 */
         P[0][0] -= K[0] * P[0][0];
         P[0][1] -= K[0] * P[0][1];
         P[1][0] -= K[1] * P[0][0];
         P[1][1] -= K[1] * P[0][1];
+        #ifdef DEBUG
+        enviar_valor("P[0][0]",P[0][0]);
+        enviar_valor("P[0][1]",P[0][1]);
+        enviar_valor("P[1][0]",P[1][0]);
+        enviar_valor("P[1][1]",P[1][1]);
+        #endif
         return angle;
     };
 

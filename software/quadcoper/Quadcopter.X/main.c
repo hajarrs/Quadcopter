@@ -80,18 +80,23 @@ int main(void)
     getAngle_init();
     int valorAux = 0;
     int valorAuxAnterior = 0;
+    int i=0;
+    get_calibrado_acelerometro(5,50,&calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);
+
 
     while (1)
     {
-        double accXangle = (atan2(get_ay(), get_az()) + PI) * RAD_TO_DEG;
-        double gyroXrate = (double)get_gx() / 131.0;
-        valorAux = get_ax();
-        int angulo =(int)getAngle(accXangle, gyroXrate,0.02);
-        //plot3(gyroXrate,accXangle,angulo); // Calculate the angle using a Kalman filter
-        enviar_valor("",angulo);
-       // int devuelto = PID(0, valorAux, 1, 10, 1, 1, &valorAuxAnterior, 31000, -31000);
-       // plot2(valorAux, devuelto);
+        double accXangle = (atan2((get_ay()-calibra_ay), (get_az()-calibra_az)) + PI) * RAD_TO_DEG;
+        double gyroXrate = (double)(get_gx()-calibra_gx) / 131.0;
+        //enviar_valor("accXangle = ",accXangle);
+        //enviar_valor("gyroXrate = ",gyroXrate);
+        int angulo =(int)getAngle(accXangle, gyroXrate,0.006);
 
+        enviar_valor("angulo = ",angulo);
+        int devuelto = PID(250, angulo, 1, 100, 20, 1, &valorAuxAnterior, 31000, -31000);
+        //plot3(100*(250-angulo),180*angulo,devuelto); // Calculate the angle using a Kalman filter
+       // plot2(valorAux, devuelto);
+         LEDVERDE =!LEDVERDE;
     }
 
 

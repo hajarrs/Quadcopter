@@ -27,12 +27,7 @@ void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra
     double calibra_gx_double = (*_calibra_gx);
     double calibra_gy_double = (*_calibra_gy);
     double calibra_gz_double = (*_calibra_gz);
-    
-
-
-
-
-            
+         
     for (i = 0; i < n; i++)
     {
         calibra_ax_double = get_ax() + calibra_gx_double;
@@ -44,11 +39,15 @@ void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra
     }
 
     *_calibra_ax = calibra_ax_double / n;
-    *_calibra_ay = calibra_ax_double / n;
-    *_calibra_az = calibra_ax_double / n;
-    *_calibra_gx = calibra_ax_double / n;
-    *_calibra_gy = calibra_ax_double / n;
-    *_calibra_gz = calibra_ax_double / n;
+    *_calibra_ay = calibra_ay_double / n;
+    *_calibra_az = calibra_az_double / n;
+    *_calibra_gx = calibra_gx_double / n;
+    *_calibra_gy = calibra_gy_double / n;
+    *_calibra_gz = calibra_gz_double / n;
+
+
+    return(0);
+
 
 }
 

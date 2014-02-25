@@ -32,8 +32,8 @@ int chanel5 = 0;
 int KP = 1;
 int KD = 1;
 int KI = 1;
-int BIAS1 = 1;
-int BIAS2 = 1;
+int BIAS1 = 11000;
+int BIAS2 = 11000;
 int Tmuestreo = 1;
 
 
@@ -44,14 +44,14 @@ double Q_angle = 0.001; // Process noise variance for the accelerometer
 double Q_bias = 0.003; // Process noise variance for the gyro bias
 double R_measure= 0.03; // Measurement noise variance - this is actually the variance of the measurement noise
 
-double angle = 0; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
+double angle = 1; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
 double bias = 0; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
-double rate; // Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate
+double rate=0; // Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate
 
 double P[2][2]; // Error covariance matrix - This is a 2x2 matrix
 double K[2]; // Kalman gain - This is a 2x1 vector
-double y; // Angle difference
-double S; // Estimate error
+double y=1; // Angle difference
+double S=100; // Estimate error
 
 
 // P[0][0] = 0; // Since we assume that the bias is 0 and we know the starting angle (use setAngle), the error covariance matrix is set like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
