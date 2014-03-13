@@ -14,12 +14,8 @@
       <itemPath>main.h</itemPath>
       <itemPath>CB_Bluetooth.h</itemPath>
       <itemPath>CA_SetGetMPU6050.h</itemPath>
-      <itemPath>CA_calibrado_filtro.h</itemPath>
-      <itemPath>CA_calibrado_y_filtros.h</itemPath>
-      <itemPath>CA_defines.h</itemPath>
       <itemPath>CA_funciones_control.h</itemPath>
       <itemPath>CB_I2C.h</itemPath>
-      <itemPath>define_comet_code.h</itemPath>
       <itemPath>variables_globales.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -36,8 +32,6 @@
       <itemPath>CB_Timer5.c</itemPath>
       <itemPath>Pruebas.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>CA_calibrado_filtro.c</itemPath>
-      <itemPath>CA_calibrado_y_filtros.c</itemPath>
       <itemPath>CA_funciones_control.c</itemPath>
       <itemPath>CA_SetGetMPU6050.c</itemPath>
       <itemPath>CB_Bluetooth.c</itemPath>

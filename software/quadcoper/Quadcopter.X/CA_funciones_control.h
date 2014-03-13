@@ -8,10 +8,12 @@
 #define	CA_FUNCIONES_CONTROL_H
 #include <math.h>
 #include "CB_Bluetooth.h"
+void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra_ay, int *_calibra_az, int *_calibra_gx, int *_calibra_gy, int *_calibra_gz);
 int Pid_Posicion(int _setpoint,int _posicion_actual);
 int PID(int _Bias, int _PosicionActual, int Tmuestreo, int _kp, int _kd, int _ki, int* _PosicionAnterior, int _Maximo, int _Minimo );
 void getAngle_init();
 double getAngle(double newAngle, double newRate, double dt) ;
+float Complementary2(float newAngle, float newRate,int looptime) ;
 //-----------kalman----------//
 
 extern double Q_angle ; // Process noise variance for the accelerometer
@@ -26,6 +28,7 @@ extern double P[2][2]; // Error covariance matrix - This is a 2x2 matrix
 extern double K[2]; // Kalman gain - This is a 2x1 vector
 extern double y; // Angle difference
 extern double S; // Estimate error
+extern float x_angle2C;
 
 
 

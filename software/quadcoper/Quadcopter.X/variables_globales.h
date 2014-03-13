@@ -52,8 +52,8 @@ double P[2][2]; // Error covariance matrix - This is a 2x2 matrix
 double K[2]; // Kalman gain - This is a 2x1 vector
 double y=1; // Angle difference
 double S=100; // Estimate error
-
-
+//************************* VARIABLES DE COMPLEMENTARY ****************//
+float x_angle2C=0;
 // P[0][0] = 0; // Since we assume that the bias is 0 and we know the starting angle (use setAngle), the error covariance matrix is set like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
 // P[0][1] = 0;
 // P[1][0] = 0;
