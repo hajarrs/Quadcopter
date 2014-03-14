@@ -6,7 +6,7 @@
 #ifndef DEFINES_H
 #define	DEFINES_H
 
-#define PI 3.1415
+//#define PI 3.1415
 #define RAD_TO_DEG 57.2957786
 
 #define interrupcion	__attribute__((interrupt,no_auto_psv))

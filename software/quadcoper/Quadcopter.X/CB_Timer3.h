@@ -16,6 +16,7 @@ void SetupT3ForXmsPID(int _tiempo);
 void StartInterrup3();
 void StopInterrup3();
 void interrupcion _T3Interrupt(void);
+void Bucle_Principal();
 
 extern int i;
 #endif	/* CB_TIMER3_H */

@@ -7,7 +7,7 @@
 #include "CA_funciones_control.h"
 int errorAnt = 0;
 
-int Pid_Posicion(int _setpoint, int _posicion_actual)
+int _Pid_Posicion(int _setpoint, int _posicion_actual)
 {
     int valorPID, _error;
     _error = _setpoint - _posicion_actual;
@@ -24,7 +24,7 @@ double ITerm, lastInput;
 
 // SetPoint = BIAS
 
-int PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int* _PosicionAnterior, int _Maximo, int _Minimo)
+int _PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int* _PosicionAnterior, int _Maximo, int _Minimo)
 {
     int error = _referencia - _PosicionActual;
     ITerm += (_ki * error);

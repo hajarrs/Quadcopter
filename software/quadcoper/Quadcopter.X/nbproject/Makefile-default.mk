@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=CB_Inicializaciones.c CB_Timer1.c CB_Timer2.c CB_Timer3.c CB_Timer5.c Pruebas.c main.c CA_funciones_control.c CA_SetGetMPU6050.c CB_Bluetooth.c CB_I2C.c
+SOURCEFILES_QUOTED_IF_SPACED=my_new_pid.s CB_Inicializaciones.c CB_Timer1.c CB_Timer2.c CB_Timer3.c CB_Timer5.c Pruebas.c main.c CA_funciones_control.c CA_SetGetMPU6050.c CB_Bluetooth.c CB_I2C.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer5.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/CA_funciones_control.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_I2C.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/CB_Inicializaciones.o.d ${OBJECTDIR}/CB_Timer1.o.d ${OBJECTDIR}/CB_Timer2.o.d ${OBJECTDIR}/CB_Timer3.o.d ${OBJECTDIR}/CB_Timer5.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/CA_funciones_control.o.d ${OBJECTDIR}/CA_SetGetMPU6050.o.d ${OBJECTDIR}/CB_Bluetooth.o.d ${OBJECTDIR}/CB_I2C.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer5.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/CA_funciones_control.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_I2C.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/my_new_pid.o.d ${OBJECTDIR}/CB_Inicializaciones.o.d ${OBJECTDIR}/CB_Timer1.o.d ${OBJECTDIR}/CB_Timer2.o.d ${OBJECTDIR}/CB_Timer3.o.d ${OBJECTDIR}/CB_Timer5.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/CA_funciones_control.o.d ${OBJECTDIR}/CA_SetGetMPU6050.o.d ${OBJECTDIR}/CB_Bluetooth.o.d ${OBJECTDIR}/CB_I2C.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer5.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/CA_funciones_control.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_I2C.o
+OBJECTFILES=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer5.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/CA_funciones_control.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_I2C.o
 
 # Source Files
-SOURCEFILES=CB_Inicializaciones.c CB_Timer1.c CB_Timer2.c CB_Timer3.c CB_Timer5.c Pruebas.c main.c CA_funciones_control.c CA_SetGetMPU6050.c CB_Bluetooth.c CB_I2C.c
+SOURCEFILES=my_new_pid.s CB_Inicializaciones.c CB_Timer1.c CB_Timer2.c CB_Timer3.c CB_Timer5.c Pruebas.c main.c CA_funciones_control.c CA_SetGetMPU6050.c CB_Bluetooth.c CB_I2C.c
 
 
 CFLAGS=
@@ -239,7 +239,21 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/my_new_pid.o: my_new_pid.s  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/my_new_pid.o.d 
+	@${RM} ${OBJECTDIR}/my_new_pid.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  my_new_pid.s  -o ${OBJECTDIR}/my_new_pid.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -Wa,-MD,"${OBJECTDIR}/my_new_pid.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,-g,--no-relax$(MP_EXTRA_AS_POST)
+	@${FIXDEPS} "${OBJECTDIR}/my_new_pid.o.d"  $(SILENT)  -rsi ${MP_CC_DIR}../  
+	
 else
+${OBJECTDIR}/my_new_pid.o: my_new_pid.s  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/my_new_pid.o.d 
+	@${RM} ${OBJECTDIR}/my_new_pid.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  my_new_pid.s  -o ${OBJECTDIR}/my_new_pid.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -omf=elf -Wa,-MD,"${OBJECTDIR}/my_new_pid.o.d",--defsym=__MPLAB_BUILD=1,-g,--no-relax$(MP_EXTRA_AS_POST)
+	@${FIXDEPS} "${OBJECTDIR}/my_new_pid.o.d"  $(SILENT)  -rsi ${MP_CC_DIR}../  
+	
 endif
 
 # ------------------------------------------------------------------------------------

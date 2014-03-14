@@ -8,13 +8,14 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
-
+void Bucle_Principal();
 
 #include <xc.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <math.h>
+#include <dsp.h>
 #include "define_comet_code.h"
 #include "variables_globales.h"
 #include "Defines.h"
@@ -27,6 +28,7 @@
 #include "Pruebas.h"
 #include "CA_calibrado_filtro.h"
 #include "CA_funciones_control.h"
+
 
 int LSD[12];
 char str_blue[40];

@@ -9,8 +9,8 @@
 #include <math.h>
 #include "CB_Bluetooth.h"
 void get_calibrado_acelerometro(int milis,int n);
-int Pid_Posicion(int _setpoint,int _posicion_actual);
-int PID(int _Bias, int _PosicionActual, int Tmuestreo, int _kp, int _kd, int _ki, int* _PosicionAnterior, int _Maximo, int _Minimo );
+int _Pid_Posicion(int _setpoint,int _posicion_actual);
+int _PID(int _Bias, int _PosicionActual, int Tmuestreo, int _kp, int _kd, int _ki, int* _PosicionAnterior, int _Maximo, int _Minimo );
 void getAngle_init();
 double getAngle(double newAngle, double newRate, double dt) ;
 float Complementary2(float newAngle, float newRate,int looptime) ;
