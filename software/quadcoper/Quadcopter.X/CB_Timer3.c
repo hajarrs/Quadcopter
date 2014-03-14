@@ -31,8 +31,8 @@ void StopInterrup3()
 
 void interrupcion _T3Interrupt(void)
 {
-    i++;
-    if (i == 30)StopInterrup3();
+    //i++;
+   // if (i == 30)StopInterrup3();
 
     IFS0bits.T3IF = 0;
     LEDVERDE = !LEDVERDE;

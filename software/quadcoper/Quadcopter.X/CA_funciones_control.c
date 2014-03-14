@@ -145,16 +145,11 @@ float Complementary2(float newAngle, float newRate, int looptime)
     float k = 10;
     float dtc2 = 0, x1 = 0, y1 = 0, x2 = 0;
     dtc2 = (float) (looptime) / 1000.0;
-    enviar_valor_NOCR(" newAngle=",newAngle);
-    enviar_valor_NOCR(" newRate=", newRate);
     x1 = (newAngle - x_angle2C) * k*k;
     y1 = dtc2 * x1 + y1;
     x2 = y1 + (newAngle - x_angle2C)*2 * k + newRate;
     x_angle2C = dtc2 * x2 + x_angle2C;
 #ifdef DEBUG
-    enviar_valor_NOCR(" x1=", x1);
-    enviar_valor_NOCR(" y1=", y1);
-    enviar_valor_NOCR(" x2=", x2);
     enviar_valor(" x_angle2C=", x_angle2C);
 #endif
     return x_angle2C;
