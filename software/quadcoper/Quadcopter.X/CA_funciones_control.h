@@ -8,7 +8,7 @@
 #define	CA_FUNCIONES_CONTROL_H
 #include <math.h>
 #include "CB_Bluetooth.h"
-void get_calibrado_acelerometro(int milis,int n, int *_calibra_ax, int *_calibra_ay, int *_calibra_az, int *_calibra_gx, int *_calibra_gy, int *_calibra_gz);
+void get_calibrado_acelerometro(int milis,int n);
 int Pid_Posicion(int _setpoint,int _posicion_actual);
 int PID(int _Bias, int _PosicionActual, int Tmuestreo, int _kp, int _kd, int _ki, int* _PosicionAnterior, int _Maximo, int _Minimo );
 void getAngle_init();
@@ -41,6 +41,12 @@ extern int BIAS1;
 extern int BIAS2;
 extern int Tmuestreo;
 extern int abs(int);
-
+//***********************varibles de calibrado*************//
+extern double calibra_ax;
+extern double calibra_ay;
+extern double calibra_az;
+extern double calibra_gx;
+extern double calibra_gy;
+extern double calibra_gz;
 #endif	/* CA_FUNCIONES_CONTROL_H */
 

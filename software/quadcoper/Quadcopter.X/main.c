@@ -1,14 +1,12 @@
 /*
  * File:   main.c
- * Author: rbpkirow
+ * Author: Pablo
  *
  * Created on 29 de junio de 2013, 19:05
  */
 
 
 #include "main.h"
-
-
 #define MY_FRC                  0xF9E3
 
 //DEFINES DE DEBUG
@@ -28,82 +26,52 @@ _FBORPOR(PWRT_OFF & BORV27 & PBOR_OFF & MCLR_DIS)
 
 int main(void)
 {
-    //#define DATO_KALMAN
-    //#define ARRANQUE
+    //***************************************************************************************//
+    //*****************ARRANCAMOS LA CONFIGURACION DEL PIC **********************************//
+    //***************************************************************************************//
+    Init_Hw();       Delay1msT1(0);     //Configuramos el puertos y quitamos analogicos
+    Init_Pll();      Delay1msT1(0);     //configuramos el pll que abiasmos arracamos sin él
+    Init_PWM();      Delay1msT1(0);     //configuramos el PWM
+    Init_Bluetooh(); Delay1msT1(0);     //Configuramos el serial-Bluetooth
+    Init_I2C();      Delay1msT1(0);     //incializamos el I2c
+    set_inicial();   Delay1msT1(0);     //Configuramos la incialicacion de sensor
+    getAngle_init(); Delay1msT1(0);  ACT_ACE = 1;     set_inicial();   //Incializamos el filtro kalman
+    //***************************************************************************************//
+    //***************************************************************************************//
 
-
-
-    //#define CALIBRADO
-    int calibra_ax, calibra_ay, calibra_az, calibra_gx, calibra_gy, calibra_gz, ax, ay, az, gx, gy, gz;
-    calibra_ax = calibra_ay = calibra_az = calibra_gx = calibra_gy = calibra_gz = ax = ay = az = gx = gy = gz = 0;
-
-    //#define DEBUG
-    Init_Hw();
-    Init_Pll();
-#ifdef ARRANQUE
-    enviar_mensaje("Iniciando el PWM...");
-#endif
-    Delay1msT1(0);
-    Init_PWM();
-
+    //*****************CALIBRAMOS EL ACELEROMETRO Y GIROSCOPO *******************************//
+    get_calibrado_acelerometro(5, 50);//cojemos los valres por defecto del  giroscopo y aceletometro
     LED_ALL_OFF();
-
-    Init_Bluetooh();
-#ifdef ARRANQUE
-    enviar_mensaje("Bluetooth inicializado...");
-#endif
-    Delay1msT1(0);
-#ifdef ARRANQUE
-    enviar_mensaje("Iniciando el I2C...");
-#endif
-    Delay1msT1(0);
-    Init_I2C();
-    DelayXmsT1(10);
-    ACT_ACE = 1;
-#ifdef ARRANQUE
-    enviar_mensaje("I2C inicializado...");
-#endif
-    Delay1msT1(0);
-
-#ifdef ARRANQUE
-    enviar_mensaje("PWM inicializado...");
-#endif
-    //  SetupT3FormsPID(4);
-    // StartPID();
-
-    DelayXmsT1(10);
-    LEDVERDE = 1;
-    set_inicial();
-
-    LEDROJO = 1;
-    set_inicial();
-    getAngle_init();
-    int i = 0;
-    get_calibrado_acelerometro(5, 50, &calibra_ax, &calibra_ay, &calibra_az, &calibra_gx, &calibra_gy, &calibra_gz);
+    //***************************************************************************************//
 
 
-    while (1)
-    {
-        for (i = 0; i < 20; i++)
-        {
+    //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
+    SetupT3ForXmsPID(11);//configuramos  la interrupcion principal
+    StartInterrup3();//incializamos la interrupcion
+    
+    enviar_mensaje("------------------------------------------------------");
+    //***************************************************************************************//
+
+    while(1);
+
+}
+void Bucle_Principal()
+{
+    LEDROJO=1;
 
 
-
+int angulo=0;
             double accXangle = (atan2((get_ay() - calibra_ay), (get_az() - calibra_az)) + PI) * RAD_TO_DEG;
             double gyroXrate = (double) (get_gx() - calibra_gx) / 131.0;
-            //enviar_valor("accXangle = ",accXangle);
-            //enviar_valor("gyroXrate = ",gyroXrate);
-            int angulo = (int) getAngle(accXangle, gyroXrate, 0.006);
+            // angulo = (int) getAngle(accXangle, gyroXrate, 0.006);
             // enviar_valor("angulokalman = ",angulo);
-            // angulo =(int)Complementary2(accXangle, gyroXrate,6);
-            enviar_valor("anguloComplementary2 = ", angulo);
+            angulo =(int)Complementary2(accXangle, gyroXrate,11);
+            //enviar_valor("anguloComplementary2 = ", angulo);
             // int devuelto = PID(250, angulo, 1, 100, 20, 1, &valorAuxAnterior, 31000, -31000);
             //plot3(100*(250-angulo),180*angulo,devuelto); // Calculate the angle using a Kalman filter
             // plot2(valorAux, devuelto);
-            LEDVERDE = !LEDVERDE;
-        }
+        
+            LEDROJO=0;
 
-    }
 }
-
 

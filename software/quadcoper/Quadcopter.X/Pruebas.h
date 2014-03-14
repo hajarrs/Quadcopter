@@ -24,5 +24,6 @@ void prueba_who_i_am(void);
 void my_itoa(long n, char s[]);
 void reverse(char s[]);
 void my_ftoa(float Value, char* Buffer);
+void acelerometro(void);
 #endif	/* PRUEBAS_H */
 

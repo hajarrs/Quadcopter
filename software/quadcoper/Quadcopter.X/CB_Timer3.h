@@ -12,11 +12,11 @@
 
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
-void SetupT3For2_3msPID(int _tiempo);
-void StartPID();
-void StopPID();
+void SetupT3ForXmsPID(int _tiempo);
+void StartInterrup3();
+void StopInterrup3();
 void interrupcion _T3Interrupt(void);
 
-
+extern int i;
 #endif	/* CB_TIMER3_H */
 

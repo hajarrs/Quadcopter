@@ -141,10 +141,12 @@ double getAngle(double newAngle, double newRate, double dt)
 
 float Complementary2(float newAngle, float newRate, int looptime)
 {
+    #define DEBUG
     float k = 10;
     float dtc2 = 0, x1 = 0, y1 = 0, x2 = 0;
     dtc2 = (float) (looptime) / 1000.0;
-
+    enviar_valor_NOCR(" newAngle=",newAngle);
+    enviar_valor_NOCR(" newRate=", newRate);
     x1 = (newAngle - x_angle2C) * k*k;
     y1 = dtc2 * x1 + y1;
     x2 = y1 + (newAngle - x_angle2C)*2 * k + newRate;
@@ -158,33 +160,27 @@ float Complementary2(float newAngle, float newRate, int looptime)
     return x_angle2C;
 }
 
-void get_calibrado_acelerometro(int milis, int n, int *_calibra_ax, int *_calibra_ay, int *_calibra_az, int *_calibra_gx, int *_calibra_gy, int *_calibra_gz)
+void get_calibrado_acelerometro(int milis, int n)
 {
     DelayXmsT1(milis);
     int i;
-    double calibra_ax_double = (*_calibra_ax);
-    double calibra_ay_double = (*_calibra_ay);
-    double calibra_az_double = (*_calibra_az);
-    double calibra_gx_double = (*_calibra_gx);
-    double calibra_gy_double = (*_calibra_gy);
-    double calibra_gz_double = (*_calibra_gz);
 
     for (i = 0; i < n; i++)
     {
-        calibra_ax_double = get_ax() + calibra_gx_double;
-        calibra_ay_double = get_ay() + calibra_gy_double;
-        calibra_az_double = get_az() + calibra_gz_double;
-        calibra_gx_double = get_gx() + calibra_gx_double;
-        calibra_gy_double = get_gy() + calibra_gy_double;
-        calibra_gz_double = get_gz() + calibra_gz_double;
+        calibra_ax = get_ax() + calibra_gx;
+        calibra_ay = get_ay() + calibra_gy;
+        calibra_az = get_az() + calibra_gz;
+        calibra_gx = get_gx() + calibra_gx;
+        calibra_gy = get_gy() + calibra_gy;
+        calibra_gz = get_gz() + calibra_gz;
     }
 
-    *_calibra_ax = calibra_ax_double / n;
-    *_calibra_ay = calibra_ay_double / n;
-    *_calibra_az = calibra_az_double / n;
-    *_calibra_gx = calibra_gx_double / n;
-    *_calibra_gy = calibra_gy_double / n;
-    *_calibra_gz = calibra_gz_double / n;
+    calibra_ax = calibra_ax / n;
+    calibra_ay = calibra_ay / n;
+    calibra_az = calibra_az / n;
+    calibra_gx = calibra_gx / n;
+    calibra_gy = calibra_gy / n;
+    calibra_gz = calibra_gz / n;
 
 
 

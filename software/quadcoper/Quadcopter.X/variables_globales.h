@@ -12,14 +12,6 @@
 //*********************VARIABLES GLOBALES**********************
 //*************************************************************
 
-extern int chanell;
-extern int chanel2;
-extern int chanel3;
-extern int chanel4;
-extern int chanel5;
-
-
-
 int chanel1 = 0;
 int chanel2 = 0;
 int chanel3 = 0;
@@ -54,10 +46,15 @@ double y=1; // Angle difference
 double S=100; // Estimate error
 //************************* VARIABLES DE COMPLEMENTARY ****************//
 float x_angle2C=0;
-// P[0][0] = 0; // Since we assume that the bias is 0 and we know the starting angle (use setAngle), the error covariance matrix is set like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
-// P[0][1] = 0;
-// P[1][0] = 0;
-// P[1][1] = 0;
+int i=0;
+//************************* VARIBLES DE CALIBRADO ****************//
+double calibra_ax=0;
+double calibra_ay=0;
+double calibra_az=0;
+double calibra_gx=0;
+double calibra_gy=0;
+double calibra_gz=0;
+
 //-------------------------------------------------------------
 //necesarias por que las inperrupciones no permiten parametros
 //-------------------------------------------------------------
