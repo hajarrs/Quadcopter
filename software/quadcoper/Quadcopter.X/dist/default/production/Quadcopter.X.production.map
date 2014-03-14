@@ -1,4 +1,4 @@
-Microchip Technology Inc, vàƒ^
+Microchip Technology Inc, vàƒ]
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
@@ -148,12 +148,12 @@ Program Memory  [Origin = 0x100, Length = 0x7efe]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x66e           0x9a5  (2469)
-.const                       0x76e               0x1c2           0x2a3  (675)
-.text                        0x930              0x1952          0x25fb  (9723)
-.dinit                      0x2282                0x60            0x90  (144)
-.text                       0x22e2                0x14            0x1e  (30)
+.const                       0x76e               0x1ca           0x2af  (687)
+.text                        0x938              0x1986          0x2649  (9801)
+.dinit                      0x22be                0x60            0x90  (144)
+.text                       0x231e                0x14            0x1e  (30)
 
-                     Total program memory used (bytes):         0x32f1  (13041) 26%
+                     Total program memory used (bytes):         0x334b  (13131) 26%
 
 
 Data Memory  [Origin = 0x800, Length = 0x800]
@@ -312,129 +312,129 @@ External Symbols in Program Memory (by address):
                   0x000746                  _memcpy
                   0x000754                  _strcpy
                   0x000760                  _strlen
-                  0x000930                  _Prueba2_PWM
-                  0x000946                  _PWM_prueba
-                  0x0009d0                  _Prueba_PWM_
-                  0x0009fc                  _Prueba_Bluetooth_2
-                  0x000a1a                  _Prueba_Bluetooth
-                  0x000b00                  _Prueba_I2C
-                  0x000b72                  _my_ftoa
-                  0x000d76                  _my_itoa
-                  0x000e04                  _reverse
-                  0x000e50                  _prueba_who_i_am
-                  0x000eb8                  _acelerometro
-                  0x000f26                  _acelerometro_plot
-                  0x000f78                  _prueba_envio
-                  0x000f94                  _prueba_pwm
-                  0x000fba                  _Pid_Posicion
-                  0x000fe8                  _PID
-                  0x001154                  _getAngle_init
-                  0x001172                  _getAngle
-                  0x001382                  _Complementary2
-                  0x001470                  _get_calibrado_acelerometro
-                  0x0015d6                  _EnviarCR
-                  0x0015fc                  _enviar_datos_NOCR
-                  0x001632                  _enviar_datos
-                  0x001644                  _enviar_Udatos_NOCR
-                  0x00167a                  _enviar_Udatos
-                  0x00168c                  _EnviarSensores
-                  0x0016d6                  _enviar_valor
-                  0x001700                  _enviar_valor_NOCR
-                  0x00172a                  _enviar_mensaje
-                  0x00173e                  _enviar_mensaje_NOCR
-                  0x001752                  __U2RXInterrupt
-                  0x0017c0                  _ProcesarCadenaPid
-                  0x0018f4                  _enviar_datos_int_NOCR
-                  0x001958                  _Init_Hw
-                  0x0019c6                  _Init_I2C
-                  0x001a18                  _Init_PWM
-                  0x001aea                  _Init_Bluetooh
-                  0x001b32                  _LED_ALL_ON
-                  0x001b3c                  _LED_ALL_OFF
-                  0x001b46                  _clockSwitch
-                  0x001c40                  _Init_Pll
-                  0x001c62                  _my_Write_I2C
-                  0x001c7a                  _InitTimer5
-                  0x001c94                  _my_StartI2C
-                  0x001cc8                  _my_RestartI2C
-                  0x001cfc                  _my_StopI2C
-                  0x001d30                  _my_WriteI2C
-                  0x001d6a                  _my_IdleI2C
-                  0x001d9e                  _my_ACKStatus
-                  0x001dac                  _my_NotAckI2C
-                  0x001dc6                  _my_AckI2C
-                  0x001dde                  _my_getI2C
-                  0x001df4                  _my_masterreceiveI2C
-                  0x001e0e                  _my_getsI2C
-                  0x001e54                  _ReadAddress
-                  0x001e7e                  _WriteAddress
-                  0x001e9e                  _set_inicial
-                  0x001ec2                  _get_ax
-                  0x001ee8                  _get_ay
-                  0x001f0e                  _get_az
-                  0x001f34                  _get_gx
-                  0x001f5a                  _get_gy
-                  0x001f80                  _get_gz
-                  0x001fa6                  _get_temp
-                  0x001fcc                  _get_who_I_AM
-                  0x001fda                  _plot1
-                  0x001ffa                  _plot2
-                  0x002020                  _plot3
-                  0x00204c                  _plot4
-                  0x00207e                  _get_acelerometro
-                  0x0020c0                  _main
-                  0x002104                  _Bucle_Principal
-                  0x0021a4                  _Delay1msT1
-                  0x0021e2                  __T1Interrupt
-                  0x002200                  _DelayXmsT1
-                  0x002214                  _SetupT3ForXmsPID
-                  0x002234                  _StartInterrup3
-                  0x00223c                  _StopInterrup3
-                  0x002244                  __T3Interrupt
-                  0x0022e2                  _Delay_Nop
+                  0x000938                  _Prueba2_PWM
+                  0x00094e                  _PWM_prueba
+                  0x0009d8                  _Prueba_PWM_
+                  0x000a04                  _Prueba_Bluetooth_2
+                  0x000a22                  _Prueba_Bluetooth
+                  0x000b08                  _Prueba_I2C
+                  0x000b7a                  _my_ftoa
+                  0x000d7e                  _my_itoa
+                  0x000e0c                  _reverse
+                  0x000e58                  _prueba_who_i_am
+                  0x000ec0                  _acelerometro
+                  0x000f2e                  _acelerometro_plot
+                  0x000f80                  _prueba_envio
+                  0x000f9c                  _prueba_pwm
+                  0x000fc2                  _Pid_Posicion
+                  0x000ff0                  _PID
+                  0x00115c                  _getAngle_init
+                  0x00117a                  _getAngle
+                  0x00139c                  _Complementary2
+                  0x00148a                  _get_calibrado_acelerometro
+                  0x0015f0                  _EnviarCR
+                  0x001616                  _enviar_datos_NOCR
+                  0x00164c                  _enviar_datos
+                  0x00165e                  _enviar_Udatos_NOCR
+                  0x001694                  _enviar_Udatos
+                  0x0016a6                  _EnviarSensores
+                  0x0016f0                  _enviar_valor
+                  0x00171a                  _enviar_valor_NOCR
+                  0x001744                  _enviar_mensaje
+                  0x001758                  _enviar_mensaje_NOCR
+                  0x00176c                  __U2RXInterrupt
+                  0x0017da                  _ProcesarCadenaPid
+                  0x00190e                  _enviar_datos_int_NOCR
+                  0x001972                  _Init_Hw
+                  0x0019e0                  _Init_I2C
+                  0x001a32                  _Init_PWM
+                  0x001b04                  _Init_Bluetooh
+                  0x001b4c                  _LED_ALL_ON
+                  0x001b56                  _LED_ALL_OFF
+                  0x001b60                  _clockSwitch
+                  0x001c5a                  _Init_Pll
+                  0x001c7c                  _my_Write_I2C
+                  0x001c94                  _InitTimer5
+                  0x001cae                  _my_StartI2C
+                  0x001ce2                  _my_RestartI2C
+                  0x001d16                  _my_StopI2C
+                  0x001d4a                  _my_WriteI2C
+                  0x001d84                  _my_IdleI2C
+                  0x001db8                  _my_ACKStatus
+                  0x001dc6                  _my_NotAckI2C
+                  0x001de0                  _my_AckI2C
+                  0x001df8                  _my_getI2C
+                  0x001e0e                  _my_masterreceiveI2C
+                  0x001e28                  _my_getsI2C
+                  0x001e6e                  _ReadAddress
+                  0x001e98                  _WriteAddress
+                  0x001eb8                  _set_inicial
+                  0x001edc                  _get_ax
+                  0x001f02                  _get_ay
+                  0x001f28                  _get_az
+                  0x001f4e                  _get_gx
+                  0x001f74                  _get_gy
+                  0x001f9a                  _get_gz
+                  0x001fc0                  _get_temp
+                  0x001fe6                  _get_who_I_AM
+                  0x001ff4                  _plot1
+                  0x002014                  _plot2
+                  0x00203a                  _plot3
+                  0x002066                  _plot4
+                  0x002098                  _get_acelerometro
+                  0x0020da                  _main
+                  0x00211e                  _Bucle_Principal
+                  0x0021e0                  _Delay1msT1
+                  0x00221e                  __T1Interrupt
+                  0x00223c                  _DelayXmsT1
+                  0x002250                  _SetupT3ForXmsPID
+                  0x002270                  _StartInterrup3
+                  0x002278                  _StopInterrup3
+                  0x002280                  __T3Interrupt
+                  0x00231e                  _Delay_Nop
                   0xf8000a                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x002104                  _Bucle_Principal
-                  0x001382                  _Complementary2
-                  0x0021a4                  _Delay1msT1
-                  0x002200                  _DelayXmsT1
-                  0x0022e2                  _Delay_Nop
-                  0x0015d6                  _EnviarCR
-                  0x00168c                  _EnviarSensores
+                  0x00211e                  _Bucle_Principal
+                  0x00139c                  _Complementary2
+                  0x0021e0                  _Delay1msT1
+                  0x00223c                  _DelayXmsT1
+                  0x00231e                  _Delay_Nop
+                  0x0015f0                  _EnviarCR
+                  0x0016a6                  _EnviarSensores
                   0x0001a0                  _IdleI2C
-                  0x001c7a                  _InitTimer5
-                  0x001aea                  _Init_Bluetooh
-                  0x001958                  _Init_Hw
-                  0x0019c6                  _Init_I2C
-                  0x001a18                  _Init_PWM
-                  0x001c40                  _Init_Pll
-                  0x001b3c                  _LED_ALL_OFF
-                  0x001b32                  _LED_ALL_ON
+                  0x001c94                  _InitTimer5
+                  0x001b04                  _Init_Bluetooh
+                  0x001972                  _Init_Hw
+                  0x0019e0                  _Init_I2C
+                  0x001a32                  _Init_PWM
+                  0x001c5a                  _Init_Pll
+                  0x001b56                  _LED_ALL_OFF
+                  0x001b4c                  _LED_ALL_ON
                   0x0001bc                  _NotAckI2C
-                  0x000fe8                  _PID
-                  0x000946                  _PWM_prueba
-                  0x000fba                  _Pid_Posicion
-                  0x0017c0                  _ProcesarCadenaPid
-                  0x000930                  _Prueba2_PWM
-                  0x000a1a                  _Prueba_Bluetooth
-                  0x0009fc                  _Prueba_Bluetooth_2
-                  0x000b00                  _Prueba_I2C
-                  0x0009d0                  _Prueba_PWM_
-                  0x001e54                  _ReadAddress
-                  0x002214                  _SetupT3ForXmsPID
+                  0x000ff0                  _PID
+                  0x00094e                  _PWM_prueba
+                  0x000fc2                  _Pid_Posicion
+                  0x0017da                  _ProcesarCadenaPid
+                  0x000938                  _Prueba2_PWM
+                  0x000a22                  _Prueba_Bluetooth
+                  0x000a04                  _Prueba_Bluetooth_2
+                  0x000b08                  _Prueba_I2C
+                  0x0009d8                  _Prueba_PWM_
+                  0x001e6e                  _ReadAddress
+                  0x002250                  _SetupT3ForXmsPID
                   0x0001c2                  _StartI2C
-                  0x002234                  _StartInterrup3
+                  0x002270                  _StartInterrup3
                   0x0001c6                  _StopI2C
-                  0x00223c                  _StopInterrup3
-                  0x001e7e                  _WriteAddress
+                  0x002278                  _StopInterrup3
+                  0x001e98                  _WriteAddress
                   0x00019c                  __DefaultInterrupt
                   0xf8000a                  __FGS.sec
-                  0x0021e2                  __T1Interrupt
-                  0x002244                  __T3Interrupt
+                  0x00221e                  __T1Interrupt
+                  0x002280                  __T3Interrupt
                   0x000194                  __T5Interrupt
-                  0x001752                  __U2RXInterrupt
+                  0x00176c                  __U2RXInterrupt
                   0x0001cc                  ___addsf3
                   0x00038a                  ___divsf3
                   0x00040e                  ___divsi3
@@ -464,59 +464,59 @@ External Symbols in Program Memory (by name):
                   0x000528                  __funpack2
                   0x000126                  __psv_init
                   0x000100                  __resetPRI
-                  0x000eb8                  _acelerometro
-                  0x000f26                  _acelerometro_plot
+                  0x000ec0                  _acelerometro
+                  0x000f2e                  _acelerometro_plot
                   0x000286                  _atan2f
                   0x0002c0                  _atanf
                   0x0006b8                  _atoi
-                  0x001b46                  _clockSwitch
-                  0x00167a                  _enviar_Udatos
-                  0x001644                  _enviar_Udatos_NOCR
-                  0x001632                  _enviar_datos
-                  0x0015fc                  _enviar_datos_NOCR
-                  0x0018f4                  _enviar_datos_int_NOCR
-                  0x00172a                  _enviar_mensaje
-                  0x00173e                  _enviar_mensaje_NOCR
-                  0x0016d6                  _enviar_valor
-                  0x001700                  _enviar_valor_NOCR
-                  0x001172                  _getAngle
-                  0x001154                  _getAngle_init
-                  0x00207e                  _get_acelerometro
-                  0x001ec2                  _get_ax
-                  0x001ee8                  _get_ay
-                  0x001f0e                  _get_az
-                  0x001470                  _get_calibrado_acelerometro
-                  0x001f34                  _get_gx
-                  0x001f5a                  _get_gy
-                  0x001f80                  _get_gz
-                  0x001fa6                  _get_temp
-                  0x001fcc                  _get_who_I_AM
+                  0x001b60                  _clockSwitch
+                  0x001694                  _enviar_Udatos
+                  0x00165e                  _enviar_Udatos_NOCR
+                  0x00164c                  _enviar_datos
+                  0x001616                  _enviar_datos_NOCR
+                  0x00190e                  _enviar_datos_int_NOCR
+                  0x001744                  _enviar_mensaje
+                  0x001758                  _enviar_mensaje_NOCR
+                  0x0016f0                  _enviar_valor
+                  0x00171a                  _enviar_valor_NOCR
+                  0x00117a                  _getAngle
+                  0x00115c                  _getAngle_init
+                  0x002098                  _get_acelerometro
+                  0x001edc                  _get_ax
+                  0x001f02                  _get_ay
+                  0x001f28                  _get_az
+                  0x00148a                  _get_calibrado_acelerometro
+                  0x001f4e                  _get_gx
+                  0x001f74                  _get_gy
+                  0x001f9a                  _get_gz
+                  0x001fc0                  _get_temp
+                  0x001fe6                  _get_who_I_AM
                   0x00072a                  _itoa
-                  0x0020c0                  _main
+                  0x0020da                  _main
                   0x000746                  _memcpy
-                  0x001d9e                  _my_ACKStatus
-                  0x001dc6                  _my_AckI2C
-                  0x001d6a                  _my_IdleI2C
-                  0x001dac                  _my_NotAckI2C
-                  0x001cc8                  _my_RestartI2C
-                  0x001c94                  _my_StartI2C
-                  0x001cfc                  _my_StopI2C
-                  0x001d30                  _my_WriteI2C
-                  0x001c62                  _my_Write_I2C
-                  0x000b72                  _my_ftoa
-                  0x001dde                  _my_getI2C
-                  0x001e0e                  _my_getsI2C
-                  0x000d76                  _my_itoa
-                  0x001df4                  _my_masterreceiveI2C
-                  0x001fda                  _plot1
-                  0x001ffa                  _plot2
-                  0x002020                  _plot3
-                  0x00204c                  _plot4
-                  0x000f78                  _prueba_envio
-                  0x000f94                  _prueba_pwm
-                  0x000e50                  _prueba_who_i_am
-                  0x000e04                  _reverse
-                  0x001e9e                  _set_inicial
+                  0x001db8                  _my_ACKStatus
+                  0x001de0                  _my_AckI2C
+                  0x001d84                  _my_IdleI2C
+                  0x001dc6                  _my_NotAckI2C
+                  0x001ce2                  _my_RestartI2C
+                  0x001cae                  _my_StartI2C
+                  0x001d16                  _my_StopI2C
+                  0x001d4a                  _my_WriteI2C
+                  0x001c7c                  _my_Write_I2C
+                  0x000b7a                  _my_ftoa
+                  0x001df8                  _my_getI2C
+                  0x001e28                  _my_getsI2C
+                  0x000d7e                  _my_itoa
+                  0x001e0e                  _my_masterreceiveI2C
+                  0x001ff4                  _plot1
+                  0x002014                  _plot2
+                  0x00203a                  _plot3
+                  0x002066                  _plot4
+                  0x000f80                  _prueba_envio
+                  0x000f9c                  _prueba_pwm
+                  0x000e58                  _prueba_who_i_am
+                  0x000e0c                  _reverse
+                  0x001eb8                  _set_inicial
                   0x000754                  _strcpy
                   0x000760                  _strlen
                   0x0006f6                  _utoa
@@ -742,7 +742,7 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x579a
+.debug_info       0x000000       0x57ac
  *(.debug_info)
  .debug_info      0x000000       0x16ec build/default/production/CB_Inicializaciones.o
  .debug_info      0x0016ec        0x605 build/default/production/CB_Timer1.o
@@ -750,11 +750,11 @@ userdata
  .debug_info      0x001ddc        0x679 build/default/production/CB_Timer3.o
  .debug_info      0x002455        0x23c build/default/production/CB_Timer5.o
  .debug_info      0x002691        0xb0c build/default/production/Pruebas.o
- .debug_info      0x00319d        0x64b build/default/production/main.o
- .debug_info      0x0037e8        0x737 build/default/production/CA_funciones_control.o
- .debug_info      0x003f1f        0x508 build/default/production/CA_SetGetMPU6050.o
- .debug_info      0x004427        0x91a build/default/production/CB_Bluetooth.o
- .debug_info      0x004d41        0xa59 build/default/production/CB_I2C.o
+ .debug_info      0x00319d        0x65d build/default/production/main.o
+ .debug_info      0x0037fa        0x737 build/default/production/CA_funciones_control.o
+ .debug_info      0x003f31        0x508 build/default/production/CA_SetGetMPU6050.o
+ .debug_info      0x004439        0x91a build/default/production/CB_Bluetooth.o
+ .debug_info      0x004d53        0xa59 build/default/production/CB_I2C.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0xb4c
@@ -771,7 +771,7 @@ userdata
  .debug_abbrev    0x0008ed        0x148 build/default/production/CB_Bluetooth.o
  .debug_abbrev    0x000a35        0x117 build/default/production/CB_I2C.o
 
-.debug_line       0x000000       0x2454
+.debug_line       0x000000       0x2474
  *(.debug_line)
  .debug_line      0x000000        0x57d build/default/production/CB_Inicializaciones.o
  .debug_line      0x00057d        0x144 build/default/production/CB_Timer1.o
@@ -779,11 +779,11 @@ userdata
  .debug_line      0x00072e        0x14e build/default/production/CB_Timer3.o
  .debug_line      0x00087c         0xb0 build/default/production/CB_Timer5.o
  .debug_line      0x00092c        0x918 build/default/production/Pruebas.o
- .debug_line      0x001244        0x189 build/default/production/main.o
- .debug_line      0x0013cd        0x349 build/default/production/CA_funciones_control.o
- .debug_line      0x001716        0x3ee build/default/production/CA_SetGetMPU6050.o
- .debug_line      0x001b04        0x455 build/default/production/CB_Bluetooth.o
- .debug_line      0x001f59        0x4fb build/default/production/CB_I2C.o
+ .debug_line      0x001244        0x1a1 build/default/production/main.o
+ .debug_line      0x0013e5        0x351 build/default/production/CA_funciones_control.o
+ .debug_line      0x001736        0x3ee build/default/production/CA_SetGetMPU6050.o
+ .debug_line      0x001b24        0x455 build/default/production/CB_Bluetooth.o
+ .debug_line      0x001f79        0x4fb build/default/production/CB_I2C.o
 
 .debug_frame      0x000000        0x5ec
  *(.debug_frame)
@@ -884,11 +884,11 @@ userdata
                   0x000014          0x4 LONG 0x19c DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x19c DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x19c DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x21e2 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x221e DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001c          0x4 LONG 0x19c DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x19c DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x19c DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000022          0x4 LONG 0x2244 DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000022          0x4 LONG 0x2280 DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000024          0x4 LONG 0x19c DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000026          0x4 LONG 0x19c DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000028          0x4 LONG 0x19c DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -905,7 +905,7 @@ userdata
                   0x00003e          0x4 LONG 0x19c DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000040          0x4 LONG 0x194 DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000042          0x4 LONG 0x19c DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000044          0x4 LONG 0x1752 DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000044          0x4 LONG 0x176c DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000046          0x4 LONG 0x19c DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000048          0x4 LONG 0x19c DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004a          0x4 LONG 0x19c DEFINED (__C1Interrupt)?ABSOLUTE (__C1Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -948,11 +948,11 @@ userdata
                   0x000094          0x4 LONG 0x19c DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000096          0x4 LONG 0x19c DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000098          0x4 LONG 0x19c DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00009a          0x4 LONG 0x21e2 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00009a          0x4 LONG 0x221e DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00009c          0x4 LONG 0x19c DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00009e          0x4 LONG 0x19c DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000a0          0x4 LONG 0x19c DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000a2          0x4 LONG 0x2244 DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000a2          0x4 LONG 0x2280 DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000a4          0x4 LONG 0x19c DEFINED (__AltSPI1Interrupt)?ABSOLUTE (__AltSPI1Interrupt):DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000a6          0x4 LONG 0x19c DEFINED (__AltU1RXInterrupt)?ABSOLUTE (__AltU1RXInterrupt):DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000a8          0x4 LONG 0x19c DEFINED (__AltU1TXInterrupt)?ABSOLUTE (__AltU1TXInterrupt):DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -969,7 +969,7 @@ userdata
                   0x0000be          0x4 LONG 0x19c DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000c0          0x4 LONG 0x194 DEFINED (__AltT5Interrupt)?ABSOLUTE (__AltT5Interrupt):DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000c2          0x4 LONG 0x19c DEFINED (__AltINT2Interrupt)?ABSOLUTE (__AltINT2Interrupt):DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x0000c4          0x4 LONG 0x1752 DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x0000c4          0x4 LONG 0x176c DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000c6          0x4 LONG 0x19c DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000c8          0x4 LONG 0x19c DEFINED (__AltSPI2Interrupt)?ABSOLUTE (__AltSPI2Interrupt):DEFINED (__SPI2Interrupt)?ABSOLUTE (__SPI2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x0000ca          0x4 LONG 0x19c DEFINED (__AltC1Interrupt)?ABSOLUTE (__AltC1Interrupt):DEFINED (__C1Interrupt)?ABSOLUTE (__C1Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1877,106 +1877,106 @@ __c30_signature
  .nbss              0x0922          0x2 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libm-elf.a(errno.eo)
                     0x0922                  _errno
 
-.const              0x876e        0x1c2 load address 0x00076e  
+.const              0x876e        0x1ca load address 0x00076e  
  .const             0x876e         0xb8 build/default/production/Pruebas.o
  .const             0x8826         0x8a build/default/production/CB_I2C.o
  .const             0x88b0         0x3c build/default/production/CB_Bluetooth.o
  .const             0x88ec         0x38 build/default/production/main.o
- .const             0x8924          0xc build/default/production/CA_funciones_control.o
+ .const             0x8924         0x14 build/default/production/CA_funciones_control.o
 
-.text             0x000930       0x1952
- .text            0x000930        0x68a build/default/production/Pruebas.o
-                  0x000930                  _Prueba2_PWM
-                  0x000946                  _PWM_prueba
-                  0x0009d0                  _Prueba_PWM_
-                  0x0009fc                  _Prueba_Bluetooth_2
-                  0x000a1a                  _Prueba_Bluetooth
-                  0x000b00                  _Prueba_I2C
-                  0x000b72                  _my_ftoa
-                  0x000d76                  _my_itoa
-                  0x000e04                  _reverse
-                  0x000e50                  _prueba_who_i_am
-                  0x000eb8                  _acelerometro
-                  0x000f26                  _acelerometro_plot
-                  0x000f78                  _prueba_envio
-                  0x000f94                  _prueba_pwm
- .text            0x000fba        0x61c build/default/production/CA_funciones_control.o
-                  0x000fba                  _Pid_Posicion
-                  0x000fe8                  _PID
-                  0x001154                  _getAngle_init
-                  0x001172                  _getAngle
-                  0x001382                  _Complementary2
-                  0x001470                  _get_calibrado_acelerometro
- .text            0x0015d6        0x382 build/default/production/CB_Bluetooth.o
-                  0x0015d6                  _EnviarCR
-                  0x0015fc                  _enviar_datos_NOCR
-                  0x001632                  _enviar_datos
-                  0x001644                  _enviar_Udatos_NOCR
-                  0x00167a                  _enviar_Udatos
-                  0x00168c                  _EnviarSensores
-                  0x0016d6                  _enviar_valor
-                  0x001700                  _enviar_valor_NOCR
-                  0x00172a                  _enviar_mensaje
-                  0x00173e                  _enviar_mensaje_NOCR
-                  0x001752                  __U2RXInterrupt
-                  0x0017c0                  _ProcesarCadenaPid
-                  0x0018f4                  _enviar_datos_int_NOCR
- .text            0x001958        0x30a build/default/production/CB_Inicializaciones.o
-                  0x001958                  _Init_Hw
-                  0x0019c6                  _Init_I2C
-                  0x001a18                  _Init_PWM
-                  0x001aea                  _Init_Bluetooh
-                  0x001b32                  _LED_ALL_ON
-                  0x001b3c                  _LED_ALL_OFF
-                  0x001b46                  _clockSwitch
-                  0x001c40                  _Init_Pll
- .text            0x001c62        0x23c build/default/production/CB_I2C.o
-                  0x001c62                  _my_Write_I2C
-                  0x001c7a                  _InitTimer5
-                  0x001c94                  _my_StartI2C
-                  0x001cc8                  _my_RestartI2C
-                  0x001cfc                  _my_StopI2C
-                  0x001d30                  _my_WriteI2C
-                  0x001d6a                  _my_IdleI2C
-                  0x001d9e                  _my_ACKStatus
-                  0x001dac                  _my_NotAckI2C
-                  0x001dc6                  _my_AckI2C
-                  0x001dde                  _my_getI2C
-                  0x001df4                  _my_masterreceiveI2C
-                  0x001e0e                  _my_getsI2C
-                  0x001e54                  _ReadAddress
-                  0x001e7e                  _WriteAddress
- .text            0x001e9e        0x222 build/default/production/CA_SetGetMPU6050.o
-                  0x001e9e                  _set_inicial
-                  0x001ec2                  _get_ax
-                  0x001ee8                  _get_ay
-                  0x001f0e                  _get_az
-                  0x001f34                  _get_gx
-                  0x001f5a                  _get_gy
-                  0x001f80                  _get_gz
-                  0x001fa6                  _get_temp
-                  0x001fcc                  _get_who_I_AM
-                  0x001fda                  _plot1
-                  0x001ffa                  _plot2
-                  0x002020                  _plot3
-                  0x00204c                  _plot4
-                  0x00207e                  _get_acelerometro
- .text            0x0020c0         0xe4 build/default/production/main.o
-                  0x0020c0                  _main
-                  0x002104                  _Bucle_Principal
- .text            0x0021a4         0x70 build/default/production/CB_Timer1.o
-                  0x0021a4                  _Delay1msT1
-                  0x0021e2                  __T1Interrupt
-                  0x002200                  _DelayXmsT1
- .text            0x002214         0x6e build/default/production/CB_Timer3.o
-                  0x002214                  _SetupT3ForXmsPID
-                  0x002234                  _StartInterrup3
-                  0x00223c                  _StopInterrup3
-                  0x002244                  __T3Interrupt
+.text             0x000938       0x1986
+ .text            0x000938        0x68a build/default/production/Pruebas.o
+                  0x000938                  _Prueba2_PWM
+                  0x00094e                  _PWM_prueba
+                  0x0009d8                  _Prueba_PWM_
+                  0x000a04                  _Prueba_Bluetooth_2
+                  0x000a22                  _Prueba_Bluetooth
+                  0x000b08                  _Prueba_I2C
+                  0x000b7a                  _my_ftoa
+                  0x000d7e                  _my_itoa
+                  0x000e0c                  _reverse
+                  0x000e58                  _prueba_who_i_am
+                  0x000ec0                  _acelerometro
+                  0x000f2e                  _acelerometro_plot
+                  0x000f80                  _prueba_envio
+                  0x000f9c                  _prueba_pwm
+ .text            0x000fc2        0x62e build/default/production/CA_funciones_control.o
+                  0x000fc2                  _Pid_Posicion
+                  0x000ff0                  _PID
+                  0x00115c                  _getAngle_init
+                  0x00117a                  _getAngle
+                  0x00139c                  _Complementary2
+                  0x00148a                  _get_calibrado_acelerometro
+ .text            0x0015f0        0x382 build/default/production/CB_Bluetooth.o
+                  0x0015f0                  _EnviarCR
+                  0x001616                  _enviar_datos_NOCR
+                  0x00164c                  _enviar_datos
+                  0x00165e                  _enviar_Udatos_NOCR
+                  0x001694                  _enviar_Udatos
+                  0x0016a6                  _EnviarSensores
+                  0x0016f0                  _enviar_valor
+                  0x00171a                  _enviar_valor_NOCR
+                  0x001744                  _enviar_mensaje
+                  0x001758                  _enviar_mensaje_NOCR
+                  0x00176c                  __U2RXInterrupt
+                  0x0017da                  _ProcesarCadenaPid
+                  0x00190e                  _enviar_datos_int_NOCR
+ .text            0x001972        0x30a build/default/production/CB_Inicializaciones.o
+                  0x001972                  _Init_Hw
+                  0x0019e0                  _Init_I2C
+                  0x001a32                  _Init_PWM
+                  0x001b04                  _Init_Bluetooh
+                  0x001b4c                  _LED_ALL_ON
+                  0x001b56                  _LED_ALL_OFF
+                  0x001b60                  _clockSwitch
+                  0x001c5a                  _Init_Pll
+ .text            0x001c7c        0x23c build/default/production/CB_I2C.o
+                  0x001c7c                  _my_Write_I2C
+                  0x001c94                  _InitTimer5
+                  0x001cae                  _my_StartI2C
+                  0x001ce2                  _my_RestartI2C
+                  0x001d16                  _my_StopI2C
+                  0x001d4a                  _my_WriteI2C
+                  0x001d84                  _my_IdleI2C
+                  0x001db8                  _my_ACKStatus
+                  0x001dc6                  _my_NotAckI2C
+                  0x001de0                  _my_AckI2C
+                  0x001df8                  _my_getI2C
+                  0x001e0e                  _my_masterreceiveI2C
+                  0x001e28                  _my_getsI2C
+                  0x001e6e                  _ReadAddress
+                  0x001e98                  _WriteAddress
+ .text            0x001eb8        0x222 build/default/production/CA_SetGetMPU6050.o
+                  0x001eb8                  _set_inicial
+                  0x001edc                  _get_ax
+                  0x001f02                  _get_ay
+                  0x001f28                  _get_az
+                  0x001f4e                  _get_gx
+                  0x001f74                  _get_gy
+                  0x001f9a                  _get_gz
+                  0x001fc0                  _get_temp
+                  0x001fe6                  _get_who_I_AM
+                  0x001ff4                  _plot1
+                  0x002014                  _plot2
+                  0x00203a                  _plot3
+                  0x002066                  _plot4
+                  0x002098                  _get_acelerometro
+ .text            0x0020da        0x106 build/default/production/main.o
+                  0x0020da                  _main
+                  0x00211e                  _Bucle_Principal
+ .text            0x0021e0         0x70 build/default/production/CB_Timer1.o
+                  0x0021e0                  _Delay1msT1
+                  0x00221e                  __T1Interrupt
+                  0x00223c                  _DelayXmsT1
+ .text            0x002250         0x6e build/default/production/CB_Timer3.o
+                  0x002250                  _SetupT3ForXmsPID
+                  0x002270                  _StartInterrup3
+                  0x002278                  _StopInterrup3
+                  0x002280                  __T3Interrupt
 
-.dinit            0x002282         0x60
- .dinit           0x002282         0x60 data_init
+.dinit            0x0022be         0x60
+ .dinit           0x0022be         0x60 data_init
 
-.text             0x0022e2         0x14
- .text            0x0022e2         0x14 build/default/production/CB_Timer2.o
-                  0x0022e2                  _Delay_Nop
+.text             0x00231e         0x14
+ .text            0x00231e         0x14 build/default/production/CB_Timer2.o
+                  0x00231e                  _Delay_Nop

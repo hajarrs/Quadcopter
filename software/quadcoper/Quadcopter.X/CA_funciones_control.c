@@ -133,6 +133,9 @@ double getAngle(double newAngle, double newRate, double dt)
     enviar_valor_NOCR(" P[1][1]=", P[1][1]);
     enviar_valor(" angle=", angle);
 #endif
+
+    enviar_valor_NOCR(" angle=", angle);
+
     return angle;
 };
 // newAngle = angle measured with atan2 using the accelerometer
