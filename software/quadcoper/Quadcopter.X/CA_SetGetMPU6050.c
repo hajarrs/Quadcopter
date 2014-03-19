@@ -10,9 +10,9 @@
 void set_inicial()
 {   WriteAddress(MPU6050_RA_SMPLRT_DIV ,MPU6050_CLOCK_DIV_364);
     WriteAddress( MPU6050_RA_PWR_MGMT_1,MPU6050_CLOCK_PLL_XGYRO);   // setClockSource(MPU6050_CLOCK_PLL_XGYRO);
-    WriteAddress( MPU6050_RA_GYRO_CONFIG, MPU6050_GYRO_FS_500);     // setFullScaleGyroRange(MPU6050_GYRO_FS_250);
-    WriteAddress( MPU6050_RA_ACCEL_CONFIG,MPU6050_ACCEL_FS_4);      //   setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
-    WriteAddress(MPU6050_RA_CONFIG  ,0x00);
+    WriteAddress( MPU6050_RA_GYRO_CONFIG, MPU6050_GYRO_FS_2000);     // setFullScaleGyroRange(MPU6050_GYRO_FS_250);
+    WriteAddress( MPU6050_RA_ACCEL_CONFIG,MPU6050_ACCEL_FS_16);      //   setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
+    WriteAddress(MPU6050_RA_CONFIG  ,0x06);
 }
 int get_ax()
 {
@@ -91,8 +91,8 @@ void plot1(int valor1)
         encabezado[0]=0xCDAB;
         encabezado[1]= 2*sizeof(int);
         encabezado[2]=valor1;
-//        int pktSize = 2 + 2 + (1*sizeof(int));
-//        enviar_datos_NOCR((int * )encabezado, pktSize);
+        int pktSize = 2 + 2 + (1*sizeof(int));
+        enviar_datos_NOCR((int * )encabezado, pktSize);
 
 }
 void plot2(int valor1, int valor2)
@@ -102,8 +102,8 @@ void plot2(int valor1, int valor2)
         encabezado[1]= 2*sizeof(int);
         encabezado[2]=valor1;
         encabezado[3]=valor2;
-//        int pktSize = 2 + 2 + (2*sizeof(int));
-//        enviar_datos_NOCR((int * )encabezado, pktSize);
+        int pktSize = 2 + 2 + (2*sizeof(int));
+        enviar_datos_NOCR((int * )encabezado, pktSize);
 
 }
 void plot3(int valor1, int valor2,int valor3)
@@ -114,8 +114,8 @@ void plot3(int valor1, int valor2,int valor3)
         encabezado[2]=valor1;
         encabezado[3]=valor2;
         encabezado[4]=valor3;
-//        int pktSize = 2 + 2 + (3*sizeof(int));
-//        enviar_datos_NOCR((int * )encabezado, pktSize);
+        int pktSize = 2 + 2 + (3*sizeof(int));
+        enviar_datos_NOCR((int * )encabezado, pktSize);
 
 }
 void plot4(int valor1, int valor2,int valor3,int valor4)
@@ -127,8 +127,8 @@ void plot4(int valor1, int valor2,int valor3,int valor4)
         encabezado[3]=valor2;
         encabezado[4]=valor3;
         encabezado[5]=valor4;
-//        int pktSize = 2 + 2 + (4*sizeof(int));
-//        enviar_datos_NOCR((int * )encabezado, pktSize);
+        int pktSize = 2 + 2 + (4*sizeof(int));
+        enviar_datos_NOCR((int * )encabezado, pktSize);
 
 }
 

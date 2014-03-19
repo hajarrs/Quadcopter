@@ -134,7 +134,6 @@ double getAngle(double newAngle, double newRate, double dt)
     enviar_valor(" angle=", angle);
 #endif
 
-    enviar_valor_NOCR(" angle=", angle);
 
     return angle;
 };
@@ -144,7 +143,7 @@ double getAngle(double newAngle, double newRate, double dt)
 
 float Complementary2(float newAngle, float newRate, int looptime)
 {
-    #define DEBUG
+  //  #define DEBUG
     float k = 10;
     float dtc2 = 0, x1 = 0, y1 = 0, x2 = 0;
     dtc2 = (float) (looptime) / 1000.0;
@@ -153,7 +152,7 @@ float Complementary2(float newAngle, float newRate, int looptime)
     x2 = y1 + (newAngle - x_angle2C)*2 * k + newRate;
     x_angle2C = dtc2 * x2 + x_angle2C;
 #ifdef DEBUG
-    enviar_valor(" x_angle2C=", x_angle2C);
+    enviar_valor(",", x_angle2C);
 #endif
     return x_angle2C;
 }
