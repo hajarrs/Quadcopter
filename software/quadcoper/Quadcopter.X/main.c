@@ -46,7 +46,7 @@ int main(void)
 
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(6);//configuramos  la interrupcion principal
+    SetupT3ForXmsPID(10);//configuramos  la interrupcion principal
     StartInterrup3();//incializamos la interrupcion
     
     enviar_mensaje("------------------------------------------------------");
@@ -62,16 +62,20 @@ void Bucle_Principal()
 
 int angulo=0;
 int angulo1=0;
-            double accXangle = (atan2((get_ay() - calibra_ay), (get_az() - calibra_az)))* RAD_TO_DEG;
-           // double gyroXrate = (double) (get_gx() - calibra_gx) / 131.0;
-            //angulo1 = (signed int) getAngle(accXangle, gyroXrate, 0.06);
-            //angulo =(signed int)Complementary2(accXangle, gyroXrate,6);
-             //   enviar_valor_NOCR("", angulo1);enviar_valor(",",angulo);
-            plot4(get_ax(),accXangle*100,get_az(),get_gx());
-          //  plot4(angulo1,angulo,accXangle,gyroXrate);
-            //enviar_valor("anguloComplementary2 = ", angulo);
+            double accXangle = (atan2((get_ax() - calibra_ax), (get_az() - calibra_az)+PI)*RAD_TO_DEG);
+            double gyroXrate = (double) (get_gx() - calibra_gx) / 131.0;
+            angulo1 = (signed int) getAngle(accXangle, gyroXrate, 0.01);
+            enviar_valor_NOCR("",(get_ax() - calibra_ax));
+//            enviar_valor_NOCR(",",(get_ay() - calibra_ay));
+            enviar_valor_NOCR(",",(get_az() - calibra_az));
+//            enviar_valor_NOCR(",",(get_gx() - calibra_gx));
+//            enviar_valor(",",accXangle);
+  enviar_valor_NOCR(",", angulo1);
+            angulo =(signed int)Complementary2(accXangle, gyroXrate,10);
+             enviar_valor(",", angulo);
             // int devuelto = PID(250, angulo, 1, 100, 20, 1, &valorAuxAnterior, 31000, -31000);
             //plot3(100*(250-angulo),180*angulo,devuelto); // Calculate the angle using a Kalman filter
+            
 
         
             LEDROJO=0;

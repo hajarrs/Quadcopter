@@ -10,9 +10,9 @@
 void set_inicial()
 {   WriteAddress(MPU6050_RA_SMPLRT_DIV ,MPU6050_CLOCK_DIV_364);
     WriteAddress( MPU6050_RA_PWR_MGMT_1,MPU6050_CLOCK_PLL_XGYRO);   // setClockSource(MPU6050_CLOCK_PLL_XGYRO);
-    WriteAddress( MPU6050_RA_GYRO_CONFIG, MPU6050_GYRO_FS_2000);     // setFullScaleGyroRange(MPU6050_GYRO_FS_250);
-    WriteAddress( MPU6050_RA_ACCEL_CONFIG,MPU6050_ACCEL_FS_16);      //   setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
-    WriteAddress(MPU6050_RA_CONFIG  ,0x06);
+    WriteAddress( MPU6050_RA_GYRO_CONFIG, MPU6050_GYRO_FS_500);     // setFullScaleGyroRange(MPU6050_GYRO_FS_250);
+    WriteAddress( MPU6050_RA_ACCEL_CONFIG,MPU6050_ACCEL_FS_4);      //   setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
+   // WriteAddress(MPU6050_RA_CONFIG  ,0x00);
 }
 int get_ax()
 {
