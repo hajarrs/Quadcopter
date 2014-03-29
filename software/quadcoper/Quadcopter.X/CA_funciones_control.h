@@ -7,15 +7,14 @@
 #ifndef CA_FUNCIONES_CONTROL_H
 #define	CA_FUNCIONES_CONTROL_H
 #include <math.h>
+#include <dsp.h>
+#include <libq.h>
 #include "CB_Bluetooth.h"
-void get_calibrado_acelerometro(int milis,int n);
-int _Pid_Posicion(int _setpoint,int _posicion_actual);
-int _PID(int _Bias, int _PosicionActual, int Tmuestreo, int _kp, int _kd, int _ki, int* _PosicionAnterior, int _Maximo, int _Minimo );
-void getAngle_init();
-double getAngle(double newAngle, double newRate, double dt) ;
-float Complementary2(float newAngle, float newRate,int looptime) ;
-//-----------kalman----------//
 
+
+
+//-----------kalman----------//
+_Q15 _Q15ftoi(float);
 extern double Q_angle ; // Process noise variance for the accelerometer
 extern double Q_bias ; // Process noise variance for the gyro bias
 extern double R_measure ; // Measurement noise variance - this is actually the variance of the measurement noise
@@ -40,6 +39,7 @@ extern int KI;
 extern int BIAS1;
 extern int BIAS2;
 extern int Tmuestreo;
+extern int valorAuxAnterior;
 extern int abs(int);
 //***********************varibles de calibrado*************//
 extern double calibra_ax;
@@ -48,5 +48,11 @@ extern double calibra_az;
 extern double calibra_gx;
 extern double calibra_gy;
 extern double calibra_gz;
+//***********************varibles de pid*************//
+tPID fooPID;
+fractional abcCoefficient[3] __attribute__((section(".xbss, bss, xmemory")));
+fractional controlHistory[3] __attribute__((section(".ybss, bss, ymemory")));
+fractional kCoeffs[] = {0, 0, 0};
+
 #endif	/* CA_FUNCIONES_CONTROL_H */
 

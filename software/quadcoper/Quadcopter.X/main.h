@@ -15,7 +15,7 @@ void Bucle_Principal();
 #include <string.h>
 #include <stdio.h>
 #include <math.h>
-#include <dsp.h>
+#include <libq.h>
 #include "define_comet_code.h"
 #include "variables_globales.h"
 #include "Defines.h"
@@ -27,16 +27,14 @@ void Bucle_Principal();
 #include "CB_Bluetooth.h"
 #include "Pruebas.h"
 #include "CA_calibrado_filtro.h"
-#include "CA_funciones_control.h"
-
 
 int LSD[12];
 char str_blue[40];
 char str_aux[40];
-
-
-
-
+extern int valorAuxAnterior;
+void getAngle_init();
+void get_calibrado_acelerometro(int milis, int n);
+double getAngle(double newAngle, double newRate, double dt);
 
 #endif	/* MAIN_H */
 

@@ -12,5 +12,4 @@ CB_Bluetooth.h  \
 CB_Timer2.h  \
 CB_Timer3.h  \
  CA_SetGetMPU6050.h  \
-CA_calibrado_filtro.h  \
-CA_funciones_control.h 
+CA_calibrado_filtro.h 

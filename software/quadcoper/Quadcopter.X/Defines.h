@@ -12,9 +12,12 @@
 #define interrupcion	__attribute__((interrupt,no_auto_psv))
 
 
-#define LEDROJO _LATC14      //
-#define LEDVERDE _LATA11      //
-#define ACT_ACE _LATF6
+#define LED_AZUL_INF _LATB0
+#define LED_AZUL_SUP _LATB1
+#define LED_VERDE_INF _LATB2
+#define LED_ROJO_SUP _LATB3
+#define LED_VERDE_SUP _LATB9
+#define LED_ROJO_INF _LATB10
 #define PWM1 OC1RS
 #define PWM2 OC2RS
 #define PWM3 OC3RS

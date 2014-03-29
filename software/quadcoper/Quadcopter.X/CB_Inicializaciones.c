@@ -18,14 +18,11 @@ void Init_Hw(void)
     ADPCFG = 0xFFFF;    Delay_Nop(10);  // Digital
 
     // TRISx
-    TRISA = 0b1111011111111111;     Delay_Nop(10);
-
-    TRISB = 0b1111100111111000;     Delay_Nop(10);
-    TRISB = 0b1111100111111000;                 Delay_Nop(10);
-
-    TRISC = 0b1011111111111111;     Delay_Nop(10);
-    TRISD = 0b1011111011110000;     Delay_Nop(10);
-    TRISF = 0b1111111110011100;     Delay_Nop(10);
+    TRISA = 0b1111111111111111;     Delay_Nop(10);
+    TRISB = 0b1111100111110000;     Delay_Nop(10);
+    TRISC = 0b1111111111111111;     Delay_Nop(10);
+    TRISD = 0b1011111111110000;     Delay_Nop(10);
+    TRISF = 0b1111111111011100;     Delay_Nop(10);
 
 
     // PORTx
@@ -187,19 +184,23 @@ void Init_Bluetooh(void)
 
 void LED_ALL_ON()
 {
-    LEDROJO = ON;
-
-    
-    LEDVERDE= ON;
+    LED_AZUL_INF =ON;
+    LED_AZUL_SUP =ON;
+    LED_ROJO_INF =ON;
+    LED_ROJO_SUP =ON;
+    LED_VERDE_INF =ON;
+    LED_VERDE_SUP =ON;
 
 }
 
 void LED_ALL_OFF()
 {
-    LEDROJO = OFF;
-
-    LEDVERDE= OFF;
-
+    LED_AZUL_INF =OFF;
+    LED_AZUL_SUP =OFF;
+    LED_ROJO_INF =OFF;
+    LED_ROJO_SUP =OFF;
+    LED_VERDE_INF =OFF;
+    LED_VERDE_SUP =OFF;
 
 }
 void clockSwitch (unsigned int newNOSCCode)

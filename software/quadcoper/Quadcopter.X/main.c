@@ -35,7 +35,8 @@ int main(void)
     Init_Bluetooh(); Delay1msT1(0);     //Configuramos el serial-Bluetooth
     Init_I2C();      Delay1msT1(0);     //incializamos el I2c
     set_inicial();   Delay1msT1(0);     //Configuramos la incialicacion de sensor
-    getAngle_init(); Delay1msT1(0);  ACT_ACE = 1;     set_inicial();   //Incializamos el filtro kalman
+    getAngle_init(); Delay1msT1(0);     //Incializamos el filtro kalman
+    set_inicial();   Delay1msT1(0);     //Incializamos el acelerometro
     //***************************************************************************************//
     //***************************************************************************************//
 
@@ -44,41 +45,36 @@ int main(void)
     LED_ALL_OFF();
     //***************************************************************************************//
 
+   //*****************INICIALIZAMOS EL PID  Y LAS VARIABLES ********************************//
+
+    //pid_dsp_configuracion();
+
+    //***************************************************************************************//
+  
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(10);//configuramos  la interrupcion principal
-    StartInterrup3();//incializamos la interrupcion
-    
+    //SetupT3ForXmsPID(10);//configuramos  la interrupcion principal
+   // StartInterrup3();//incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
 
-    while(1);
+    while(1)
+    {acelerometro();
+    }
 
 }
 void Bucle_Principal()
 {
-    LEDROJO=1;
+
+//    int angulo = 0;
+    int angulo1 = 0;
+    double accXangle = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
+    double gyroXrate = (double) (get_gx() - calibra_gx) / 131.0;
+    angulo1 = (signed int) getAngle(accXangle, gyroXrate, 0.01);
+//    angulo = (signed int) Complementary2(accXangle, gyroXrate, 10);
+//    plot3(angulo, angulo1, accXangle);
 
 
-int angulo=0;
-int angulo1=0;
-            double accXangle = (atan2((get_ax() - calibra_ax), (get_az() - calibra_az)+PI)*RAD_TO_DEG);
-            double gyroXrate = (double) (get_gx() - calibra_gx) / 131.0;
-            angulo1 = (signed int) getAngle(accXangle, gyroXrate, 0.01);
-            enviar_valor_NOCR("",(get_ax() - calibra_ax));
-//            enviar_valor_NOCR(",",(get_ay() - calibra_ay));
-            enviar_valor_NOCR(",",(get_az() - calibra_az));
-//            enviar_valor_NOCR(",",(get_gx() - calibra_gx));
-//            enviar_valor(",",accXangle);
-  enviar_valor_NOCR(",", angulo1);
-            angulo =(signed int)Complementary2(accXangle, gyroXrate,10);
-             enviar_valor(",", angulo);
-            // int devuelto = PID(250, angulo, 1, 100, 20, 1, &valorAuxAnterior, 31000, -31000);
-            //plot3(100*(250-angulo),180*angulo,devuelto); // Calculate the angle using a Kalman filter
-            
-
-        
-            LEDROJO=0;
 
 }
 

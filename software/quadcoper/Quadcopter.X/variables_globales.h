@@ -24,17 +24,17 @@ int chanel5 = 0;
 int KP = 1;
 int KD = 1;
 int KI = 1;
-int BIAS1 = 11000;
-int BIAS2 = 11000;
+int BIAS1 = 23000;
+int BIAS2 = 23000;
 int Tmuestreo = 1;
-
+int valorAuxAnterior=0;
 
 
 //************************* VARIABLES DE KALMAN ****************//
 
-double Q_angle = 0.001; // Process noise variance for the accelerometer
-double Q_bias = 0.003; // Process noise variance for the gyro bias
-double R_measure= 0.03; // Measurement noise variance - this is actually the variance of the measurement noise
+double Q_angle = 0.03;//0.01 // Process noise variance for the accelerometer
+double Q_bias = 0.03; //0.03  Process noise variance for the gyro bias
+double R_measure= 0.002; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
 
 double angle = 1; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
 double bias = 0; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector

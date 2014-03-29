@@ -335,7 +335,6 @@ void reverse(char s[])
 
 void prueba_who_i_am(void)
 {
-    ACT_ACE=1;
     int i=0;
     DelayXmsT1(50);
        int WhoIAm=0;
@@ -343,8 +342,8 @@ void prueba_who_i_am(void)
 
         if (WhoIAm == 104)
         {
-            LEDVERDE=1;
-            LEDROJO=0;
+            LED_VERDE_SUP=1;
+            LED_ROJO_INF=0;
             enviar_valor("correcto(who i am=104) numero de fallos =", i);
             enviar_valor("ay=",get_ay());
         }
@@ -358,11 +357,9 @@ void prueba_who_i_am(void)
             if (i==5)
             {
                 i =0;
-            ACT_ACE=0;
-            LEDROJO=1;
-            LEDVERDE=0;
+            LED_ROJO_SUP=1;
+            LED_VERDE_SUP=0;
             DelayXmsT1(1000);
-            ACT_ACE=1;
             }
 
         }
@@ -372,33 +369,31 @@ void prueba_who_i_am(void)
 
 void acelerometro(void)
 {
-    int ax, ay, az, gx, gy, gz;
+//    int ax, ay, az, gx, gy, gz;
     if (get_who_I_AM() == 104)
     {
-        get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
-
-        enviar_valor("Ax=", ax);
-        enviar_valor("Ay=", ay);
-        enviar_valor("Az=", az);
-        enviar_valor("Gx=", gx);
-        enviar_valor("Gy=", gy);
-        enviar_valor("Gz=", gz);
+//        get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
+//
+//        enviar_valor("Ax=", ax);
+//        enviar_valor("Ay=", ay);
+//        enviar_valor("Az=", az);
+//        enviar_valor("Gx=", gx);
+//        enviar_valor("Gy=", gy);
+//        enviar_valor("Gz=", gz);
         //        plot4(ax,ay,pitch*100,roll*100);
         //        enviar_valor("pitch", pitch);
         //        enviar_valor("roll", roll);
-        LEDROJO = 0;
-            LEDVERDE=1;
+        LED_VERDE_SUP = 1;
+         LED_ROJO_SUP=0;
 
 
         }
         else
         {
-            enviar_valor("error -->valor who i am=", get_who_I_AM());
+//            enviar_valor("error -->valor who i am=", get_who_I_AM());
 
-            ACT_ACE=0;
-            LEDVERDE=0;
-            DelayXmsT1(1000);
-            ACT_ACE=1;
+            LED_VERDE_SUP=0;
+            LED_ROJO_SUP=1;
             }
 
 }
@@ -410,8 +405,8 @@ int  ax, ay, az, gx, gy, gz;
         {
         get_acelerometro(&ax, &ay, &az, &gx, &gy, &gz);
         plot4(ax,ay,gx,gy);
-        LEDROJO=0;
-        LEDVERDE=1;
+        LED_ROJO_INF=0;
+        LED_ROJO_SUP=1;
 
 
         }
@@ -419,10 +414,8 @@ int  ax, ay, az, gx, gy, gz;
         {
             enviar_valor("error -->valor who i am=", get_who_I_AM());
 
-            ACT_ACE=0;
-            LEDVERDE=0;
+            LED_VERDE_INF=0;
             DelayXmsT1(1000);
-            ACT_ACE=1;
             set_inicial();
             }
 
