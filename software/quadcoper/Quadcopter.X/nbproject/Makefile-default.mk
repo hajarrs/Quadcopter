@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=my_new_pid.s CB_Inicializaciones.c CB_Timer1.c CB_Timer2.c CB_Timer3.c CB_Timer5.c Pruebas.c main.c CA_funciones_control.c CA_SetGetMPU6050.c CB_Bluetooth.c CB_I2C.c
+SOURCEFILES_QUOTED_IF_SPACED=my_new_pid.s Pruebas.c main.c Bluetooth.c I2C.c Init.c Timers.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer5.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/CA_funciones_control.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_I2C.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/my_new_pid.o.d ${OBJECTDIR}/CB_Inicializaciones.o.d ${OBJECTDIR}/CB_Timer1.o.d ${OBJECTDIR}/CB_Timer2.o.d ${OBJECTDIR}/CB_Timer3.o.d ${OBJECTDIR}/CB_Timer5.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/CA_funciones_control.o.d ${OBJECTDIR}/CA_SetGetMPU6050.o.d ${OBJECTDIR}/CB_Bluetooth.o.d ${OBJECTDIR}/CB_I2C.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Init.o ${OBJECTDIR}/Timers.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/my_new_pid.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Bluetooth.o.d ${OBJECTDIR}/I2C.o.d ${OBJECTDIR}/Init.o.d ${OBJECTDIR}/Timers.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/CB_Inicializaciones.o ${OBJECTDIR}/CB_Timer1.o ${OBJECTDIR}/CB_Timer2.o ${OBJECTDIR}/CB_Timer3.o ${OBJECTDIR}/CB_Timer5.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/CA_funciones_control.o ${OBJECTDIR}/CA_SetGetMPU6050.o ${OBJECTDIR}/CB_Bluetooth.o ${OBJECTDIR}/CB_I2C.o
+OBJECTFILES=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Init.o ${OBJECTDIR}/Timers.o
 
 # Source Files
-SOURCEFILES=my_new_pid.s CB_Inicializaciones.c CB_Timer1.c CB_Timer2.c CB_Timer3.c CB_Timer5.c Pruebas.c main.c CA_funciones_control.c CA_SetGetMPU6050.c CB_Bluetooth.c CB_I2C.c
+SOURCEFILES=my_new_pid.s Pruebas.c main.c Bluetooth.c I2C.c Init.c Timers.c
 
 
 CFLAGS=
@@ -79,41 +79,6 @@ MP_LINKER_FILE_OPTION=,--script=p30F4013.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/CB_Inicializaciones.o: CB_Inicializaciones.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Inicializaciones.o.d 
-	@${RM} ${OBJECTDIR}/CB_Inicializaciones.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Inicializaciones.c  -o ${OBJECTDIR}/CB_Inicializaciones.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Inicializaciones.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Inicializaciones.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer1.o: CB_Timer1.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer1.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer1.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer1.c  -o ${OBJECTDIR}/CB_Timer1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer1.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer1.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer2.o: CB_Timer2.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer2.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer2.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer2.c  -o ${OBJECTDIR}/CB_Timer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer2.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer3.o: CB_Timer3.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer3.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer3.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer3.c  -o ${OBJECTDIR}/CB_Timer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer3.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer5.o: CB_Timer5.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer5.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer5.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer5.c  -o ${OBJECTDIR}/CB_Timer5.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer5.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer5.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/Pruebas.o: Pruebas.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/Pruebas.o.d 
@@ -128,70 +93,35 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CA_funciones_control.o: CA_funciones_control.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/Bluetooth.o: Bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_funciones_control.o.d 
-	@${RM} ${OBJECTDIR}/CA_funciones_control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_funciones_control.c  -o ${OBJECTDIR}/CA_funciones_control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_funciones_control.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_funciones_control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/Bluetooth.o.d 
+	@${RM} ${OBJECTDIR}/Bluetooth.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Bluetooth.c  -o ${OBJECTDIR}/Bluetooth.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Bluetooth.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/Bluetooth.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CA_SetGetMPU6050.o: CA_SetGetMPU6050.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/I2C.o: I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_SetGetMPU6050.o.d 
-	@${RM} ${OBJECTDIR}/CA_SetGetMPU6050.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_SetGetMPU6050.c  -o ${OBJECTDIR}/CA_SetGetMPU6050.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_SetGetMPU6050.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_SetGetMPU6050.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/I2C.o.d 
+	@${RM} ${OBJECTDIR}/I2C.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  I2C.c  -o ${OBJECTDIR}/I2C.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/I2C.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/I2C.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CB_Bluetooth.o: CB_Bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/Init.o: Init.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Bluetooth.o.d 
-	@${RM} ${OBJECTDIR}/CB_Bluetooth.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Bluetooth.c  -o ${OBJECTDIR}/CB_Bluetooth.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Bluetooth.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Bluetooth.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/Init.o.d 
+	@${RM} ${OBJECTDIR}/Init.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Init.c  -o ${OBJECTDIR}/Init.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Init.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/Init.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CB_I2C.o: CB_I2C.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/Timers.o: Timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_I2C.o.d 
-	@${RM} ${OBJECTDIR}/CB_I2C.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_I2C.c  -o ${OBJECTDIR}/CB_I2C.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_I2C.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_I2C.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/Timers.o.d 
+	@${RM} ${OBJECTDIR}/Timers.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Timers.c  -o ${OBJECTDIR}/Timers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Timers.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/Timers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
-${OBJECTDIR}/CB_Inicializaciones.o: CB_Inicializaciones.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Inicializaciones.o.d 
-	@${RM} ${OBJECTDIR}/CB_Inicializaciones.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Inicializaciones.c  -o ${OBJECTDIR}/CB_Inicializaciones.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Inicializaciones.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Inicializaciones.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer1.o: CB_Timer1.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer1.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer1.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer1.c  -o ${OBJECTDIR}/CB_Timer1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer1.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer1.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer2.o: CB_Timer2.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer2.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer2.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer2.c  -o ${OBJECTDIR}/CB_Timer2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer2.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer3.o: CB_Timer3.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer3.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer3.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer3.c  -o ${OBJECTDIR}/CB_Timer3.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer3.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer3.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/CB_Timer5.o: CB_Timer5.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Timer5.o.d 
-	@${RM} ${OBJECTDIR}/CB_Timer5.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Timer5.c  -o ${OBJECTDIR}/CB_Timer5.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Timer5.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Timer5.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/Pruebas.o: Pruebas.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
 	@${RM} ${OBJECTDIR}/Pruebas.o.d 
@@ -206,33 +136,33 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CA_funciones_control.o: CA_funciones_control.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/Bluetooth.o: Bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_funciones_control.o.d 
-	@${RM} ${OBJECTDIR}/CA_funciones_control.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_funciones_control.c  -o ${OBJECTDIR}/CA_funciones_control.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_funciones_control.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_funciones_control.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/Bluetooth.o.d 
+	@${RM} ${OBJECTDIR}/Bluetooth.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Bluetooth.c  -o ${OBJECTDIR}/Bluetooth.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Bluetooth.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/Bluetooth.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CA_SetGetMPU6050.o: CA_SetGetMPU6050.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/I2C.o: I2C.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CA_SetGetMPU6050.o.d 
-	@${RM} ${OBJECTDIR}/CA_SetGetMPU6050.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CA_SetGetMPU6050.c  -o ${OBJECTDIR}/CA_SetGetMPU6050.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CA_SetGetMPU6050.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CA_SetGetMPU6050.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/I2C.o.d 
+	@${RM} ${OBJECTDIR}/I2C.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  I2C.c  -o ${OBJECTDIR}/I2C.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/I2C.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/I2C.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CB_Bluetooth.o: CB_Bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/Init.o: Init.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_Bluetooth.o.d 
-	@${RM} ${OBJECTDIR}/CB_Bluetooth.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_Bluetooth.c  -o ${OBJECTDIR}/CB_Bluetooth.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_Bluetooth.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_Bluetooth.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/Init.o.d 
+	@${RM} ${OBJECTDIR}/Init.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Init.c  -o ${OBJECTDIR}/Init.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Init.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/Init.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/CB_I2C.o: CB_I2C.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/Timers.o: Timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/CB_I2C.o.d 
-	@${RM} ${OBJECTDIR}/CB_I2C.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  CB_I2C.c  -o ${OBJECTDIR}/CB_I2C.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/CB_I2C.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
-	@${FIXDEPS} "${OBJECTDIR}/CB_I2C.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	@${RM} ${OBJECTDIR}/Timers.o.d 
+	@${RM} ${OBJECTDIR}/Timers.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Timers.c  -o ${OBJECTDIR}/Timers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Timers.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/Timers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 
