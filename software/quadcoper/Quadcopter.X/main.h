@@ -19,7 +19,6 @@ void Bucle_Principal();
 #include "define_comet_code.h"
 #include "variables_globales.h"
 #include "Defines.h"
-#include "variables_globales.h"
 #include "CB_Inicializaciones.h"
 #include "CA_SetGetMPU6050.h"
 #include "CB_Timer1.h"
@@ -32,9 +31,10 @@ int LSD[12];
 char str_blue[40];
 char str_aux[40];
 extern int valorAuxAnterior;
-void getAngle_init();
+//extern StructKalman xz;
+
 void get_calibrado_acelerometro(int milis, int n);
-double getAngle(double newAngle, double newRate, double dt);
+
 
 #endif	/* MAIN_H */
 

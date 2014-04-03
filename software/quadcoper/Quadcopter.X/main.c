@@ -26,6 +26,7 @@ _FBORPOR(PWRT_OFF & BORV27 & PBOR_OFF & MCLR_DIS)
 
 int main(void)
 {
+    
     //***************************************************************************************//
     //*****************ARRANCAMOS LA CONFIGURACION DEL PIC **********************************//
     //***************************************************************************************//
@@ -35,7 +36,7 @@ int main(void)
     Init_Bluetooh(); Delay1msT1(0);     //Configuramos el serial-Bluetooth
     Init_I2C();      Delay1msT1(0);     //incializamos el I2c
     set_inicial();   Delay1msT1(0);     //Configuramos la incialicacion de sensor
-    getAngle_init(); Delay1msT1(0);     //Incializamos el filtro kalman
+ //   getAngle_init(); Delay1msT1(0);     //Incializamos el filtro kalman
     set_inicial();   Delay1msT1(0);     //Incializamos el acelerometro
     //***************************************************************************************//
     //***************************************************************************************//
@@ -47,33 +48,35 @@ int main(void)
 
    //*****************INICIALIZAMOS EL PID  Y LAS VARIABLES ********************************//
 
-    //pid_dsp_configuracion();
+    pid_dsp_configuracion();
 
     //***************************************************************************************//
   
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    //SetupT3ForXmsPID(10);//configuramos  la interrupcion principal
-   // StartInterrup3();//incializamos la interrupcion
+    SetupT3ForXmsPID(10);//configuramos  la interrupcion principal
+    StartInterrup3();//incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
-
+    acelerometro();
     while(1)
-    {acelerometro();
+    {
     }
 
 }
 void Bucle_Principal()
 {
 
-//    int angulo = 0;
+    int angulo = 0;
     int angulo1 = 0;
     double accXangle = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
     double gyroXrate = (double) (get_gx() - calibra_gx) / 131.0;
-    angulo1 = (signed int) getAngle(accXangle, gyroXrate, 0.01);
-//    angulo = (signed int) Complementary2(accXangle, gyroXrate, 10);
-//    plot3(angulo, angulo1, accXangle);
-
+   // angulo1 = (signed int) getAngleStruct_xy(accXangle, gyroXrate, 0.01)+90;
+    //angulo = (signed int) Complementary2(accXangle, gyroXrate, 10);
+    int salida= _PID(0, angulo1, 1, 1, 2, 1, &valorAuxAnterior, 31000, -31000);
+    plot3(salida, angulo1+90, accXangle+90);
+    enviar_valor_NOCR("salida=",salida);
+    enviar_valor("angulo1=",angulo1);
 
 
 }

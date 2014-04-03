@@ -30,6 +30,25 @@ int Tmuestreo = 1;
 int valorAuxAnterior=0;
 
 
+
+typedef struct {
+double Q_angle ; // Process noise variance for the accelerometer
+double Q_bias ; // Process noise variance for the gyro bias
+double R_measure ; // Measurement noise variance - this is actually the variance of the measurement noise
+
+double angle ; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
+double bias ; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
+double rate; // Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate
+
+double P[2][2]; // Error covariance matrix - This is a 2x2 matrix
+double K[2]; // Kalman gain - This is a 2x1 vector
+double y; // Angle difference
+double S; // Estimate error
+float x_angle2C;
+} StructKalman;
+
+
+
 //************************* VARIABLES DE KALMAN ****************//
 
 double Q_angle = 0.03;//0.01 // Process noise variance for the accelerometer
@@ -47,6 +66,10 @@ double S=100; // Estimate error
 //************************* VARIABLES DE COMPLEMENTARY ****************//
 float x_angle2C=0;
 int i=0;
+
+
+StructKalman zx,zy,xy;
+
 //************************* VARIBLES DE CALIBRADO ****************//
 double calibra_ax=0;
 double calibra_ay=0;
