@@ -8,6 +8,22 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
+
+
+#include <xc.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <math.h>
+#include <libq.h>
+#include <dsp.h>
+#include "variables_globales.h"
+#include "Defines.h"
+#include "Init.h"
+#include "Timers.h"
+#include "Bluetooth.h"
+#include "Pruebas.h"
+
 typedef struct {
 double Q_angle ; // Process noise variance for the accelerometer
 double Q_bias ; // Process noise variance for the gyro bias
@@ -24,21 +40,6 @@ double S; // Estimate error
 float x_angle2C;
 } StructKalman;
 
-#include <xc.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <math.h>
-#include <libq.h>
-#include <dsp.h>
-#include "define_comet_code.h"
-#include "variables_globales.h"
-#include "Defines.h"
-#include "Init.h"
-#include "Timers.h"
-#include "Bluetooth.h"
-#include "Pruebas.h"
-
 
 _Q15 _Q15ftoi(float);
 
@@ -47,7 +48,6 @@ fractional abcCoefficient[3] __attribute__((section(".xbss, bss, xmemory")));
 fractional controlHistory[3] __attribute__((section(".ybss, bss, ymemory")));
 fractional kCoeffs[] = {0, 0, 0};
 
-int LSD[12];
 char str_blue[40];
 char str_aux[40];
 extern int valorAuxAnterior;
@@ -56,25 +56,15 @@ void Bucle_Principal();
 void get_calibrado_acelerometro(int milis, int n);
 void getAngle_init();
 int _PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo);
-
+void pon_motores(int M1, int M2, int M3, int M4,int incremento);
+double getAngleStruct_zx(double newAngle, double newRate, double dt);
+double getAngleStruct_zy(double newAngle, double newRate, double dt);
+double getAngleStruct_xy(double newAngle, double newRate, double dt);
 
 StructKalman zx,zy,xy;
-
-//-------------------------Pid variables-----------------//
-
 int errorAnt=0;
-StructKalman zx,zy,xy;
-
-//***********************varibles de calibrado*************//
-
-
-
-//***********************varibles de pid*************//
-
-
 void getAngle_init_xz();
-//void pid_dsp_configuracion();
+
 
 
 #endif	/* MAIN_H */
-

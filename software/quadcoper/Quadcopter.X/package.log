@@ -1,0 +1,3 @@
+Building the project failed.  Dependencies for all of the files in the project may not have been generated, so some included header files might not be located.
+Found and included: ./dspcommon.inc
+Found and included: define_comet_code.h

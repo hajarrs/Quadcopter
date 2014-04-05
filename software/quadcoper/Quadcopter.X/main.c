@@ -5,6 +5,7 @@
  * Created on 29 de junio de 2013, 19:05
  */
 #include "main.h"
+
 #define MY_FRC                  0xF9E3
 // FUSES
 // -----------------------------------------------------------
@@ -58,25 +59,40 @@ int main(void) {
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
     acelerometro();
+    ACT_MOTORS=1;
     while (1) {
     }
 
 }
 
 void Bucle_Principal() {
+    LED_AZUL_INF=1;
+    int angulo_zx = 0;
+    int angulo_zy = 0;
+    int angulo_xy = 0;
+    //------------------------------------------------------------------------------------------//
+    double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
+    double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
+    angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.01)+90;
 
-    int angulo = 0;
-    int angulo1 = 0;
-    double accXangle = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
-    double gyroXrate = (double) (get_gx() - calibra_gx) / 131.0;
-    // angulo1 = (signed int) getAngleStruct_xy(accXangle, gyroXrate, 0.01)+90;
+    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
+    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.01)+90;
+
+     double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+    double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
+    angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.01)+90;
+
+ 
     //angulo = (signed int) Complementary2(accXangle, gyroXrate, 10);
-    int salida = _PID(0, angulo1, 1, 1, 2, 1, 31000, -31000);
-    plot3(salida, angulo1 + 90, accXangle + 90);
-    enviar_valor_NOCR("salida=", salida);
-    enviar_valor("angulo1=", angulo1);
+    int salida = _PID(0, angulo_zx, 1,20, 3, 10, 31000, -31000);
+    //pon_motores(0,0,4000,0,100);
+    pon_motores(-salida,0 , +salida, 0,100);
+    plot2(angulo_zx,salida);
+   // enviar_valor("angu=", angulo_zx);
+    //enviar_valor("angulo1=", angulo_zy);
 
-
+  LED_AZUL_INF=0;
 }
 
 
@@ -97,20 +113,18 @@ int _PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, 
     Output = _kp * Error - _kd * dError; //+ ITerm;
     // if (Output >= _Maximo) Output = _Maximo;
     // if (Output <= _Minimo) Output = _Minimo;
-    return Output;
+    
     (valorAuxAnterior) = _PosicionActual;
+    
 
-    PWM1 = /*BIAS1 +*/ Output;
-    PWM4 = /*BIAS2 +*/ Output;
-
-    //    enviar_valor_NOCR("valorAux = ",_referencia);
-    //    enviar_valor_NOCR(" valorAuxAnterior = ",_PosicionActual);
-    //   enviar_valor_NOCR("pid = ",Output);
-    //    enviar_valor_NOCR(" Ep = ",error);
-    //    enviar_valor_NOCR(" Ed = ",dInput);
+        enviar_valor_NOCR("valorAux = ",_referencia);
+        enviar_valor_NOCR(" valorAuxAnterior = ",_PosicionActual);
+       enviar_valor_NOCR("pid = ",Output);
+        enviar_valor_NOCR(" Ep = ",Error);
+        enviar_valor(" Ed = ",dError);
     //    enviar_valor(" Ei = ",ITerm);
 
-
+return Output;
 
 
 }
@@ -238,4 +252,20 @@ int pid_dsp(int entrada) {
     enviar_valor_NOCR("foo=", fooPID.controlOutput);
     enviar_valor("conver=", fooPID.controlOutput);
     return (_itofQ15(fooPID.controlOutput));
+}
+
+void pon_motores(int M1, int M2, int M3, int M4,int incremento) {
+    if (PWM1 > M1)PWM1=PWM1-incremento;
+    else if (PWM1 < M1)PWM1=PWM1+incremento;
+
+    if (PWM2 > M2)PWM2=PWM2-incremento;
+    else if (PWM2 < M2)PWM2=PWM2+incremento;
+
+    if (PWM3 > M3)PWM3=PWM3-incremento;
+    else if (PWM3 < M3)PWM3=PWM3+incremento;
+
+    if (PWM4 > M4)PWM4=PWM4-incremento;
+    else if (PWM4 < M4)PWM4=PWM4+incremento;
+
+
 }

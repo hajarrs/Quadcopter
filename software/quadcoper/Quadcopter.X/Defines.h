@@ -18,6 +18,7 @@
 #define LED_ROJO_SUP _LATB3
 #define LED_VERDE_SUP _LATB9
 #define LED_ROJO_INF _LATB10
+#define ACT_MOTORS _LATB8
 #define PWM1 OC1RS
 #define PWM2 OC2RS
 #define PWM3 OC3RS

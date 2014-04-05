@@ -33,6 +33,7 @@
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>libq-elf.a</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -50,7 +51,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>C:/Program Files (x86)/Microchip/xc16/v1.21/lib/libq-elf.a</linkerLibFileItem>
+            <linkerLibFileItem>libq-elf.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <loading>

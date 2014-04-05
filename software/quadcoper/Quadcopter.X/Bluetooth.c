@@ -1,6 +1,5 @@
 #include "Bluetooth.h"
 
-extern int LSD[12];
 extern char str_blue[40];
 extern char str_aux[40];
 #define MAX_BLUE    50
@@ -56,20 +55,6 @@ void enviar_Udatos(unsigned char cadena[50], int longitud)
 #endif
 }
 
-void EnviarSensores(int numero)
-{
-    int i;
-
-    for (i = (numero - 1); i >= 0; i--)
-    {
-        itoa(str_blue, LSD[i], 10);
-        enviar_datos_NOCR(str_blue, strlen(str_blue));
-        strcpy(str_blue, " ");
-        enviar_datos_NOCR(str_blue, strlen(str_blue));
-    }
-    EnviarCR();
-
-}
 
 void enviar_valor(char nombre[], int valor)
 {
