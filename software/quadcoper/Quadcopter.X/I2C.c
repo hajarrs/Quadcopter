@@ -219,7 +219,7 @@ void set_inicial()
     WriteAddress( MPU6050_RA_PWR_MGMT_1,MPU6050_CLOCK_PLL_XGYRO);   // setClockSource(MPU6050_CLOCK_PLL_XGYRO);
     WriteAddress( MPU6050_RA_GYRO_CONFIG, MPU6050_GYRO_FS_500);     // setFullScaleGyroRange(MPU6050_GYRO_FS_250);
     WriteAddress( MPU6050_RA_ACCEL_CONFIG,MPU6050_ACCEL_FS_4);      //   setFullScaleAccelRange(MPU6050_ACCEL_FS_2);
-   // WriteAddress(MPU6050_RA_CONFIG  ,0x00);
+    WriteAddress(MPU6050_RA_CONFIG  ,0x06);
 }
 
 void get_calibrado_acelerometro(int milis, int n)

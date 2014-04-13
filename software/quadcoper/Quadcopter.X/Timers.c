@@ -95,3 +95,16 @@ void interrupcion _T5Interrupt(void)
     IFS1bits.T5IF = 0;
     //accion
 }
+
+void delayT4_msg(unsigned int _msg)
+{
+    T4CONbits.TON = 0;      Nop();
+    T4CONbits.TSIDL = 0;    Nop();
+    T4CONbits.TGATE = 0;    Nop();
+    T4CONbits.TCS = 0;      Nop();
+    IFS1bits.T4IF = 0;      Nop();
+    PR4 = 65000;
+    TMR4 = 0;
+    T4CONbits.TON = 1;      Nop();
+    // Faltan cosas......
+}

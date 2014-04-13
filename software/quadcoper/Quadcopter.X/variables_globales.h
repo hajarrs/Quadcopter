@@ -21,13 +21,14 @@ int chanel5 = 0;
 
 //***********variables del pid********************//
 
-int KP = 1;
-int KD = 1;
+int KP = 16;
+int KD = 900;
 int KI = 1;
-int BIAS1 = 23000;
-int BIAS2 = 23000;
+int BIAS1 = 1300;
+int BIAS2 = 1300;
 int Tmuestreo = 1;
-int valorAuxAnterior=0;
+int error_anterior=0;
+int ErrorI=0;
 
 
 

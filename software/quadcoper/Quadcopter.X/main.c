@@ -48,13 +48,13 @@ int main(void) {
 
     //*****************INICIALIZAMOS EL PID  Y LAS VARIABLES ********************************//
 
-    // pid_dsp_configuracion();
+//     pid_dsp_configuracion();
 
     //***************************************************************************************//
 
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(10); //configuramos  la interrupcion principal
+    SetupT3ForXmsPID(2); //configuramos  la interrupcion principal
     StartInterrup3(); //incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
@@ -73,23 +73,29 @@ void Bucle_Principal() {
     //------------------------------------------------------------------------------------------//
     double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
     double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
-    angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.01)+90;
+    angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05)+90;
 
-    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
-    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
-    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.01)+90;
-
-     double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
-    double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
-    angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.01)+90;
+//    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+//    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
+//    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.01)+90;
+//
+//     double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+//    double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
+//    angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.01)+90;
 
  
     //angulo = (signed int) Complementary2(accXangle, gyroXrate, 10);
-    int salida = _PID(0, angulo_zx, 1,20, 3, 10, 31000, -31000);
+   // int salida = PD(0, angulo_zx, 1,KP,KD,KD, 31000, -31000);
+    int salida = _mod(0, angulo_zx,1,KP,KD,KD,5000,-5000,4,-4);
+    //int salida =pid_dsp(angulo_zx);
     //pon_motores(0,0,4000,0,100);
-    pon_motores(-salida,0 , +salida, 0,100);
-    plot2(angulo_zx,salida);
-   // enviar_valor("angu=", angulo_zx);
+    PWM1=BIAS1+salida;
+    PWM3=BIAS2-salida;
+    //pon_motores(BIAS1+salida,0 , BIAS2-salida, 0,100);
+   //plot3(angulo_zx*100,salida,accXangle_zx);
+    //enviar_mensaje("HOLa");
+    //enviar_valor_NOCR("", angulo_zx);
+    //enviar_valor(",", salida);
     //enviar_valor("angulo1=", angulo_zy);
 
   LED_AZUL_INF=0;
@@ -100,34 +106,49 @@ void Bucle_Principal() {
 
 // SetPoint = BIAS
 
-int _PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo) {
+int _mod(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
+    int salida, ITerm;
+
+    int ErrorP = _referencia - _PosicionActual;
+    int ErrorDT = ErrorP - error_anterior;
+    ErrorI += ErrorP * Tmuestreo * _ki;
+
+    //-----calculate P component
+    int PTerm = ErrorP * _kp;
+    //-----calculate I component
+    if (ErrorI >= _Maximo) ErrorI = _Maximo;
+    else if (ErrorI <= _Minimo) ErrorI = _Minimo;
+    ITerm = ErrorI;
+    //-----calculate D component
+    int DTerm = ErrorDT * _kd / Tmuestreo;
+    //-----calculate PID
+    salida = PTerm + DTerm;
+
+    if (salida >= _Maximo) salida = _Maximo;
+    if (salida <= _Minimo) salida = _Minimo;
+
+    error_anterior = ErrorP;
+
+    return salida;
+}
+int PD(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo) {
     int Output;
 
-    //    ITerm += (_ki * error);
-    //
-    //    if (ITerm > 2000) ITerm = 2000;
-    //    if (ITerm < -2000) ITerm = -2000;
 
     int Error = _referencia - _PosicionActual;
-    int dError = (_PosicionActual - (valorAuxAnterior));
-    Output = _kp * Error - _kd * dError; //+ ITerm;
-    // if (Output >= _Maximo) Output = _Maximo;
-    // if (Output <= _Minimo) Output = _Minimo;
-    
-    (valorAuxAnterior) = _PosicionActual;
-    
+    int dError = (_PosicionActual - (error_anterior));
 
-        enviar_valor_NOCR("valorAux = ",_referencia);
-        enviar_valor_NOCR(" valorAuxAnterior = ",_PosicionActual);
-       enviar_valor_NOCR("pid = ",Output);
-        enviar_valor_NOCR(" Ep = ",Error);
-        enviar_valor(" Ed = ",dError);
-    //    enviar_valor(" Ei = ",ITerm);
+    Output = _kp * Error - _kd * dError ;
+     if (Output >= _Maximo) Output = _Maximo;
+     if (Output <= _Minimo) Output = _Minimo;
+
+    (error_anterior) = _PosicionActual;
 
 return Output;
 
 
 }
+
 
 void getAngle_init() {
 
@@ -149,9 +170,9 @@ void getAngle_init() {
     zx.P[0][1] = 0;
     zx.P[1][0] = 0;
     zx.P[1][1] = 0;
-    zx.Q_angle = 0.03; //0.01 // Process noise variance for the accelerometer
-    zx.Q_bias = 0.03; //0.03  Process noise variance for the gyro bias
-    zx.R_measure = 0.002; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
+    zx.Q_angle = 0.02;//0.03; //0.01 // Process noise variance for the accelerometer
+    zx.Q_bias = 0.03;//0.03; //0.03  Process noise variance for the gyro bias
+    zx.R_measure = 0.002;//0.002; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
     zx.angle = 1; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
     zx.bias = 0; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
     zx.rate = 0; // Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate
@@ -238,20 +259,19 @@ void pid_dsp_configuracion() {
     fooPID.abcCoefficients = &abcCoefficient[0]; /*Set up pointer to derived coefficients */
     fooPID.controlHistory = &controlHistory[0]; /*Set up pointer to controller history samples */
     PIDInit(&fooPID); /*Clear the controler history and the controller output */
-    kCoeffs[0] = Q15(1); // Kp   0.7
-    kCoeffs[1] = Q15(0); // Ki 0.2
-    kCoeffs[2] = Q15(1); // Kd   0.07
+    kCoeffs[0] = Q15(0.7); // Kp   0.7
+    kCoeffs[1] = Q15(0.2); // Ki 0.2
+    kCoeffs[2] = Q15(0.05); // Kd   0.07
     PIDCoeffCalc(&kCoeffs[0], &fooPID); /*Derive the a,b, & c coefficients from the Kp, Ki & Kd */
 }
 
 int pid_dsp(int entrada) {
-    fooPID.controlReference = Q15(0); /*Set the Reference Input for your controller */
-    fooPID.measuredOutput = Q15(_Q15ftoi((float) entrada));
-    fooPID.measuredOutput = Q15(entrada);
+    fooPID.controlReference =(0); /*Set the Reference Input for your controller */
+    fooPID.measuredOutput =  entrada;
     PID(&fooPID);
     enviar_valor_NOCR("foo=", fooPID.controlOutput);
     enviar_valor("conver=", fooPID.controlOutput);
-    return (_itofQ15(fooPID.controlOutput));
+    return ((fooPID.controlOutput));
 }
 
 void pon_motores(int M1, int M2, int M3, int M4,int incremento) {

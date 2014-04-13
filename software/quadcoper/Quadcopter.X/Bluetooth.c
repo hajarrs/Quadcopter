@@ -92,7 +92,7 @@ int IndiceBluetooth;
 
 void interrupcion _U2RXInterrupt(void)
 {
-
+StopInterrup3();
 #define AJUSTE_PID
 #define DEBUG_PID
 
@@ -220,12 +220,13 @@ void ProcesarCadenaPid(char *cadena)
     BIAS1 = atoi(aux_BIAS1);
     BIAS2 = atoi(aux_BIAS2);
 #ifdef  DEBUG_PID
-    enviar_mensaje_NOCR("cambiando parametros:");
-    enviar_valor_NOCR("p=", atoi(aux_P));
-    enviar_valor_NOCR(",i=", atoi(aux_I));
-    enviar_valor_NOCR(",d=", atoi(aux_D));
-    enviar_valor_NOCR(",aux_BIAS1=", atoi(aux_BIAS1));
-    enviar_valor(",aux_BIAS2=", atoi(aux_BIAS2));
+    enviar_mensaje("cambiando parametros:");
+    enviar_valor("p=", atoi(aux_P));
+    enviar_valor("i=", atoi(aux_I));
+    enviar_valor("d=", atoi(aux_D));
+    enviar_valor("aux_BIAS1=", atoi(aux_BIAS1));
+    enviar_valor("aux_BIAS2=", atoi(aux_BIAS2));
+    StartInterrup3();
 #endif
 
 }

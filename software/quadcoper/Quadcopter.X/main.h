@@ -50,12 +50,14 @@ fractional kCoeffs[] = {0, 0, 0};
 
 char str_blue[40];
 char str_aux[40];
-extern int valorAuxAnterior;
+extern int error_anterior;
+extern int ErrorI;
 
 void Bucle_Principal();
 void get_calibrado_acelerometro(int milis, int n);
 void getAngle_init();
-int _PID(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo);
+int PD(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo);
+int _mod(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
 void pon_motores(int M1, int M2, int M3, int M4,int incremento);
 double getAngleStruct_zx(double newAngle, double newRate, double dt);
 double getAngleStruct_zy(double newAngle, double newRate, double dt);

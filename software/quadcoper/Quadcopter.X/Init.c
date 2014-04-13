@@ -158,7 +158,6 @@ void Init_PWM()
 void Init_Bluetooh(void)
 {
 
-//#define RECEP
 #define RECEP
         U2MODEbits.UARTEN = 1;  Nop();  Nop();  Nop();
         U2STAbits.UTXISEL = 0;  Nop();
