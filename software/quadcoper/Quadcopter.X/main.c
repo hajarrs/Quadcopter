@@ -38,6 +38,9 @@ int main(void) {
     Delay1msT1(0); //Incializamos el filtro kalman
     set_inicial();
     Delay1msT1(0); //Incializamos el acelerometro
+    LED_ALL_ON();
+    for (i = 0; i < 2500; i++) Delay_Nop(2000);
+    LED_ALL_OFF();  
     //***************************************************************************************//
     //***************************************************************************************//
 
@@ -54,7 +57,7 @@ int main(void) {
 
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(2); //configuramos  la interrupcion principal
+    SetupT3ForXmsPID(3); //configuramos  la interrupcion principal
     StartInterrup3(); //incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
@@ -71,32 +74,40 @@ void Bucle_Principal() {
     int angulo_zy = 0;
     int angulo_xy = 0;
     //------------------------------------------------------------------------------------------//
-    double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
-    double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
-    angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05)+90;
+ //  funcionando un eje
+   double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
+   double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
+   angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05)+90;
 
-//    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
-//    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
-//    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.01)+90;
+   double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+   double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
+   angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.04)+90;
+
+      double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+   double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
+   angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.04)+90;
+
+   int salida_zx = mod_zx(0, angulo_zx,1,KP,KD,KD,5000,-5000,4,-4);
+     GetPwm1(BIAS1+salida_zx);
+     GetPwm3(BIAS1-salida_zx);
+   int salida_zy = mod_zy(0, angulo_zy,1,11,KD,KD,5000,-5000,4,-4);
+     GetPwm2(BIAS1+salida_zy);
+     GetPwm4(BIAS1-salida_zy);
+   int salida_xy = mod_zy(0, angulo_xy,1,11,KD,KD,5000,-5000,4,-4);
+     GetPwm2(BIAS1+salida_xy);
+     GetPwm4(BIAS1-salida_xy);
+
+
 //
 //     double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
 //    double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
 //    angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.01)+90;
 
  
-    //angulo = (signed int) Complementary2(accXangle, gyroXrate, 10);
-   // int salida = PD(0, angulo_zx, 1,KP,KD,KD, 31000, -31000);
-    int salida = _mod(0, angulo_zx,1,KP,KD,KD,5000,-5000,4,-4);
-    //int salida =pid_dsp(angulo_zx);
-    //pon_motores(0,0,4000,0,100);
-    PWM1=BIAS1+salida;
-    PWM3=BIAS2-salida;
-    //pon_motores(BIAS1+salida,0 , BIAS2-salida, 0,100);
-   //plot3(angulo_zx*100,salida,accXangle_zx);
-    //enviar_mensaje("HOLa");
-    //enviar_valor_NOCR("", angulo_zx);
-    //enviar_valor(",", salida);
-    //enviar_valor("angulo1=", angulo_zy);
+//    int salida = mod_zy(0, angulo_zy,1,KP,KD,KD,5000,-5000,4,-4);
+
+ 
+
 
   LED_AZUL_INF=0;
 }
@@ -106,19 +117,19 @@ void Bucle_Principal() {
 
 // SetPoint = BIAS
 
-int _mod(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
+int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
     int salida, ITerm;
 
     int ErrorP = _referencia - _PosicionActual;
-    int ErrorDT = ErrorP - error_anterior;
-    ErrorI += ErrorP * Tmuestreo * _ki;
+    int ErrorDT = ErrorP - error_anterior_zy;
+    ErrorI_zy += ErrorP * Tmuestreo * _ki;
 
     //-----calculate P component
     int PTerm = ErrorP * _kp;
     //-----calculate I component
-    if (ErrorI >= _Maximo) ErrorI = _Maximo;
-    else if (ErrorI <= _Minimo) ErrorI = _Minimo;
-    ITerm = ErrorI;
+    if (ErrorI_zy >= _Maximo) ErrorI_zy = _Maximo;
+    else if (ErrorI_zy <= _Minimo) ErrorI_zy = _Minimo;
+    ITerm = ErrorI_zy;
     //-----calculate D component
     int DTerm = ErrorDT * _kd / Tmuestreo;
     //-----calculate PID
@@ -127,26 +138,36 @@ int _mod(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, 
     if (salida >= _Maximo) salida = _Maximo;
     if (salida <= _Minimo) salida = _Minimo;
 
-    error_anterior = ErrorP;
+    error_anterior_zy = ErrorP;
 
     return salida;
 }
-int PD(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo) {
-    int Output;
 
 
-    int Error = _referencia - _PosicionActual;
-    int dError = (_PosicionActual - (error_anterior));
+int mod_zx(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
+    int salida, ITerm;
 
-    Output = _kp * Error - _kd * dError ;
-     if (Output >= _Maximo) Output = _Maximo;
-     if (Output <= _Minimo) Output = _Minimo;
+    int ErrorP = _referencia - _PosicionActual;
+    int ErrorDT = ErrorP - error_anterior_zx;
+    ErrorI_zx += ErrorP * Tmuestreo * _ki;
 
-    (error_anterior) = _PosicionActual;
+    //-----calculate P component
+    int PTerm = ErrorP * _kp;
+    //-----calculate I component
+    if (ErrorI_zx >= _Maximo) ErrorI_zx = _Maximo;
+    else if (ErrorI_zx <= _Minimo) ErrorI_zx = _Minimo;
+    ITerm = ErrorI_zx;
+    //-----calculate D component
+    int DTerm = ErrorDT * _kd / Tmuestreo;
+    //-----calculate PID
+    salida = PTerm + DTerm;
 
-return Output;
+    if (salida >= _Maximo) salida = _Maximo;
+    if (salida <= _Minimo) salida = _Minimo;
 
+    error_anterior_zx = ErrorP;
 
+    return salida;
 }
 
 
@@ -288,4 +309,28 @@ void pon_motores(int M1, int M2, int M3, int M4,int incremento) {
     else if (PWM4 < M4)PWM4=PWM4+incremento;
 
 
+}
+void GetPwm1(int velocidad){
+       if(velocidad <0)
+        PWM1=0;
+    else
+        PWM1=velocidad;
+}
+void GetPwm2(int velocidad){
+       if(velocidad <0)
+        PWM2=0;
+    else
+        PWM2=velocidad;
+}
+void GetPwm3(int velocidad){
+       if(velocidad <0)
+        PWM3=0;
+    else
+        PWM3=velocidad;
+}
+void GetPwm4(int velocidad){
+       if(velocidad <0)
+        PWM4=0;
+    else
+        PWM4=velocidad;
 }
