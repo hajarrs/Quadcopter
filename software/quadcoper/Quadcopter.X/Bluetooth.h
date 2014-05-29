@@ -16,12 +16,6 @@ extern int chanel2;
 extern int chanel3;
 extern int chanel4;
 extern int chanel5;
-extern int KP;
-extern int KD;
-extern int KI;
-extern int BIAS1;
-extern int BIAS2;
-extern int Tmuestreo;
 
 void EnviarCR();
 void enviar_datos_NOCR(char cadena[50], int longitud);

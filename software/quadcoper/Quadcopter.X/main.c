@@ -57,57 +57,50 @@ int main(void) {
 
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(3); //configuramos  la interrupcion principal
+    SetupT3ForXmsPID(6); //configuramos  la interrupcion principal
     StartInterrup3(); //incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
     acelerometro();
     ACT_MOTORS=1;
     while (1) {
+
     }
 
 }
 
 void Bucle_Principal() {
+    
     LED_AZUL_INF=1;
     int angulo_zx = 0;
     int angulo_zy = 0;
     int angulo_xy = 0;
     //------------------------------------------------------------------------------------------//
  //  funcionando un eje
-   double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
+/*   double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
    double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
    angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05)+90;
 
    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.04)+90;
-
-      double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+*/
+    double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
    double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
-   angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.04)+90;
-
+   angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.04);
+/*
    int salida_zx = mod_zx(0, angulo_zx,1,KP,KD,KD,5000,-5000,4,-4);
      GetPwm1(BIAS1+salida_zx);
      GetPwm3(BIAS1-salida_zx);
    int salida_zy = mod_zy(0, angulo_zy,1,11,KD,KD,5000,-5000,4,-4);
      GetPwm2(BIAS1+salida_zy);
      GetPwm4(BIAS1-salida_zy);
-   int salida_xy = mod_zy(0, angulo_xy,1,11,KD,KD,5000,-5000,4,-4);
-     GetPwm2(BIAS1+salida_xy);
-     GetPwm4(BIAS1-salida_xy);
-
-
-//
-//     double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
-//    double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
-//    angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.01)+90;
-
- 
-//    int salida = mod_zy(0, angulo_zy,1,KP,KD,KD,5000,-5000,4,-4);
-
- 
-
+ */  int salida_xy = mod_zy(0, angulo_xy,1,KP_xy,KI_xy,KD_xy,5000,-5000,4,-4);
+    GetPwm2(BIAS1_xy + salida_xy);
+    GetPwm4(BIAS1_xy + salida_xy);
+    GetPwm1(BIAS1_xy - salida_xy);
+    GetPwm3(BIAS1_xy - salida_xy);
+    enviar_valor("",angulo_xy);
 
   LED_AZUL_INF=0;
 }
@@ -274,25 +267,6 @@ double getAngleStruct_zx(double newAngle, double newRate, double dt) {
     zx.P[1][0] -= zx.K[1] * zx.P[0][0];
     zx.P[1][1] -= zx.K[1] * zx.P[0][1];
     return zx.angle;
-}
-
-void pid_dsp_configuracion() {
-    fooPID.abcCoefficients = &abcCoefficient[0]; /*Set up pointer to derived coefficients */
-    fooPID.controlHistory = &controlHistory[0]; /*Set up pointer to controller history samples */
-    PIDInit(&fooPID); /*Clear the controler history and the controller output */
-    kCoeffs[0] = Q15(0.7); // Kp   0.7
-    kCoeffs[1] = Q15(0.2); // Ki 0.2
-    kCoeffs[2] = Q15(0.05); // Kd   0.07
-    PIDCoeffCalc(&kCoeffs[0], &fooPID); /*Derive the a,b, & c coefficients from the Kp, Ki & Kd */
-}
-
-int pid_dsp(int entrada) {
-    fooPID.controlReference =(0); /*Set the Reference Input for your controller */
-    fooPID.measuredOutput =  entrada;
-    PID(&fooPID);
-    enviar_valor_NOCR("foo=", fooPID.controlOutput);
-    enviar_valor("conver=", fooPID.controlOutput);
-    return ((fooPID.controlOutput));
 }
 
 void pon_motores(int M1, int M2, int M3, int M4,int incremento) {

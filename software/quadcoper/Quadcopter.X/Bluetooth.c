@@ -214,11 +214,11 @@ void ProcesarCadenaPid(char *cadena)
 
     //pasamos parametros aux a parametros globales
 
-    KP = atoi(aux_P);
-    KI = atoi(aux_I);
-    KD = atoi(aux_D);
-    BIAS1 = atoi(aux_BIAS1);
-    BIAS2 = atoi(aux_BIAS2);
+//    KP = atoi(aux_P);
+//    KI = atoi(aux_I);
+//    KD = atoi(aux_D);
+//    BIAS1 = atoi(aux_BIAS1);
+//    BIAS2 = atoi(aux_BIAS2);
 #ifdef  DEBUG_PID
     enviar_mensaje("cambiando parametros:");
     enviar_valor("p=", atoi(aux_P));
