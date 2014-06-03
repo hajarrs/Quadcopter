@@ -21,17 +21,17 @@ int chanel5 = 0;
 
 //***********variables del pid********************//
 
-int KP_zx = 13;
-int KD_zx = 1000;
+int KP_zx = 12;
+int KD_zx = 5000;
 int KI_zx = 1;
-int BIAS1_zx = 400;
-int BIAS2_zx = 400;
+int BIAS1_zx = 800;
+int BIAS2_zx = 800;
 
-int KP_zy = 13;
-int KD_zy = 1000;
+int KP_zy = 12;
+int KD_zy = 5000;
 int KI_zy = 1;
-int BIAS1_zy = 400;
-int BIAS2_zy = 400;
+int BIAS1_zy = 800;
+int BIAS2_zy = 800;
 
 int KP_xy = 10;
 int KD_xy = 10;

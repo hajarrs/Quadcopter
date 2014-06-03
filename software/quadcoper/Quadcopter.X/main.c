@@ -57,7 +57,7 @@ int main(void) {
 
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(6); //configuramos  la interrupcion principal
+    SetupT3ForXmsPID(5); //configuramos  la interrupcion principal
     StartInterrup3(); //incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
@@ -77,30 +77,31 @@ void Bucle_Principal() {
     int angulo_xy = 0;
     //------------------------------------------------------------------------------------------//
  //  funcionando un eje
-/*   double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
+   double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
    double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
-   angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05)+90;
-
+   angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05);
+   int angulo_zx_=(signed int)Complementary2(accXangle_zx, gyroXrate_zx,5);
    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.04)+90;
-*/
-    double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
-   double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
-   angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.04);
-/*
-   int salida_zx = mod_zx(0, angulo_zx,1,KP,KD,KD,5000,-5000,4,-4);
-     GetPwm1(BIAS1+salida_zx);
-     GetPwm3(BIAS1-salida_zx);
-   int salida_zy = mod_zy(0, angulo_zy,1,11,KD,KD,5000,-5000,4,-4);
-     GetPwm2(BIAS1+salida_zy);
-     GetPwm4(BIAS1-salida_zy);
- */  int salida_xy = mod_zy(0, angulo_xy,1,KP_xy,KI_xy,KD_xy,5000,-5000,4,-4);
-    GetPwm2(BIAS1_xy + salida_xy);
-    GetPwm4(BIAS1_xy + salida_xy);
-    GetPwm1(BIAS1_xy - salida_xy);
-    GetPwm3(BIAS1_xy - salida_xy);
-    enviar_valor("",angulo_xy);
+
+//   double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
+//   double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
+//   angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.04);
+
+   int salida_zx = mod_zx(0, angulo_zx,1,KP_zx,KI_zx,KD_zx,5000,-5000,4,-4);
+//     GetPwm1(BIAS1_zx+salida_zx);
+//     GetPwm3(BIAS1_zx-salida_zx);
+   int salida_zy = mod_zy(0, angulo_zy,1,KP_zy,KI_zy,KD_zy,5000,-5000,4,-4);
+   plot4(angulo_zx_,angulo_zx,accXangle_zx,gyroXrate_zx);
+//     GetPwm2(BIAS1_zy+salida_zy);
+//     GetPwm4(BIAS1_zy-salida_zy);
+//  int salida_xy = mod_zy(0, angulo_xy,1,KP_xy,KI_xy,KD_xy,5000,-5000,4,-4);
+//    GetPwm2(BIAS1_xy + salida_xy);
+//    GetPwm4(BIAS1_xy + salida_xy);
+//    GetPwm1(BIAS1_xy - salida_xy);
+//    GetPwm3(BIAS1_xy - salida_xy);
+//    enviar_valor("",angulo_xy);
 
   LED_AZUL_INF=0;
 }
@@ -171,7 +172,7 @@ void getAngle_init() {
     zy.P[1][0] = 0;
     zy.P[1][1] = 0;
     zy.Q_angle = 0.03; //0.01 // Process noise variance for the accelerometer
-    zy.Q_bias = 0.03; //0.03  Process noise variance for the gyro bias
+    zy.Q_bias = 0.003; //0.03  Process noise variance for the gyro bias
     zy.R_measure = 0.002; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
     zy.angle = 1; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
     zy.bias = 0; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
@@ -307,4 +308,18 @@ void GetPwm4(int velocidad){
         PWM4=0;
     else
         PWM4=velocidad;
+}
+float Complementary2(float newAngle, float newRate, int looptime)
+{
+    float k = 10;
+    float dtc2 = 0, x1 = 0, y1 = 0, x2 = 0;
+    dtc2 = (float) (looptime) / 1000.0;
+    x1 = (newAngle - x_angle2C) * k*k;
+    y1 = dtc2 * x1 + y1;
+    x2 = y1 + (newAngle - x_angle2C)*2 * k + newRate;
+    x_angle2C = dtc2 * x2 + x_angle2C;
+#ifdef DEBUG
+    enviar_valor(" x_angle2C=", x_angle2C);
+#endif
+    return x_angle2C;
 }

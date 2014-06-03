@@ -64,7 +64,7 @@ int PD(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, in
 int mod_zx(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
 int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
 int mod_xy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
-
+float Complementary2(float newAngle, float newRate,int looptime) ;
 void pon_motores(int M1, int M2, int M3, int M4,int incremento);
 double getAngleStruct_zx(double newAngle, double newRate, double dt);
 double getAngleStruct_zy(double newAngle, double newRate, double dt);
