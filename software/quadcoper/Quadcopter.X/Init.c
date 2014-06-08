@@ -52,8 +52,7 @@ void Init_I2C(void)
 //    OpenI2C(config1,config2);
     Delay1msT1(0);
 
-    I2CBRG = 60;//correcto 283//otra 60
-
+    I2CBRG = 60;//correcto 283//otra 60//SUPER SEGURO 60// SI SE PONE 35 ESTA TRUCADO
     I2CCONbits.I2CSIDL = 0; Nop();
     I2CCONbits.SCLREL = 1; Nop();
     I2CCONbits.IPMIEN = 0; Nop();

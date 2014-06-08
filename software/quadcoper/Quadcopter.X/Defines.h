@@ -33,6 +33,11 @@
 #define ON   1
 #define OFF  0
 
+#define ERASE_WORD 0x4044
+#define WRITE_WORD 0x4004
+#define ADDRESS_HI 0x007F
+#define EEPROM_LOW_START_ADDRESS 0xFC00
+
 
 #endif	/* DEFINES_H */
 

@@ -69,7 +69,8 @@ void pon_motores(int M1, int M2, int M3, int M4,int incremento);
 double getAngleStruct_zx(double newAngle, double newRate, double dt);
 double getAngleStruct_zy(double newAngle, double newRate, double dt);
 double getAngleStruct_xy(double newAngle, double newRate, double dt);
-
+unsigned short Eeprom_ReadWord(unsigned short  pushAddressOffset);
+void Eeprom_WriteWord(unsigned short  pushAddressOffset, unsigned short value);
 StructKalman zx,zy,xy;
 int errorAnt=0;
 void getAngle_init_xz();

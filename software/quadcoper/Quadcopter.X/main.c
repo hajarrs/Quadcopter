@@ -57,13 +57,22 @@ int main(void) {
 
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(5); //configuramos  la interrupcion principal
-    StartInterrup3(); //incializamos la interrupcion
+  //  SetupT3ForXmsPID(5); //configuramos  la interrupcion principal
+  //  StartInterrup3(); //incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
     acelerometro();
     ACT_MOTORS=1;
+    enviar_valor("k",Eeprom_ReadWord(13));
+ //   Eeprom_WriteWord(13,0x2345);
+
     while (1) {
+        LED_ALL_ON();
+        enviar_mensaje("hola");
+//Eeprom_WriteWord(8,0x2345);
+//Eeprom_WriteWord(13,0x2345);
+enviar_valor("k",Eeprom_ReadWord(13));
+Delay_Nop(20000);
 
     }
 
@@ -77,33 +86,42 @@ void Bucle_Principal() {
     int angulo_xy = 0;
     //------------------------------------------------------------------------------------------//
  //  funcionando un eje
-   double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
-   double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
-   angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05);
-   int angulo_zx_=(signed int)Complementary2(accXangle_zx, gyroXrate_zx,5);
+ //  double accXangle_zx = (atan2((get_az() - calibra_az), (get_ax() - calibra_ax)) * RAD_TO_DEG);
+//  double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
+//   angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05);
+//     angulo_zx=(signed int)Complementary2(accXangle_zx, gyroXrate_zx,5)+90;
    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
-   angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.04)+90;
+   angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.002)+90;
+   LED_AZUL_SUP=!LED_AZUL_SUP;
 
+ //    angulo_zy=(***********signed int)Complementary2(accXangle_zy, gyroXrate_zy,1)+90;
 //   double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
 //   double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
 //   angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.04);
 
-   int salida_zx = mod_zx(0, angulo_zx,1,KP_zx,KI_zx,KD_zx,5000,-5000,4,-4);
+//   int salida_zx = mod_zx(0, angulo_zx,5,KP_zx,KI_zx,KD_zx,5000,-5000,4,-4);
 //     GetPwm1(BIAS1_zx+salida_zx);
 //     GetPwm3(BIAS1_zx-salida_zx);
-   int salida_zy = mod_zy(0, angulo_zy,1,KP_zy,KI_zy,KD_zy,5000,-5000,4,-4);
-   plot4(angulo_zx_,angulo_zx,accXangle_zx,gyroXrate_zx);
-//     GetPwm2(BIAS1_zy+salida_zy);
-//     GetPwm4(BIAS1_zy-salida_zy);
+    //int salida_zy = mod_zy(0, angulo_zy,5,KP_zy,KI_zy,KD_zy,5000,-5000,50,-50);
+//   plot3(angulo_zy,accXangle_zy+90,salida_zy/30);
+    //     GetPwm2(BIAS1_zy+salida_zy);
+    //     GetPwm4(BIAS2_zy-salida_zy);
 //  int salida_xy = mod_zy(0, angulo_xy,1,KP_xy,KI_xy,KD_xy,5000,-5000,4,-4);
 //    GetPwm2(BIAS1_xy + salida_xy);
 //    GetPwm4(BIAS1_xy + salida_xy);
-//    GetPwm1(BIAS1_xy - salida_xy);
+//    Getbs Pwm1(BIAS1_xy - salida_xy);
 //    GetPwm3(BIAS1_xy - salida_xy);
 //    enviar_valor("",angulo_xy);
+ // plot3(angulo_zy,accXangle_zy+90,PWM4);
 
-  LED_AZUL_INF=0;
+
+//     if (angulo_zy>0){LED_ROJO_SUP=0;}
+//     else {LED_ROJO_SUP=1;}
+//     if (salida_zy>0){LED_AZUL_SUP=1;}
+//     else {LED_AZUL_SUP=0;}
+//          if (salida_zy<0){LED_VERDE_SUP=1;}
+//     else {LED_VERDE_SUP=0;}
 }
 
 
@@ -113,26 +131,26 @@ void Bucle_Principal() {
 
 int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
     int salida, ITerm;
-
     int ErrorP = _referencia - _PosicionActual;
     int ErrorDT = ErrorP - error_anterior_zy;
-    ErrorI_zy += ErrorP * Tmuestreo * _ki;
-
+    ErrorI_zy = ErrorI_zy +ErrorP * Tmuestreo * _ki;
     //-----calculate P component
     int PTerm = ErrorP * _kp;
     //-----calculate I component
-    if (ErrorI_zy >= _Maximo) ErrorI_zy = _Maximo;
-    else if (ErrorI_zy <= _Minimo) ErrorI_zy = _Minimo;
+    if (ErrorI_zy >= _MaximoI) ErrorI_zy = _MaximoI;
+    else if (ErrorI_zy <= _MinimoI) ErrorI_zy = _MinimoI;
     ITerm = ErrorI_zy;
     //-----calculate D component
     int DTerm = ErrorDT * _kd / Tmuestreo;
     //-----calculate PID
-    salida = PTerm + DTerm;
+    salida = PTerm + DTerm
+            + ITerm;
 
     if (salida >= _Maximo) salida = _Maximo;
     if (salida <= _Minimo) salida = _Minimo;
 
     error_anterior_zy = ErrorP;
+
 
     return salida;
 }
@@ -172,7 +190,7 @@ void getAngle_init() {
     zy.P[1][0] = 0;
     zy.P[1][1] = 0;
     zy.Q_angle = 0.03; //0.01 // Process noise variance for the accelerometer
-    zy.Q_bias = 0.003; //0.03  Process noise variance for the gyro bias
+    zy.Q_bias = 0.001; //0.03  Process noise variance for the gyro bias
     zy.R_measure = 0.002; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
     zy.angle = 1; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
     zy.bias = 0; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
@@ -199,7 +217,7 @@ void getAngle_init() {
     xy.P[0][1] = 0;
     xy.P[1][0] = 0;
     xy.P[1][1] = 0;
-    xy.Q_angle = 0.03; //0.01 // Process noise variance for the accelerometer
+    xy.Q_angle = 0.1; //0.01 // Process noise variance for the accelerometer
     xy.Q_bias = 0.03; //0.03  Process noise variance for the gyro bias
     xy.R_measure = 0.002; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
     xy.angle = 1; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
@@ -311,7 +329,7 @@ void GetPwm4(int velocidad){
 }
 float Complementary2(float newAngle, float newRate, int looptime)
 {
-    float k = 10;
+    float k = 20;
     float dtc2 = 0, x1 = 0, y1 = 0, x2 = 0;
     dtc2 = (float) (looptime) / 1000.0;
     x1 = (newAngle - x_angle2C) * k*k;
@@ -323,3 +341,65 @@ float Complementary2(float newAngle, float newRate, int looptime)
 #endif
     return x_angle2C;
 }
+
+unsigned short Eeprom_ReadWord(unsigned short  pushAddressOffset)
+{
+    unsigned short ushResult;
+    register int eedata_addr;
+    register int eedata_val;
+    unsigned short pushAddress;
+    pushAddressOffset = pushAddressOffset*2; //word offset , byte addressable so multiply by 2
+    pushAddress = pushAddressOffset + EEPROM_LOW_START_ADDRESS;
+
+    TBLPAG = ADDRESS_HI; // __builtin_tblpage()
+    eedata_addr = (unsigned short)pushAddress; // __builtin_tbloffset()
+    __asm__("TBLRDL [%[addr]], %[val]" : [val]"=r"(eedata_val) : [addr]"r"(eedata_addr));
+
+    ushResult = eedata_val;
+    return (ushResult);
+}
+
+
+
+void Eeprom_WriteWord(unsigned short  pushAddressOffset, unsigned short value)
+{
+  unsigned short pushAddress;
+   pushAddressOffset = pushAddressOffset*2; //word offset , byte addressable so multiply by 2
+   pushAddress = pushAddressOffset + EEPROM_LOW_START_ADDRESS;
+   TBLPAG = ADDRESS_HI;
+   NVMADRU = ADDRESS_HI; // Write address of word to be erased into NVMADRU, NVMADR registers.
+   NVMADR = (unsigned short) pushAddress;
+
+   NVMCON = ERASE_WORD; // Setup NVMCON register to erase one EEPROM word.
+
+   //PROTECT_CODE_FROM_INTERRUPTS_START // Disable interrupts while the KEY sequence is written
+      NVMKEY = 0x55; // Write the KEY sequence step1
+      NVMKEY = 0xAA; // step2
+      NVMCONbits.WR = 1; // Start the erase cycle
+   //PROTECT_CODE_FROM_INTERRUPTS_STOP // Enable interrupts
+
+   while (NVMCONbits.WR == 1); // wait for the EEPROMS
+
+   NVMCON = WRITE_WORD; // Setup NVMCON register to write one EEPROM word.
+   {
+      register int eedata_addr;
+      register int eedata_val;
+
+      eedata_addr = (unsigned short)pushAddress; // write low word of address
+      eedata_val = value; // write data
+
+      __asm__ volatile ("TBLWTL %[val], [%[addr]]" : [val]"+r"(eedata_val) : [addr]"r"(eedata_addr));
+   }
+
+    NVMCON = WRITE_WORD;
+   //PROTECT_CODE_FROM_INTERRUPTS_START // Disable interrupts while the KEY sequence is written
+      NVMKEY = 0x55; // Write the KEY sequence step1
+      NVMKEY = 0xAA; // step2
+      NVMCONbits.WR = 1; // Start the erase cycle
+   //PROTECT_CODE_FROM_INTERRUPTS_STOP // Enable interrupts
+
+   while (NVMCONbits.WR == 1); // wait for the word to be written
+
+   // no proper watchdog protection in the 2 while loops
+   // no proper check if bytes are written correctly by re-reading them
+ }

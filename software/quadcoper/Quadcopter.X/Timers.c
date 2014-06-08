@@ -83,7 +83,6 @@ void interrupcion _T3Interrupt(void)
    // if (i == 30)StopInterrup3();
 
     IFS0bits.T3IF = 0;
-    LED_VERDE_INF = !LED_VERDE_INF;
     Bucle_Principal();
 }
 
