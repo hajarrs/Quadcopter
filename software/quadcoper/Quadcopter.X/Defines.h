@@ -38,7 +38,6 @@
 #define ADDRESS_HI 0x007F
 #define EEPROM_LOW_START_ADDRESS 0xFC00
 
-
 #endif	/* DEFINES_H */
 
 

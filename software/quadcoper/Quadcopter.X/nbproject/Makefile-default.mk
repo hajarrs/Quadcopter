@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=my_new_pid.s Pruebas.c main.c Bluetooth.c I2C.c Init.c Timers.c
+SOURCEFILES_QUOTED_IF_SPACED=my_new_pid.s Pruebas.c main.c Bluetooth.c I2C.c Init.c Timers.c eeprom.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Init.o ${OBJECTDIR}/Timers.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/my_new_pid.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Bluetooth.o.d ${OBJECTDIR}/I2C.o.d ${OBJECTDIR}/Init.o.d ${OBJECTDIR}/Timers.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Init.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/eeprom.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/my_new_pid.o.d ${OBJECTDIR}/Pruebas.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Bluetooth.o.d ${OBJECTDIR}/I2C.o.d ${OBJECTDIR}/Init.o.d ${OBJECTDIR}/Timers.o.d ${OBJECTDIR}/eeprom.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Init.o ${OBJECTDIR}/Timers.o
+OBJECTFILES=${OBJECTDIR}/my_new_pid.o ${OBJECTDIR}/Pruebas.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Bluetooth.o ${OBJECTDIR}/I2C.o ${OBJECTDIR}/Init.o ${OBJECTDIR}/Timers.o ${OBJECTDIR}/eeprom.o
 
 # Source Files
-SOURCEFILES=my_new_pid.s Pruebas.c main.c Bluetooth.c I2C.c Init.c Timers.c
+SOURCEFILES=my_new_pid.s Pruebas.c main.c Bluetooth.c I2C.c Init.c Timers.c eeprom.c
 
 
 CFLAGS=
@@ -121,6 +121,13 @@ ${OBJECTDIR}/Timers.o: Timers.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Timers.c  -o ${OBJECTDIR}/Timers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Timers.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/Timers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/eeprom.o: eeprom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/eeprom.o.d 
+	@${RM} ${OBJECTDIR}/eeprom.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  eeprom.c  -o ${OBJECTDIR}/eeprom.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/eeprom.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/eeprom.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/Pruebas.o: Pruebas.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -163,6 +170,13 @@ ${OBJECTDIR}/Timers.o: Timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Timers.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Timers.c  -o ${OBJECTDIR}/Timers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Timers.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/Timers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/eeprom.o: eeprom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/eeprom.o.d 
+	@${RM} ${OBJECTDIR}/eeprom.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  eeprom.c  -o ${OBJECTDIR}/eeprom.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/eeprom.o.d"        -g -omf=elf -O0 -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/eeprom.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

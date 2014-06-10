@@ -1,0 +1,11 @@
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\bin\Release\ModifPIDOnFly.exe
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\bin\Release\ModifPIDOnFly.pdb
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\MainWindow.baml
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\MainWindow.g.cs
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\App.g.cs
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\ModifPIDOnFly_MarkupCompile.cache
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\ModifPIDOnFly.g.resources
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\ModifPIDOnFly.Properties.Resources.resources
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\ModifPIDOnFly.csproj.GenerateResource.Cache
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\ModifPIDOnFly.exe
+C:\Users\Raul\Documents\Visual Studio 2010\Projects\ModifPIDOnFly\ModifPIDOnFly\obj\x86\Release\ModifPIDOnFly.pdb

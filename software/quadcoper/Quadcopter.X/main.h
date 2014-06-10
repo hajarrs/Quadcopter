@@ -22,12 +22,17 @@
 #include "Init.h"
 #include "Timers.h"
 #include "Bluetooth.h"
+#include "eeprom.h"
 #include "Pruebas.h"
 
 typedef struct {
 double Q_angle ; // Process noise variance for the accelerometer
 double Q_bias ; // Process noise variance for the gyro bias
 double R_measure ; // Measurement noise variance - this is actually the variance of the measurement noise
+
+double multi_Q_angle ; // Process noise variance for the accelerometer
+double multi_Q_bias ; // Process noise variance for the gyro bias
+double multi_R_measure ; // Measurement noise variance - this is actually the variance of the measurement noise
 
 double angle ; // Reset the angle // The angle calculated by the Kalman filter - part of the 2x1 state vector
 double bias ; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
@@ -50,6 +55,7 @@ fractional kCoeffs[] = {0, 0, 0};
 
 char str_blue[40];
 char str_aux[40];
+extern int Tsample;
 extern int error_anterior_zx;
 extern int ErrorI_zx;
 extern int error_anterior_zy;
@@ -69,8 +75,7 @@ void pon_motores(int M1, int M2, int M3, int M4,int incremento);
 double getAngleStruct_zx(double newAngle, double newRate, double dt);
 double getAngleStruct_zy(double newAngle, double newRate, double dt);
 double getAngleStruct_xy(double newAngle, double newRate, double dt);
-unsigned short Eeprom_ReadWord(unsigned short  pushAddressOffset);
-void Eeprom_WriteWord(unsigned short  pushAddressOffset, unsigned short value);
+
 StructKalman zx,zy,xy;
 int errorAnt=0;
 void getAngle_init_xz();
@@ -78,6 +83,7 @@ void GetPwm1(int velocidad);
 void GetPwm2(int velocidad);
 void GetPwm3(int velocidad);
 void GetPwm4(int velocidad);
+void cargar_datos_ajuste(void);
 
 
 

@@ -11,7 +11,7 @@
 //*************************************************************
 //*********************VARIABLES GLOBALES**********************
 //*************************************************************
-
+int Tsample=4;
 int chanel1 = 0;
 int chanel2 = 0;
 int chanel3 = 0;
@@ -28,7 +28,7 @@ int BIAS1_zx = 1000;
 int BIAS2_zx = 1000;
 
 int KP_zy = 25;
-int KD_zy = 1000;
+int KD_zy = 100;
 int KI_zy = 0;
 int BIAS1_zy =600;
 int BIAS2_zy =600;

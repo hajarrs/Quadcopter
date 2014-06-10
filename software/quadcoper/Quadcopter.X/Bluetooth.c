@@ -85,7 +85,7 @@ void enviar_mensaje_NOCR(char nombre[])
 }
 
 // Variables globales
-char DatoRecibido[50];
+char DatoRecibido[70];
 int IndiceBluetooth;
 
 // Funcion de interrupcion de recepcion de datos
@@ -94,7 +94,7 @@ void interrupcion _U2RXInterrupt(void)
 {
 StopInterrup3();
 #define AJUSTE_PID
-#define DEBUG_PID
+//enviar_mensaje("-----------------cambiando parametros---------------------");
 
 #ifdef  AJUSTE_PID
 
@@ -183,28 +183,36 @@ void ProcesarCadenaPid(char *cadena)
     int i = 0;
     int indice_i = 0;
     int x = 0;
-    char aux_P[6];
-    char aux_I[6];
-    char aux_D[6];
-    char aux_BIAS1[6];
-    char aux_BIAS2[6];
-
+    int acu=0;
+    char aux_P[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_I[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_D[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_BIAS1[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_BIAS2[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_Tsample[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_Q_angle[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_Q_bias[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_R_measure[10]={0,0,0,0,0,0,0,0,0,0};
     do
     {
 
-        if (i > 3)
+        if (i >0)
         {
-            if (cadena[i] != 0x26)//ampersan
-            {
+            if (cadena[i] != 0x2c)//coma
+            {  
                 if (x == 0)aux_P[indice_i] = cadena[i];
                 if (x == 1)aux_I[indice_i] = cadena[i];
                 if (x == 2)aux_D[indice_i] = cadena[i];
                 if (x == 3)aux_BIAS1[indice_i] = cadena[i];
                 if (x == 4)aux_BIAS2[indice_i] = cadena[i];
+                if (x == 5)aux_Tsample[indice_i] = cadena[i];
+                if (x == 6)aux_Q_angle[indice_i] = cadena[i];
+                if (x == 7)aux_Q_bias[indice_i] = cadena[i];
+                if (x == 8)aux_R_measure[indice_i] = cadena[i];
                 indice_i++;
             }
             else
-            {
+            { 
                 x++;
                 indice_i = 0;
             }
@@ -214,20 +222,18 @@ void ProcesarCadenaPid(char *cadena)
 
     //pasamos parametros aux a parametros globales
 
-//    KP = atoi(aux_P);
-//    KI = atoi(aux_I);
-//    KD = atoi(aux_D);
-//    BIAS1 = atoi(aux_BIAS1);
-//    BIAS2 = atoi(aux_BIAS2);
-#ifdef  DEBUG_PID
-    enviar_mensaje("cambiando parametros:");
-    enviar_valor("p=", atoi(aux_P));
-    enviar_valor("i=", atoi(aux_I));
-    enviar_valor("d=", atoi(aux_D));
-    enviar_valor("aux_BIAS1=", atoi(aux_BIAS1));
-    enviar_valor("aux_BIAS2=", atoi(aux_BIAS2));
-    StartInterrup3();
-#endif
+
+        Eeprom_WriteWord(2,atoi(aux_P));
+        Eeprom_WriteWord(4,atoi(aux_D));
+        Eeprom_WriteWord(6,atoi(aux_I));
+        Eeprom_WriteWord(8,atoi(aux_BIAS1));
+        Eeprom_WriteWord(10,atoi(aux_BIAS2));
+        Eeprom_WriteWord(12,atoi(aux_Tsample));
+        Eeprom_WriteWord(14,atoi(aux_Q_angle));
+        Eeprom_WriteWord(16,atoi(aux_Q_bias));
+        Eeprom_WriteWord(18,atoi(aux_R_measure));
+        Eeprom_WriteWord(0,6969);
+        reset();
 
 }
 #endif

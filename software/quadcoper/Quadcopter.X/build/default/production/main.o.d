@@ -7,4 +7,5 @@ Init.h  \
 Timers.h  \
 I2C.h  \
 Bluetooth.h  \
+eeprom.h  \
 Pruebas.h 
