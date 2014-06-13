@@ -1,0 +1,15 @@
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\SimPlot.vbproj.GenerateResource.Cache
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\bin\Release\QuadPablo.exe.manifest
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\bin\Release\QuadPablo.application
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\bin\Release\QuadPablo.exe
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\bin\Release\QuadPablo.pdb
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\bin\Release\QuadPablo.xml
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.plotSetup.resources
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.mainForm.resources
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.Resources.resources
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.TrustInfo.xml
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.exe.manifest
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.application
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.exe
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.xml
+C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.pdb

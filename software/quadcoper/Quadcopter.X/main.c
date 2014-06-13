@@ -159,7 +159,7 @@ int mod_zx(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki
     else if (ErrorI_zx <= _Minimo) ErrorI_zx = _Minimo;
     ITerm = ErrorI_zx;
     //-----calculate D component
-    int DTerm = ErrorDT * _kd / Tmuestreo;
+    int DTerm = ErrorDT * _kd*10;// Tmuestreo;
     //-----calculate PID
     salida = PTerm + DTerm;
 
@@ -328,10 +328,6 @@ void cargar_datos_ajuste() {
         BIAS1_zy = Eeprom_ReadWord(8);
         BIAS2_zy = Eeprom_ReadWord(10);
         Tsample = Eeprom_ReadWord(12);
-//        zy.Q_angle = 0.01; // Process noise variance for the accelerometer
-//        zy.Q_bias = 0.001; // Process noise variance for the gyro bias
-//        zy.R_measure = 0.03; // Measurement noise variance - this is actually the variance of the measurement noise
-       
         zy.Q_angle = (double) Eeprom_ReadWord(14) / 1000; //0.01 // Process noise variance for the accelerometer
         zy.Q_bias = (double)Eeprom_ReadWord(16) / 1000; // Process noise variance for the gyro bias
         zy.R_measure = (double)Eeprom_ReadWord(18) / 1000; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
@@ -354,8 +350,8 @@ void cargar_datos_ajuste() {
         enviar_valor_NOCR("BIAS1_zy=", BIAS1_zy);
         enviar_valor(" , BIAS2_zy=", BIAS2_zy);
         enviar_valor_NOCR("Tsample=", Tsample);
-        enviar_valor_NOCR(" , zy.Q_angle=", zy.Q_angle * 1000);
-        enviar_valor_NOCR(" , zy.Q_bias=", zy.Q_bias * 1000);
+        enviar_valor_NOCR(" , zy.Q_angle=", zy.Q_angle * 100000);
+        enviar_valor_NOCR(" , zy.Q_bias=", zy.Q_bias * 100);
         enviar_valor(" , zy.R_measure=", zy.R_measure * 1000);
         //        delayT4_msg(1000);
         //        enviar_mensaje("Tres segundos para arrancar");
