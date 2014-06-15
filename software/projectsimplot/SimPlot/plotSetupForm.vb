@@ -63,4 +63,15 @@ Public Class plotSetup
         Me.Close()
     End Sub
 
+    Private Sub Ch1LegendTxtBox_TextChanged(sender As Object, e As EventArgs) Handles Ch1LegendTxtBox.TextChanged
+
+    End Sub
+
+    Private Sub Ch3LegendTxtBox_TextChanged(sender As Object, e As EventArgs) Handles Ch3LegendTxtBox.TextChanged
+
+    End Sub
+
+    Private Sub Ch4LegendTxtBox_TextChanged(sender As Object, e As EventArgs) Handles Ch4LegendTxtBox.TextChanged
+
+    End Sub
 End Class

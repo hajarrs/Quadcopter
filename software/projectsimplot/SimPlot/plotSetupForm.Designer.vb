@@ -98,9 +98,9 @@ Partial Class plotSetup
         Me.plotSetupXGroup.Controls.Add(Me.Label1)
         Me.plotSetupXGroup.Controls.Add(Me.XAxisNumPointsTextBox)
         Me.plotSetupXGroup.Location = New System.Drawing.Point(9, 10)
-        Me.plotSetupXGroup.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.plotSetupXGroup.Margin = New System.Windows.Forms.Padding(2)
         Me.plotSetupXGroup.Name = "plotSetupXGroup"
-        Me.plotSetupXGroup.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.plotSetupXGroup.Padding = New System.Windows.Forms.Padding(2)
         Me.plotSetupXGroup.Size = New System.Drawing.Size(373, 53)
         Me.plotSetupXGroup.TabIndex = 1
         Me.plotSetupXGroup.TabStop = False
@@ -129,7 +129,7 @@ Partial Class plotSetup
         'XAxisNumPointsTextBox
         '
         Me.XAxisNumPointsTextBox.Location = New System.Drawing.Point(120, 23)
-        Me.XAxisNumPointsTextBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.XAxisNumPointsTextBox.Margin = New System.Windows.Forms.Padding(2)
         Me.XAxisNumPointsTextBox.Name = "XAxisNumPointsTextBox"
         Me.XAxisNumPointsTextBox.Size = New System.Drawing.Size(50, 20)
         Me.XAxisNumPointsTextBox.TabIndex = 3
@@ -145,9 +145,9 @@ Partial Class plotSetup
         Me.GroupBox1.Controls.Add(Me.yAxisMinValTextBox)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Location = New System.Drawing.Point(9, 67)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Size = New System.Drawing.Size(373, 105)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
@@ -156,7 +156,7 @@ Partial Class plotSetup
         'yAxisMaxValTextBox
         '
         Me.yAxisMaxValTextBox.Location = New System.Drawing.Point(120, 68)
-        Me.yAxisMaxValTextBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.yAxisMaxValTextBox.Margin = New System.Windows.Forms.Padding(2)
         Me.yAxisMaxValTextBox.Name = "yAxisMaxValTextBox"
         Me.yAxisMaxValTextBox.Size = New System.Drawing.Size(50, 20)
         Me.yAxisMaxValTextBox.TabIndex = 4
@@ -186,7 +186,7 @@ Partial Class plotSetup
         'yAxisMinValTextBox
         '
         Me.yAxisMinValTextBox.Location = New System.Drawing.Point(120, 31)
-        Me.yAxisMinValTextBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.yAxisMinValTextBox.Margin = New System.Windows.Forms.Padding(2)
         Me.yAxisMinValTextBox.Name = "yAxisMinValTextBox"
         Me.yAxisMinValTextBox.Size = New System.Drawing.Size(50, 20)
         Me.yAxisMinValTextBox.TabIndex = 1
@@ -207,9 +207,9 @@ Partial Class plotSetup
         '
         Me.GroupBox2.Controls.Add(Me.TableLayoutPanel2)
         Me.GroupBox2.Location = New System.Drawing.Point(9, 178)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Size = New System.Drawing.Size(373, 188)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
@@ -237,7 +237,7 @@ Partial Class plotSetup
         Me.TableLayoutPanel2.Controls.Add(Me.Ch3LegendTxtBox, 2, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.Ch4LegendTxtBox, 2, 4)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(13, 17)
-        Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 5
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
@@ -305,7 +305,7 @@ Partial Class plotSetup
         Me.Ch4EnChkBox.CheckState = System.Windows.Forms.CheckState.Checked
         Me.Ch4EnChkBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Ch4EnChkBox.Location = New System.Drawing.Point(89, 126)
-        Me.Ch4EnChkBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch4EnChkBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch4EnChkBox.Name = "Ch4EnChkBox"
         Me.Ch4EnChkBox.Size = New System.Drawing.Size(83, 31)
         Me.Ch4EnChkBox.TabIndex = 4
@@ -320,7 +320,7 @@ Partial Class plotSetup
         Me.Ch3EnChkBox.CheckState = System.Windows.Forms.CheckState.Checked
         Me.Ch3EnChkBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Ch3EnChkBox.Location = New System.Drawing.Point(89, 95)
-        Me.Ch3EnChkBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch3EnChkBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch3EnChkBox.Name = "Ch3EnChkBox"
         Me.Ch3EnChkBox.Size = New System.Drawing.Size(83, 27)
         Me.Ch3EnChkBox.TabIndex = 3
@@ -335,7 +335,7 @@ Partial Class plotSetup
         Me.Ch2EnChkBox.CheckState = System.Windows.Forms.CheckState.Checked
         Me.Ch2EnChkBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Ch2EnChkBox.Location = New System.Drawing.Point(89, 64)
-        Me.Ch2EnChkBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch2EnChkBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch2EnChkBox.Name = "Ch2EnChkBox"
         Me.Ch2EnChkBox.Size = New System.Drawing.Size(83, 27)
         Me.Ch2EnChkBox.TabIndex = 2
@@ -363,7 +363,7 @@ Partial Class plotSetup
         Me.Ch1EnChkBox.CheckState = System.Windows.Forms.CheckState.Checked
         Me.Ch1EnChkBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Ch1EnChkBox.Location = New System.Drawing.Point(89, 33)
-        Me.Ch1EnChkBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch1EnChkBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch1EnChkBox.Name = "Ch1EnChkBox"
         Me.Ch1EnChkBox.Size = New System.Drawing.Size(83, 27)
         Me.Ch1EnChkBox.TabIndex = 1
@@ -385,41 +385,41 @@ Partial Class plotSetup
         'Ch1LegendTxtBox
         '
         Me.Ch1LegendTxtBox.Location = New System.Drawing.Point(176, 33)
-        Me.Ch1LegendTxtBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch1LegendTxtBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch1LegendTxtBox.Name = "Ch1LegendTxtBox"
         Me.Ch1LegendTxtBox.Size = New System.Drawing.Size(76, 20)
         Me.Ch1LegendTxtBox.TabIndex = 10
-        Me.Ch1LegendTxtBox.Text = "Señal 1"
+        Me.Ch1LegendTxtBox.Text = "onda bruta"
         Me.Ch1LegendTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Ch2LegendTxtBox
         '
         Me.Ch2LegendTxtBox.Location = New System.Drawing.Point(176, 64)
-        Me.Ch2LegendTxtBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch2LegendTxtBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch2LegendTxtBox.Name = "Ch2LegendTxtBox"
         Me.Ch2LegendTxtBox.Size = New System.Drawing.Size(76, 20)
         Me.Ch2LegendTxtBox.TabIndex = 11
-        Me.Ch2LegendTxtBox.Text = "Señal 2"
+        Me.Ch2LegendTxtBox.Text = "señal filtrada"
         Me.Ch2LegendTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Ch3LegendTxtBox
         '
         Me.Ch3LegendTxtBox.Location = New System.Drawing.Point(176, 95)
-        Me.Ch3LegendTxtBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch3LegendTxtBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch3LegendTxtBox.Name = "Ch3LegendTxtBox"
         Me.Ch3LegendTxtBox.Size = New System.Drawing.Size(76, 20)
         Me.Ch3LegendTxtBox.TabIndex = 12
-        Me.Ch3LegendTxtBox.Text = "Señal 3"
+        Me.Ch3LegendTxtBox.Text = "señal pid"
         Me.Ch3LegendTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Ch4LegendTxtBox
         '
         Me.Ch4LegendTxtBox.Location = New System.Drawing.Point(176, 126)
-        Me.Ch4LegendTxtBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch4LegendTxtBox.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch4LegendTxtBox.Name = "Ch4LegendTxtBox"
         Me.Ch4LegendTxtBox.Size = New System.Drawing.Size(76, 20)
         Me.Ch4LegendTxtBox.TabIndex = 13
-        Me.Ch4LegendTxtBox.Text = "Señal 4"
+        Me.Ch4LegendTxtBox.Text = "otra onda"
         Me.Ch4LegendTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'plotSetup

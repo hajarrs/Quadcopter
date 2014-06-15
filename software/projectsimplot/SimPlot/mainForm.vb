@@ -2,6 +2,8 @@
 
     Private pktSize As Integer = 0
     Private pktBuf(1000) As Byte
+    Private TickNumberForClearToolbar As Integer = 0
+    Private RealSize As Int16
 
     Private points As New ArrayList
     Private pointsArray As New ArrayList
@@ -50,7 +52,12 @@
 
         ' Add any initialization after the InitializeComponent() call.
         Timer1.Start()
-
+        CargarDatos()
+        RealSize = Width
+        Dim sistema As System.Windows.Forms.Padding
+        sistema.Left = 490
+        LoadData.Margin = sistema
+        TickNumberForClearToolbar = 50
     End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
@@ -59,13 +66,18 @@
         'integer overflow generates an exception in .net
         If tickCount = UShort.MaxValue Then
             tickCount = 0
+            SaveDataStatus.Text = ""
         Else
             tickCount += 1
+            If (tickCount > (TickNumberForClearToolbar + 40)) Then
+                SaveDataStatus.Text = ""
+
+            End If
         End If
 
         TimerTickLabel.Text = tickCount
 
-        If connectDisconnectButton.Text = "Disconnect" Then
+        If connectDisconnectButton.Text = "Desconectar" Then
 
             'Parse the data from serial port and store all the packets in a collection data type.
             parseData()        'RAUL
@@ -103,7 +115,7 @@
         txBuffer(9) = byteArray(1)
 
 
-        If connectDisconnectButton.Text = "Disconnect" Then
+        If connectDisconnectButton.Text = "Desconectar" Then
 
             'SerialPort1.Write(txBuffer, 0, (2 + 2 + 6))    'RAUL   
 
@@ -231,15 +243,15 @@
 
     Private Sub connectDisconnectButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles connectDisconnectButton.Click
 
-        If connectDisconnectButton.Text = "Connect" Then
+        If connectDisconnectButton.Text = "Conectar" Then
             If comPortOpen() Then
-                connectDisconnectButton.Text = "Disconnect"
+                connectDisconnectButton.Text = "Desconectar"
             Else
-                textBox.AppendText("Error: Unable to open specified Com Port")
+                textBox.AppendText("Error: No se ha podido abrir el puerto seleccionado.")
             End If
         Else
             SerialPort1.Close()
-            connectDisconnectButton.Text = "Connect"
+            connectDisconnectButton.Text = "Conectar"
         End If
 
     End Sub
@@ -256,7 +268,10 @@
 
         SerialPort1.PortName = portName
         SerialPort1.BaudRate = baudRate
-        SerialPort1.Open()
+        Try
+            SerialPort1.Open()
+        Catch
+        End Try
 
         If SerialPort1.IsOpen Then
             textBox.AppendText("Serial Port Opened")
@@ -356,6 +371,17 @@
         'textBox.AppendText(tempstr)
         Dim text As String = String.Join("", asciBuf)
         TerminalWindow.AppendText(text)
+
+
+
+        Try
+            If text > 0 Then
+                TerminalWindow.ScrollToCaret()
+            End If
+        Catch
+
+        End Try
+
         asciBuf.Clear()
 
         If pointsArray.Count > 0 Then
@@ -438,6 +464,15 @@
             Catch
                 MessageBox.Show("Hay letras en los valores de los parámetros", "Error en los parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+            Try
+                TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+                Dim Ruta = My.Computer.FileSystem.CurrentDirectory & "\\Datos.txt"
+                Dim TxtToSave As String = TxtBox_Kp.Text + vbCrLf + TxtBox_Ki.Text + vbCrLf + TxtBox_Kd.Text + vbCrLf + TxtBox_Bias1.Text + vbCrLf + TxtBox_Bias2.Text + vbCrLf + TxtBox_Ts.Text + vbCrLf + TxtBox_Qa.Text + vbCrLf + TxtBox_Qb.Text + vbCrLf + TxtBox_RM.Text
+                My.Computer.FileSystem.WriteAllText(Ruta, TxtToSave, False)
+                SaveDataStatus.Text = "Los datos se han guardado correctamente"
+            Catch
+                SaveDataStatus.Text = "Error al guardar los datos"
+            End Try
         Else
             MessageBox.Show("No estas conectado a ningún dispositivo.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
@@ -489,6 +524,62 @@
         If e.KeyValue.ToString() = 13 Then
             Enviar_Datos()
         End If
+    End Sub
+
+
+    Private Sub LoadData_Click(sender As System.Object, e As System.EventArgs) Handles LoadData.Click
+        CargarDatos()
+    End Sub
+
+    Private Sub CargarDatos()
+        Try
+            Dim Lectura As New IO.StreamReader(My.Computer.FileSystem.CurrentDirectory & "\\Datos.txt")
+            For j As Integer = 1 To 10 Step 1
+                Dim linea As String = Lectura.ReadLine()
+                Select Case j
+                    Case 1
+                        TxtBox_Kp.Text = linea
+                    Case 2
+                        TxtBox_Ki.Text = linea
+                    Case 3
+                        TxtBox_Kd.Text = linea
+                    Case 4
+                        TxtBox_Bias1.Text = linea
+                    Case 5
+                        TxtBox_Bias2.Text = linea
+                    Case 6
+                        TxtBox_Ts.Text = linea
+                    Case 7
+                        TxtBox_Qa.Text = linea
+                    Case 8
+                        TxtBox_Qb.Text = linea
+                    Case 9
+                        TxtBox_RM.Text = linea
+                End Select
+            Next
+            Lectura.Close()
+            SaveDataStatus.Text = "Datos cargados correctamente."
+        Catch
+            Try
+                SaveDataStatus.Text = "No se han podido cargar los datos."
+            Catch
+            End Try
+        End Try
+        Try
+            TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+        Catch
+        End Try
+    End Sub
+
+    Private Sub mainForm_SizeChanged(sender As System.Object, e As System.EventArgs) Handles MyBase.SizeChanged
+        Dim Movimiento As Int16 = RealSize - MyBase.Width
+
+        TickNumberForClearToolbar = 50
+        Dim sistema As System.Windows.Forms.Padding
+        sistema = LoadData.Margin
+        sistema.Left -= Movimiento
+        LoadData.Margin = sistema
+        RealSize = MyBase.Width
     End Sub
 End Class
 

@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Icaro_linuxesdios.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="QuadPablo" version="1.0.5276.28307" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="QuadPablo" version="1.0.5279.39862" language="neutral" processorArchitecture="x86" />
     <commandLine file="QuadPablo.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="QuadPablo.exe" size="1752064">
-      <assemblyIdentity name="QuadPablo" version="1.0.5276.28307" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="QuadPablo.exe" size="1755136">
+      <assemblyIdentity name="QuadPablo" version="1.0.5279.39862" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Lu3XNKJDk8GJbGg5aErz4Cf0DXc=</dsig:DigestValue>
+        <dsig:DigestValue>eBSiCMB0kP+Hrl22GHknMXXZyiE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

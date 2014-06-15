@@ -60,12 +60,14 @@ Partial Class mainForm
         Me.connectDisconnectButton = New System.Windows.Forms.Button()
         Me.plotSetupBtn = New System.Windows.Forms.Button()
         Me.btn_EnviarPID = New System.Windows.Forms.Button()
+        Me.LoadData = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.TimerTickLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel_Version = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SaveDataStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,14 +98,14 @@ Partial Class mainForm
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1034, 624)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1084, 662)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'SplitContainer1
         '
         Me.SplitContainer1.BackColor = System.Drawing.SystemColors.Window
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(3, 33)
+        Me.SplitContainer1.Location = New System.Drawing.Point(3, 35)
         Me.SplitContainer1.Name = "SplitContainer1"
         Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -134,14 +136,14 @@ Partial Class mainForm
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Window
         Me.SplitContainer1.Panel2.Controls.Add(Me.SplitContainer2)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1028, 567)
-        Me.SplitContainer1.SplitterDistance = 427
+        Me.SplitContainer1.Size = New System.Drawing.Size(1078, 603)
+        Me.SplitContainer1.SplitterDistance = 454
         Me.SplitContainer1.TabIndex = 0
         '
         'TxtBox_Qa
         '
         Me.TxtBox_Qa.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Qa.Location = New System.Drawing.Point(941, 294)
+        Me.TxtBox_Qa.Location = New System.Drawing.Point(1011, 316)
         Me.TxtBox_Qa.Name = "TxtBox_Qa"
         Me.TxtBox_Qa.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Qa.TabIndex = 34
@@ -151,7 +153,7 @@ Partial Class mainForm
         'TxtBox_Ts
         '
         Me.TxtBox_Ts.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Ts.Location = New System.Drawing.Point(941, 262)
+        Me.TxtBox_Ts.Location = New System.Drawing.Point(1011, 284)
         Me.TxtBox_Ts.Name = "TxtBox_Ts"
         Me.TxtBox_Ts.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Ts.TabIndex = 33
@@ -161,7 +163,7 @@ Partial Class mainForm
         'TxtBox_RM
         '
         Me.TxtBox_RM.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_RM.Location = New System.Drawing.Point(941, 358)
+        Me.TxtBox_RM.Location = New System.Drawing.Point(1011, 380)
         Me.TxtBox_RM.Name = "TxtBox_RM"
         Me.TxtBox_RM.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_RM.TabIndex = 36
@@ -171,7 +173,7 @@ Partial Class mainForm
         'TxtBox_Qb
         '
         Me.TxtBox_Qb.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Qb.Location = New System.Drawing.Point(941, 326)
+        Me.TxtBox_Qb.Location = New System.Drawing.Point(1011, 348)
         Me.TxtBox_Qb.Name = "TxtBox_Qb"
         Me.TxtBox_Qb.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Qb.TabIndex = 35
@@ -181,7 +183,7 @@ Partial Class mainForm
         'TxtBox_Bias2
         '
         Me.TxtBox_Bias2.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Bias2.Location = New System.Drawing.Point(941, 230)
+        Me.TxtBox_Bias2.Location = New System.Drawing.Point(1011, 252)
         Me.TxtBox_Bias2.Name = "TxtBox_Bias2"
         Me.TxtBox_Bias2.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Bias2.TabIndex = 32
@@ -191,7 +193,7 @@ Partial Class mainForm
         'TxtBox_Ki
         '
         Me.TxtBox_Ki.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Ki.Location = New System.Drawing.Point(941, 134)
+        Me.TxtBox_Ki.Location = New System.Drawing.Point(1011, 156)
         Me.TxtBox_Ki.Name = "TxtBox_Ki"
         Me.TxtBox_Ki.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Ki.TabIndex = 29
@@ -201,7 +203,7 @@ Partial Class mainForm
         'TxtBox_Kp
         '
         Me.TxtBox_Kp.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Kp.Location = New System.Drawing.Point(941, 102)
+        Me.TxtBox_Kp.Location = New System.Drawing.Point(1011, 124)
         Me.TxtBox_Kp.Name = "TxtBox_Kp"
         Me.TxtBox_Kp.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Kp.TabIndex = 28
@@ -212,7 +214,7 @@ Partial Class mainForm
         '
         Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(919, 169)
+        Me.Label9.Location = New System.Drawing.Point(989, 191)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(20, 13)
         Me.Label9.TabIndex = 27
@@ -223,7 +225,7 @@ Partial Class mainForm
         '
         Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(896, 201)
+        Me.Label8.Location = New System.Drawing.Point(966, 223)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(43, 13)
         Me.Label8.TabIndex = 26
@@ -234,7 +236,7 @@ Partial Class mainForm
         '
         Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(919, 105)
+        Me.Label7.Location = New System.Drawing.Point(989, 127)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(20, 13)
         Me.Label7.TabIndex = 25
@@ -245,7 +247,7 @@ Partial Class mainForm
         '
         Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(923, 137)
+        Me.Label6.Location = New System.Drawing.Point(993, 159)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(16, 13)
         Me.Label6.TabIndex = 24
@@ -256,7 +258,7 @@ Partial Class mainForm
         '
         Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(896, 233)
+        Me.Label5.Location = New System.Drawing.Point(966, 255)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(43, 13)
         Me.Label5.TabIndex = 23
@@ -267,7 +269,7 @@ Partial Class mainForm
         '
         Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(898, 329)
+        Me.Label4.Location = New System.Drawing.Point(968, 351)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(41, 13)
         Me.Label4.TabIndex = 22
@@ -278,7 +280,7 @@ Partial Class mainForm
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(877, 361)
+        Me.Label3.Location = New System.Drawing.Point(947, 383)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(62, 13)
         Me.Label3.TabIndex = 21
@@ -289,7 +291,7 @@ Partial Class mainForm
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(884, 265)
+        Me.Label2.Location = New System.Drawing.Point(954, 287)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(55, 13)
         Me.Label2.TabIndex = 20
@@ -300,7 +302,7 @@ Partial Class mainForm
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(891, 297)
+        Me.Label1.Location = New System.Drawing.Point(961, 319)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(48, 13)
         Me.Label1.TabIndex = 19
@@ -310,7 +312,7 @@ Partial Class mainForm
         'TxtBox_Kd
         '
         Me.TxtBox_Kd.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Kd.Location = New System.Drawing.Point(941, 166)
+        Me.TxtBox_Kd.Location = New System.Drawing.Point(1011, 188)
         Me.TxtBox_Kd.Name = "TxtBox_Kd"
         Me.TxtBox_Kd.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Kd.TabIndex = 30
@@ -320,7 +322,7 @@ Partial Class mainForm
         'TxtBox_Bias1
         '
         Me.TxtBox_Bias1.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.TxtBox_Bias1.Location = New System.Drawing.Point(941, 198)
+        Me.TxtBox_Bias1.Location = New System.Drawing.Point(1011, 220)
         Me.TxtBox_Bias1.Name = "TxtBox_Bias1"
         Me.TxtBox_Bias1.Size = New System.Drawing.Size(57, 20)
         Me.TxtBox_Bias1.TabIndex = 31
@@ -383,7 +385,7 @@ Partial Class mainForm
         Me.Chart1.Series.Add(Series2)
         Me.Chart1.Series.Add(Series3)
         Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Size = New System.Drawing.Size(1028, 427)
+        Me.Chart1.Size = New System.Drawing.Size(1078, 454)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "1"
         '
@@ -401,8 +403,8 @@ Partial Class mainForm
         'SplitContainer2.Panel2
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.textBox)
-        Me.SplitContainer2.Size = New System.Drawing.Size(1028, 136)
-        Me.SplitContainer2.SplitterDistance = 704
+        Me.SplitContainer2.Size = New System.Drawing.Size(1078, 145)
+        Me.SplitContainer2.SplitterDistance = 738
         Me.SplitContainer2.TabIndex = 0
         '
         'TerminalWindow
@@ -412,7 +414,7 @@ Partial Class mainForm
         Me.TerminalWindow.Location = New System.Drawing.Point(0, 0)
         Me.TerminalWindow.MaxLength = 1000000
         Me.TerminalWindow.Name = "TerminalWindow"
-        Me.TerminalWindow.Size = New System.Drawing.Size(704, 136)
+        Me.TerminalWindow.Size = New System.Drawing.Size(738, 145)
         Me.TerminalWindow.TabIndex = 0
         Me.TerminalWindow.Text = ""
         '
@@ -422,21 +424,23 @@ Partial Class mainForm
         Me.textBox.Location = New System.Drawing.Point(0, 0)
         Me.textBox.MaxLength = 100000
         Me.textBox.Name = "textBox"
-        Me.textBox.Size = New System.Drawing.Size(320, 136)
+        Me.textBox.Size = New System.Drawing.Size(336, 145)
         Me.textBox.TabIndex = 0
         Me.textBox.Text = ""
         '
         'FlowLayoutPanel1
         '
+        Me.FlowLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlowLayoutPanel1.Controls.Add(Me.comPortComboBox)
         Me.FlowLayoutPanel1.Controls.Add(Me.baudRateComboBox)
         Me.FlowLayoutPanel1.Controls.Add(Me.connectDisconnectButton)
         Me.FlowLayoutPanel1.Controls.Add(Me.plotSetupBtn)
         Me.FlowLayoutPanel1.Controls.Add(Me.btn_EnviarPID)
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Controls.Add(Me.LoadData)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(1028, 24)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(1078, 26)
         Me.FlowLayoutPanel1.TabIndex = 1
         '
         'comPortComboBox
@@ -462,29 +466,42 @@ Partial Class mainForm
         Me.connectDisconnectButton.Dock = System.Windows.Forms.DockStyle.Fill
         Me.connectDisconnectButton.Location = New System.Drawing.Point(206, 3)
         Me.connectDisconnectButton.Name = "connectDisconnectButton"
-        Me.connectDisconnectButton.Size = New System.Drawing.Size(75, 23)
+        Me.connectDisconnectButton.Size = New System.Drawing.Size(80, 21)
         Me.connectDisconnectButton.TabIndex = 14
         Me.connectDisconnectButton.Text = "Conectar"
         Me.connectDisconnectButton.UseVisualStyleBackColor = True
         '
         'plotSetupBtn
         '
-        Me.plotSetupBtn.Location = New System.Drawing.Point(286, 2)
-        Me.plotSetupBtn.Margin = New System.Windows.Forms.Padding(2)
+        Me.plotSetupBtn.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.plotSetupBtn.Location = New System.Drawing.Point(292, 3)
         Me.plotSetupBtn.Name = "plotSetupBtn"
-        Me.plotSetupBtn.Size = New System.Drawing.Size(87, 24)
+        Me.plotSetupBtn.Size = New System.Drawing.Size(87, 21)
         Me.plotSetupBtn.TabIndex = 15
         Me.plotSetupBtn.Text = "Configuración"
         Me.plotSetupBtn.UseVisualStyleBackColor = True
         '
         'btn_EnviarPID
         '
-        Me.btn_EnviarPID.Location = New System.Drawing.Point(378, 3)
+        Me.btn_EnviarPID.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btn_EnviarPID.Location = New System.Drawing.Point(385, 3)
         Me.btn_EnviarPID.Name = "btn_EnviarPID"
-        Me.btn_EnviarPID.Size = New System.Drawing.Size(75, 23)
+        Me.btn_EnviarPID.Size = New System.Drawing.Size(75, 21)
         Me.btn_EnviarPID.TabIndex = 16
         Me.btn_EnviarPID.Text = "Enviar PID"
         Me.btn_EnviarPID.UseVisualStyleBackColor = True
+        '
+        'LoadData
+        '
+        Me.LoadData.AutoEllipsis = True
+        Me.LoadData.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LoadData.Location = New System.Drawing.Point(503, 3)
+        Me.LoadData.Margin = New System.Windows.Forms.Padding(40, 3, 3, 3)
+        Me.LoadData.Name = "LoadData"
+        Me.LoadData.Size = New System.Drawing.Size(112, 21)
+        Me.LoadData.TabIndex = 17
+        Me.LoadData.Text = "Cargar Datos"
+        Me.LoadData.UseVisualStyleBackColor = True
         '
         'Timer1
         '
@@ -492,10 +509,10 @@ Partial Class mainForm
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.TimerTickLabel, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel_Version})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 599)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.TimerTickLabel, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel_Version, Me.SaveDataStatus})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 637)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1034, 25)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1084, 25)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -526,6 +543,12 @@ Partial Class mainForm
         Me.ToolStripStatusLabel_Version.Name = "ToolStripStatusLabel_Version"
         Me.ToolStripStatusLabel_Version.Size = New System.Drawing.Size(0, 20)
         '
+        'SaveDataStatus
+        '
+        Me.SaveDataStatus.Margin = New System.Windows.Forms.Padding(200, 3, 0, 2)
+        Me.SaveDataStatus.Name = "SaveDataStatus"
+        Me.SaveDataStatus.Size = New System.Drawing.Size(0, 20)
+        '
         'SerialPort1
         '
         Me.SerialPort1.PortName = "COM10"
@@ -534,11 +557,15 @@ Partial Class mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1034, 624)
+        Me.ClientSize = New System.Drawing.Size(1084, 662)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(1000, 600)
         Me.Name = "mainForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "QuadPablo"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
@@ -595,5 +622,7 @@ Partial Class mainForm
     Friend WithEvents TxtBox_Bias2 As System.Windows.Forms.TextBox
     Friend WithEvents TxtBox_Ki As System.Windows.Forms.TextBox
     Friend WithEvents TxtBox_Kp As System.Windows.Forms.TextBox
+    Friend WithEvents SaveDataStatus As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents LoadData As System.Windows.Forms.Button
 
 End Class
