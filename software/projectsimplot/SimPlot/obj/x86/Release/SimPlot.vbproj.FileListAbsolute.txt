@@ -13,3 +13,6 @@ C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.applicati
 C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.exe
 C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.xml
 C:\Users\Raul\Desktop\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.pdb
+C:\Users\pablo\Documents\GitHub\Quadcopter\software\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.exe
+C:\Users\pablo\Documents\GitHub\Quadcopter\software\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.xml
+C:\Users\pablo\Documents\GitHub\Quadcopter\software\projectsimplot\SimPlot\obj\x86\Release\QuadPablo.pdb
