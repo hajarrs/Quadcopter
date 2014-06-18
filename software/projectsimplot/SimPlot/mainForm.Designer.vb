@@ -32,6 +32,8 @@ Partial Class mainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainForm))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.TxtBox_Filtro = New System.Windows.Forms.TextBox()
         Me.TxtBox_Qa = New System.Windows.Forms.TextBox()
         Me.TxtBox_Ts = New System.Windows.Forms.TextBox()
         Me.TxtBox_RM = New System.Windows.Forms.TextBox()
@@ -112,6 +114,8 @@ Partial Class mainForm
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Window
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label10)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.TxtBox_Filtro)
         Me.SplitContainer1.Panel1.Controls.Add(Me.TxtBox_Qa)
         Me.SplitContainer1.Panel1.Controls.Add(Me.TxtBox_Ts)
         Me.SplitContainer1.Panel1.Controls.Add(Me.TxtBox_RM)
@@ -139,6 +143,27 @@ Partial Class mainForm
         Me.SplitContainer1.Size = New System.Drawing.Size(1078, 603)
         Me.SplitContainer1.SplitterDistance = 454
         Me.SplitContainer1.TabIndex = 0
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(979, 415)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(26, 13)
+        Me.Label10.TabIndex = 38
+        Me.Label10.Text = "filtro"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'TxtBox_Filtro
+        '
+        Me.TxtBox_Filtro.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.TxtBox_Filtro.Location = New System.Drawing.Point(1011, 415)
+        Me.TxtBox_Filtro.Name = "TxtBox_Filtro"
+        Me.TxtBox_Filtro.Size = New System.Drawing.Size(57, 20)
+        Me.TxtBox_Filtro.TabIndex = 37
+        Me.TxtBox_Filtro.Text = "1"
+        Me.TxtBox_Filtro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TxtBox_Qa
         '
@@ -269,22 +294,22 @@ Partial Class mainForm
         '
         Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(968, 351)
+        Me.Label4.Location = New System.Drawing.Point(933, 351)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(41, 13)
+        Me.Label4.Size = New System.Drawing.Size(76, 13)
         Me.Label4.TabIndex = 22
-        Me.Label4.Text = "Q_Bias"
+        Me.Label4.Text = "Q_Bias(/1000)"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label3
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(947, 383)
+        Me.Label3.Location = New System.Drawing.Point(913, 383)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(62, 13)
+        Me.Label3.Size = New System.Drawing.Size(96, 13)
         Me.Label3.TabIndex = 21
-        Me.Label3.Text = "R_Measure"
+        Me.Label3.Text = "R_Measure(*1000)"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label2
@@ -302,11 +327,11 @@ Partial Class mainForm
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(961, 319)
+        Me.Label1.Location = New System.Drawing.Point(926, 319)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 13)
+        Me.Label1.Size = New System.Drawing.Size(83, 13)
         Me.Label1.TabIndex = 19
-        Me.Label1.Text = "Q_Angle"
+        Me.Label1.Text = "Q_Angle(/1000)"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TxtBox_Kd
@@ -624,5 +649,7 @@ Partial Class mainForm
     Friend WithEvents TxtBox_Kp As System.Windows.Forms.TextBox
     Friend WithEvents SaveDataStatus As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents LoadData As System.Windows.Forms.Button
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents TxtBox_Filtro As System.Windows.Forms.TextBox
 
 End Class

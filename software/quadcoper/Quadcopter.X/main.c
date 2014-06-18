@@ -57,12 +57,13 @@ int main(void) {
 
 
     //*****************ARRANCAMOS INTERRUPCION  DEL BUCLE PRINCIPAL *************************//
-    SetupT3ForXmsPID(10); //configuramos  la interrupcion principal
+    acelerometro();
+    cargar_datos_ajuste();
+    SetupT3ForXmsPID(5); //configuramos  la interrupcion principal
     StartInterrup3(); //incializamos la interrupcion
     enviar_mensaje("------------------------------------------------------");
     //***************************************************************************************//
-    acelerometro();
-    cargar_datos_ajuste();
+
     ACT_MOTORS = 1;
     while (1) {
 
@@ -82,26 +83,38 @@ void Bucle_Principal() {
     //  double gyroXrate_zx = (double) (get_gx() - calibra_gx) / 131.0;
     //   angulo_zx = (signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.05);
     //     angulo_zx=(signed int)Complementary2(accXangle_zx, gyroXrate_zx,5)+90;
-    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG);
-    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
-    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy,10) + 90;
+
     //    angulo_zy=(***********signed int)Complementary2(accXangle_zy, gyroXrate_zy,1)+90;
     //   double accXangle_xy = (atan2((get_ax() - calibra_ax), (get_ay() - calibra_ay)) * RAD_TO_DEG);
     //   double gyroXrate_xy = (double) (get_gz() - calibra_gz) / 131.0;
     //   angulo_xy = (signed int) getAngleStruct_xy(accXangle_xy, gyroXrate_xy, 0.04);
 
-//           int salida_zx = mod_zx(0, angulo_zx,Tsample,KP_zx,KI_zx,KD_zx,5000,-5000,4,-4);
-//         GetPwm1(BIAS1_zx+salida_zx);
-//         GetPwm3(BIAS2_zx-salida_zx);
-    int salida_zy = mod_zy(0, angulo_zy,10,KP_zy,KI_zy,KD_zy,5000,-5000,50,-50);
-       plot3(angulo_zy,accXangle_zy+90,salida_zy);
-         GetPwm2(BIAS1_zy+salida_zy);
-         GetPwm4(BIAS2_zy-salida_zy);
-    //  int salida_xy = mod_zy(0, angulo_xy,1,KP_xy,KI_xy,KD_xy,5000,-5000,4,-4);
+    //           int salida_zx = mod_zx(0, angulo_zx,Tsample,KP_zx,KI_zx,KD_zx,5000,-5000,4,-4);
+    //         GetPwm1(BIAS1_zx+salida_zx);
+    //         GetPwm3(BIAS2_zx-salida_zx);
+#ifdef BRAZO_CORTO
+    double accXangle_zy = (atan2((get_az() - calibra_az), (get_ay() - calibra_ay)) * RAD_TO_DEG / 2);
+    double gyroXrate_zy = (double) (get_gy() - calibra_gy) / 131.0;
+    angulo_zy = (signed int) getAngleStruct_zy(accXangle_zy, gyroXrate_zy, 0.005) + 45;
+    int salida_zy = mod_zy(0, angulo_zy, 5, KP_zy, KI_zy, KD_zy, 5000, -5000, 50, -50);
+    plot4(accXangle_zy + 45, angulo_zy, PWM2, PWM4);
+    enviar_valor("angulo", angulo_zy);
+    GetPwm2(BIAS1_zy + salida_zy);
+    GetPwm4(BIAS2_zy - salida_zy);
+#else
+    double accXangle_zx = (atan2(get_ax() ,-get_az()) * RAD_TO_DEG);
+    double gyroXrate_zx = (double) (get_gy() - calibra_gy) / 131.0;
+    angulo_zx = ((signed int) getAngleStruct_zx(accXangle_zx, gyroXrate_zx, 0.005));
+    int angulo_zx_ = ((signed int) Complementary2(accXangle_zx, gyroXrate_zx, 5));
+    int salida_zx = mod_zy(0, angulo_zx_, 5, KP_zy, KI_zy, KD_zy, 5000, -5000, 4, -4);
+    plot4(accXangle_zx*10,accXangle_zx*10,angulo_zx_*10,salida_zx);
+    GetPwm1(BIAS1_zy + salida_zx);
+    GetPwm3(BIAS1_zy - salida_zx);
+#endif
+
     //    GetPwm2(BIAS1_xy + salida_xy);
     //    GetPwm4(BIAS1_xy + salida_xy);
-    //    Getbs Pwm1(BIAS1_xy - salida_xy);
-    //    GetPwm3(BIAS1_xy - salida_xy);
+
     //    enviar_valor("s=",salida_zy);
     // plot3(angulo_zy,accXangle_zy+90,PWM4);
 
@@ -119,22 +132,28 @@ void Bucle_Principal() {
 
 // SetPoint = BIAS
 
-int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
-    int salida, ITerm;
+int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, float _kp, float _ki, float _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
+    float salida, ITerm;
     int ErrorP = _referencia - _PosicionActual;
-    int ErrorDT = ErrorP - error_anterior_zy;
-    ErrorI_zy = ErrorI_zy + ErrorP * Tmuestreo * _ki;
+    float ErrorDT = ErrorP - error_anterior_zy;
+
     //-----calculate P component
-    int PTerm = ErrorP * _kp;
+    float PTerm = ErrorP * _kp;
+
     //-----calculate I component
+    ErrorI_zy = ErrorI_zy + ErrorP * Tmuestreo * _ki;
+
+    //-----calculate D component
+    float DTerm = ErrorDT * _kd * 1000 / Tmuestreo;
+
+    //-----calculate anti-windup
     if (ErrorI_zy >= _MaximoI) ErrorI_zy = _MaximoI;
     else if (ErrorI_zy <= _MinimoI) ErrorI_zy = _MinimoI;
     ITerm = ErrorI_zy;
-    //-----calculate D component
-    int DTerm = ErrorDT * _kd / Tmuestreo;
+
+
     //-----calculate PID
-    salida = PTerm + DTerm
-            + ITerm;
+    salida = PTerm + DTerm + ITerm;
 
     if (salida >= _Maximo) salida = _Maximo;
     if (salida <= _Minimo) salida = _Minimo;
@@ -142,7 +161,7 @@ int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki
     error_anterior_zy = ErrorP;
 
 
-    return salida;
+    return (int)salida;
 }
 
 int mod_zx(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) {
@@ -159,7 +178,7 @@ int mod_zx(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki
     else if (ErrorI_zx <= _Minimo) ErrorI_zx = _Minimo;
     ITerm = ErrorI_zx;
     //-----calculate D component
-    int DTerm = ErrorDT * _kd*10;// Tmuestreo;
+    int DTerm = ErrorDT * _kd * 10; // Tmuestreo;
     //-----calculate PID
     salida = PTerm + DTerm;
 
@@ -276,7 +295,6 @@ double getAngleStruct_zx(double newAngle, double newRate, double dt) {
     return zx.angle;
 }
 
-
 void GetPwm1(int velocidad) {
     if (velocidad < 0)
         PWM1 = 0;
@@ -306,7 +324,7 @@ void GetPwm4(int velocidad) {
 }
 
 float Complementary2(float newAngle, float newRate, int looptime) {
-    float k = 20;
+    float k = 15;
     float dtc2 = 0, x1 = 0, y1 = 0, x2 = 0;
     dtc2 = (float) (looptime) / 1000.0;
     x1 = (newAngle - x_angle2C) * k*k;
@@ -322,48 +340,52 @@ float Complementary2(float newAngle, float newRate, int looptime) {
 void cargar_datos_ajuste() {
     if (Eeprom_ReadWord(0) == 6969) {
         enviar_mensaje("datos encontrados en la eeprom");
-        KP_zy = Eeprom_ReadWord(2);
-        KD_zy = Eeprom_ReadWord(4);
-        KI_zy = Eeprom_ReadWord(6);
+        KP_zy = Eeprom_ReadWord(2)/10;
+        KD_zy = Eeprom_ReadWord(4)/10;
+        KI_zy = Eeprom_ReadWord(6)/10;
         BIAS1_zy = Eeprom_ReadWord(8);
         BIAS2_zy = Eeprom_ReadWord(10);
         Tsample = Eeprom_ReadWord(12);
-        zy.Q_angle = (double) Eeprom_ReadWord(14) / 1000; //0.01 // Process noise variance for the accelerometer
-        zy.Q_bias = (double)Eeprom_ReadWord(16) / 1000; // Process noise variance for the gyro bias
-        zy.R_measure = (double)Eeprom_ReadWord(18) / 1000; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
+        zy.Q_angle = (double) Eeprom_ReadWord(14) ; //0.01 // Process noise variance for the accelerometer
+        zy.Q_bias = (double) Eeprom_ReadWord(16) / 100; // Process noise variance for the gyro bias
+        zy.R_measure = (double) Eeprom_ReadWord(18) /100  ; //0.03 Measurement noise variance - this is actually the variance of the measurement noise
+        filtro =(float) Eeprom_ReadWord(20);
+       // WriteAddress(MPU6050_RA_CONFIG  ,filtro);
     } else {
         enviar_mensaje("datos no  encontrados en la eeprom, cargando datos seguros");
-        KP_zy = 12;
-        KD_zy = 400;
+        KP_zy = 7;
+        KD_zy = 9;
         KI_zy = 0;
-        BIAS1_zy = 600;
-        BIAS2_zy = 600;
-        Tsample = 11;
-        zy.Q_angle = 0.0001; // Process noise variance for the accelerometer
-        zy.Q_bias = 0.1; // Process noise variance for the gyro bias
-        zy.R_measure = 0.03; // Measurement noise variance - this is actually the variance of the measurement noise
-  }
-        //------------------CARGADO LOS DATOS DESDE  LA EEPROM--------------------------//
-        enviar_valor_NOCR("KP_zy=", KP_zy);
-        enviar_valor_NOCR(" , KD_zy=", KD_zy);
-        enviar_valor(" , KI_zy=", KI_zy);
-        enviar_valor_NOCR("BIAS1_zy=", BIAS1_zy);
-        enviar_valor(" , BIAS2_zy=", BIAS2_zy);
-        enviar_valor_NOCR("Tsample=", Tsample);
-        enviar_valor_NOCR(" , zy.Q_angle=", zy.Q_angle * 100000);
-        enviar_valor_NOCR(" , zy.Q_bias=", zy.Q_bias * 100);
-        enviar_valor(" , zy.R_measure=", zy.R_measure * 1000);
-        //        delayT4_msg(1000);
-        //        enviar_mensaje("Tres segundos para arrancar");
-        //        delayT4_msg(1000);
-        //        enviar_mensaje("dos segundos para arrancar");
-        //        delayT4_msg(1000);
-        //        enviar_mensaje("un segundos para arrancar");
-        //        delayT4_msg(1000);
-        //        enviar_mensaje("arrancamos");
+        BIAS1_zy = 1000;
+        BIAS2_zy = 1000;
+        Tsample = 1;
+        zy.Q_angle = 0.01; // Process noise variance for the accelerometer
+        zy.Q_bias = 2; // Process noise variance for the gyro bias
+        zy.R_measure = 0.001; // Measurement noise variance - this is actually the variance of the measurement noise
+    }
+    //------------------CARGADO LOS DATOS DESDE  LA EEPROM--------------------------//
+    enviar_valor_NOCR("KP_zy=", KP_zy*10);
+    enviar_valor_NOCR(" , KD_zy=", KD_zy*10);
+    enviar_valor(" , KI_zy=", KI_zy*10);
+    enviar_valor_NOCR("BIAS1_zy=", BIAS1_zy);
+    enviar_valor(" , BIAS2_zy=", BIAS2_zy);
+    enviar_valor_NOCR("Tsample=", Tsample);
+    enviar_valor_NOCR(" , zy.Q_angle=", zy.Q_angle*100);
+    enviar_valor_NOCR(" , zy.Q_bias=", zy.Q_bias*100 );
+    enviar_valor_NOCR(" , zy.R_measure=", zy.R_measure*100 );
+    enviar_valor(" , filtro=", filtro );
+
+    //        delayT4_msg(1000);
+    //        enviar_mensaje("Tres segundos para arrancar");
+    //        delayT4_msg(1000);
+    //        enviar_mensaje("dos segundos para arrancar");
+    //        delayT4_msg(1000);
+    //        enviar_mensaje("un segundos para arrancar");
+    //        delayT4_msg(1000);
+    //        enviar_mensaje("arrancamos");
 
 
-  
+
 
 
 }

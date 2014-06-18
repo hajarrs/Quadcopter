@@ -56,19 +56,22 @@ fractional kCoeffs[] = {0, 0, 0};
 char str_blue[40];
 char str_aux[40];
 extern int Tsample;
-extern int error_anterior_zx;
-extern int ErrorI_zx;
-extern int error_anterior_zy;
-extern int ErrorI_zy;
-extern int error_anterior_xy;
-extern int ErrorI_xy;
+extern float error_anterior_zx;
+extern float ErrorI_zx;
+extern float error_anterior_zy;
+extern float ErrorI_zy;
+extern float error_anterior_xy;
+extern float ErrorI_xy;
 
 void Bucle_Principal();
 void get_calibrado_acelerometro(int milis, int n);
 void getAngle_init();
 int PD(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo);
+
+int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, float _kp, float _ki, float _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
+
 int mod_zx(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
-int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
+//floitizada //int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
 int mod_xy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
 float Complementary2(float newAngle, float newRate,int looptime) ;
 void pon_motores(int M1, int M2, int M3, int M4,int incremento);

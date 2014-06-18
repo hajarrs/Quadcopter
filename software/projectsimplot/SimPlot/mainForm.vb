@@ -1,4 +1,6 @@
-﻿Public Class mainForm
+﻿
+
+Public Class mainForm
 
     Private pktSize As Integer = 0
     Private pktBuf(1000) As Byte
@@ -20,7 +22,7 @@
         Next s
 
         comPortComboBox.SelectedIndex = 0
-        baudRateComboBox.SelectedIndex = 0
+        baudRateComboBox.SelectedIndex = 4
     End Sub
 
 
@@ -459,7 +461,10 @@
                 number = Int32.Parse(TxtBox_Qa.Text)
                 number = Int32.Parse(TxtBox_Qb.Text)
                 number = Int32.Parse(TxtBox_RM.Text)
-                Dim TxtPID As String = "$" + TxtBox_Kp.Text + "," + TxtBox_Ki.Text + "," + TxtBox_Kd.Text + "," + TxtBox_Bias1.Text + "," + TxtBox_Bias2.Text + "," + TxtBox_Ts.Text + "," + TxtBox_Qa.Text + "," + TxtBox_Qb.Text + "," + TxtBox_RM.Text + "#"
+                number = Int32.Parse(TxtBox_RM.Text)
+                number = Int32.Parse(TxtBox_Filtro.Text)
+
+                Dim TxtPID As String = "$" + TxtBox_Kp.Text + "," + TxtBox_Ki.Text + "," + TxtBox_Kd.Text + "," + TxtBox_Bias1.Text + "," + TxtBox_Bias2.Text + "," + TxtBox_Ts.Text + "," + TxtBox_Qa.Text + "," + TxtBox_Qb.Text + "," + TxtBox_RM.Text + "," + TxtBox_RM.Text + "#"
                 SerialPort1.WriteLine(TxtPID)
             Catch
                 MessageBox.Show("Hay letras en los valores de los parámetros", "Error en los parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -515,6 +520,12 @@
     End Sub
 
     Private Sub TxtBox_Qb_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Qb.PreviewKeyDown
+        If e.KeyValue.ToString() = 13 Then
+            Enviar_Datos()
+        End If
+    End Sub
+
+    Private Sub TxtBox_Filtro_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Filtro.PreviewKeyDown
         If e.KeyValue.ToString() = 13 Then
             Enviar_Datos()
         End If
@@ -581,5 +592,6 @@
         LoadData.Margin = sistema
         RealSize = MyBase.Width
     End Sub
-End Class
 
+
+End Class

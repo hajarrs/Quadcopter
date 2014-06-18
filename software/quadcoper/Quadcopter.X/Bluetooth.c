@@ -85,7 +85,7 @@ void enviar_mensaje_NOCR(char nombre[])
 }
 
 // Variables globales
-char DatoRecibido[70];
+char DatoRecibido[80];
 int IndiceBluetooth;
 
 // Funcion de interrupcion de recepcion de datos
@@ -193,6 +193,7 @@ void ProcesarCadenaPid(char *cadena)
     char aux_Q_angle[10]={0,0,0,0,0,0,0,0,0,0};
     char aux_Q_bias[10]={0,0,0,0,0,0,0,0,0,0};
     char aux_R_measure[10]={0,0,0,0,0,0,0,0,0,0};
+    char aux_filtro[10]={0,0,0,0,0,0,0,0,0,0};
     do
     {
 
@@ -209,6 +210,7 @@ void ProcesarCadenaPid(char *cadena)
                 if (x == 6)aux_Q_angle[indice_i] = cadena[i];
                 if (x == 7)aux_Q_bias[indice_i] = cadena[i];
                 if (x == 8)aux_R_measure[indice_i] = cadena[i];
+                if (x == 8)aux_filtro[indice_i] = cadena[i];
                 indice_i++;
             }
             else
@@ -232,6 +234,7 @@ void ProcesarCadenaPid(char *cadena)
         Eeprom_WriteWord(14,atoi(aux_Q_angle));
         Eeprom_WriteWord(16,atoi(aux_Q_bias));
         Eeprom_WriteWord(18,atoi(aux_R_measure));
+        Eeprom_WriteWord(20,atoi(aux_filtro));
         Eeprom_WriteWord(0,6969);
         reset();
 

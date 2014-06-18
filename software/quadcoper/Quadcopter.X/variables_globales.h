@@ -40,16 +40,14 @@ int BIAS1_xy = 0;
 int BIAS2_xy = 0;
 
 int Tmuestreo = 8;
-int error_anterior_zx=0;
-int ErrorI_zx=0;
-int error_anterior_zy=0;
-int ErrorI_zy=0;
-int error_anterior_xy=0;
-int ErrorI_xy=0;
+float  error_anterior_zx=0;
+float  ErrorI_zx=0;
+float  error_anterior_zy=0;
+float  ErrorI_zy=0;
+float  error_anterior_xy=0;
+float  ErrorI_xy=0;
 
-
-
-
+float filtro = 20;
 
 
 
