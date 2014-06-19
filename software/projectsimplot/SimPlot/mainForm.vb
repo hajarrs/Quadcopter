@@ -436,43 +436,42 @@ Public Class mainForm
         End If
     End Sub
 
-    Private Sub btn_EnviarPID_Click(sender As System.Object, e As System.EventArgs) Handles btn_EnviarPID.Click
-        Enviar_Datos()
+    Private Sub btn_EnviarPID_ZX_Click(sender As System.Object, e As System.EventArgs) Handles btn_EnviarPID_ZX.Click
+        Enviar_Datos_zx()
+    End Sub
+    Private Sub btn_EnviarPID_ZY_Click(sender As System.Object, e As System.EventArgs) Handles btn_EnviarPID_ZY.Click
+        Enviar_Datos_zy()
+    End Sub
+    Private Sub btn_EnviarPID_xy_Click(sender As System.Object, e As System.EventArgs) Handles btn_EnviarPID_XY.Click
+        Enviar_Datos_xy()
+
+    End Sub
+    Private Sub btn_EnviarFILTRO_Click(sender As System.Object, e As System.EventArgs) Handles btn_EnviarFILTRO.Click
+        Enviar_Filtro()
     End Sub
 
 
-    Private Sub TxtBox_Kp_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Kp.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
-        End If
-    End Sub
-
-    Private Sub Enviar_Datos()
+    Private Sub Enviar_Datos_zx()
         If SerialPort1.IsOpen Then
             Dim number As Integer
             Try
 
-                number = Int32.Parse(TxtBox_Kp.Text)
-                number = Int32.Parse(TxtBox_Kd.Text)
-                number = Int32.Parse(TxtBox_Ki.Text)
-                number = Int32.Parse(TxtBox_Bias1.Text)
-                number = Int32.Parse(TxtBox_Bias2.Text)
-                number = Int32.Parse(TxtBox_Ts.Text)
-                number = Int32.Parse(TxtBox_Qa.Text)
-                number = Int32.Parse(TxtBox_Qb.Text)
-                number = Int32.Parse(TxtBox_RM.Text)
-                number = Int32.Parse(TxtBox_RM.Text)
-                number = Int32.Parse(TxtBox_Filtro.Text)
+                number = Int32.Parse(TxtBox_Kp_zx.Text)
+                number = Int32.Parse(TxtBox_Kd_zx.Text)
+                number = Int32.Parse(TxtBox_Ki_zx.Text)
+                number = Int32.Parse(TxtBox_Bias1_zx.Text)
+                number = Int32.Parse(TxtBox_Bias2_zx.Text)
+                number = Int32.Parse(TxtBox_comp_zx.Text)
 
-                Dim TxtPID As String = "$" + TxtBox_Kp.Text + "," + TxtBox_Ki.Text + "," + TxtBox_Kd.Text + "," + TxtBox_Bias1.Text + "," + TxtBox_Bias2.Text + "," + TxtBox_Ts.Text + "," + TxtBox_Qa.Text + "," + TxtBox_Qb.Text + "," + TxtBox_RM.Text + "," + TxtBox_RM.Text + "#"
+                Dim TxtPID As String = "$" + "1," + TxtBox_Kp_zx.Text + "," + TxtBox_Ki_zx.Text + "," + TxtBox_Kd_zx.Text + "," + TxtBox_Bias1_zx.Text + "," + TxtBox_Bias2_zx.Text + "," + TxtBox_comp_zx.Text + "#"
                 SerialPort1.WriteLine(TxtPID)
             Catch
                 MessageBox.Show("Hay letras en los valores de los parámetros", "Error en los parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
             Try
                 TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
-                Dim Ruta = My.Computer.FileSystem.CurrentDirectory & "\\Datos.txt"
-                Dim TxtToSave As String = TxtBox_Kp.Text + vbCrLf + TxtBox_Ki.Text + vbCrLf + TxtBox_Kd.Text + vbCrLf + TxtBox_Bias1.Text + vbCrLf + TxtBox_Bias2.Text + vbCrLf + TxtBox_Ts.Text + vbCrLf + TxtBox_Qa.Text + vbCrLf + TxtBox_Qb.Text + vbCrLf + TxtBox_RM.Text
+                Dim Ruta = My.Computer.FileSystem.CurrentDirectory & "\\Datos_zx.txt"
+                Dim TxtToSave As String = TxtBox_Kp_zx.Text + vbCrLf + TxtBox_Ki_zx.Text + vbCrLf + TxtBox_Kd_zx.Text + vbCrLf + TxtBox_Bias1_zx.Text + vbCrLf + TxtBox_Bias2_zx.Text + vbCrLf + TxtBox_comp_zx.Text()
                 My.Computer.FileSystem.WriteAllText(Ruta, TxtToSave, False)
                 SaveDataStatus.Text = "Los datos se han guardado correctamente"
             Catch
@@ -483,60 +482,94 @@ Public Class mainForm
         End If
     End Sub
 
-    Private Sub TxtBox_Ki_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Ki.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
+    Private Sub Enviar_Datos_zy()
+        If SerialPort1.IsOpen Then
+            Dim number As Integer
+            Try
+
+                number = Int32.Parse(TxtBox_Kp_zy.Text)
+                number = Int32.Parse(TxtBox_Kd_zy.Text)
+                number = Int32.Parse(TxtBox_Ki_zy.Text)
+                number = Int32.Parse(TxtBox_Bias1_zy.Text)
+                number = Int32.Parse(TxtBox_Bias2_zy.Text)
+                number = Int32.Parse(TxtBox_comp_zy.Text)
+
+                Dim TxtPID As String = "$" + "2," + TxtBox_Kp_zy.Text + "," + TxtBox_Ki_zy.Text + "," + TxtBox_Kd_zy.Text + "," + TxtBox_Bias1_zy.Text + "," + TxtBox_Bias2_zy.Text + "," + TxtBox_comp_zy.Text + "#"
+                SerialPort1.WriteLine(TxtPID)
+            Catch
+                MessageBox.Show("Hay letras en los valores de los parámetros", "Error en los parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            Try
+                TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+                Dim Ruta = My.Computer.FileSystem.CurrentDirectory & "\\Datos_zy.txt"
+                Dim TxtToSave As String = TxtBox_Kp_zy.Text + vbCrLf + TxtBox_Ki_zy.Text + vbCrLf + TxtBox_Kd_zy.Text + vbCrLf + TxtBox_Bias1_zy.Text + vbCrLf + TxtBox_Bias2_zy.Text + vbCrLf + TxtBox_comp_zy.Text()
+                My.Computer.FileSystem.WriteAllText(Ruta, TxtToSave, False)
+                SaveDataStatus.Text = "Los datos se han guardado correctamente"
+            Catch
+                SaveDataStatus.Text = "Error al guardar los datos"
+            End Try
+        Else
+            MessageBox.Show("No estas conectado a ningún dispositivo.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
-    Private Sub TxtBox_Kd_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Kd.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
+    Private Sub Enviar_Datos_xy()
+        If SerialPort1.IsOpen Then
+            Dim number As Integer
+            Try
+
+                number = Int32.Parse(TxtBox_Kp_xy.Text)
+                number = Int32.Parse(TxtBox_Kd_xy.Text)
+                number = Int32.Parse(TxtBox_Ki_xy.Text)
+                number = Int32.Parse(TxtBox_Bias1_xy.Text)
+                number = Int32.Parse(TxtBox_Bias2_xy.Text)
+                number = Int32.Parse(TxtBox_comp_xy.Text)
+
+                Dim TxtPID As String = "$" + "3," + TxtBox_Kp_xy.Text + "," + TxtBox_Ki_xy.Text + "," + TxtBox_Kd_xy.Text + "," + TxtBox_Bias1_xy.Text + "," + TxtBox_Bias2_xy.Text + "," + TxtBox_comp_xy.Text + "#"
+                SerialPort1.WriteLine(TxtPID)
+            Catch
+                MessageBox.Show("Hay letras en los valores de los parámetros", "Error en los parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            Try
+                TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+                Dim Ruta = My.Computer.FileSystem.CurrentDirectory & "\\Datos_xy.txt"
+                Dim TxtToSave As String = TxtBox_Kp_xy.Text + vbCrLf + TxtBox_Ki_xy.Text + vbCrLf + TxtBox_Kd_xy.Text + vbCrLf + TxtBox_Bias1_xy.Text + vbCrLf + TxtBox_Bias2_xy.Text + vbCrLf + TxtBox_comp_xy.Text()
+                My.Computer.FileSystem.WriteAllText(Ruta, TxtToSave, False)
+                SaveDataStatus.Text = "Los datos se han guardado correctamente"
+            Catch
+                SaveDataStatus.Text = "Error al guardar los datos"
+            End Try
+        Else
+            MessageBox.Show("No estas conectado a ningún dispositivo.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
-    Private Sub TxtBox_Bias1_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Bias1.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
+    Private Sub Enviar_Filtro()
+        If SerialPort1.IsOpen Then
+            Dim number As Integer
+            Try
+
+                number = Int32.Parse(TxtBox_filter.Text)
+                number = Int32.Parse(TxtBox_Ts.Text)
+
+                Dim TxtPID As String = "$" + "4," + TxtBox_filter.Text + "," + TxtBox_Ts.Text + "#"
+                SerialPort1.WriteLine(TxtPID)
+            Catch
+                MessageBox.Show("Hay letras en los valores de los parámetros", "Error en los parámetros", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            Try
+                TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+                Dim Ruta = My.Computer.FileSystem.CurrentDirectory & "\\Datos_filtro.txt"
+                Dim TxtToSave As String = TxtBox_filter.Text + vbCrLf + TxtBox_Ts.Text
+                My.Computer.FileSystem.WriteAllText(Ruta, TxtToSave, False)
+                SaveDataStatus.Text = "Los datos se han guardado correctamente"
+            Catch
+                SaveDataStatus.Text = "Error al guardar los datos"
+            End Try
+        Else
+            MessageBox.Show("No estas conectado a ningún dispositivo.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
-
-    Private Sub TxtBox_Bias2_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Bias2.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
-        End If
-    End Sub
-
-    Private Sub TxtBox_Ts_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Ts.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
-        End If
-    End Sub
-
-    Private Sub TxtBox_Qa_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Qa.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
-        End If
-    End Sub
-
-    Private Sub TxtBox_Qb_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Qb.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
-        End If
-    End Sub
-
-    Private Sub TxtBox_Filtro_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_Filtro.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
-        End If
-    End Sub
-
-    Private Sub TxtBox_RM_PreviewKeyDown(sender As System.Object, e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles TxtBox_RM.PreviewKeyDown
-        If e.KeyValue.ToString() = 13 Then
-            Enviar_Datos()
-        End If
-    End Sub
-
 
     Private Sub LoadData_Click(sender As System.Object, e As System.EventArgs) Handles LoadData.Click
         CargarDatos()
@@ -544,31 +577,114 @@ Public Class mainForm
 
     Private Sub CargarDatos()
         Try
-            Dim Lectura As New IO.StreamReader(My.Computer.FileSystem.CurrentDirectory & "\\Datos.txt")
+            Dim Lectura_zx As New IO.StreamReader(My.Computer.FileSystem.CurrentDirectory & "\\Datos_zx.txt")
             For j As Integer = 1 To 10 Step 1
-                Dim linea As String = Lectura.ReadLine()
+                Dim linea As String = Lectura_zx.ReadLine()
                 Select Case j
                     Case 1
-                        TxtBox_Kp.Text = linea
+                        TxtBox_Kp_zx.Text = linea
                     Case 2
-                        TxtBox_Ki.Text = linea
+                        TxtBox_Ki_zx.Text = linea
                     Case 3
-                        TxtBox_Kd.Text = linea
+                        TxtBox_Kd_zx.Text = linea
                     Case 4
-                        TxtBox_Bias1.Text = linea
+                        TxtBox_Bias1_zx.Text = linea
                     Case 5
-                        TxtBox_Bias2.Text = linea
+                        TxtBox_Bias2_zx.Text = linea
                     Case 6
-                        TxtBox_Ts.Text = linea
-                    Case 7
-                        TxtBox_Qa.Text = linea
-                    Case 8
-                        TxtBox_Qb.Text = linea
-                    Case 9
-                        TxtBox_RM.Text = linea
+                        TxtBox_comp_zx.Text = linea
                 End Select
             Next
-            Lectura.Close()
+            Lectura_zx.Close()
+            SaveDataStatus.Text = "Datos cargados correctamente."
+        Catch
+            Try
+                SaveDataStatus.Text = "No se han podido cargar los datos."
+            Catch
+            End Try
+        End Try
+        Try
+            TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+        Catch
+        End Try
+
+        '
+        Try
+            Dim Lectura_zy As New IO.StreamReader(My.Computer.FileSystem.CurrentDirectory & "\\Datos_zy.txt")
+            For j As Integer = 1 To 10 Step 1
+                Dim linea As String = Lectura_zy.ReadLine()
+                Select Case j
+                    Case 1
+                        TxtBox_Kp_zy.Text = linea
+                    Case 2
+                        TxtBox_Ki_zy.Text = linea
+                    Case 3
+                        TxtBox_Kd_zy.Text = linea
+                    Case 4
+                        TxtBox_Bias1_zy.Text = linea
+                    Case 5
+                        TxtBox_Bias2_zy.Text = linea
+                    Case 6
+                        TxtBox_comp_zy.Text = linea
+                End Select
+            Next
+            Lectura_zy.Close()
+            SaveDataStatus.Text = "Datos cargados correctamente."
+        Catch
+            Try
+                SaveDataStatus.Text = "No se han podido cargar los datos."
+            Catch
+            End Try
+        End Try
+        Try
+            TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+        Catch
+        End Try
+        '
+        Try
+            Dim Lectura_xy As New IO.StreamReader(My.Computer.FileSystem.CurrentDirectory & "\\Datos_xy.txt")
+            For j As Integer = 1 To 10 Step 1
+                Dim linea As String = Lectura_xy.ReadLine()
+                Select Case j
+                    Case 1
+                        TxtBox_Kp_xy.Text = linea
+                    Case 2
+                        TxtBox_Ki_xy.Text = linea
+                    Case 3
+                        TxtBox_Kd_xy.Text = linea
+                    Case 4
+                        TxtBox_Bias1_xy.Text = linea
+                    Case 5
+                        TxtBox_Bias2_xy.Text = linea
+                    Case 6
+                        TxtBox_comp_xy.Text = linea
+                End Select
+            Next
+            Lectura_xy.Close()
+            SaveDataStatus.Text = "Datos cargados correctamente."
+        Catch
+            Try
+                SaveDataStatus.Text = "No se han podido cargar los datos."
+            Catch
+            End Try
+        End Try
+        Try
+            TickNumberForClearToolbar = Convert.ToInt64(TimerTickLabel.Text)
+        Catch
+        End Try
+
+        Try
+            Dim Lectura_filtro As New IO.StreamReader(My.Computer.FileSystem.CurrentDirectory & "\\Datos_filtro.txt")
+            For j As Integer = 1 To 2 Step 1
+                Dim linea As String = Lectura_filtro.ReadLine()
+                Select Case j
+                    Case 1
+                        TxtBox_filter.Text = linea
+                    Case 2
+                        TxtBox_Ts.Text = linea
+                End Select
+            Next
+            Lectura_filtro.Close()
             SaveDataStatus.Text = "Datos cargados correctamente."
         Catch
             Try
@@ -592,6 +708,5 @@ Public Class mainForm
         LoadData.Margin = sistema
         RealSize = MyBase.Width
     End Sub
-
 
 End Class
