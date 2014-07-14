@@ -177,44 +177,33 @@ StopInterrup3();
 
 // Funcion para procear los datos recibidos
 
-void ProcesarCadenaPid(char *cadena)
-{
+void ProcesarCadenaPid(char *cadena) {
 #ifdef DEF_BLUE
     int i = 0;
     int indice_i = 0;
     int x = 0;
-    int acu=0;
-    char aux_P[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_I[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_D[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_BIAS1[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_BIAS2[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_Tsample[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_Q_angle[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_Q_bias[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_R_measure[10]={0,0,0,0,0,0,0,0,0,0};
-    char aux_filtro[10]={0,0,0,0,0,0,0,0,0,0};
-    do
-    {
+    int acu = 0;
+    char aux_0[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char aux_1[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char aux_2[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char aux_3[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char aux_4[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char aux_5[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char aux_6[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    do {
 
-        if (i >0)
-        {
+        if (i > 0) {
             if (cadena[i] != 0x2c)//coma
-            {  
-                if (x == 0)aux_P[indice_i] = cadena[i];
-                if (x == 1)aux_I[indice_i] = cadena[i];
-                if (x == 2)aux_D[indice_i] = cadena[i];
-                if (x == 3)aux_BIAS1[indice_i] = cadena[i];
-                if (x == 4)aux_BIAS2[indice_i] = cadena[i];
-                if (x == 5)aux_Tsample[indice_i] = cadena[i];
-                if (x == 6)aux_Q_angle[indice_i] = cadena[i];
-                if (x == 7)aux_Q_bias[indice_i] = cadena[i];
-                if (x == 8)aux_R_measure[indice_i] = cadena[i];
-                if (x == 8)aux_filtro[indice_i] = cadena[i];
+            {
+                if (x == 0)aux_0[indice_i] = cadena[i];
+                if (x == 1)aux_1[indice_i] = cadena[i];
+                if (x == 2)aux_2[indice_i] = cadena[i];
+                if (x == 3)aux_3[indice_i] = cadena[i];
+                if (x == 4)aux_4[indice_i] = cadena[i];
+                if (x == 5)aux_5[indice_i] = cadena[i];
+                if (x == 6)aux_6[indice_i] = cadena[i];
                 indice_i++;
-            }
-            else
-            { 
+            } else {
                 x++;
                 indice_i = 0;
             }
@@ -223,20 +212,42 @@ void ProcesarCadenaPid(char *cadena)
     } while (cadena[i] != 0x23);
 
     //pasamos parametros aux a parametros globales
+    int eje = atoi(aux_0);
 
-
-        Eeprom_WriteWord(2,atoi(aux_P));
-        Eeprom_WriteWord(4,atoi(aux_D));
-        Eeprom_WriteWord(6,atoi(aux_I));
-        Eeprom_WriteWord(8,atoi(aux_BIAS1));
-        Eeprom_WriteWord(10,atoi(aux_BIAS2));
-        Eeprom_WriteWord(12,atoi(aux_Tsample));
-        Eeprom_WriteWord(14,atoi(aux_Q_angle));
-        Eeprom_WriteWord(16,atoi(aux_Q_bias));
-        Eeprom_WriteWord(18,atoi(aux_R_measure));
-        Eeprom_WriteWord(20,atoi(aux_filtro));
-        Eeprom_WriteWord(0,6969);
-        reset();
+    if (eje == 1)
+    {
+        Eeprom_WriteWord(2, atoi(aux_1));
+        Eeprom_WriteWord(4, atoi(aux_2));
+        Eeprom_WriteWord(6, atoi(aux_3));
+        Eeprom_WriteWord(8, atoi(aux_4));
+        Eeprom_WriteWord(10, atoi(aux_5));
+        Eeprom_WriteWord(12, atoi(aux_6));
+    }
+    if (eje == 2)
+    {
+        Eeprom_WriteWord(14, atoi(aux_1));
+        Eeprom_WriteWord(16, atoi(aux_2));
+        Eeprom_WriteWord(18, atoi(aux_3));
+        Eeprom_WriteWord(20, atoi(aux_4));
+        Eeprom_WriteWord(22, atoi(aux_5));
+        Eeprom_WriteWord(24, atoi(aux_6));
+    }
+    if (eje == 3)
+    {
+        Eeprom_WriteWord(26, atoi(aux_1));
+        Eeprom_WriteWord(28, atoi(aux_2));
+        Eeprom_WriteWord(30, atoi(aux_3));
+        Eeprom_WriteWord(32, atoi(aux_4));
+        Eeprom_WriteWord(34, atoi(aux_5));
+        Eeprom_WriteWord(36, atoi(aux_6));
+    }
+    if (eje == 4)
+    {
+        Eeprom_WriteWord(38, atoi(aux_1));
+        Eeprom_WriteWord(40, atoi(aux_2));
+    }
+    Eeprom_WriteWord(0, 6969);
+    reset();
 
 }
 #endif

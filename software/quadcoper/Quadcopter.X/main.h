@@ -66,15 +66,19 @@ extern float ErrorI_xy;
 void Bucle_Principal();
 void get_calibrado_acelerometro(int milis, int n);
 void getAngle_init();
-int PD(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo);
 
-int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, float _kp, float _ki, float _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
+int pid_zx(int _referencia, int _PosicionActual, int Tmuestreo, float _kp, float _ki, float _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
 
-int mod_zx(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
-//floitizada //int mod_zy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
-int mod_xy(int _referencia, int _PosicionActual, int Tmuestreo, int _kp, int _ki, int _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
-float Complementary2(float newAngle, float newRate,int looptime) ;
-void pon_motores(int M1, int M2, int M3, int M4,int incremento);
+int pid_zy(int _referencia, int _PosicionActual, int Tmuestreo, float _kp, float _ki, float _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
+
+int pid_xy(int _referencia, int _PosicionActual, int Tmuestreo, float _kp, float _ki, float _kd, int _Maximo, int _Minimo, int _MaximoI, int _MinimoI) ;
+
+float Complementary2(float newAngle, float newRate, int looptime);
+float Complementary2_zx(float newAngle, float newRate, int looptime);
+float Complementary2_zy(float newAngle, float newRate, int looptime);
+float Complementary2_xy(float newAngle, float newRate, int looptime);
+
+
 double getAngleStruct_zx(double newAngle, double newRate, double dt);
 double getAngleStruct_zy(double newAngle, double newRate, double dt);
 double getAngleStruct_xy(double newAngle, double newRate, double dt);

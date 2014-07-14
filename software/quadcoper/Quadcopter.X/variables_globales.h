@@ -22,13 +22,13 @@ int chanel5 = 0;
 //***********variables del pid********************//
 
 int KP_zx = 12;
-int KD_zx = 5000;
+int KD_zx = 4;
 int KI_zx = 1;
 int BIAS1_zx = 1000;
 int BIAS2_zx = 1000;
 
 int KP_zy = 25;
-int KD_zy = 100;
+int KD_zy = 4;
 int KI_zy = 0;
 int BIAS1_zy =600;
 int BIAS2_zy =600;
@@ -66,7 +66,15 @@ double K[2]; // Kalman gain - This is a 2x1 vector
 double y=1; // Angle difference
 double S=100; // Estimate error
 //************************* VARIABLES DE COMPLEMENTARY ****************//
+float k_zx=5;
+float k_zy=5;
+float k_xy=5;
+
 float x_angle2C=0;
+
+float angle2C_zx=0;
+float angle2C_zy=0;
+float angle2C_xy=0;
 int i=0;
 
 
