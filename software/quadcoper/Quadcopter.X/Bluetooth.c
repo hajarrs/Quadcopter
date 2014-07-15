@@ -222,6 +222,8 @@ void ProcesarCadenaPid(char *cadena) {
         Eeprom_WriteWord(8, atoi(aux_4));
         Eeprom_WriteWord(10, atoi(aux_5));
         Eeprom_WriteWord(12, atoi(aux_6));
+        Eeprom_WriteWord(0, 6969);
+        reset();
     }
     if (eje == 2)
     {
@@ -231,6 +233,8 @@ void ProcesarCadenaPid(char *cadena) {
         Eeprom_WriteWord(20, atoi(aux_4));
         Eeprom_WriteWord(22, atoi(aux_5));
         Eeprom_WriteWord(24, atoi(aux_6));
+        Eeprom_WriteWord(0, 6969);
+        reset();
     }
     if (eje == 3)
     {
@@ -240,15 +244,26 @@ void ProcesarCadenaPid(char *cadena) {
         Eeprom_WriteWord(32, atoi(aux_4));
         Eeprom_WriteWord(34, atoi(aux_5));
         Eeprom_WriteWord(36, atoi(aux_6));
+        Eeprom_WriteWord(0, 6969);
+        reset();
     }
     if (eje == 4)
     {
         Eeprom_WriteWord(38, atoi(aux_1));
         Eeprom_WriteWord(40, atoi(aux_2));
+        Eeprom_WriteWord(0, 6969);
+        reset();
     }
-    Eeprom_WriteWord(0, 6969);
-    reset();
 
+     if (eje == 5)
+    {
+        BIAS1_zy=(int) (4000/255)*atoi(aux_1);
+        BIAS2_zy=(int) (4000/255)*atoi(aux_1);
+        BIAS1_zx=(int) (4000/255)*atoi(aux_1);
+        BIAS2_zx=(int) (4000/255)*atoi(aux_1);
+        BIAS1_xy=(int) (4000/255)*atoi(aux_1);
+        BIAS2_xy=(int) (4000/255)*atoi(aux_1);
+    }
 }
 #endif
 

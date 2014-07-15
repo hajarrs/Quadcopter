@@ -285,50 +285,99 @@ public class BluetoothJoystickActivity extends Activity implements
 
 	private void UpdateMethod() {
 
+//		String Cadena = new String();
+//
+//		// 1- identificacion de signo de todos los valores
+//		int i_inicio = 0x5555;
+//		int i_fin = 0xFFFF;
+//		
+//		int canal1 = (mEjeXL + 255); // Entre 0 y 512
+//		int canal2 = (mEjeYL + 255); // Entre 0 y 512
+//		int canal3 = (accX_Leido + 255); // Entre 0 y 512
+//		int canal4 = (accX_Leido + 255); // Entre 0 y 512
+//		int canal5 = (accX_Leido + 255); // Entre 0 y 512
+//		int canal6 = 1; // Entre 0 y 1
+//		
+//		if(canal1 < 0) canal1 = 0;
+//		if(canal2 < 0) canal1 = 0;
+//		if(canal3 < 0) canal1 = 0;
+//		if(canal4 < 0) canal1 = 0;
+//		if(canal5 < 0) canal1 = 0;
+//		if(canal6 < 0) canal1 = 0;
+//		
+//		// Nuevo protocolo de envio de datos:
+//		// 5555 <Canal1> <Canal2> <Canal3> <Canal4> <Canal5> <Canal6> FFFF
+//		String strInicio = String.format("%04X", 0xFFFF & i_inicio);
+//		String strCanal1 = String.format("%04X", 0xFFFF & canal1);
+//		String strCanal2 = String.format("%04X", 0xFFFF & canal2);
+//		String strCanal3 = String.format("%04X", 0xFFFF & canal3);
+//		String strCanal4 = String.format("%04X", 0xFFFF & canal4);
+//		String strCanal5 = String.format("%04X", 0xFFFF & canal5);
+//		String strCanal6 = String.format("%04X", 0xFFFF & canal6);
+//		String strFin = String.format("%04X", 0xFFFF & i_fin);
+//		
+//		Cadena = strInicio + strCanal1 + strCanal2 + strCanal3 + strCanal4 + strCanal5 + strCanal6 + strFin;
+//		
+//		String CadenaDebug = strInicio + "-" + strCanal1 + "-" + strCanal2 + "-" + strCanal3 + "-" + strCanal4 + "-" + strCanal5 + "-" + strCanal6 + "-" + strFin;
+//
+//		sendMessage(Cadena);
+//
+//		this.X_Leido.setText("X = " + accX_Leido);
+//		this.Y_Leido.setText("Y = " + accY_Leido);
+//		this.Z_Leido.setText("Z = " + accZ_Leido);
+//
+//		this.mTxtDataSent.setText(Cadena);
+//		this.mTxtDataSentDebug.setText(CadenaDebug);
 		String Cadena = new String();
 
 		// 1- identificacion de signo de todos los valores
-		int i_inicio = 0x5555;
-		int i_fin = 0xFFFF;
+		int i_inicio = 0x23;
+		int i_select = 0x05;
+		int i_fin = 0x24;
+		int i_salto = 0x0D ;
+		int i_lf =0x0A;
 		
-		int canal1 = (mEjeXL + 255); // Entre 0 y 512
-		int canal2 = (mEjeYL + 255); // Entre 0 y 512
-		int canal3 = (accX_Leido + 255); // Entre 0 y 512
-		int canal4 = (accX_Leido + 255); // Entre 0 y 512
-		int canal5 = (accX_Leido + 255); // Entre 0 y 512
-		int canal6 = 1; // Entre 0 y 1
+//		int canal1 = (mEjeXL + 255); // Entre 0 y 512
+//		int canal2 = (mEjeYL + 255); // Entre 0 y 512
+		int canal3 = (accX_Leido); // Entre 0 y 512
+//		int canal3 = 1000; // Entre 0 y 512
+//		int canal4 = (accY_Leido + 255); // Entre 0 y 512
+//		int canal5 = (accZ_Leido + 255); // Entre 0 y 512
+//		int canal6 = 1; // Entre 0 y 1
 		
-		if(canal1 < 0) canal1 = 0;
-		if(canal2 < 0) canal1 = 0;
-		if(canal3 < 0) canal1 = 0;
-		if(canal4 < 0) canal1 = 0;
-		if(canal5 < 0) canal1 = 0;
-		if(canal6 < 0) canal1 = 0;
+//		if(canal1 < 0) canal1 = 0;
+//		if(canal2 < 0) canal1 = 0;
+		if(canal3 < 0) canal3 = 0;
+		if(canal3 == 23) canal3 = 25;
+		if(canal3 == 24) canal3 = 25;
+//		IF(CANAL4 < 0) CANAL1 = 0;
+//		IF(CANAL5 < 0) CANAL1 = 0;
+//		IF(CANAL6 < 0) CANAL1 = 0;
 		
 		// Nuevo protocolo de envio de datos:
 		// 5555 <Canal1> <Canal2> <Canal3> <Canal4> <Canal5> <Canal6> FFFF
-		String strInicio = String.format("%04X", 0xFFFF & i_inicio);
-		String strCanal1 = String.format("%04X", 0xFFFF & canal1);
-		String strCanal2 = String.format("%04X", 0xFFFF & canal2);
-		String strCanal3 = String.format("%04X", 0xFFFF & canal3);
-		String strCanal4 = String.format("%04X", 0xFFFF & canal4);
-		String strCanal5 = String.format("%04X", 0xFFFF & canal5);
-		String strCanal6 = String.format("%04X", 0xFFFF & canal6);
-		String strFin = String.format("%04X", 0xFFFF & i_fin);
+		String strInicio = String.format("%02X", 0xFF & i_inicio);
+		String strSelect = String.format("%02X", 0xFF & i_select);
+//		String strCanal1 = String.format("%04X", 0xFFFF & canal1);
+//		String strCanal2 = String.format("%04X", 0xFFFF & canal2);
+		String strCanal3 = String.format("%02X", 0xFF & canal3);
+//		String strCanal4 = String.format("%04X", 0xFFFF & canal4);
+//		STRING STRCANAL5 = STRING.FORMAT("%04X", 0XFFFF & CANAL5);
+//		STRING STRCANAL6 = STRING.FORMAT("%04X", 0XFFFF & CANAL6);
+		String strFin = String.format("%02X", 0xFF & i_fin);
 		
-		Cadena = strInicio + strCanal1 + strCanal2 + strCanal3 + strCanal4 + strCanal5 + strCanal6 + strFin;
+		Cadena = strInicio +","+strSelect +"," + strCanal3 +"," + strFin;
 		
-		String CadenaDebug = strInicio + "-" + strCanal1 + "-" + strCanal2 + "-" + strCanal3 + "-" + strCanal4 + "-" + strCanal5 + "-" + strCanal6 + "-" + strFin;
+		String CadenaDebug =  strCanal3 ;
 
 		sendMessage(Cadena);
 
 		this.X_Leido.setText("X = " + accX_Leido);
-		this.Y_Leido.setText("Y = " + accY_Leido);
-		this.Z_Leido.setText("Z = " + accZ_Leido);
+		//this.Y_Leido.setText("Y = " + accY_Leido+"no utilizado");
+		//this.Z_Leido.setText("Z = " + accZ_Leido+"no utilizado");
 
 		this.mTxtDataSent.setText(Cadena);
 		this.mTxtDataSentDebug.setText(CadenaDebug);
-		
 
 	}
 
