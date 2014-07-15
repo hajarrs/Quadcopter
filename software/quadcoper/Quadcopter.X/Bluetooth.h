@@ -17,14 +17,6 @@ extern int chanel3;
 extern int chanel4;
 extern int chanel5;
 
-
-extern int BIAS1_xy;
-extern int BIAS2_xy;
-extern int BIAS1_zx;
-extern int BIAS2_zx;
-extern int BIAS1_zy;
-extern int BIAS2_zy;
-
 void EnviarCR();
 void enviar_datos_NOCR(char cadena[50], int longitud);
 void enviar_datos(char cadena[50], int longitud);
