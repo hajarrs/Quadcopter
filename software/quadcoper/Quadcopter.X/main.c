@@ -105,8 +105,8 @@ void Bucle_Principal() {
     int salida_zx = pid_zx(0, angulo_zx, 5, KP_zx, KI_zx, KD_zx, 5000, -5000, 200, -200);
     int salida_zy = pid_zy(0, angulo_zy, 5, KP_zy, KI_zy, KD_zy, 5000, -5000, 200, -200);
 
-    GetPwm2(BIAS1_zy + salida_zy);
-    GetPwm4(BIAS2_zy - salida_zy);
+ //   GetPwm2(BIAS1_zy + salida_zy);
+ //   GetPwm4(BIAS2_zy - salida_zy);
     GetPwm1(BIAS1_zx + salida_zx);
     GetPwm3(BIAS1_zx - salida_zx);
 plot4(angulo_zy,angulo_zx,salida_zy,salida_zx);
