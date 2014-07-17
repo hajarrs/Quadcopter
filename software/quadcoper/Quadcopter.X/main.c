@@ -94,9 +94,9 @@ void Bucle_Principal() {
     //         GetPwm3(BIAS2_zx-salida_zx);
    #define BRAZO_CORTO
 #ifdef BRAZO_CORTO
-//    double accXangle_zy = (atan2(get_ay(), -get_az()) * RAD_TO_DEG/2 );
-//    double gyroXrate_zy = (double) (get_gx() - calibra_gx) / 131.0;
-//    angulo_zy = (signed int) Complementary2_zy(accXangle_zy, gyroXrate_zy,5);
+    double accXangle_zy = (atan2(get_ay(), -get_az()) * RAD_TO_DEG/2 );
+    double gyroXrate_zy = (double) (get_gx() - calibra_gx) / 131.0;
+    angulo_zy = (signed int) Complementary2_zy(accXangle_zy, gyroXrate_zy,5);
 
     double accXangle_zx = (atan2(get_ax() ,-get_az()) * RAD_TO_DEG);
     double gyroXrate_zx = (double) (get_gy() - calibra_gy) / 131.0;
@@ -105,8 +105,8 @@ void Bucle_Principal() {
     int salida_zx = pid_zx(0, angulo_zx, 5, KP_zx, KI_zx, KD_zx, 5000, -5000, 200, -200);
     int salida_zy = pid_zy(0, angulo_zy, 5, KP_zy, KI_zy, KD_zy, 5000, -5000, 200, -200);
 
-//    GetPwm2(BIAS1_zy + salida_zy);
-//    GetPwm4(BIAS2_zy - salida_zy);
+    GetPwm2(BIAS1_zy + salida_zy);
+    GetPwm4(BIAS2_zy - salida_zy);
     GetPwm1(BIAS1_zx + salida_zx);
     GetPwm3(BIAS1_zx - salida_zx);
 plot4(angulo_zy,angulo_zx,salida_zy,salida_zx);
@@ -424,20 +424,20 @@ void cargar_datos_ajuste() {
         }
     else {
         enviar_mensaje("datos no  encontrados en la eeprom, cargando datos seguros");
-        KP_zx = 20;
-        KD_zx = 8;
+        KP_zx = 7;
+        KD_zx = 9;
         KI_zx = 0;
         BIAS1_zx = 1000;
         BIAS2_zx = 1000;
         k_zx=5;
-        KP_zy = 20;
-        KD_zy = 8;
+        KP_zy = 7;
+        KD_zy = 9;
         KI_zy = 0;
         BIAS1_zy = 1000;
         BIAS2_zy = 1000;
         k_zy=5;
-        KP_xy = 20;
-        KD_xy = 8;
+        KP_xy = 7;
+        KD_xy = 9;
         KI_xy = 0;
         BIAS1_xy = 1000;
         BIAS2_xy = 1000;
